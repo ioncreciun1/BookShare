@@ -36,8 +36,17 @@ public class LogInViewModel
     return username;
   }
 
+
   public boolean verifyPass() throws IOException
   {
-    return true;
+    if(model.verifyLog(password.get(),username.get()))
+    {
+      error.set("Good boy");
+      return true;
+    }
+    else{
+      error.set("Wrong password");
+      return false;
+    }
   }
 }

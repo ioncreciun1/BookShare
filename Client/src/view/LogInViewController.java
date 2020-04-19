@@ -40,4 +40,12 @@ public class LogInViewController
   {
     viewHandler.openView("SignUp");
   }
+
+  public void openMainPage() throws IOException
+  {
+    if(viewModel.verifyPass())
+    {
+      viewHandler.openView("");
+    }
+  }
 }

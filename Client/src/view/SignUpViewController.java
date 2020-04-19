@@ -29,9 +29,19 @@ public class SignUpViewController
     this.viewHandler = viewHandler;
     this.viewModel = viewModel;
     this.root = root;
-    //    password.textProperty().bindBidirectional(viewModel.passwordProperty());
-    //    error.textProperty().bind(viewModel.errorProperty());
-    //    username.textProperty().bindBidirectional(viewModel.usernameProperty());
+    username.textProperty().bindBidirectional(viewModel.usernameProperty());
+    firstName.textProperty().bindBidirectional(viewModel.firstNameProperty());
+    lastName.textProperty().bindBidirectional(viewModel.lastNameProperty());
+    email.textProperty().bindBidirectional(viewModel.emailProperty());
+    phone.textProperty().bindBidirectional(viewModel.phoneProperty());
+   // city.itemsProperty().bindBidirectional(viewModel.cityProperty()); // Not sure about it, idk what it should be
+    city.getItems().addAll("Copenhagen", "Aarhus", "Odense", "Aalborg",
+        "Esbjerg", "Randers", "Kolding", "Horsens", "Vejle", "Roskilde", "Herning", "Hørsholm", "Helsingør",
+        "Silkeborg", "Næstved", "Fredericia", "Viborg", "Køge");
+    city.getSelectionModel().select("Copenhagen");
+    password.textProperty().bindBidirectional(viewModel.passwordProperty());
+    confirmPassword.textProperty().bindBidirectional(viewModel.confirmPasswordProperty());
+    error.textProperty().bind(viewModel.errorProperty());
   }
 
   public void reset()
@@ -43,7 +53,21 @@ public class SignUpViewController
     return root;
   }
 
+  public boolean verifyPassword()
+  {
+    return (password == confirmPassword);
+  }
+
   public void openLogIn() throws IOException
+  {
+    if (verifyPassword())
+    {
+      viewHandler.openView("LogIn");
+    }
+    error.setText("Different Password");
+  }
+
+  public void Cancel()
   {
     viewHandler.openView("LogIn");
   }

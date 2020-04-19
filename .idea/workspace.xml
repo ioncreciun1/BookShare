@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a3fb48a9-21a3-437e-ad8f-4a6b2a25d83b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Client/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/MyApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/model/Model.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/model/ModelManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/view/LogInViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/view/SignUpViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/view/ViewHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/viewModel/LogInViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/viewModel/SignUpViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/viewModel/ViewModelFactory.java" afterDir="false" />
+    <list default="true" id="a3fb48a9-21a3-437e-ad8f-4a6b2a25d83b" name="Default Changelist" comment="View Implementing, added some functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/model/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/model/ModelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/view/LogInViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/view/LogInViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/view/SignUpViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/view/SignUpViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/viewModel/LogInViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/viewModel/LogInViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/viewModel/SignUpViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/viewModel/SignUpViewModel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +36,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SepProject" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -112,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587292444501</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="view working">
+      <created>1587300896897</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1587300896898</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,7 +129,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="adding directories" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding directories" />
+    <MESSAGE value="view working" />
+    <MESSAGE value="View Implementing, added some functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="View Implementing, added some functionality" />
   </component>
   <component name="WindowStateProjectService">
     <state x="270" y="0" key="CommitChangelistDialog2" timestamp="1587292189290">
