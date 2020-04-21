@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a3fb48a9-21a3-437e-ad8f-4a6b2a25d83b" name="Default Changelist" comment="" />
+    <list default="true" id="a3fb48a9-21a3-437e-ad8f-4a6b2a25d83b" name="Default Changelist" comment="added RegistrantDAO and RegistrantDAOimplementation classes, renamed Multiton class and MultionTest to Registrant, made a DatabaseConnection class">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DatabaseConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DatabaseManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RegistrantDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RegistrantDAOImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SEP2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SEP2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Multiton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Registrant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MultitonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegistrantTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,12 +23,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="1aks47FCZLiJi8tmnU3cl1P93MT" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -27,6 +42,23 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration name="RegistrantTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="RegistrantTest" />
+      <module name="SEP2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.RegistrantTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -67,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587292444501</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="adding directories">
+      <created>1587292527823</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1587292527823</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -75,14 +114,46 @@
     <option name="LAST_COMMIT_MESSAGE" value="adding directories" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="270" y="0" key="CommitChangelistDialog2" timestamp="1587292189290">
+    <state x="393" y="24" key="#com.intellij.ide.util.MemberChooser" timestamp="1587457911713">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="270" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1587292189290" />
-    <state x="233" y="73" key="Vcs.Push.Dialog.v2" timestamp="1587292193114">
+    <state x="393" y="24" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1587457911713" />
+    <state x="270" y="0" key="CommitChangelistDialog2" timestamp="1587464523001">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1587292193114" />
+    <state x="270" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1587464523001" />
+    <state width="1048" height="160" key="GridCell.Tab.0.bottom" timestamp="1587446285976">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1048" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587446285976" />
+    <state width="1048" height="160" key="GridCell.Tab.0.center" timestamp="1587446285976">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1048" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587446285976" />
+    <state width="1048" height="160" key="GridCell.Tab.0.left" timestamp="1587446285972">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1048" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587446285972" />
+    <state width="1048" height="160" key="GridCell.Tab.0.right" timestamp="1587446285976">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1048" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587446285976" />
+    <state x="0" y="0" key="SettingsEditor" timestamp="1587302360780">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="0" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1587302360780" />
+    <state x="233" y="73" key="Vcs.Push.Dialog.v2" timestamp="1587292541368">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1587292541368" />
+    <state x="451" y="254" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587296119882">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="451" y="254" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1587296119882" />
+    <state x="374" y="129" key="git4idea.merge.GitPullDialog" timestamp="1587296253854">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="374" y="129" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1587296253854" />
     <state x="181" y="0" key="new project wizard" timestamp="1587292112093">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
