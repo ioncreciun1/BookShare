@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a3fb48a9-21a3-437e-ad8f-4a6b2a25d83b" name="Default Changelist" comment="" />
+    <list default="true" id="a3fb48a9-21a3-437e-ad8f-4a6b2a25d83b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Client/src/mediator/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/mediator/ClientModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/mediator/RemoteModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/mediator/RemoteModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/mediator/ServerModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
