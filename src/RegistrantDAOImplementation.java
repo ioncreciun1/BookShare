@@ -1,19 +1,21 @@
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-
 public class RegistrantDAOImplementation implements RegistrantDAO
 {
-  DatabaseConnection databaseConnection= new DatabaseConnection();
 
-  @Override
-  public void add(String Username, String passWord, String eMail,
-      String firstName, String lastName, String city, String contactInfo,
-      int upVotes) throws SQLException,Exception
+public RegistrantDAOImplementation() throws SQLException{
+    DriverManager.registerDriver((new org.postgresql.Driver()));
+    }
+
+
+private Connection getConnection() throws SQLException
+    {
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "2011");
+
+    }
+public void add(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo,
+    int upVotes) throws Exception,SQLException
   {try
       (Connection connection = DatabaseConnection.getConnection()/*auto closes the connection*/)
   {
@@ -40,9 +42,11 @@ public class RegistrantDAOImplementation implements RegistrantDAO
 
   }
 
+
+
   @Override public void delete(String username) throws SQLException
   {
-
+;
   }
 
   @Override public Registrant getRegistrant(String username) throws SQLException
@@ -57,6 +61,6 @@ public class RegistrantDAOImplementation implements RegistrantDAO
 
   @Override public void update(Registrant registrant) throws SQLException
   {
-
+;
   }
 }

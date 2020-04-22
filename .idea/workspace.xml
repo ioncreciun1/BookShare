@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a3fb48a9-21a3-437e-ad8f-4a6b2a25d83b" name="Default Changelist" comment="added RegistrantDAO and RegistrantDAOimplementation classes, renamed Multiton class and MultionTest to Registrant, made a DatabaseConnection class">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DatabaseConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DatabaseManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RegistrantDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RegistrantDAOImplementation.java" afterDir="false" />
+    <list default="true" id="a3fb48a9-21a3-437e-ad8f-4a6b2a25d83b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SEP2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SEP2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/model/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Multiton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Registrant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MultitonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegistrantTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RegistrantDAOImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegistrantDAOImplementation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,46 +96,54 @@
       <option name="project" value="LOCAL" />
       <updated>1587292527823</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added RegistrantDAO and RegistrantDAOimplementation classes, renamed Multiton class and MultionTest to Registrant, made a DatabaseConnection class">
+      <created>1587464561023</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1587464561023</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="adding directories" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding directories" />
+    <MESSAGE value="added RegistrantDAO and RegistrantDAOimplementation classes, renamed Multiton class and MultionTest to Registrant, made a DatabaseConnection class" />
+    <option name="LAST_COMMIT_MESSAGE" value="added RegistrantDAO and RegistrantDAOimplementation classes, renamed Multiton class and MultionTest to Registrant, made a DatabaseConnection class" />
   </component>
   <component name="WindowStateProjectService">
     <state x="393" y="24" key="#com.intellij.ide.util.MemberChooser" timestamp="1587457911713">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="393" y="24" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1587457911713" />
-    <state x="270" y="0" key="CommitChangelistDialog2" timestamp="1587464523001">
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1587464560069">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="270" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1587464523001" />
-    <state width="1048" height="160" key="GridCell.Tab.0.bottom" timestamp="1587446285976">
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1587464560069" />
+    <state width="1048" height="160" key="GridCell.Tab.0.bottom" timestamp="1587466667746">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1048" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587446285976" />
-    <state width="1048" height="160" key="GridCell.Tab.0.center" timestamp="1587446285976">
+    <state width="1048" height="160" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587466667746" />
+    <state width="1048" height="160" key="GridCell.Tab.0.center" timestamp="1587466667746">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1048" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587446285976" />
-    <state width="1048" height="160" key="GridCell.Tab.0.left" timestamp="1587446285972">
+    <state width="1048" height="160" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587466667746" />
+    <state width="1048" height="160" key="GridCell.Tab.0.left" timestamp="1587466667745">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1048" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587446285972" />
-    <state width="1048" height="160" key="GridCell.Tab.0.right" timestamp="1587446285976">
+    <state width="1048" height="160" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587466667745" />
+    <state width="1048" height="160" key="GridCell.Tab.0.right" timestamp="1587466667746">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1048" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587446285976" />
+    <state width="1048" height="160" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587466667746" />
     <state x="0" y="0" key="SettingsEditor" timestamp="1587302360780">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="0" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1587302360780" />
-    <state x="233" y="73" key="Vcs.Push.Dialog.v2" timestamp="1587292541368">
+    <state x="233" y="73" key="Vcs.Push.Dialog.v2" timestamp="1587464583439">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1587292541368" />
+    <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1587464583439" />
     <state x="451" y="254" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587296119882">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
