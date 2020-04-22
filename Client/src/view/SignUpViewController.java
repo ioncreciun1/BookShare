@@ -34,11 +34,11 @@ public class SignUpViewController
     lastName.textProperty().bindBidirectional(viewModel.lastNameProperty());
     email.textProperty().bindBidirectional(viewModel.emailProperty());
     phone.textProperty().bindBidirectional(viewModel.phoneProperty());
-   // city.itemsProperty().bindBidirectional(viewModel.cityProperty()); // Not sure about it, idk what it should be
-    city.getItems().addAll("Copenhagen", "Aarhus", "Odense", "Aalborg",
-        "Esbjerg", "Randers", "Kolding", "Horsens", "Vejle", "Roskilde", "Herning", "Hørsholm", "Helsingør",
-        "Silkeborg", "Næstved", "Fredericia", "Viborg", "Køge");
-    city.getSelectionModel().select("Copenhagen");
+//   // city.itemsProperty().bindBidirectional(viewModel.cityProperty()); // Not sure about it, idk what it should be
+//    city.getItems().addAll("Copenhagen", "Aarhus", "Odense", "Aalborg",
+//        "Esbjerg", "Randers", "Kolding", "Horsens", "Vejle", "Roskilde", "Herning", "Hørsholm", "Helsingør",
+//        "Silkeborg", "Næstved", "Fredericia", "Viborg", "Køge");
+//    city.getSelectionModel().select("Copenhagen");
     password.textProperty().bindBidirectional(viewModel.passwordProperty());
     confirmPassword.textProperty().bindBidirectional(viewModel.confirmPasswordProperty());
     error.textProperty().bind(viewModel.errorProperty());

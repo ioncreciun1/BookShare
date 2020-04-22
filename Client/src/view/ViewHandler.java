@@ -47,12 +47,15 @@ public class ViewHandler
     }
     primaryStage.setTitle(title);
     primaryStage.setScene(currentScene);
+    System.out.println();
     switch (id)
     {
       case "LogIn":
         primaryStage.setWidth(610);
+        break;
       case "SignUp":
         primaryStage.setWidth(700);
+        break;
     }
     primaryStage.setHeight(500);
     primaryStage.show();
