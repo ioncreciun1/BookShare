@@ -107,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587300896898</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="View Implementing, added some functionality again">
+      <created>1587310274676</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1587310274676</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,7 +132,8 @@
     <MESSAGE value="adding directories" />
     <MESSAGE value="view working" />
     <MESSAGE value="View Implementing, added some functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="View Implementing, added some functionality" />
+    <MESSAGE value="View Implementing, added some functionality again" />
+    <option name="LAST_COMMIT_MESSAGE" value="View Implementing, added some functionality again" />
   </component>
   <component name="WindowStateProjectService">
     <state x="270" y="0" key="CommitChangelistDialog2" timestamp="1587292189290">
@@ -140,5 +148,16 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="181" y="0" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1587292112093" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Client/src/model/ModelManager.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
