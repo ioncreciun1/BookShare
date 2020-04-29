@@ -18,7 +18,7 @@ public class SignUpViewController
   public TextField phone;
   public PasswordField password;
   public PasswordField confirmPassword;
-  public ChoiceBox<String> city;
+  public TextField city;
   public Label error;
   private ViewHandler viewHandler;
   private SignUpViewModel  viewModel;
@@ -34,13 +34,14 @@ public class SignUpViewController
     lastName.textProperty().bindBidirectional(viewModel.lastNameProperty());
     email.textProperty().bindBidirectional(viewModel.emailProperty());
     phone.textProperty().bindBidirectional(viewModel.phoneProperty());
+    city.textProperty().bindBidirectional(viewModel.cityProperty());
 //   // city.itemsProperty().bindBidirectional(viewModel.cityProperty()); // Not sure about it, idk what it should be
 //    city.getItems().addAll("Copenhagen", "Aarhus", "Odense", "Aalborg",
 //        "Esbjerg", "Randers", "Kolding", "Horsens", "Vejle", "Roskilde", "Herning", "Hørsholm", "Helsingør",
 //        "Silkeborg", "Næstved", "Fredericia", "Viborg", "Køge");
 //    city.getSelectionModel().select("Copenhagen");
     password.textProperty().bindBidirectional(viewModel.passwordProperty());
-    confirmPassword.textProperty().bindBidirectional(viewModel.confirmPasswordProperty());
+   // confirmPassword.textProperty().bindBidirectional(viewModel.confirmPasswordProperty());
     error.textProperty().bind(viewModel.errorProperty());
   }
 
@@ -58,13 +59,10 @@ public class SignUpViewController
     return (password == confirmPassword);
   }
 
-  public void openLogIn() throws IOException
+  public void openLogIn() throws Exception
   {
-    if (verifyPassword())
-    {
-      viewHandler.openView("LogIn");
-    }
-    error.setText("Different Password");
+    viewModel.registerUser();
+    viewHandler.openView("LogIn");
   }
 
   public void Cancel()

@@ -30,4 +30,8 @@ public class LogViewController
   {
     return root;
   }
+
+  public void onEnter(ActionEvent event)
+  {
+  }
 }

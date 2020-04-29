@@ -26,7 +26,7 @@ public class SignUpViewModel
     this.email = new SimpleStringProperty("");
     this.phone = new SimpleStringProperty("");
     this.password = new SimpleStringProperty("");
-    this.confirmPassword = new SimpleStringProperty("");
+   // this.confirmPassword = new SimpleStringProperty("");
     this.city = new SimpleStringProperty("");
     this.error = new SimpleStringProperty("");
   }
@@ -74,5 +74,9 @@ public class SignUpViewModel
   public StringProperty errorProperty()
   {
     return error;
+  }
+  public void registerUser() throws Exception
+  {
+    model.registerUser(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city.get(),phone.get());
   }
 }

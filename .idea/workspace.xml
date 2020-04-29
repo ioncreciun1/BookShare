@@ -3,12 +3,33 @@
   <component name="ChangeListManager">
     <list default="true" id="a3fb48a9-21a3-437e-ad8f-4a6b2a25d83b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/mediator/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/mediator/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/mediator/ClientModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/mediator/ClientModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/mediator/RemoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/mediator/RemoteModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/model/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/model/ModelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/view/SIGN UP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/view/SIGN UP.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/view/SignUpViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/view/SignUpViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/view/ViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/view/ViewHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/viewModel/SignUpViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/viewModel/SignUpViewModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SEP2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SEP2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/MyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/MyApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/mediator/RemoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/mediator/RemoteModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/mediator/ServerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/mediator/ServerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/model/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/model/ModelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/view/LogViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/view/LogViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/model/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/model/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/model/ModelManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/model/ModelManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/view/SIGN UP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/view/SIGN UP.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Client/view/SignUpViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/view/SignUpViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/view/ViewHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/view/ViewHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/viewModel/SignUpViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/viewModel/SignUpViewModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/MyApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/MyApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/mediator/RemoteModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/mediator/RemoteModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/mediator/ServerModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/mediator/ServerModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/model/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/model/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/model/ModelManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/model/ModelManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Server/view/LogViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/view/LogViewController.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +48,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1aks47FCZLiJi8tmnU3cl1P93MT" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -36,10 +59,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SDJ2/MyObserver-1.0.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../postgresql-42.2.12 (1).jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="model" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -53,7 +81,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Server" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Client" />
@@ -64,6 +99,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -128,7 +164,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
