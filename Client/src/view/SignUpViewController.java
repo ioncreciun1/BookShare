@@ -1,6 +1,7 @@
 package view;
 
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import viewModel.SignUpViewModel;
 
@@ -65,5 +66,15 @@ city.getSelectionModel().select(0);
   public void Cancel()
   {
     viewHandler.openView("LogIn");
+  }
+
+  public void checkLogin(KeyEvent keyEvent)
+  {
+    viewModel.checkUsername();
+  }
+
+  public void checkPassword(KeyEvent keyEvent)
+  {
+    viewModel.checkPassword();
   }
 }

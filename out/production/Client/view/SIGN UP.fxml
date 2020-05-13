@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SignUpViewController">
    <children>
-      <VBox prefHeight="440.0" prefWidth="700.0" stylesheets="@huine.css">
+      <VBox prefHeight="440.0" prefWidth="700.0" styleClass="root" stylesheets="@huine.css">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="57.0" prefWidth="400.0">
                <children>
@@ -61,7 +61,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="username" prefHeight="20.0" prefWidth="200.0" promptText="Username" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: rgb(231,231,231);" />
+                        <TextField fx:id="username" onKeyTyped="#checkLogin" prefHeight="20.0" prefWidth="200.0" promptText="Username" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: rgb(231,231,231);" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="350.0">
@@ -85,7 +85,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <PasswordField fx:id="password" prefWidth="200.0" promptText="Password" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: rgb(231,231,231);" />
+                        <PasswordField fx:id="password" onKeyTyped="#checkPassword" prefWidth="200.0" promptText="Password" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: rgb(231,231,231);" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="350.0">

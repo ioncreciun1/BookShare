@@ -89,6 +89,22 @@ public class SignUpViewModel
 
     model.registerUser(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get());
   }
+  public void checkUsername()
+  {
+    if(model.checkUsername(username.get()))
+    {
+      error.set("The username must be at least 8 characters");
+    }
+    else {error.set("");}
+  }
+  public void checkPassword()
+  {
+    if(model.checkPassword(password.get()))
+    {
+      error.set("The password must be at least 6 characters");
+    }
+    else {error.set("");}
+  }
   public boolean verifyPasswords()
   {
     if(this.password.get().equals(confirmPassword.get()))

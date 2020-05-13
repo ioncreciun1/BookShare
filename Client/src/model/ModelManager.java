@@ -20,6 +20,15 @@ public class ModelManager implements Model, LocalListener<String,String>
   {
     this.client = new Client(this,"localhost");
   }
+  public boolean checkUsername(String username)
+  {
+    return username.length()<8;
+  }
+
+  public boolean checkPassword(String password)
+  {
+    return password.length()<6;
+  }
   @Override public void propertyChange(ObserverEvent<String, String> event)
   {
 
