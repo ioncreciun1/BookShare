@@ -26,7 +26,7 @@ public class Client implements ClientModel, RemoteListener<String,String>
   {
     this.model = model;
     this.host = host;
-    this.remoteModel = (RemoteModel) Naming.lookup("rmi://" + host + ":1099/Chat");
+    this.remoteModel = (RemoteModel) Naming.lookup("rmi://" + host + ":1099/Book");
     UnicastRemoteObject.exportObject(this, 0);
     this.property = new PropertyChangeProxy<>(this);
     remoteModel.addListener(this,"idk what have to be here");
@@ -36,6 +36,13 @@ public class Client implements ClientModel, RemoteListener<String,String>
       throws RemoteException
   {
     return remoteModel.verifyPass(password,username);
+  }
+
+  @Override public void registerUser(String Username, String passWord,
+      String eMail, String firstName, String lastName, String city,
+      String contactInfo) throws Exception
+  {
+    remoteModel.registerUser(Username,passWord,eMail,firstName,lastName,city,contactInfo);
   }
 
   @Override public void propertyChange(ObserverEvent<String, String> event)

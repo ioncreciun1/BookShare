@@ -1,9 +1,7 @@
 package view;
 
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import viewModel.SignUpViewModel;
 
@@ -18,8 +16,9 @@ public class SignUpViewController
   public TextField phone;
   public PasswordField password;
   public PasswordField confirmPassword;
-  public ChoiceBox<String> city;
+  public ComboBox city;
   public Label error;
+  private TextField one;
   private ViewHandler viewHandler;
   private SignUpViewModel  viewModel;
   private Region root;
@@ -34,11 +33,8 @@ public class SignUpViewController
     lastName.textProperty().bindBidirectional(viewModel.lastNameProperty());
     email.textProperty().bindBidirectional(viewModel.emailProperty());
     phone.textProperty().bindBidirectional(viewModel.phoneProperty());
-//   // city.itemsProperty().bindBidirectional(viewModel.cityProperty()); // Not sure about it, idk what it should be
-//    city.getItems().addAll("Copenhagen", "Aarhus", "Odense", "Aalborg",
-//        "Esbjerg", "Randers", "Kolding", "Horsens", "Vejle", "Roskilde", "Herning", "Hørsholm", "Helsingør",
-//        "Silkeborg", "Næstved", "Fredericia", "Viborg", "Køge");
-//    city.getSelectionModel().select("Copenhagen");
+city.itemsProperty().bind(viewModel.cityProperty());
+city.getSelectionModel().select(0);
     password.textProperty().bindBidirectional(viewModel.passwordProperty());
     confirmPassword.textProperty().bindBidirectional(viewModel.confirmPasswordProperty());
     error.textProperty().bind(viewModel.errorProperty());
@@ -58,17 +54,27 @@ public class SignUpViewController
     return (password == confirmPassword);
   }
 
-  public void openLogIn() throws IOException
+  public void openLogIn() throws Exception
   {
-    if (verifyPassword())
+    if(viewModel.verifyPasswords())
     {
+      viewModel.registerUser(city.getSelectionModel().getSelectedItem().toString());
       viewHandler.openView("LogIn");
     }
-    error.setText("Different Password");
   }
 
   public void Cancel()
   {
     viewHandler.openView("LogIn");
+  }
+
+  public void checkLogin(KeyEvent keyEvent)
+  {
+    viewModel.checkUsername();
+  }
+
+  public void checkPassword(KeyEvent keyEvent)
+  {
+    viewModel.checkPassword();
   }
 }

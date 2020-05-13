@@ -47,7 +47,7 @@ public class ServerModel implements RemoteModel, LocalListener<String,String>
   private void startServer() throws RemoteException, MalformedURLException
   {
     UnicastRemoteObject.exportObject(this, 0);
-    Naming.rebind("Chat", this);
+    Naming.rebind("Book", this);
 //    model.addLog("Server started");
     System.out.println("Server started...");
   }
@@ -65,6 +65,14 @@ public class ServerModel implements RemoteModel, LocalListener<String,String>
       throws RemoteException
   {
     return false; // make it functional
+  }
+
+  @Override public void registerUser(String Username, String passWord,
+      String eMail, String firstName, String lastName, String city,
+      String contactInfo) throws Exception
+  {
+    System.out.println("SERVER MODEL");
+    model.registerUser(Username,passWord,eMail,firstName,lastName,city,contactInfo);
   }
 
   @Override public void propertyChange(ObserverEvent<String, String> event)

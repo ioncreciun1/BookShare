@@ -10,11 +10,12 @@ import viewmodel.ViewModelFactory;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class MyApplication extends Application
 {
   private RemoteModel server;
-  public void start(Stage primaryStage) throws IOException
+  public void start(Stage primaryStage) throws IOException, SQLException
   {
     Model model = new ModelManager();
     ViewModelFactory viewModelFactory = new ViewModelFactory(model);
