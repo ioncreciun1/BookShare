@@ -71,7 +71,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="city" prefWidth="150.0" />
+                        <ComboBox fx:id="city" prefWidth="200.0" />
                      </children>
                   </HBox>
                </children>
