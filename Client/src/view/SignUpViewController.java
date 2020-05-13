@@ -1,9 +1,6 @@
 package view;
 
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import viewModel.SignUpViewModel;
 
@@ -18,8 +15,9 @@ public class SignUpViewController
   public TextField phone;
   public PasswordField password;
   public PasswordField confirmPassword;
-  public TextField city;
+  public ComboBox city;
   public Label error;
+  private TextField one;
   private ViewHandler viewHandler;
   private SignUpViewModel  viewModel;
   private Region root;
@@ -34,14 +32,10 @@ public class SignUpViewController
     lastName.textProperty().bindBidirectional(viewModel.lastNameProperty());
     email.textProperty().bindBidirectional(viewModel.emailProperty());
     phone.textProperty().bindBidirectional(viewModel.phoneProperty());
-    city.textProperty().bindBidirectional(viewModel.cityProperty());
-//   // city.itemsProperty().bindBidirectional(viewModel.cityProperty()); // Not sure about it, idk what it should be
-//    city.getItems().addAll("Copenhagen", "Aarhus", "Odense", "Aalborg",
-//        "Esbjerg", "Randers", "Kolding", "Horsens", "Vejle", "Roskilde", "Herning", "Hørsholm", "Helsingør",
-//        "Silkeborg", "Næstved", "Fredericia", "Viborg", "Køge");
-//    city.getSelectionModel().select("Copenhagen");
+city.itemsProperty().bind(viewModel.cityProperty());
+city.getSelectionModel().select(0);
     password.textProperty().bindBidirectional(viewModel.passwordProperty());
-   // confirmPassword.textProperty().bindBidirectional(viewModel.confirmPasswordProperty());
+    confirmPassword.textProperty().bindBidirectional(viewModel.confirmPasswordProperty());
     error.textProperty().bind(viewModel.errorProperty());
   }
 
@@ -61,8 +55,11 @@ public class SignUpViewController
 
   public void openLogIn() throws Exception
   {
-    viewModel.registerUser();
-    viewHandler.openView("LogIn");
+    if(viewModel.verifyPasswords())
+    {
+      viewModel.registerUser(city.getSelectionModel().getSelectedItem().toString());
+      viewHandler.openView("LogIn");
+    }
   }
 
   public void Cancel()

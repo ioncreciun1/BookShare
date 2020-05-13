@@ -1,7 +1,11 @@
 package viewModel;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.Model;
 
 public class SignUpViewModel
@@ -14,11 +18,14 @@ public class SignUpViewModel
   private StringProperty phone;
   private StringProperty password;
   private StringProperty confirmPassword;
-  private StringProperty city;
+ // private StringProperty city;
   private StringProperty error;
+  private ObjectProperty<ObservableList> city;
 
   public SignUpViewModel(Model model)
   {
+    ObservableList<String> list = FXCollections.observableArrayList();
+    list.addAll("Horsens","Aarhus","Alborg","Copenhagen","Odense","Veijle");
     this.model = model;
     this.username = new SimpleStringProperty("");
     this.firstName = new SimpleStringProperty("");
@@ -26,8 +33,10 @@ public class SignUpViewModel
     this.email = new SimpleStringProperty("");
     this.phone = new SimpleStringProperty("");
     this.password = new SimpleStringProperty("");
-   // this.confirmPassword = new SimpleStringProperty("");
-    this.city = new SimpleStringProperty("");
+    this.confirmPassword = new SimpleStringProperty("");
+    this.city = new SimpleObjectProperty<>();
+    city.setValue(list);
+
     this.error = new SimpleStringProperty("");
   }
 
@@ -66,7 +75,7 @@ public class SignUpViewModel
     return phone;
   }
 
-  public StringProperty cityProperty()
+  public ObjectProperty<ObservableList> cityProperty()
   {
     return city;
   }
@@ -75,8 +84,21 @@ public class SignUpViewModel
   {
     return error;
   }
-  public void registerUser() throws Exception
+  public void registerUser(String city) throws Exception
   {
-    model.registerUser(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city.get(),phone.get());
+
+    model.registerUser(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get());
+  }
+  public boolean verifyPasswords()
+  {
+    if(this.password.get().equals(confirmPassword.get()))
+    {
+      error.set("");
+      return true;
+    }
+    else {
+      error.set("Passwords does not match. Insert Them Again");
+      return false;
+    }
   }
 }
