@@ -10,5 +10,6 @@ public interface RegistrantDAO
   public Registrant getRegistrant(String username) throws SQLException;
   public List<Registrant> getRegistrants() throws SQLException;
   public void update(Registrant registrant) throws SQLException;
-
+  public boolean check_User() throws SQLException;
+  public boolean check_Email() throws SQLException;
 }

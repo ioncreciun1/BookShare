@@ -39,6 +39,31 @@ private Connection getConnection() throws SQLException
   }
 }
 
+  public boolean check_Email() throws SQLException
+  {
+    try (Connection connection = getConnection()/*auto closes the connection*/)
+    {
+      Statement stm = connection.createStatement();
+      ResultSet rs = stm.executeQuery("SELECT * FROM \"SEP2\".registrant;");
+      while (rs.next())
+      {
+        String emailGet = rs.getString("Email");
+        if (emailGet.equals(registrant.getEMail()))
+        {
+          System.out.println("Email already in use!");
+          return true;
+        }
+      }
+      System.out.println("User added to the database!");
+      return false;
+    }
+    catch (Exception e)
+    {
+      System.err.println(e.getClass().getName() + ": " + e.getMessage());
+      System.exit(0);
+      return false;
+    }
+  }
 public void add(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo,
     int upVotes) throws Exception,SQLException
   {try
