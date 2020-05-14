@@ -4,6 +4,7 @@ public class DatabaseManager
 
 {
   public DatabaseManager() throws SQLException{
+
     DriverManager.registerDriver((new org.postgresql.Driver()));
   }
 
