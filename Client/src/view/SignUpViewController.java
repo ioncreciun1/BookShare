@@ -6,6 +6,7 @@ import javafx.scene.layout.Region;
 import viewModel.SignUpViewModel;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
 public class SignUpViewController
 {
@@ -56,10 +57,17 @@ city.getSelectionModel().select(0);
 
   public void openLogIn() throws Exception
   {
-    if(viewModel.verifyPasswords())
+
+    boolean check = !viewModel.checkUser(city.getSelectionModel().toString()) && viewModel.validateUser() && !viewModel.checkEmail(city.getSelectionModel().toString());
+    if(check)
     {
-      viewModel.registerUser(city.getSelectionModel().getSelectedItem().toString());
-      viewHandler.openView("LogIn");
+
+      System.out.println("Here");
+      if (viewModel.verifyPasswords())
+      {
+        viewModel.registerUser(city.getSelectionModel().getSelectedItem().toString());
+        viewHandler.openView("LogIn");
+      }
     }
   }
 
@@ -68,7 +76,7 @@ city.getSelectionModel().select(0);
     viewHandler.openView("LogIn");
   }
 
-  public void checkLogin(KeyEvent keyEvent)
+  public void checkLogin(KeyEvent keyEvent) throws RemoteException
   {
     viewModel.checkUsername();
   }
