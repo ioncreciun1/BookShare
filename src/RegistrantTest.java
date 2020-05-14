@@ -1,5 +1,5 @@
 import java.sql.SQLException;
-
+/*
 public class RegistrantTest
 {
     public static void main(String[] args) throws SQLException
@@ -7,12 +7,12 @@ public class RegistrantTest
 
         DatabaseManager dm = new DatabaseManager();
         Registrant
-            .addInstance("bobthebuilder","fromaug","bobthebuilder@robust.com", "Bob", "Builder","Horsens","20849532",0);
+       //     .add("bobthebuilder","fromaug","bobthebuilder@robust.com", "Bob", "Builder","Horsens","20849532",0);
         Registrant
-            .addInstance("bobthefamous","listad","bobthefamous@ridi.com", "Bob", "Famous","Copenhagen","20484839",9999);
-        Registrant m1 = Registrant.getInstance("bobthebuilder");
-        Registrant m2 = Registrant.getInstance("bobthefamous");
-        Registrant m3 = Registrant.getInstance("bobthefamous");
+        //    .addInstance("bobthefamous","listad","bobthefamous@ridi.com", "Bob", "Famous","Copenhagen","20484839",9999);
+        //Registrant m1 = Registrant.getInstance("bobthebuilder");
+       // Registrant m2 = Registrant.getInstance("bobthefamous");
+     //   Registrant m3 = Registrant.getInstance("bobthefamous");
         Registrant m4 = Registrant.getInstance("bobthebuilder");
 
         System.out.println("m1: " + m1.getCity());
@@ -23,3 +23,4 @@ public class RegistrantTest
         dm.add_User("bobthebuilder","fromaug","bobthebuilder@robust.com", "Bob", "Builder","Horsens","20849532",0);
     }
 }
+*/
