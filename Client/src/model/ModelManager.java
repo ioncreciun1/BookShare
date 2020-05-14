@@ -29,6 +29,7 @@ public class ModelManager implements Model, LocalListener<String,String>
   {
     return password.length()<6;
   }
+
   @Override public void propertyChange(ObserverEvent<String, String> event)
   {
 

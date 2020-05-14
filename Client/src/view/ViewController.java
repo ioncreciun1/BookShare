@@ -6,23 +6,38 @@ import viewModel.ViewModelFactory;
 public class ViewController
 {
   private Region root;
-  private ViewHandler currentVC;
+  private ViewHandler handler;
   private ViewModelFactory viewModels;
+
+  public ViewController()
+  {
+
+  }
 
   public Region getRoot()
   {
     return root;
   }
 
-  public void init(ViewHandler viewHandler, ViewModelFactory viewModel, Region root)
+  public void init(ViewHandler viewHandler, ViewModelFactory viewModels, Region root)
   {
     this.root = root;
-    this.currentVC = viewHandler;
+    this.handler = viewHandler;
     this.viewModels = viewModels;
   }
 
-  public void root()
+  public void reset()
   {
 
+  }
+
+  public ViewHandler getHandler()
+  {
+    return handler;
+  }
+
+  public ViewModelFactory getViewModels()
+  {
+    return viewModels;
   }
 }

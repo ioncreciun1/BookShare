@@ -18,7 +18,6 @@ public class SignUpViewModel
   private StringProperty phone;
   private StringProperty password;
   private StringProperty confirmPassword;
- // private StringProperty city;
   private StringProperty error;
   private ObjectProperty<ObservableList> city;
 
