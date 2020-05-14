@@ -84,7 +84,22 @@ public void add(String Username, String passWord, String eMail, String firstName
 
   @Override public Registrant getRegistrant(String username) throws SQLException
   {
-   return null;
+    {
+      try(Connection connection = getConnection()/*auto closes the connection*/){
+        Statement stm = connection.createStatement();
+        ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".registrant  WHERE Username = "+registrant.getUserName()+";");
+        while(rs.next())
+        {
+          Registrant registrant = new Registrant(rs.getString("Username"),rs.getString("Pass"),rs.getString("EMAIL"),rs.getString("fName"),rs.getString("lName"),rs.getString("City"),rs.getString("ContactInfo"),rs.getInt("Upvotes"));
+        }
+        System.out.println("Retrieved registrant!");
+      }
+      catch ( Exception e ) {
+        System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+        System.exit(0);
+      }
+      return registrant;
+    }
   }
 
   @Override public List<Registrant> getRegistrants() throws SQLException
