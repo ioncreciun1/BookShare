@@ -1,12 +1,12 @@
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-public class RegistrantDAOImplementation implements RegistrantDAO
+public class UserDAOImplementation implements UserDAO
 {
-  Registrant registrant = null;
-  public RegistrantDAOImplementation(Registrant registrant) throws SQLException{
+  User user = null;
+  public UserDAOImplementation(User user) throws SQLException{
     DriverManager.registerDriver((new org.postgresql.Driver()));
-    this.registrant = registrant;
+    this.user = user;
     }
 
 
@@ -20,11 +20,11 @@ private Connection getConnection() throws SQLException
 {
   try(Connection connection = getConnection()/*auto closes the connection*/){
     Statement stm = connection.createStatement();
-    ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".registrant;");
+    ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"User\";");
     while(rs.next())
     {
       String usernameGet = rs.getString("Username");
-      if (usernameGet.equals(registrant.getUserName())){
+      if (usernameGet.equals(user.getUserName())){
         System.out.println("Username already exists!");
         return true;
       }
@@ -44,11 +44,11 @@ private Connection getConnection() throws SQLException
     try (Connection connection = getConnection()/*auto closes the connection*/)
     {
       Statement stm = connection.createStatement();
-      ResultSet rs = stm.executeQuery("SELECT * FROM \"SEP2\".registrant;");
+      ResultSet rs = stm.executeQuery("SELECT * FROM \"SEP2\".\"User\";");
       while (rs.next())
       {
         String emailGet = rs.getString("Email");
-        if (emailGet.equals(registrant.getEMail()))
+        if (emailGet.equals(user.getEMail()))
         {
           System.out.println("Email already in use!");
           return true;
@@ -69,16 +69,16 @@ public void add(String Username, String passWord, String eMail, String firstName
   {try
       (Connection connection = DatabaseConnection.getConnection()/*auto closes the connection*/)
   {
-    PreparedStatement statement = connection.prepareStatement("INSERT INTO \"SEP2\".registrant (Username, Pass, EMAIL, fName, lName, City, ContactInfo, Upvotes) VALUES (?,?,?,?,?,?,?,?);");
+    PreparedStatement statement = connection.prepareStatement("INSERT INTO \"SEP2\".\"User\" (Username, Pass, EMAIL, fName, lName, City, ContactInfo, Upvotes) VALUES (?,?,?,?,?,?,?,?);");
     /*lines 22-30 adds the registrant to the database*/
-    statement.setString(1, registrant.getUserName());
-    statement.setString(2, registrant.getPassWord());
-    statement.setString(3, registrant.getEMail());
-    statement.setString(4, registrant.getName());
-    statement.setString(5, registrant.getLastName());
-    statement.setString(6, registrant.getCity());
-    statement.setString(7, registrant.getContactInfo());
-    statement.setInt(8,registrant.getUpVotes());
+    statement.setString(1, user.getUserName());
+    statement.setString(2, user.getPassWord());
+    statement.setString(3, user.getEMail());
+    statement.setString(4, user.getName());
+    statement.setString(5, user.getLastName());
+    statement.setString(6, user.getCity());
+    statement.setString(7, user.getContactInfo());
+    statement.setInt(8, user.getUpVotes());
     statement.executeUpdate();
     }
   catch ( Exception e ) {
@@ -96,7 +96,7 @@ public void add(String Username, String passWord, String eMail, String firstName
   {
     try(Connection connection = getConnection()/*auto closes the connection*/){
       Statement stm = connection.createStatement();
-     String sql = "DELETE FROM \"SEP2\".registrant WHERE Username = "+registrant.getUserName()+";";
+     String sql = "DELETE FROM \"SEP2\".\"User\" WHERE Username = "+ user.getUserName()+";";
      stm.executeUpdate(sql);
      stm.close();
       System.out.println("Username not found in database!");
@@ -107,36 +107,37 @@ public void add(String Username, String passWord, String eMail, String firstName
     }
   }
 
-  @Override public Registrant getRegistrant(String username) throws SQLException
+  @Override public User getUser(String username) throws SQLException
   {
     {
       try(Connection connection = getConnection()/*auto closes the connection*/){
         Statement stm = connection.createStatement();
-        ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".registrant  WHERE Username = "+registrant.getUserName()+";");
+        ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"User\" WHERE Username = "+ user
+            .getUserName()+";");
         while(rs.next())
         {
-          Registrant registrant = new Registrant(rs.getString("Username"),rs.getString("Pass"),rs.getString("EMAIL"),rs.getString("fName"),rs.getString("lName"),rs.getString("City"),rs.getString("ContactInfo"),rs.getInt("Upvotes"));
+          User user = new User(rs.getString("Username"),rs.getString("Pass"),rs.getString("EMAIL"),rs.getString("fName"),rs.getString("lName"),rs.getString("City"),rs.getString("ContactInfo"),rs.getInt("Upvotes"));
         }
-        System.out.println("Retrieved registrant!");
+        System.out.println("Retrieved user!");
       }
       catch ( Exception e ) {
         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
         System.exit(0);
       }
-      return registrant;
+      return user;
     }
   }
 
-  @Override public List<Registrant> getRegistrants() throws SQLException
+  @Override public List<User> getUsers() throws SQLException
   {
-    List<Registrant> registrants = new ArrayList<>();
+    List<User> users = new ArrayList<>();
     try(Connection connection = getConnection()/*auto closes the connection*/){
       Statement stm = connection.createStatement();
-      ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".registrant;");
+      ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"User\";");
       while(rs.next())
       {
-        Registrant registrant1 = new Registrant(rs.getString("Username"),rs.getString("Pass"),rs.getString("EMAIL"),rs.getString("fName"),rs.getString("lName"),rs.getString("City"),rs.getString("ContactInfo"),rs.getInt("Upvotes"));
-        registrants.add(registrant1);
+        User user1 = new User(rs.getString("Username"),rs.getString("Pass"),rs.getString("EMAIL"),rs.getString("fName"),rs.getString("lName"),rs.getString("City"),rs.getString("ContactInfo"),rs.getInt("Upvotes"));
+        users.add(user1);
       }
       System.out.println("Username added to database!");
     }
@@ -144,14 +145,15 @@ public void add(String Username, String passWord, String eMail, String firstName
       System.err.println( e.getClass().getName()+": "+ e.getMessage() );
       System.exit(0);
     }
-    return registrants;
+    return users;
   }
 
-  @Override public void update(Registrant registrant) throws SQLException
+  @Override public void update(User user) throws SQLException
   {
 try(Connection connection = getConnection()/*auto closes the connection*/){
     Statement stm = connection.createStatement();
-    ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".registrant WHERE Username = "+registrant.getUserName()+";");
+    ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"User\" WHERE Username = "+ user
+        .getUserName()+";");
     while(rs.next())
     {
     }

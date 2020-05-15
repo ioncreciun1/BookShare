@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Registrant
+public class User
 {
     private String userName;
     private String passWord = "";
@@ -13,7 +13,7 @@ public class Registrant
     private String contactInfo = "";
     private int upVotes = 0;
 
-    Registrant(String userName, String passWord, String eMail, String firstName,
+    User(String userName, String passWord, String eMail, String firstName,
         String lastName, String city, String contactInfo, int upVotes){
         this.userName = userName;
         this.passWord = passWord;
