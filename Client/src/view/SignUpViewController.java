@@ -7,6 +7,7 @@ import viewModel.SignUpViewModel;
 import viewModel.ViewModelFactory;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
 public class SignUpViewController extends ViewController
 {
@@ -61,10 +62,17 @@ city.getSelectionModel().select(0);
 
   public void openLogIn() throws Exception
   {
-    if(super.getViewModels().getSignUpViewModel().verifyPasswords())
+
+    boolean check = !viewModel.checkUser(city.getSelectionModel().toString()) && viewModel.validateUser() && !viewModel.checkEmail(city.getSelectionModel().toString());
+    if(check)
     {
-      super.getViewModels().getSignUpViewModel().registerUser(city.getSelectionModel().getSelectedItem().toString());
-      viewHandler.openView("LogIn");
+
+      System.out.println("Here");
+      if (viewModel.verifyPasswords())
+      {
+        viewModel.registerUser(city.getSelectionModel().getSelectedItem().toString());
+        viewHandler.openView("LogIn");
+      }
     }
   }
 

@@ -2,10 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3fb48a9-21a3-437e-ad8f-4a6b2a25d83b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Server/src/model/Registrant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/view/LogInViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/view/LogInViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/MyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/MyApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/mediator/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/mediator/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/mediator/ClientModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/mediator/ClientModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/mediator/RemoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/mediator/RemoteModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/model/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/model/ModelManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/view/SignUpViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/view/SignUpViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/view/ViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/view/ViewHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/viewModel/SignUpViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/viewModel/SignUpViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Database/Registrant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Database/RegistrantDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Database/RegistrantDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Database/RegistrantDAOImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Database/RegistrantDAOImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/mediator/RemoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/mediator/RemoteModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/mediator/ServerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/mediator/ServerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/model/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/model/ModelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/model/User.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +53,12 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="model" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="model" />
     </key>
@@ -57,7 +75,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Client2">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Client" />

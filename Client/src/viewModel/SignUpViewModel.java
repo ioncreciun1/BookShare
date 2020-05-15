@@ -7,6 +7,9 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Model;
+import model.Registrant;
+
+import java.rmi.RemoteException;
 
 public class SignUpViewModel
 {
@@ -87,7 +90,9 @@ public class SignUpViewModel
   public void registerUser(String city) throws Exception
   {
 
-    model.registerUser(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get());
+
+      model.registerUser(username.get(), password.get(), email.get(), firstName.get(),
+          lastName.get(), city, phone.get());
   }
   public void checkUsername()
   {
@@ -116,5 +121,52 @@ public class SignUpViewModel
       error.set("Passwords does not match. Insert Them Again");
       return false;
     }
+  }
+  public boolean validateUser()
+  {
+    if(username.get().length()==0)
+    {
+      error.set("Username field have to be fulfilled");
+    }
+    else     if(password.get().length()==0)
+    {
+      error.set("set password");
+    }
+    else     if(firstName.get().length()==0)
+    {
+      error.set("set First name");
+    }
+    else     if(lastName.get().length()==0)
+    {
+      error.set("set last name");
+    }
+    else     if(email.get().length()==0)
+    {
+      error.set("set email");
+    }
+    System.out.println("Statement");
+    System.out.println(username.get().length() == 0 && firstName.get().length()==0 && lastName.get().length()==0
+        && password.get().length() == 0 && email.get().length() == 0);
+    return username.get().length() != 0 && firstName.get().length()!=0 && lastName.get().length()!=0
+        && password.get().length() != 0 && email.get().length() != 0;
+
+  }
+  public boolean checkUser(String city) throws RemoteException
+  {
+    boolean check =  model.checkUser(new Registrant(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get(),0));
+    if(check)
+    {
+      error.set("This username is already in the system");
+    }
+   return check;
+  }
+  public boolean checkEmail(String city) throws RemoteException
+  {
+    boolean check =  model.checkEmail(new Registrant(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get(),0));
+    if(check)
+    {
+      error.set("This Email is already in the system");
+    }
+    return check;
   }
 }
