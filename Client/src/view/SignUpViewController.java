@@ -5,6 +5,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import viewModel.ViewModelFactory;
 
+import java.rmi.RemoteException;
+
 public class SignUpViewController extends ViewController
 {
   @FXML public TextField username;
@@ -37,15 +39,36 @@ public class SignUpViewController extends ViewController
     error.textProperty().bind(super.getViewModels().getSignUpViewModel().errorProperty());
   }
 
+  public boolean verifyPassword()
+  {
+    return (password == confirmPassword);
+  }
+
   public void openMainView() throws Exception
   {
-    if(super.getViewModels().getSignUpViewModel().verifyPasswords())
+    boolean check = !super.getViewModels().getSignUpViewModel().checkUser(city.getSelectionModel().toString())
+        && super.getViewModels().getSignUpViewModel().validateUser()
+        && !super.getViewModels().getSignUpViewModel().checkEmail(city.getSelectionModel().toString());
+    if(check)
     {
-      super.getViewModels().getSignUpViewModel().checkUsername();
-      super.getViewModels().getSignUpViewModel().checkPassword();
-      super.getViewModels().getSignUpViewModel().registerUser(city.getSelectionModel().getSelectedItem().toString());
-      super.getHandler().openView("LogInView");
+
+      System.out.println("Here");
+      if (super.getViewModels().getSignUpViewModel().verifyPasswords())
+      {
+        super.getViewModels().getSignUpViewModel().registerUser(city.getSelectionModel().getSelectedItem().toString());
+        super.getHandler().openView("LogInView");
+      }
     }
+  }
+
+  public void checkLogin() throws RemoteException
+  {
+    super.getViewModels().getSignUpViewModel().checkUsername();
+  }
+
+  public void checkPassword()
+  {
+    super.getViewModels().getSignUpViewModel().checkPassword();
   }
 
   public void openLogInView()

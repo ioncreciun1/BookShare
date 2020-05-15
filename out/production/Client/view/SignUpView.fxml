@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SignUpViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SignUpViewController">
    <children>
       <VBox prefHeight="440.0" prefWidth="700.0" styleClass="root" stylesheets="@huine.css">
          <children>
@@ -61,7 +61,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="username"  prefHeight="20.0" prefWidth="200.0" promptText="Username" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: rgb(231,231,231);" />
+                        <TextField fx:id="username" onKeyTyped="#checkLogin" prefHeight="20.0" prefWidth="200.0" promptText="Username" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: rgb(231,231,231);" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="350.0">
@@ -85,7 +85,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <PasswordField fx:id="password"  prefWidth="200.0" promptText="Password" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: rgb(231,231,231);" />
+                        <PasswordField fx:id="password" onKeyTyped="#checkPassword" prefWidth="200.0" promptText="Password" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: rgb(231,231,231);" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="350.0">
@@ -121,7 +121,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="phone" prefHeight="27.0" prefWidth="229.0" promptText="Phone Number" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: rgb(231,231,231);" />
+                              <TextField fx:id="phone" prefHeight="27.0" prefWidth="229.0" promptText="Phone Number (Optional)" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: rgb(231,231,231);" />
                            </children>
                         </HBox>
                      </children>
@@ -135,9 +135,7 @@
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="58.0" prefWidth="700.0" stylesheets="@huine.css">
                <children>
-                  <Button maxHeight="40.0" maxWidth="120.0" mnemonicParsing="false" onAction="#openLogInView" prefHeight="40.0" prefWidth="120.0"
-                          style="-fx-background-color: rgba(148,148,148,0.75); -fx-font-weight: bold; -fx-text-fill: white; -fx-background-radius: 0;"
-                          text="CANCEL">
+                  <Button maxHeight="40.0" maxWidth="120.0" mnemonicParsing="false" onAction="#openLogInView" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: rgba(148,148,148,0.75); -fx-font-weight: bold; -fx-text-fill: white; -fx-background-radius: 0;" text="CANCEL">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -145,9 +143,7 @@
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button onAction="#openMainView" maxHeight="40.0" maxWidth="120.0" mnemonicParsing="false" prefHeight="40.0"
-                          prefWidth="120.0" style="-fx-background-color: rgba(148,148,148,0.75); -fx-font-weight: bold; -fx-text-fill: white; -fx-background-radius: 0;"
-                          text="SIGN UP">
+                  <Button maxHeight="40.0" maxWidth="120.0" mnemonicParsing="false" onAction="#openMainView" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: rgba(148,148,148,0.75); -fx-font-weight: bold; -fx-text-fill: white; -fx-background-radius: 0;" text="SIGN UP">
                      <font>
                         <Font size="18.0" />
                      </font>

@@ -30,6 +30,18 @@ public class ModelManager implements Model, LocalListener<String,String>
     return password.length()<6;
   }
 
+  @Override public boolean checkUser(Registrant registrant)
+      throws RemoteException
+  {
+    return client.checkUser(registrant);
+  }
+
+  @Override public boolean checkEmail(Registrant registrant)
+      throws RemoteException
+  {
+    return client.checkEmail(registrant);
+  }
+
   @Override public void propertyChange(ObserverEvent<String, String> event)
   {
 
@@ -63,5 +75,10 @@ public class ModelManager implements Model, LocalListener<String,String>
   @Override public String getUsers() throws RemoteException
   {
     return null;
+  }
+
+  @Override public void getRegistrant(String username) throws RemoteException
+  {
+    client.getRegistrant(username);
   }
 }
