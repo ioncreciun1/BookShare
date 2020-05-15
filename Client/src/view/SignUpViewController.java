@@ -39,10 +39,7 @@ public class SignUpViewController extends ViewController
     error.textProperty().bind(super.getViewModels().getSignUpViewModel().errorProperty());
   }
 
-  public boolean verifyPassword()
-  {
-    return (password == confirmPassword);
-  }
+
 
   public void openMainView() throws Exception
   {
