@@ -14,24 +14,23 @@ public class ViewControllerFactory
   public static ViewController getViewController(String id,
       ViewHandler viewHandler, ViewModelFactory viewModelFactory)
   {
-
+    System.out.println("Factory");
+    System.out.println(id);
     ViewController viewController = viewControllerMap.get(id);
-
+    System.out.println(viewController);
     if (viewController == null)
     {
       viewController = createViewController(id);
       viewControllerMap.put(id, viewController);
     }
+
     Region root = null;
     try
     {
       FXMLLoader loader = new FXMLLoader();
-
-      System.out.println(id);
+      System.out.println(id+".fxml");
       loader.setLocation(ViewControllerFactory.class.getResource(id+".fxml"));
       root = loader.load();
-      System.out.println("ROOT");
-      System.out.println(root);
       viewController = loader.getController();
       viewController.init(viewHandler, viewModelFactory, root);
     }
@@ -39,9 +38,11 @@ public class ViewControllerFactory
     {
       e.printStackTrace();
     }
+
     viewController.reset();
     return viewController;
   }
+
 
 
   private static ViewController createViewController(String id){

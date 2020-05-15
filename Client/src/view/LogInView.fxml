@@ -28,7 +28,7 @@
                   </Text>
                   <HBox alignment="CENTER_RIGHT" prefHeight="59.0" prefWidth="401.0">
                      <children>
-                        <Button  onAction="#openSignUp" mnemonicParsing="false"
+                        <Button onAction="#openSignUpView" mnemonicParsing="false"
                                 style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: rgb(231,231,231); -fx-font-size: 1.5em;"
                                 text="Sign Up">
                            <font>

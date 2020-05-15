@@ -1,51 +1,43 @@
 package view;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
-import viewModel.LogInViewModel;
+import viewModel.ViewModelFactory;
 
 import java.io.IOException;
 
 public class LogInViewController extends ViewController
 {
-  public TextField username;
-  public PasswordField password;
-  public Label error;
-  private ViewHandler viewHandler;
-  private LogInViewModel viewModel;
-  private Region root;
+  @FXML public TextField username;
+  @FXML public PasswordField password;
+  @FXML public Label error;
 
-  public void init(ViewHandler viewHandler, LogInViewModel viewModel, Region root)
+  public LogInViewController()
   {
-    this.viewHandler = viewHandler;
-    this.viewModel = viewModel;
-    this.root = root;
-    password.textProperty().bindBidirectional(viewModel.passwordProperty());
-    error.textProperty().bind(viewModel.errorProperty());
-    username.textProperty().bindBidirectional(viewModel.usernameProperty());
+    super();
   }
 
-  public void reset()
+  public void init(ViewHandler viewHandler, ViewModelFactory viewModels, Region root)
   {
+    super.init(viewHandler, viewModels, root);
+    password.textProperty().bindBidirectional(super.getViewModels().getLogInViewModel().passwordProperty());
+    error.textProperty().bind(super.getViewModels().getLogInViewModel().errorProperty());
+    username.textProperty().bindBidirectional(super.getViewModels().getLogInViewModel().usernameProperty());
   }
 
-  public Region getRoot()
+  public void openSignUpView()
   {
-    return root;
+    super.getHandler().openView("SignUpView");
   }
 
-  public void openSignUp() throws IOException
+  public void openMainView() throws IOException
   {
-    viewHandler.openView("SignUpView");
-  }
-
-  public void openMainPage() throws IOException
-  {
-    if(viewModel.verifyPass())
+    if(super.getViewModels().getLogInViewModel().verifyPass())
     {
-      viewHandler.openView("");
+      super.getHandler().openView("");
     }
   }
 }

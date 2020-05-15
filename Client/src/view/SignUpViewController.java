@@ -1,58 +1,42 @@
 package view;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
-import viewModel.SignUpViewModel;
 import viewModel.ViewModelFactory;
 
-import java.io.IOException;
 import java.rmi.RemoteException;
 
 public class SignUpViewController extends ViewController
 {
-  public TextField username;
-  public TextField firstName;
-  public TextField lastName;
-  public TextField email;
-  public TextField phone;
-  public PasswordField password;
-  public PasswordField confirmPassword;
-  public ComboBox city;
-  public Label error;
-  private TextField one;
-  private ViewHandler viewHandler;
-  private SignUpViewModel  viewModel;
-  private Region root;
-  private ViewModelFactory viewModelFactory;
+  @FXML public TextField username;
+  @FXML public TextField firstName;
+  @FXML public TextField lastName;
+  @FXML public TextField email;
+  @FXML public TextField phone;
+  @FXML public PasswordField password;
+  @FXML public PasswordField confirmPassword;
+  @FXML public ComboBox city;
+  @FXML public Label error;
+
   public SignUpViewController()
   {
     super();
   }
 
-  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory, Region root)
+  public void init(ViewHandler viewHandler, ViewModelFactory viewModel, Region root)
   {
-    super.init(viewHandler,viewModelFactory,root);
-
+    super.init(viewHandler, viewModel, root);
     username.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().usernameProperty());
     firstName.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().firstNameProperty());
     lastName.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().lastNameProperty());
     email.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().emailProperty());
     phone.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().phoneProperty());
-city.itemsProperty().bind(super.getViewModels().getSignUpViewModel().cityProperty());
-city.getSelectionModel().select(0);
+    city.itemsProperty().bind(super.getViewModels().getSignUpViewModel().cityProperty());
+    city.getSelectionModel().select(0);
     password.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().passwordProperty());
     confirmPassword.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().confirmPasswordProperty());
     error.textProperty().bind(super.getViewModels().getSignUpViewModel().errorProperty());
-  }
-
-  public void reset()
-  {
-  }
-
-  public Region getRoot()
-  {
-    return root;
   }
 
   public boolean verifyPassword()
@@ -60,34 +44,35 @@ city.getSelectionModel().select(0);
     return (password == confirmPassword);
   }
 
-  public void openLogIn() throws Exception
+  public void openMainView() throws Exception
   {
-
-    boolean check = !viewModel.checkUser(city.getSelectionModel().toString()) && viewModel.validateUser() && !viewModel.checkEmail(city.getSelectionModel().toString());
+    boolean check = !super.getViewModels().getSignUpViewModel().checkUser(city.getSelectionModel().toString())
+        && super.getViewModels().getSignUpViewModel().validateUser()
+        && !super.getViewModels().getSignUpViewModel().checkEmail(city.getSelectionModel().toString());
     if(check)
     {
 
       System.out.println("Here");
-      if (viewModel.verifyPasswords())
+      if (super.getViewModels().getSignUpViewModel().verifyPasswords())
       {
-        viewModel.registerUser(city.getSelectionModel().getSelectedItem().toString());
-        viewHandler.openView("LogInView");
+        super.getViewModels().getSignUpViewModel().registerUser(city.getSelectionModel().getSelectedItem().toString());
+        super.getHandler().openView("LogInView");
       }
     }
   }
 
-  public void Cancel()
-  {
-    viewHandler.openView("LogInView");
-  }
-
-  public void checkLogin(KeyEvent keyEvent)
+  public void checkLogin() throws RemoteException
   {
     super.getViewModels().getSignUpViewModel().checkUsername();
   }
 
-  public void checkPassword(KeyEvent keyEvent)
+  public void checkPassword()
   {
     super.getViewModels().getSignUpViewModel().checkPassword();
+  }
+
+  public void openLogInView()
+  {
+    super.getHandler().openView("LogInView");
   }
 }

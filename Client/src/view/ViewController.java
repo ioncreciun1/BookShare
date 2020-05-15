@@ -16,8 +16,6 @@ public class ViewController
 
   public Region getRoot()
   {
-    System.out.println("CONTROLLER");
-    System.out.println(root);
     return root;
   }
 

@@ -1,6 +1,5 @@
 package view;
 
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
@@ -20,9 +19,9 @@ public class ViewHandler
 
   public void openView(String id)
   {
-    Region root;
+    Region root = null;
     root = ViewControllerFactory.getViewController(id, this, factory).getRoot();
-    System.out.println("VIEW HANDLER");
+    System.out.println(id);
     System.out.println(root);
     currentScene.setRoot(root);
     String title = "";
@@ -35,9 +34,9 @@ public class ViewHandler
     switch (id)
     {
       case "LogInView":  primaryStage.setWidth(610);
-        break;
+      break;
       case "SignUpView":  primaryStage.setWidth(710);
-        break;
+      break;
     }
     primaryStage.setHeight(500);
     primaryStage.show();
@@ -48,5 +47,4 @@ public class ViewHandler
     this.primaryStage = primaryStage;
     openView("LogInView");
   }
-
 }

@@ -21,7 +21,7 @@ public class SignUpViewModel
   private StringProperty phone;
   private StringProperty password;
   private StringProperty confirmPassword;
- // private StringProperty city;
+  // private StringProperty city;
   private StringProperty error;
   private ObjectProperty<ObservableList> city;
 
@@ -91,8 +91,8 @@ public class SignUpViewModel
   {
 
 
-      model.registerUser(username.get(), password.get(), email.get(), firstName.get(),
-          lastName.get(), city, phone.get());
+    model.registerUser(username.get(), password.get(), email.get(), firstName.get(),
+        lastName.get(), city, phone.get());
   }
   public void checkUsername()
   {
@@ -158,7 +158,7 @@ public class SignUpViewModel
     {
       error.set("This username is already in the system");
     }
-   return check;
+    return check;
   }
   public boolean checkEmail(String city) throws RemoteException
   {
