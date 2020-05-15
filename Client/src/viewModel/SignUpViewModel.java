@@ -24,7 +24,8 @@ public class SignUpViewModel
   public SignUpViewModel(Model model)
   {
     ObservableList<String> list = FXCollections.observableArrayList();
-    list.addAll("Horsens","Aarhus","Alborg","Copenhagen","Odense","Veijle");
+    list.addAll("Horsens","Aarhus","Alborg","Copenhagen","Odense","Veijle","Frederiksberg","Esbjerg"
+    ,"Randers","Kolding","Hvidovre","Greve","Herning","Roskilde","Silkeborg","Fredericia","Viborg");
     this.model = model;
     this.username = new SimpleStringProperty("");
     this.firstName = new SimpleStringProperty("");
@@ -83,26 +84,33 @@ public class SignUpViewModel
   {
     return error;
   }
+
   public void registerUser(String city) throws Exception
   {
 
     model.registerUser(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get());
   }
+
   public void checkUsername()
   {
     if(model.checkUsername(username.get()))
     {
       error.set("The username must be at least 8 characters");
     }
-    else {error.set("");}
+    else {
+      error.set("");
+    }
   }
+
   public void checkPassword()
   {
     if(model.checkPassword(password.get()))
     {
       error.set("The password must be at least 6 characters");
     }
-    else {error.set("");}
+    else {
+      error.set("");
+    }
   }
   public boolean verifyPasswords()
   {

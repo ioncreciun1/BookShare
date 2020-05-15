@@ -22,27 +22,27 @@ public class ViewControllerFactory
     {
       viewController = createViewController(id);
       viewControllerMap.put(id, viewController);
-
-      Region root = null;
-      try
-      {
-        FXMLLoader loader = new FXMLLoader();
-        System.out.println(id+".fxml");
-        loader.setLocation(ViewControllerFactory.class.getResource(id+".fxml"));
-        root = loader.load();
-        viewController = loader.getController();
-        viewController.init(viewHandler, viewModelFactory, root);
-      }
-      catch (Exception e)
-      {
-        e.printStackTrace();
-      }
-
-
     }
+
+    Region root = null;
+    try
+    {
+      FXMLLoader loader = new FXMLLoader();
+      System.out.println(id+".fxml");
+      loader.setLocation(ViewControllerFactory.class.getResource(id+".fxml"));
+      root = loader.load();
+      viewController = loader.getController();
+      viewController.init(viewHandler, viewModelFactory, root);
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
+
     viewController.reset();
     return viewController;
   }
+
 
 
   private static ViewController createViewController(String id){
