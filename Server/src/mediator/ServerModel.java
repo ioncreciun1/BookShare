@@ -86,6 +86,7 @@ public class ServerModel implements RemoteModel, LocalListener<String,String>
   @Override public boolean checkUser(Registrant registrant)
       throws RemoteException, SQLException
   {
+    System.out.println("CHeck server");
     return model.checkUser(registrant);
   }
 
