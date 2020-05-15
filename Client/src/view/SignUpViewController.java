@@ -71,14 +71,14 @@ city.getSelectionModel().select(0);
       if (viewModel.verifyPasswords())
       {
         viewModel.registerUser(city.getSelectionModel().getSelectedItem().toString());
-        viewHandler.openView("LogIn");
+        viewHandler.openView("LogInView");
       }
     }
   }
 
   public void Cancel()
   {
-    viewHandler.openView("LogIn");
+    viewHandler.openView("LogInView");
   }
 
   public void checkLogin(KeyEvent keyEvent)

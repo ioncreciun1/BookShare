@@ -2,24 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3fb48a9-21a3-437e-ad8f-4a6b2a25d83b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Server/src/model/Registrant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/MyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/MyApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/mediator/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/mediator/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/mediator/ClientModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/mediator/ClientModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/mediator/RemoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/mediator/RemoteModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/model/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/model/ModelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/view/LOGIN.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/view/LogInView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/view/LogInViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/view/LogInViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/view/SIGN UP.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/view/SignUpView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/view/SignUpViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/view/SignUpViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/viewModel/SignUpViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/viewModel/SignUpViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/Database/Registrant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/Database/RegistrantDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Database/RegistrantDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/Database/RegistrantDAOImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Database/RegistrantDAOImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/mediator/RemoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/mediator/RemoteModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/mediator/ServerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/mediator/ServerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/model/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/model/ModelManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/view/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/view/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/view/ViewControllerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/view/ViewControllerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/view/ViewHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/view/ViewHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/view/LOGIN.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/view/LogInViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/view/LogInViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/view/SIGN UP.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/view/SignUpViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/view/SignUpViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/view/ViewHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/view/ViewHandler.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

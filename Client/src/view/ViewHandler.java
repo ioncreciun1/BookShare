@@ -20,9 +20,9 @@ public class ViewHandler
 
   public void openView(String id)
   {
-    Region root = null;
+    Region root;
     root = ViewControllerFactory.getViewController(id, this, factory).getRoot();
-    System.out.println(id);
+    System.out.println("VIEW HANDLER");
     System.out.println(root);
     currentScene.setRoot(root);
     String title = "";

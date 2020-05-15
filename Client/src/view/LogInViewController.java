@@ -38,7 +38,7 @@ public class LogInViewController extends ViewController
 
   public void openSignUp() throws IOException
   {
-    viewHandler.openView("SignUp");
+    viewHandler.openView("SignUpView");
   }
 
   public void openMainPage() throws IOException
