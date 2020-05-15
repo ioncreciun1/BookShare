@@ -8,7 +8,7 @@ import viewModel.LogInViewModel;
 
 import java.io.IOException;
 
-public class LogInViewController
+public class LogInViewController extends ViewController
 {
   public TextField username;
   public PasswordField password;

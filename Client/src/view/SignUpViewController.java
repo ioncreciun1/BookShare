@@ -4,10 +4,11 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import viewModel.SignUpViewModel;
+import viewModel.ViewModelFactory;
 
 import java.io.IOException;
 
-public class SignUpViewController
+public class SignUpViewController extends ViewController
 {
   public TextField username;
   public TextField firstName;
@@ -22,22 +23,26 @@ public class SignUpViewController
   private ViewHandler viewHandler;
   private SignUpViewModel  viewModel;
   private Region root;
-
-  public void init(ViewHandler viewHandler, SignUpViewModel viewModel, Region root)
+  private ViewModelFactory viewModelFactory;
+  public SignUpViewController()
   {
-    this.viewHandler = viewHandler;
-    this.viewModel = viewModel;
-    this.root = root;
-    username.textProperty().bindBidirectional(viewModel.usernameProperty());
-    firstName.textProperty().bindBidirectional(viewModel.firstNameProperty());
-    lastName.textProperty().bindBidirectional(viewModel.lastNameProperty());
-    email.textProperty().bindBidirectional(viewModel.emailProperty());
-    phone.textProperty().bindBidirectional(viewModel.phoneProperty());
-city.itemsProperty().bind(viewModel.cityProperty());
+    super();
+  }
+
+  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory, Region root)
+  {
+    super.init(viewHandler,viewModelFactory,root);
+
+    username.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().usernameProperty());
+    firstName.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().firstNameProperty());
+    lastName.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().lastNameProperty());
+    email.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().emailProperty());
+    phone.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().phoneProperty());
+city.itemsProperty().bind(super.getViewModels().getSignUpViewModel().cityProperty());
 city.getSelectionModel().select(0);
-    password.textProperty().bindBidirectional(viewModel.passwordProperty());
-    confirmPassword.textProperty().bindBidirectional(viewModel.confirmPasswordProperty());
-    error.textProperty().bind(viewModel.errorProperty());
+    password.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().passwordProperty());
+    confirmPassword.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().confirmPasswordProperty());
+    error.textProperty().bind(super.getViewModels().getSignUpViewModel().errorProperty());
   }
 
   public void reset()
@@ -56,9 +61,9 @@ city.getSelectionModel().select(0);
 
   public void openLogIn() throws Exception
   {
-    if(viewModel.verifyPasswords())
+    if(super.getViewModels().getSignUpViewModel().verifyPasswords())
     {
-      viewModel.registerUser(city.getSelectionModel().getSelectedItem().toString());
+      super.getViewModels().getSignUpViewModel().registerUser(city.getSelectionModel().getSelectedItem().toString());
       viewHandler.openView("LogIn");
     }
   }
@@ -70,11 +75,11 @@ city.getSelectionModel().select(0);
 
   public void checkLogin(KeyEvent keyEvent)
   {
-    viewModel.checkUsername();
+    super.getViewModels().getSignUpViewModel().checkUsername();
   }
 
   public void checkPassword(KeyEvent keyEvent)
   {
-    viewModel.checkPassword();
+    super.getViewModels().getSignUpViewModel().checkPassword();
   }
 }

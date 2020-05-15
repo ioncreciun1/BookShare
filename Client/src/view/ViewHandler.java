@@ -10,36 +10,21 @@ public class ViewHandler
 {
   private Stage primaryStage;
   private Scene currentScene;
-  private ViewModelFactory viewModelFactory;
-  private LogInViewController logViewController;
-  private SignUpViewController signUpViewController;
+  private ViewModelFactory factory;
 
-  public ViewHandler(ViewModelFactory viewModelFactory)
+  public ViewHandler(ViewModelFactory factory)
   {
-    this.viewModelFactory = viewModelFactory;
-  }
-
-  public void start(Stage primaryStage)
-  {
-    this.primaryStage = primaryStage;
+    this.factory = factory;
     this.currentScene = new Scene(new Region());
-    openView("LogIn");
   }
 
   public void openView(String id)
   {
     Region root = null;
-    switch (id)
-    {
-      case "LogIn":
-        root = loadLogInView("LOGIN.fxml");
-        break;
-      case "SignUp":
-        root = loadSignUpView("SIGN UP.fxml");
-        break;
-    }
+    root = ViewControllerFactory.getViewController(id, this, factory).getRoot();
+    System.out.println(id);
+    System.out.println(root);
     currentScene.setRoot(root);
-
     String title = "";
     if (root.getUserData() != null)
     {
@@ -47,66 +32,21 @@ public class ViewHandler
     }
     primaryStage.setTitle(title);
     primaryStage.setScene(currentScene);
-    System.out.println();
     switch (id)
     {
-      case "LogIn":
-        primaryStage.setWidth(610);
+      case "LogInView":  primaryStage.setWidth(610);
         break;
-      case "SignUp":
-        primaryStage.setWidth(700);
+      case "SignUpView":  primaryStage.setWidth(710);
         break;
     }
     primaryStage.setHeight(500);
     primaryStage.show();
   }
 
-
-  private Region loadLogInView(String fxmlFile)
+  public void start(Stage primaryStage)
   {
-    if (logViewController == null)
-    {
-      try
-      {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(fxmlFile));
-        Region root = loader.load();
-        logViewController = loader.getController();
-        logViewController.init(this, viewModelFactory.getLogInViewModel(), root);
-      }
-      catch (Exception e)
-      {
-        e.printStackTrace();
-      }
-    }
-    else
-    {
-      logViewController.reset();
-    }
-    return logViewController.getRoot();
-  }
-  private Region loadSignUpView(String fxmlFile)
-  {
-    if (signUpViewController == null)
-    {
-      try
-      {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(fxmlFile));
-        Region root = loader.load();
-        signUpViewController = loader.getController();
-        signUpViewController.init(this, viewModelFactory.getSignUpViewModel(), root);
-      }
-      catch (Exception e)
-      {
-        e.printStackTrace();
-      }
-    }
-    else
-    {
-      signUpViewController.reset();
-    }
-    return signUpViewController.getRoot();
+    this.primaryStage = primaryStage;
+    openView("LogInView");
   }
 
 }
