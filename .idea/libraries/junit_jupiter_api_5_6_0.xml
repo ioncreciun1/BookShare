@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="junit-jupiter-api-5.6.0" type="kotlin.js">
+    <CLASSES>
+      <root url="jar://C:/Program Files/Java/junit-jupiter-api-5.6.0.jar!/" />
+      <root url="jar://C:/Program Files/Java/MyObserver-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://C:/Program Files/Java/junit-jupiter-api-5.6.0.jar!/" />
+      <root url="jar://C:/Program Files/Java/MyObserver-1.0.jar!/" />
+    </SOURCES>
+  </library>
+</component>
