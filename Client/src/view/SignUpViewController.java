@@ -72,6 +72,11 @@ public class SignUpViewController extends ViewController
     super.getViewModels().getSignUpViewModel().checkPassword();
   }
 
+  public void verifyPassword()
+  {
+    super.getViewModels().getSignUpViewModel().verifyPasswords();
+  }
+
   public void openLogInView()
   {
     super.getHandler().openView("LogInView");
