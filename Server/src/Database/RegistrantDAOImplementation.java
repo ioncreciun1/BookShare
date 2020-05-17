@@ -1,5 +1,5 @@
 package Database;
-import model.Registrant;
+import model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class RegistrantDAOImplementation implements RegistrantDAO
 
   }
 
-  public boolean check_Email(Registrant registrant) throws SQLException
+  public boolean check_Email(User registrant) throws SQLException
   {
     try (Connection connection = getConnection()/*auto closes the connection*/)
     {
@@ -45,7 +45,7 @@ public class RegistrantDAOImplementation implements RegistrantDAO
     }
   }
 
-  public boolean check_User(Registrant registrant) throws SQLException
+  public boolean check_User(User registrant) throws SQLException
   {
     try(Connection connection = getConnection()/*auto closes the connection*/){
       Statement stm = connection.createStatement();
@@ -73,7 +73,7 @@ public class RegistrantDAOImplementation implements RegistrantDAO
   {try
       (Connection connection = getConnection()/*auto closes the connection*/)
   {
-    Registrant registrant = new Registrant(Username,passWord,eMail,firstName,lastName,city,contactInfo,upVotes);
+    User registrant = new User(Username,passWord,eMail,firstName,lastName,city,contactInfo,upVotes);
     PreparedStatement statement = connection.prepareStatement("INSERT INTO \"SEP2\".registrant (Username, Pass, EMAIL, fName, lName, City, ContactInfo, Upvotes) VALUES (?,?,?,?,?,?,?,?);");
     /*lines 22-30 adds the registrant to the database*/
     statement.setString(1, registrant.getUserName());
@@ -97,7 +97,7 @@ public class RegistrantDAOImplementation implements RegistrantDAO
 
 
 
-  @Override public void delete(Registrant registrant) throws SQLException
+  @Override public void delete(User registrant) throws SQLException
   {
     try(Connection connection = getConnection()/*auto closes the connection*/){
       Statement stm = connection.createStatement();
@@ -112,20 +112,20 @@ public class RegistrantDAOImplementation implements RegistrantDAO
     }
   }
 
-  @Override public Registrant getRegistrant(String username) throws SQLException
+  @Override public User getRegistrant(String username) throws SQLException
   {
     return null;
   }
 
-  @Override public List<Registrant> getRegistrants() throws SQLException
+  @Override public List<User> getRegistrants() throws SQLException
   {
-    List<Registrant> registrants = new ArrayList<>();
+    List<User> registrants = new ArrayList<>();
     try(Connection connection = getConnection()/*auto closes the connection*/){
       Statement stm = connection.createStatement();
       ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".registrant;");
       while(rs.next())
       {
-        Registrant registrant1 = new Registrant(rs.getString("Username"),rs.getString("Pass"),rs.getString("EMAIL"),rs.getString("fName"),rs.getString("lName"),rs.getString("City"),rs.getString("ContactInfo"),rs.getInt("Upvotes"));
+        User registrant1 = new User(rs.getString("Username"),rs.getString("Pass"),rs.getString("EMAIL"),rs.getString("fName"),rs.getString("lName"),rs.getString("City"),rs.getString("ContactInfo"),rs.getInt("Upvotes"));
         registrants.add(registrant1);
       }
       System.out.println("Username added to database!");
@@ -137,7 +137,7 @@ public class RegistrantDAOImplementation implements RegistrantDAO
     return registrants;
   }
 
-  @Override public void update(Registrant registrant) throws SQLException
+  @Override public void update(User registrant) throws SQLException
   {
     try(Connection connection = getConnection()/*auto closes the connection*/){
       Statement stm = connection.createStatement();

@@ -7,7 +7,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Model;
-import model.Registrant;
+import model.User;
 
 import java.rmi.RemoteException;
 
@@ -21,7 +21,7 @@ public class SignUpViewModel
   private StringProperty phone;
   private StringProperty password;
   private StringProperty confirmPassword;
-  // private StringProperty city;
+
   private StringProperty error;
   private ObjectProperty<ObservableList> city;
 
@@ -94,6 +94,15 @@ public class SignUpViewModel
     model.registerUser(username.get(), password.get(), email.get(), firstName.get(),
         lastName.get(), city, phone.get());
   }
+  public void reset(){
+    firstName.set("");
+    lastName.set("");
+    username.set("");
+    password.set("");
+    confirmPassword.set("");
+    email.set("");
+    phone.set("");
+  }
   public void checkUsername()
   {
     if(model.checkUsername(username.get()))
@@ -126,34 +135,31 @@ public class SignUpViewModel
   {
     if(username.get().length()==0)
     {
-      error.set("Username field have to be fulfilled");
+      error.set("Empty username field, Insert username");
     }
     else     if(password.get().length()==0)
     {
-      error.set("set password");
+      error.set("Field password can’t be empty");
     }
     else     if(firstName.get().length()==0)
     {
-      error.set("set First name");
+      error.set("Field First Name can’t be empty");
     }
     else     if(lastName.get().length()==0)
     {
-      error.set("set last name");
+      error.set("Field Last Name can’t be empty");
     }
     else     if(email.get().length()==0)
     {
-      error.set("set email");
+      error.set("Email field can’t be empty. Insert Email");
     }
-    System.out.println("Statement");
-    System.out.println(username.get().length() == 0 && firstName.get().length()==0 && lastName.get().length()==0
-        && password.get().length() == 0 && email.get().length() == 0);
     return username.get().length() != 0 && firstName.get().length()!=0 && lastName.get().length()!=0
         && password.get().length() != 0 && email.get().length() != 0;
 
   }
   public boolean checkUser(String city) throws RemoteException
   {
-    boolean check =  model.checkUser(new Registrant(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get(),0));
+    boolean check =  model.checkUser(new User(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get(),0));
     if(check)
     {
       error.set("This username is already in the system");
@@ -162,7 +168,7 @@ public class SignUpViewModel
   }
   public boolean checkEmail(String city) throws RemoteException
   {
-    boolean check =  model.checkEmail(new Registrant(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get(),0));
+    boolean check =  model.checkEmail(new User(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get(),0));
     if(check)
     {
       error.set("This Email is already in the system");

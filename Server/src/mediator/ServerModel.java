@@ -1,7 +1,7 @@
 package mediator;
 
 import model.Model;
-import model.Registrant;
+import model.User;
 import utility.observer.event.ObserverEvent;
 import utility.observer.listener.GeneralListener;
 import utility.observer.listener.LocalListener;
@@ -83,14 +83,14 @@ public class ServerModel implements RemoteModel, LocalListener<String,String>
     model.getRegistrant(username);
   }
 
-  @Override public boolean checkUser(Registrant registrant)
+  @Override public boolean checkUser(User registrant)
       throws RemoteException, SQLException
   {
     System.out.println("CHeck server");
     return model.checkUser(registrant);
   }
 
-  @Override public boolean checkEmail(Registrant registrant)
+  @Override public boolean checkEmail(User registrant)
       throws RemoteException, SQLException
   {
     return model.check_Email(registrant);

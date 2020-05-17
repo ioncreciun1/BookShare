@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class Registrant implements Serializable
+public class User implements Serializable
 {
   private String userName;
   private String passWord = "";
@@ -13,7 +13,7 @@ public class Registrant implements Serializable
   private String contactInfo = "";
   private int upVotes = 0;
 
-  public Registrant(String userName, String passWord, String eMail, String firstName,
+  public User(String userName, String passWord, String eMail, String firstName,
       String lastName, String city, String contactInfo, int upVotes){
     this.userName = userName;
     this.passWord = passWord;

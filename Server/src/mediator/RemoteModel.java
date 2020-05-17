@@ -1,7 +1,6 @@
 package mediator;
 
-import model.Registrant;
-import org.postgresql.core.SqlCommand;
+import model.User;
 import utility.observer.subject.RemoteSubject;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -12,6 +11,6 @@ public interface RemoteModel extends RemoteSubject<String,String>
   void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo)
       throws Exception;
   void getRegistrant(String username) throws RemoteException, SQLException;
-  boolean checkUser(Registrant registrant) throws RemoteException, SQLException;
-  boolean checkEmail(Registrant registrant) throws RemoteException,SQLException;
+  boolean checkUser(User registrant) throws RemoteException, SQLException;
+  boolean checkEmail(User registrant) throws RemoteException,SQLException;
 }

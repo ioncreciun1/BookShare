@@ -1,7 +1,7 @@
 package mediator;
 
 import model.Model;
-import model.Registrant;
+import model.User;
 import utility.observer.event.ObserverEvent;
 import utility.observer.listener.GeneralListener;
 import utility.observer.listener.RemoteListener;
@@ -51,16 +51,16 @@ public class Client implements ClientModel, RemoteListener<String,String>
     remoteModel.getRegistrant(username);
   }
 
-  @Override public boolean checkUser(Registrant registrant)
+  @Override public boolean checkUser(User user)
       throws RemoteException
   {
-    return remoteModel.checkUser(registrant);
+    return remoteModel.checkUser(user);
   }
 
-  @Override public boolean checkEmail(Registrant registrant)
+  @Override public boolean checkEmail(User user)
       throws RemoteException
   {
-    return remoteModel.checkEmail(registrant);
+    return remoteModel.checkEmail(user);
   }
 
   @Override public void propertyChange(ObserverEvent<String, String> event)

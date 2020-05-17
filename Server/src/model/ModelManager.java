@@ -8,33 +8,33 @@ import java.sql.SQLException;
 
 public class ModelManager implements Model
 {
-  RegistrantDAO registrant;
+  RegistrantDAO user;
   public ModelManager() throws SQLException
   {
-    this.registrant = new RegistrantDAOImplementation();
+    this.user = new RegistrantDAOImplementation();
   }
 
-  @Override public boolean checkUser(Registrant registrant) throws SQLException
+  @Override public boolean checkUser(User user) throws SQLException
   {
-    return this.registrant.check_User(registrant);
+    return this.user.check_User(user);
   }
 
-  @Override public boolean check_Email(Registrant registrant)
+  @Override public boolean check_Email(User user)
       throws SQLException
   {
-    return this.registrant.check_Email(registrant);
+    return this.user.check_Email(user);
   }
 
   public void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo)
       throws Exception
   {
     System.out.println("SERVER MODEL MODEL");
-    registrant.add(Username,passWord,eMail,firstName,lastName,city,contactInfo,0);
+    user.add(Username,passWord,eMail,firstName,lastName,city,contactInfo,0);
   }
 
-  @Override public Registrant getRegistrant(String username) throws SQLException
+  @Override public User getRegistrant(String username) throws SQLException
   {
-    registrant.getRegistrant(username);
+    user.getRegistrant(username);
     return null;
   }
 
