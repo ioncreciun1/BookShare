@@ -1,6 +1,7 @@
 package mediator;
 
 import model.Model;
+import model.User;
 import utility.observer.event.ObserverEvent;
 import utility.observer.listener.GeneralListener;
 import utility.observer.listener.LocalListener;
@@ -12,6 +13,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 
 public class ServerModel implements RemoteModel, LocalListener<String,String>
 {
@@ -73,6 +75,25 @@ public class ServerModel implements RemoteModel, LocalListener<String,String>
   {
     System.out.println("SERVER MODEL");
     model.registerUser(Username,passWord,eMail,firstName,lastName,city,contactInfo);
+  }
+
+  @Override public void getRegistrant(String username)
+      throws RemoteException, SQLException
+  {
+    model.getRegistrant(username);
+  }
+
+  @Override public boolean checkUser(User registrant)
+      throws RemoteException, SQLException
+  {
+    System.out.println("CHeck server");
+    return model.checkUser(registrant);
+  }
+
+  @Override public boolean checkEmail(User registrant)
+      throws RemoteException, SQLException
+  {
+    return model.check_Email(registrant);
   }
 
   @Override public void propertyChange(ObserverEvent<String, String> event)

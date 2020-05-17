@@ -27,6 +27,7 @@ public class SignUpViewController extends ViewController
   public void init(ViewHandler viewHandler, ViewModelFactory viewModel, Region root)
   {
     super.init(viewHandler, viewModel, root);
+    super.getViewModels().getSignUpViewModel().reset();
     username.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().usernameProperty());
     firstName.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().firstNameProperty());
     lastName.textProperty().bindBidirectional(super.getViewModels().getSignUpViewModel().lastNameProperty());
@@ -39,10 +40,7 @@ public class SignUpViewController extends ViewController
     error.textProperty().bind(super.getViewModels().getSignUpViewModel().errorProperty());
   }
 
-  public boolean verifyPassword()
-  {
-    return (password == confirmPassword);
-  }
+
 
   public void openMainView() throws Exception
   {
@@ -51,12 +49,15 @@ public class SignUpViewController extends ViewController
         && !super.getViewModels().getSignUpViewModel().checkEmail(city.getSelectionModel().toString());
     if(check)
     {
-
-      System.out.println("Here");
-      if (super.getViewModels().getSignUpViewModel().verifyPasswords())
+      if (super.getViewModels().getSignUpViewModel().verifyPasswords()
+          && !super.getViewModels().getSignUpViewModel().checkUsername()
+          && !super.getViewModels().getSignUpViewModel().checkPassword())
       {
+        super.getViewModels().getSignUpViewModel().checkPassword();
+        super.getViewModels().getSignUpViewModel().checkUsername();
         super.getViewModels().getSignUpViewModel().registerUser(city.getSelectionModel().getSelectedItem().toString());
         super.getHandler().openView("LogInView");
+
       }
     }
   }

@@ -14,6 +14,6 @@ public interface Model extends LocalSubject<String,String>
   void getRegistrant(String username) throws RemoteException;
   public boolean checkUsername(String username);
   public boolean checkPassword(String password);
-  boolean checkUser(Registrant registrant) throws RemoteException;
-  boolean checkEmail(Registrant registrant) throws RemoteException;
+  boolean checkUser(User user) throws RemoteException;
+  boolean checkEmail(User user) throws RemoteException;
 }
