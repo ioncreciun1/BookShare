@@ -2,6 +2,7 @@ package view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import viewModel.ViewModelFactory;
 
@@ -75,5 +76,10 @@ public class SignUpViewController extends ViewController
   public void openLogInView()
   {
     super.getHandler().openView("LogInView");
+  }
+
+  public void verifyPassword(KeyEvent keyEvent)
+  {
+    super.getViewModels().getSignUpViewModel().verifyPasswords();
   }
 }
