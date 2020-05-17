@@ -49,7 +49,9 @@ public class SignUpViewController extends ViewController
         && !super.getViewModels().getSignUpViewModel().checkEmail(city.getSelectionModel().toString());
     if(check)
     {
-      if (super.getViewModels().getSignUpViewModel().verifyPasswords())
+      if (super.getViewModels().getSignUpViewModel().verifyPasswords()
+          && !super.getViewModels().getSignUpViewModel().checkUsername()
+          && !super.getViewModels().getSignUpViewModel().checkPassword())
       {
         super.getViewModels().getSignUpViewModel().checkPassword();
         super.getViewModels().getSignUpViewModel().checkUsername();

@@ -103,21 +103,23 @@ public class SignUpViewModel
     email.set("");
     phone.set("");
   }
-  public void checkUsername()
+  public boolean checkUsername()
   {
     if(model.checkUsername(username.get()))
     {
       error.set("The username must be at least 8 characters");
     }
     else {error.set("");}
+    return model.checkUsername(username.get());
   }
-  public void checkPassword()
+  public boolean checkPassword()
   {
     if(model.checkPassword(password.get()))
     {
       error.set("The password must be at least 6 characters");
     }
     else {error.set("");}
+    return model.checkPassword(password.get());
   }
   public boolean verifyPasswords()
   {
