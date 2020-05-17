@@ -1,17 +1,17 @@
 package model;
 
-import Database.RegistrantDAO;
-import Database.RegistrantDAOImplementation;
+import Database.UserDAO;
+import Database.UserDAOImplementation;
 import utility.observer.listener.GeneralListener;
 
 import java.sql.SQLException;
 
 public class ModelManager implements Model
 {
-  RegistrantDAO user;
+  UserDAO user;
   public ModelManager() throws SQLException
   {
-    this.user = new RegistrantDAOImplementation();
+    this.user = new UserDAOImplementation();
   }
 
   @Override public boolean checkUser(User user) throws SQLException
@@ -34,7 +34,7 @@ public class ModelManager implements Model
 
   @Override public User getRegistrant(String username) throws SQLException
   {
-    user.getRegistrant(username);
+    user.getUser(username);
     return null;
   }
 
