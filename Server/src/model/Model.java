@@ -1,0 +1,14 @@
+package model;
+
+import utility.observer.subject.LocalSubject;
+
+import java.sql.SQLException;
+
+public interface Model extends LocalSubject<String,String>
+{
+  boolean checkUser(User registrant) throws SQLException;
+  public boolean check_Email(User registrant) throws SQLException;
+  void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo)
+      throws Exception;
+  User getRegistrant(String username) throws SQLException;
+}
