@@ -38,7 +38,7 @@ public class LogInViewController extends ViewController
 if(super.getViewModels().getLogInViewModel().verifyUser())
 {
 
-  System.out.println("YOU ARE IN");
+  super.getHandler().openView("AddBookView");
 }
   }
 }

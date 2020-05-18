@@ -50,6 +50,7 @@ public class ViewControllerFactory
     {
       case "LogInView": return new LogInViewController();
       case "SignUpView": return new SignUpViewController();
+      case "AddBookView": return  new AddBookViewController();
       default: throw new IllegalArgumentException("No such id for viw controller");
     }
   }

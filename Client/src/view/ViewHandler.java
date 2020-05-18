@@ -34,11 +34,17 @@ public class ViewHandler
     switch (id)
     {
       case "LogInView":  primaryStage.setWidth(610);
+        primaryStage.setHeight(500);
       break;
       case "SignUpView":  primaryStage.setWidth(710);
+        primaryStage.setHeight(500);
       break;
+      case "AddBookView":
+        primaryStage.setHeight(580);
+        break;
+
     }
-    primaryStage.setHeight(500);
+
     primaryStage.show();
   }
 
