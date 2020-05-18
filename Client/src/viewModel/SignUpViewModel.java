@@ -107,7 +107,7 @@ public class SignUpViewModel
   {
     if(model.checkUsername(username.get()))
     {
-      error.set("The username must be at least 8 characters");
+      error.set("The username must be at least 8 characters and less than 30 characters");
     }
     else {error.set("");}
     return model.checkUsername(username.get());
@@ -116,7 +116,7 @@ public class SignUpViewModel
   {
     if(model.checkPassword(password.get()))
     {
-      error.set("The password must be at least 6 characters");
+      error.set("The password must be at least 6 characters and less than 20 characters");
     }
     else {error.set("");}
     return model.checkPassword(password.get());
@@ -147,16 +147,25 @@ public class SignUpViewModel
     {
       error.set("Field First Name can’t be empty");
     }
+    else if (firstName.get().length() >= 20){
+      error.set("First Name must be less than 20 characters");
+    }
     else     if(lastName.get().length()==0)
     {
       error.set("Field Last Name can’t be empty");
+    }
+    else if (lastName.get().length() >= 25){
+      error.set("Last Name must be less than 25 characters");
     }
     else     if(email.get().length()==0)
     {
       error.set("Email field can’t be empty. Insert Email");
     }
-    return username.get().length() != 0 && firstName.get().length()!=0 && lastName.get().length()!=0
-        && password.get().length() != 0 && email.get().length() != 0;
+    else if (email.get().length() >= 30){
+      error.set("Last Name must be less than 25 characters");
+    }
+    return username.get().length() != 0 && firstName.get().length()!=0 && firstName.get().length()< 20 && lastName.get().length()!=0 && lastName.get().length()<25
+        && password.get().length() != 0 && email.get().length() != 0 && email.get().length() < 30;
 
   }
   public boolean checkUser(String city) throws RemoteException
