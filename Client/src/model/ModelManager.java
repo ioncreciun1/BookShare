@@ -22,12 +22,12 @@ public class ModelManager implements Model, LocalListener<String,String>
   }
   public boolean checkUsername(String username)
   {
-    return ( username.length() < 8 ) && ( username.length() > 30 );
+    return ( username.length() < 8 ) || ( username.length() > 30 );
   }
 
   public boolean checkPassword(String password)
   {
-    return ( password.length() < 6 ) && ( password.length() > 20 );
+    return ( password.length() < 6 ) || ( password.length() > 20 );
   }
 
   @Override public boolean checkUser(User user)
