@@ -9,8 +9,8 @@ public class Book {
     private String category;
     private State state;
 
-    public Book(int bookId, String title, String author, String language, String description, String category, State state){
-        this.state = state;
+    public Book(int bookId, String title, String author, String language, String description, String category){
+        this.state = new BookStateOff();
         this.bookId = bookId;
         this.title = title;
         this.author = author;
@@ -23,7 +23,7 @@ public class Book {
         state = newState;
     }
 
-    public void writeName(String name) {
-        state.writeName(this, name);
+    public boolean available(){
+        return state.available();
     }
 }

@@ -1,5 +1,6 @@
 package model;
 
 interface State {
-    void writeName(Book book, String name);
+    void click(Book book, Boolean available);
+    boolean available();
 }
