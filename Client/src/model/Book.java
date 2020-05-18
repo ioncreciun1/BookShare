@@ -1,15 +1,22 @@
 package model;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable
+{
     private String description;
     private String username;
     private AbstractBook book;
+    private String language;
+    private String category;
     private State state;
 
     public Book(String username, String title, String author, String language, String description, String category){
-        this.state = new BookStateOff();
+        this.state = new BookStateOn();
         this.description = description;
-        book = AbstractBookFactory.getBookFly(title,author,language,category);
+        this.language = language;
+        this.category = category;
+        book = AbstractBookFactory.getBookFly(title,author);
         this.username = username;
     }
 
@@ -26,11 +33,11 @@ public class Book {
     }
 
     public String getLanguage(){
-        return book.getLanguage();
+        return language;
     }
 
     public String getCategory(){
-        return book.getBook_type();
+        return category;
     }
 
     public String getDescription(){

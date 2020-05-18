@@ -6,7 +6,7 @@ import java.util.Map;
 public class AbstractBookFactory
 {
   private static Map<String,AbstractBook> bookMap = new HashMap<>();
-  public static AbstractBook getBookFly(String title,String author,String language,String type)
+  public static AbstractBook getBookFly(String title,String author)
   {
     AbstractBook book = bookMap.get(title);
     if(book == null)
@@ -16,7 +16,7 @@ public class AbstractBookFactory
         book = bookMap.get(title);
         if (book == null)
         {
-          book = new BookFly(title, author, language, type);
+          book = new BookFly(title, author);
           bookMap.put(title, book);
         }
       }
