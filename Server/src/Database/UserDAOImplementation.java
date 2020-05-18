@@ -15,7 +15,7 @@ public class UserDAOImplementation implements UserDAO
 
   private Connection getConnection() throws SQLException
   {
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "2011");
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "admin");
 
   }
 
@@ -118,11 +118,20 @@ public class UserDAOImplementation implements UserDAO
     try (Connection connection = getConnection()/*auto closes the connection*/)
     {
       Statement stm = connection.createStatement();
-      String sql = "SELECT FROM \"SEP2\".\"User\" WHERE Username = "+username+";";
+
+      String sql = "SELECT * FROM \"SEP2\".\"User\" WHERE Username = '"+username+"';";
+      System.out.println(sql);
       ResultSet rs = stm.executeQuery(sql);
-      user = new User(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8));
-      System.out.println("Username added to database!");
-      rs.close();
+      if(rs.next())
+      {
+        user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+            rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8));
+        System.out.println("Username added to database!");
+        rs.close();
+      }
+      else{
+        user = null;
+      }
     }
     catch (Exception e)
     {

@@ -77,10 +77,10 @@ public class ServerModel implements RemoteModel, LocalListener<String,String>
     model.registerUser(Username,passWord,eMail,firstName,lastName,city,contactInfo);
   }
 
-  @Override public void getRegistrant(String username)
+  @Override public User getUser(String username)
       throws RemoteException, SQLException
   {
-    model.getRegistrant(username);
+    return model.getUser(username);
   }
 
   @Override public boolean checkUser(User registrant)

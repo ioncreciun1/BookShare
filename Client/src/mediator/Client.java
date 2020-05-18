@@ -46,9 +46,9 @@ public class Client implements ClientModel, RemoteListener<String,String>
     remoteModel.registerUser(Username,passWord,eMail,firstName,lastName,city,contactInfo);
   }
 
-  @Override public void getRegistrant(String username) throws RemoteException
+  @Override public User getUser(String username) throws RemoteException
   {
-    remoteModel.getRegistrant(username);
+    return remoteModel.getUser(username);
   }
 
   @Override public boolean checkUser(User user)

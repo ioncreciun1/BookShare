@@ -32,10 +32,10 @@ public class ModelManager implements Model
     user.add(Username,passWord,eMail,firstName,lastName,city,contactInfo,0);
   }
 
-  @Override public User getRegistrant(String username) throws SQLException
+  @Override public User getUser(String username) throws SQLException
   {
-    user.getUser(username);
-    return null;
+
+    return user.getUser(username);
   }
 
   @Override public boolean addListener(GeneralListener<String, String> listener,

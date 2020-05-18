@@ -35,9 +35,10 @@ public class LogInViewController extends ViewController
 
   public void openMainView() throws IOException
   {
-    if(super.getViewModels().getLogInViewModel().verifyPass())
-    {
-      super.getHandler().openView("");
-    }
+if(super.getViewModels().getLogInViewModel().verifyUser())
+{
+
+  System.out.println("YOU ARE IN");
+}
   }
 }

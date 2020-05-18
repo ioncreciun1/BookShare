@@ -3,6 +3,7 @@ package viewModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import model.Model;
+import model.User;
 
 import java.io.IOException;
 
@@ -37,15 +38,25 @@ public class LogInViewModel
   }
 
 
-  public boolean verifyPass() throws IOException
+  public boolean verifyUser() throws IOException
   {
-    if(model.verifyLog(password.get(),username.get()))
+    User user =  model.getUser(username.get());
+    if(user!= null)
     {
-      error.set("Good boy");
-      return true;
+      if(user.getPassWord().equals(password.get()))
+      {
+        error.set("");
+        return true;
+
+      }
+      else {
+        error.set("Wrong password. Insert Again");
+      return false;
+      }
     }
-    else{
-      error.set("Wrong password");
+    else
+    {
+      error.set("Wrong username. Insert Again");
       return false;
     }
   }

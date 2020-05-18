@@ -77,8 +77,8 @@ public class ModelManager implements Model, LocalListener<String,String>
     return null;
   }
 
-  @Override public void getRegistrant(String username) throws RemoteException
+  @Override public User getUser(String username) throws RemoteException
   {
-    client.getRegistrant(username);
+    return client.getUser(username);
   }
 }
