@@ -1,4 +1,4 @@
-/*package Database;
+package Database;
 
 import model.Book;
 
@@ -109,4 +109,3 @@ public class BookDAOImplementation implements BookDAO
   }
 }
 
-*/

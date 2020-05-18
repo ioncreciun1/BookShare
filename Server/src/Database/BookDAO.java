@@ -1,4 +1,4 @@
-/*package Database;
+package Database;
 
 import model.Book;
 
@@ -13,4 +13,3 @@ public interface BookDAO {
  void update(Book book) throws SQLException;
   void delete(Book book) throws SQLException;
 }
-*/
