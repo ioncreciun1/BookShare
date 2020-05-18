@@ -1,5 +1,7 @@
 package model;
 
+import Database.BookDAO;
+import Database.BookDAOImplementation;
 import Database.UserDAO;
 import Database.UserDAOImplementation;
 import utility.observer.listener.GeneralListener;
@@ -9,9 +11,11 @@ import java.sql.SQLException;
 public class ModelManager implements Model
 {
   UserDAO user;
+  BookDAO bookDAO;
   public ModelManager() throws SQLException
   {
     this.user = new UserDAOImplementation();
+    this.bookDAO = new BookDAOImplementation();
   }
 
   @Override public boolean checkUser(User user) throws SQLException
@@ -36,6 +40,12 @@ public class ModelManager implements Model
   {
 
     return user.getUser(username);
+  }
+
+  @Override public void addBook(Book book) throws SQLException
+  {
+    System.out.println("Server Model");
+  bookDAO.add(book.getUsername(),book.getTitle(),book.getAuthor(),book.getLanguage(),book.getDescription(),book.getCategory());
   }
 
   @Override public boolean addListener(GeneralListener<String, String> listener,

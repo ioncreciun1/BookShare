@@ -9,7 +9,7 @@ public class BookDAOImplementation implements BookDAO
 {
   private static BookDAOImplementation instance;
 
-  private BookDAOImplementation() throws SQLException
+  public BookDAOImplementation() throws SQLException
   {
     DriverManager.registerDriver(new org.postgresql.Driver());
   }
@@ -28,17 +28,17 @@ public class BookDAOImplementation implements BookDAO
   {
     return DriverManager
         .getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres",
-            "2011");
+            "admin");
   }
 
   @Override public void add(String Username, String Title, String Author,
       String BookLanguage, String Description, String Category) throws SQLException
   {
+
     try (Connection connection = getConnection())
     {
-
       PreparedStatement statement = connection.prepareStatement(
-          "INSERT INTO Book(Username, Title, Author, BookLanguage, Description, Category) VALUES (?, ?, ?, ?, ?, ?, ?);");
+          "INSERT INTO \"SEP2\".book(username, title, author, bookLanguage, description, category) VALUES (?, ?, ?, ?, ?, ?);");
       statement.setString(1, Username);
       statement.setString(2, Title);
       statement.setString(3, Author);

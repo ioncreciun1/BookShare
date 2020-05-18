@@ -1,6 +1,8 @@
 package model;
 
-public abstract class AbstractBook
+import java.io.Serializable;
+
+public abstract class AbstractBook  implements Serializable
 {
   private String title;
   private String author;

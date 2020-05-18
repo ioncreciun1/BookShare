@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="600.0" stylesheets="@huine.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddBookViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="600.0" styleClass="root" stylesheets="@huine.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddBookViewController">
    <children>
       <VBox prefHeight="520.0" prefWidth="600.0">
          <children>
@@ -49,7 +49,7 @@
                                     <Insets left="30.0" />
                                  </HBox.margin>
                               </Label>
-                              <TextField fx:id="firstName" prefHeight="27.0" prefWidth="196.0" promptText="Book Name" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: rgb(231,231,231);" />
+                              <TextField fx:id="title" prefHeight="27.0" prefWidth="196.0" promptText="Book Name" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: rgb(231,231,231);" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="100.0">
@@ -62,7 +62,7 @@
                                     <Insets left="30.0" />
                                  </HBox.margin>
                               </Label>
-                              <TextField fx:id="firstName1" prefHeight="27.0" prefWidth="196.0" promptText="Author Name" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: rgb(231,231,231);" />
+                              <TextField fx:id="author" prefHeight="27.0" prefWidth="196.0" promptText="Author Name" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent; -fx-border-color: rgb(231,231,231);" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="100.0">
@@ -75,7 +75,7 @@
                                     <Insets left="30.0" />
                                  </HBox.margin>
                               </Label>
-                              <ComboBox prefHeight="25.0" prefWidth="177.0" promptText="Choose Language" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" />
+                              <ComboBox fx:id="language" prefHeight="25.0" prefWidth="177.0" promptText="Choose Language" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="100.0">
@@ -88,7 +88,7 @@
                                     <Insets left="30.0" />
                                  </HBox.margin>
                               </Label>
-                              <ComboBox prefHeight="25.0" prefWidth="175.0" promptText="Choose Type" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" />
+                              <ComboBox fx:id="type" prefHeight="25.0" prefWidth="175.0" promptText="Choose Type" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" />
                            </children>
                         </HBox>
                      </children>
@@ -97,7 +97,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="130.0" prefWidth="600.0">
                <children>
-                  <TextArea prefHeight="130.0" prefWidth="448.0" promptText="Write description here" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 2px 2px 2px;" />
+                  <TextArea fx:id="description" prefHeight="130.0" prefWidth="448.0" promptText="Write description here" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2px 2px 2px 2px;" />
                </children>
                <VBox.margin>
                   <Insets top="15.0" />

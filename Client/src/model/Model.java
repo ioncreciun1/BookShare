@@ -4,6 +4,7 @@ import utility.observer.subject.LocalSubject;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public interface Model extends LocalSubject<String,String>
 {
@@ -16,4 +17,5 @@ public interface Model extends LocalSubject<String,String>
   public boolean checkPassword(String password);
   boolean checkUser(User user) throws RemoteException;
   boolean checkEmail(User user) throws RemoteException;
+  void addBook(String title,String author,String description,String language,String category) throws RemoteException, SQLException;;
 }

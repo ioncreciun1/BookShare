@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class BookFly extends AbstractBook implements Serializable
+public class BookFly extends AbstractBook
 {
 
   public BookFly(String title, String author)

@@ -1,5 +1,6 @@
 package mediator;
 
+import model.Book;
 import model.Model;
 import model.User;
 import utility.observer.event.ObserverEvent;
@@ -12,6 +13,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.SQLException;
 
 public class Client implements ClientModel, RemoteListener<String,String>
 {
@@ -61,6 +63,11 @@ public class Client implements ClientModel, RemoteListener<String,String>
       throws RemoteException
   {
     return remoteModel.checkEmail(user);
+  }
+
+  @Override public void addBook(Book book) throws RemoteException, SQLException
+  {
+    remoteModel.addBook(book);
   }
 
   @Override public void propertyChange(ObserverEvent<String, String> event)

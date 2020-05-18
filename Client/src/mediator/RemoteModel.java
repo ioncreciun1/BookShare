@@ -1,8 +1,10 @@
 package mediator;
 
+import model.Book;
 import model.User;
 import utility.observer.subject.RemoteSubject;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public interface RemoteModel extends RemoteSubject<String,String>
 {
@@ -12,4 +14,5 @@ public interface RemoteModel extends RemoteSubject<String,String>
   User getUser(String username) throws RemoteException;
   boolean checkUser(User user) throws RemoteException;
   boolean checkEmail(User user) throws RemoteException;
+  void addBook(Book book) throws RemoteException, SQLException;;
 }

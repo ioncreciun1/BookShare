@@ -1,5 +1,6 @@
 package mediator;
 
+import model.Book;
 import model.Model;
 import model.User;
 import utility.observer.event.ObserverEvent;
@@ -94,6 +95,12 @@ public class ServerModel implements RemoteModel, LocalListener<String,String>
       throws RemoteException, SQLException
   {
     return model.check_Email(registrant);
+  }
+
+  @Override public void addBook(Book book) throws RemoteException, SQLException
+  {
+    System.out.println("Server");
+    model.addBook(book);
   }
 
   @Override public void propertyChange(ObserverEvent<String, String> event)

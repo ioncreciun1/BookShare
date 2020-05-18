@@ -1,6 +1,9 @@
 package model;
 
-class BookStateOff implements State {
+import java.io.Serializable;
+
+class BookStateOff implements State, Serializable
+{
     @Override
     public void click(Book book, Boolean available) {
         System.out.println(available);
