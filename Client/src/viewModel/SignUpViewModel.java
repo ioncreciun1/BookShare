@@ -89,8 +89,6 @@ public class SignUpViewModel
   }
   public void registerUser(String city) throws Exception
   {
-
-
     model.registerUser(username.get(), password.get(), email.get(), firstName.get(),
         lastName.get(), city, phone.get());
   }
