@@ -31,7 +31,7 @@ public class AddBookViewController extends ViewController
     description.textProperty().bindBidirectional(super.getViewModels().getAddBookViewModel().descriptionProperty());
     language.itemsProperty().bind(super.getViewModels().getAddBookViewModel().languageProperty());
     type.itemsProperty().bind(super.getViewModels().getAddBookViewModel().typeProperty());
-    error.textProperty().bind(super.getViewModels().getSignUpViewModel().errorProperty());
+    error.textProperty().bind(super.getViewModels().getAddBookViewModel().errorProperty());
   }
 
   public void openMainView(ActionEvent event)
@@ -40,13 +40,17 @@ public class AddBookViewController extends ViewController
     String bookType = type.getSelectionModel().getSelectedItem().toString();
     String bookLanguage = language.getSelectionModel().getSelectedItem().toString();
     getViewModels().getAddBookViewModel().addBook(bookType,bookLanguage);
-    error.setText("The book have successfully been added to the system");
-    Thread.sleep(5000);
-    error.setText("");
   }
 
   public void openMainViewCancel()
   {
     super.getHandler().openView("MainView");
+  }
+
+  public void reset()
+  {
+    super.getViewModels().getAddBookViewModel().reset();
+    type.getSelectionModel().clearSelection();
+    language.getSelectionModel().clearSelection();
   }
 }

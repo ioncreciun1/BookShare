@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Model;
 
+import javax.print.DocFlavor;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
@@ -19,6 +20,7 @@ public class AddBookViewModel
   private StringProperty description;
   private ObjectProperty<ObservableList> language;
   private ObjectProperty<ObservableList> type;
+  private StringProperty error;
   public AddBookViewModel(Model model)
   {
     ObservableList<String> languageList = FXCollections.observableArrayList();
@@ -32,6 +34,7 @@ public class AddBookViewModel
     this.author = new SimpleStringProperty("");
     this.description = new SimpleStringProperty("");
     language.setValue(languageList);
+    this.error = new SimpleStringProperty("");
     type.setValue(typeList);
   }
 
@@ -60,13 +63,23 @@ public class AddBookViewModel
     return description;
   }
 
+  public StringProperty errorProperty()
+  {
+    return error;
+  }
+
   public void addBook(String type,String language)
-      throws RemoteException, SQLException
+      throws RemoteException, SQLException, InterruptedException
   {
     model.addBook(title.get(),author.get(),description.get(),language,type);
-
+    error.set("The book have successfully added in the system");
+    Thread.sleep(3000);
+    error.set("");
+    reset();
   }
   public void reset()
   {
+    title.set("");
+    author.set("");
   }
 }

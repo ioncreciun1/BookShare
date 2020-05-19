@@ -15,7 +15,7 @@ public class UserDAOImplementation implements UserDAO
 
   private Connection getConnection() throws SQLException
   {
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "admin");
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
 
   }
 

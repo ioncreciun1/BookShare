@@ -28,7 +28,7 @@ public class BookDAOImplementation implements BookDAO
   {
     return DriverManager
         .getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres",
-            "admin");
+            "1234");
   }
 
   @Override public void add(String Username, String Title, String Author,
