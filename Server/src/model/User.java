@@ -25,7 +25,6 @@ public class User implements Serializable
     this.lastName = lastName;
     this.city = city;
     this.contactInfo = contactInfo;
-    this.upVotes = upVotes;
   }
 
   public String getUserName()

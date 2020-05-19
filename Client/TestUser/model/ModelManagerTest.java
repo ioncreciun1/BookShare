@@ -41,12 +41,4 @@ class ModelManagerTest
     assertEquals(false, model.checkPassword("12345678"));
     assertEquals(true, model.checkPassword("1234"));
   }
-
-  @Test void verifyLog() throws IOException
-  {
-  }
-
-  @Test void getUsers()
-  {
-  }
 }

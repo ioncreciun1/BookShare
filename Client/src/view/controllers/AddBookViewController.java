@@ -35,12 +35,14 @@ public class AddBookViewController extends ViewController
   }
 
   public void openMainView(ActionEvent event)
-      throws RemoteException, SQLException
+      throws RemoteException, SQLException, InterruptedException
   {
     String bookType = type.getSelectionModel().getSelectedItem().toString();
     String bookLanguage = language.getSelectionModel().getSelectedItem().toString();
     getViewModels().getAddBookViewModel().addBook(bookType,bookLanguage);
-
+    error.setText("The book have successfully been added to the system");
+    Thread.sleep(5000);
+    error.setText("");
   }
 
   public void openMainViewCancel()

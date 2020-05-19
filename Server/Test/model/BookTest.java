@@ -52,12 +52,4 @@ class BookTest
   {
     assertEquals("The best book ever", book.getDescription());
   }
-
-  @Test void setState()
-  {
-  }
-
-  @Test void available()
-  {
-  }
 }
