@@ -1,5 +1,6 @@
 package mediator;
 
+import model.Book;
 import model.Model;
 import model.User;
 import utility.observer.event.ObserverEvent;
@@ -77,10 +78,10 @@ public class ServerModel implements RemoteModel, LocalListener<String,String>
     model.registerUser(Username,passWord,eMail,firstName,lastName,city,contactInfo);
   }
 
-  @Override public void getRegistrant(String username)
+  @Override public User getUser(String username)
       throws RemoteException, SQLException
   {
-    model.getRegistrant(username);
+    return model.getUser(username);
   }
 
   @Override public boolean checkUser(User registrant)
@@ -94,6 +95,12 @@ public class ServerModel implements RemoteModel, LocalListener<String,String>
       throws RemoteException, SQLException
   {
     return model.check_Email(registrant);
+  }
+
+  @Override public void addBook(Book book) throws RemoteException, SQLException
+  {
+    System.out.println("Server");
+    model.addBook(book);
   }
 
   @Override public void propertyChange(ObserverEvent<String, String> event)

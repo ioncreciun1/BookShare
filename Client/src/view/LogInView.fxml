@@ -14,8 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="605.0" minHeight="-Infinity" minWidth="605.0" prefHeight="437.0" prefWidth="605.0"
-            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LogInViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="605.0" minHeight="-Infinity" minWidth="605.0" prefHeight="437.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.LogInViewController">
    <children>
       <VBox prefHeight="437.0" prefWidth="600.0">
          <children>
@@ -28,9 +27,7 @@
                   </Text>
                   <HBox alignment="CENTER_RIGHT" prefHeight="59.0" prefWidth="401.0">
                      <children>
-                        <Button onAction="#openSignUpView" mnemonicParsing="false"
-                                style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: rgb(231,231,231); -fx-font-size: 1.5em;"
-                                text="Sign Up">
+                        <Button mnemonicParsing="false" onAction="#openSignUpView" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: rgb(231,231,231); -fx-font-size: 1.5em;" text="Sign Up">
                            <font>
                               <Font size="9.0" />
                            </font>
@@ -43,7 +40,7 @@
                <children>
                   <ImageView fitHeight="143.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@opa.png" />
+                        <Image url="@images/opa.png" />
                      </image>
                   </ImageView>
                </children>
@@ -55,7 +52,7 @@
                <children>
                   <ImageView fitHeight="20.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@iconfinder_user_male2_172626.png" />
+                        <Image url="@images/iconfinder_user_male2_172626.png" />
                      </image>
                   </ImageView>
                   <TextField fx:id="username" prefHeight="20.0" prefWidth="200.0" promptText="Username" style="-fx-background-color: transparent; -fx-prompt-text-fill: rgb(231,231,231); -fx-border-color: rgb(231,231,231); -fx-border-width: 0px 0px 2px 0px;" />
@@ -65,7 +62,7 @@
                <children>
                   <ImageView fitHeight="20.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@iconfinder_icons_password_1564520.png" />
+                        <Image url="@images/iconfinder_icons_password_1564520.png" />
                      </image>
                   </ImageView>
                   <PasswordField fx:id="password" prefHeight="20.0" prefWidth="200.0" promptText="Password" style="-fx-background-color: transparent; -fx-prompt-text-fill: rgb(231,231,231); -fx-border-color: rgb(231,231,231); -fx-border-width: 0px 0px 2px 0px;" />
@@ -82,7 +79,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="63.0" prefWidth="600.0" stylesheets="@huine.css">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: rgba(148,148,148,1); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 0;" text="LOGIN">
+                  <Button mnemonicParsing="false" onAction="#openMainView" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: rgba(148,148,148,1); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 0;" text="LOGIN">
                      <font>
                         <Font size="20.0" />
                      </font>
