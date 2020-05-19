@@ -1,9 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class User implements Serializable
 {
@@ -14,10 +11,9 @@ public class User implements Serializable
   private String lastName = "";
   private String city = "";
   private String contactInfo = "";
-  private int upVotes = 0;
 
   public User(String userName, String passWord, String eMail, String firstName,
-      String lastName, String city, String contactInfo, int upVotes){
+      String lastName, String city, String contactInfo){
     this.userName = userName;
     this.passWord = passWord;
     this.eMail = eMail;
@@ -25,14 +21,12 @@ public class User implements Serializable
     this.lastName = lastName;
     this.city = city;
     this.contactInfo = contactInfo;
-    this.upVotes = upVotes;
   }
 
   public String getUserName()
   {
     return userName;
   }
-
 
   public String getPassWord() {
     return passWord;
@@ -58,16 +52,12 @@ public class User implements Serializable
     return contactInfo;
   }
 
-  public int getUpVotes() {
-    return upVotes;
-  }
-
   public void setPassWord(String passWord)
   {
     this.passWord = passWord;
   }
 
-  public void seteMail(String eMail)
+  public void setMail(String eMail)
   {
     this.eMail = eMail;
   }
@@ -90,10 +80,5 @@ public class User implements Serializable
   public void setContactInfo(String contactInfo)
   {
     this.contactInfo = contactInfo;
-  }
-
-  public void setUpVotes(int upVotes)
-  {
-    this.upVotes = upVotes;
   }
 }
