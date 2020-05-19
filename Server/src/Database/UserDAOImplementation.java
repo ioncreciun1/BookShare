@@ -15,7 +15,7 @@ public class UserDAOImplementation implements UserDAO
 
   private Connection getConnection() throws SQLException
   {
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "admin");
 
   }
 
@@ -48,6 +48,7 @@ public class UserDAOImplementation implements UserDAO
   public boolean check_User(User user) throws SQLException
   {
     try(Connection connection = getConnection()/*auto closes the connection*/){
+      System.out.println("I am here");
       Statement stm = connection.createStatement();
       ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"User\";");
       while(rs.next())
@@ -73,8 +74,8 @@ public class UserDAOImplementation implements UserDAO
   {try
       (Connection connection = getConnection()/*auto closes the connection*/)
   {
-    User registrant = new User(Username,passWord,eMail,firstName,lastName,city,contactInfo,upVotes);
-    PreparedStatement statement = connection.prepareStatement("INSERT INTO \"SEP2\".\"User\" (Username, Pass, EMAIL, fName, lName, City, ContactInfo, Upvotes) VALUES (?,?,?,?,?,?,?,?);");
+    User registrant = new User(Username,passWord,eMail,firstName,lastName,city,contactInfo);
+    PreparedStatement statement = connection.prepareStatement("INSERT INTO \"SEP2\".\"User\" (Username, Pass, EMAIL, fName, lName, City, ContactInfo) VALUES (?,?,?,?,?,?,?);");
     /*lines 22-30 adds the registrant to the database*/
     statement.setString(1, registrant.getUserName());
     statement.setString(2, registrant.getPassWord());
@@ -83,7 +84,6 @@ public class UserDAOImplementation implements UserDAO
     statement.setString(5, registrant.getLastName());
     statement.setString(6, registrant.getCity());
     statement.setString(7, registrant.getContactInfo());
-    statement.setInt(8,registrant.getUpVotes());
     statement.executeUpdate();
   }
   catch ( Exception e ) {
@@ -125,7 +125,7 @@ public class UserDAOImplementation implements UserDAO
       if(rs.next())
       {
         user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-            rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8));
+            rs.getString(5), rs.getString(6), rs.getString(7));
         System.out.println("Username added to database!");
         rs.close();
       }
@@ -149,7 +149,7 @@ public class UserDAOImplementation implements UserDAO
       ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"User\";");
       while(rs.next())
       {
-        User registrant1 = new User(rs.getString("Username"),rs.getString("Pass"),rs.getString("EMAIL"),rs.getString("fName"),rs.getString("lName"),rs.getString("City"),rs.getString("ContactInfo"),rs.getInt("Upvotes"));
+        User registrant1 = new User(rs.getString("Username"),rs.getString("Pass"),rs.getString("EMAIL"),rs.getString("fName"),rs.getString("lName"),rs.getString("City"),rs.getString("ContactInfo"));
         registrants.add(registrant1);
       }
       System.out.println("Username added to database!");
