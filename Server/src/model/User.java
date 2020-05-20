@@ -14,8 +14,17 @@ public class User implements Serializable
 
 
 /*Class constructor for creates a user using the following parameters
-* @param String userName, @param String passWord, @param String eMail, @param String firstName,
-* @param String lastName, @param String city and optional @param String contactInfo*/
+* @param String userName
+*       the users username used to identify the user
+* @param String passWord
+*       users password for login
+* @param String eMail
+*   users email for registration
+* @param String firstName
+*         users first name
+* @param String lastName
+* @param String city
+* optional @param String contactInfo*/
   public User(String userName, String passWord, String eMail, String firstName,
       String lastName, String city, String contactInfo) {
     this.userName = userName;

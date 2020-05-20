@@ -1,10 +1,12 @@
-package view;
+package view.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import view.ViewController;
+import view.ViewHandler;
 import viewModel.ViewModelFactory;
 
 import java.io.IOException;
@@ -35,10 +37,9 @@ public class LogInViewController extends ViewController
 
   public void openMainView() throws IOException
   {
-if(super.getViewModels().getLogInViewModel().verifyUser())
-{
-
-  super.getHandler().openView("AddBookView");
-}
+    if(super.getViewModels().getLogInViewModel().verifyUser())
+    {
+      super.getHandler().openView("MainView");
+    }
   }
 }

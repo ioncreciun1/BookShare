@@ -1,7 +1,6 @@
 package viewModel;
 
 import model.Model;
-import view.AddBookViewController;
 
 public class ViewModelFactory
 {

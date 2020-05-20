@@ -1,9 +1,11 @@
-package view;
+package view.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
+import view.ViewController;
+import view.ViewHandler;
 import viewModel.ViewModelFactory;
 
 import java.rmi.RemoteException;
@@ -71,6 +73,11 @@ public class SignUpViewController extends ViewController
   public void checkPassword()
   {
     super.getViewModels().getSignUpViewModel().checkPassword();
+  }
+
+  public void verifyPassword()
+  {
+    super.getViewModels().getSignUpViewModel().verifyPasswords();
   }
 
   public void openLogInView()

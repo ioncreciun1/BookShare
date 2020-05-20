@@ -119,6 +119,7 @@ public class SignUpViewModel
     else {error.set("");}
     return model.checkPassword(password.get());
   }
+
   public boolean verifyPasswords()
   {
     if(this.password.get().equals(confirmPassword.get()))
@@ -168,7 +169,7 @@ public class SignUpViewModel
   }
   public boolean checkUser(String city) throws RemoteException
   {
-    boolean check =  model.checkUser(new User(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get(),0));
+    boolean check =  model.checkUser(new User(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get()));
     if(check)
     {
       error.set("This username is already in the system");
@@ -177,7 +178,7 @@ public class SignUpViewModel
   }
   public boolean checkEmail(String city) throws RemoteException
   {
-    boolean check =  model.checkEmail(new User(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get(),0));
+    boolean check =  model.checkEmail(new User(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get()));
     if(check)
     {
       error.set("This Email is already in the system");
