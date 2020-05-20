@@ -23,10 +23,11 @@ public class AddBookViewModel
   private StringProperty error;
   public AddBookViewModel(Model model)
   {
+
     ObservableList<String> languageList = FXCollections.observableArrayList();
     ObservableList<String> typeList = FXCollections.observableArrayList();
-    languageList.addAll("Danish","English","German","Romanian");
-    typeList.addAll("Drama","Action","Fiction","Adventure");
+    languageList.addAll("Add Language","Danish","English","German","Romanian");
+    typeList.addAll("Add Category","Drama","Action","Fiction","Adventure");
     this.model = model;
     this.language = new SimpleObjectProperty<>();
     this.type = new SimpleObjectProperty<>();
@@ -71,11 +72,36 @@ public class AddBookViewModel
   public void addBook(String type,String language)
       throws RemoteException, SQLException, InterruptedException
   {
+
+
     model.addBook(title.get(),author.get(),description.get(),language,type);
     error.set("The book have successfully added in the system");
-    Thread.sleep(3000);
-    error.set("");
-    reset();
+  }
+  public boolean checkBook(String type,String language)
+  {
+    if(title.get().length() == 0)
+    {
+      error.set("Title field can't be Empty. Please insert the Title");
+      return false;
+    }
+    else if(author.get().length() == 0)
+    {
+      error.set("Author field can't be Empty. Please insert the Author");
+      return false;
+    }
+
+    else if(language.equals("Add Language"))
+    {
+      error.set("Select Language from a list");
+      return  false;
+    }
+    else if(type.equals("Add Category"))
+    {
+      error.set("Select Category from a list");
+      return  false;
+    }
+      return true;
+
   }
   public void reset()
   {
