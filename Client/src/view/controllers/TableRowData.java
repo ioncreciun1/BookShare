@@ -10,6 +10,7 @@ public class TableRowData
   private StringProperty authorName;
   private StringProperty bookLanguage;
   private StringProperty bookCategory;
+  private StringProperty username;
 
   public TableRowData(Book book)
   {

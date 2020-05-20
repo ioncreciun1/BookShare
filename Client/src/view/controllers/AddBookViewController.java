@@ -32,14 +32,23 @@ public class AddBookViewController extends ViewController
     language.itemsProperty().bind(super.getViewModels().getAddBookViewModel().languageProperty());
     type.itemsProperty().bind(super.getViewModels().getAddBookViewModel().typeProperty());
     error.textProperty().bind(super.getViewModels().getAddBookViewModel().errorProperty());
+    reset();
+
   }
 
   public void openMainView(ActionEvent event)
       throws RemoteException, SQLException, InterruptedException
   {
-    String bookType = type.getSelectionModel().getSelectedItem().toString();
-    String bookLanguage = language.getSelectionModel().getSelectedItem().toString();
-    getViewModels().getAddBookViewModel().addBook(bookType,bookLanguage);
+
+      String bookType = type.getSelectionModel().getSelectedItem().toString() + "";
+      String bookLanguage = language.getSelectionModel().getSelectedItem().toString()+"";
+      if (super.getViewModels().getAddBookViewModel()
+          .checkBook(bookType, bookLanguage))
+      {
+        getViewModels().getAddBookViewModel().addBook(bookType, bookLanguage);
+        reset();
+      }
+
   }
 
   public void openMainViewCancel()
@@ -50,7 +59,7 @@ public class AddBookViewController extends ViewController
   public void reset()
   {
     super.getViewModels().getAddBookViewModel().reset();
-    type.getSelectionModel().clearSelection();
-    language.getSelectionModel().clearSelection();
+    language.getSelectionModel().select(0);
+    type.getSelectionModel().select(0);
   }
 }

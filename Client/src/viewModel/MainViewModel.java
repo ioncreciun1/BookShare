@@ -6,12 +6,12 @@ import javafx.collections.ObservableList;
 import model.Book;
 import model.Model;
 import view.controllers.TableRowData;
+import utility.observer.event.ObserverEvent;
+import utility.observer.listener.LocalListener;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
-public class MainViewModel implements PropertyChangeListener
+public class MainViewModel implements LocalListener<String,Book>
 {
   private Model model;
   private ObservableList<TableRowData> table;
@@ -20,6 +20,7 @@ public class MainViewModel implements PropertyChangeListener
   {
     this.model = model;
     table = createList();
+    this.model.addListener(this,"book");
   }
 
   private synchronized ObservableList<TableRowData> createList()
@@ -43,19 +44,16 @@ public class MainViewModel implements PropertyChangeListener
     return table;
   }
 
-  @Override public void propertyChange(PropertyChangeEvent evt)
-  {
-    Platform.runLater(()->{
-      switch (evt.getPropertyName()){
-        case "Book" :
-          addToTheList((Book)evt.getNewValue()); break;
-        default: break;
-
-      }
-    });
-  }
   private void addToTheList(Book book)
   {
     table.add(new TableRowData(book));
+  }
+
+  @Override public void propertyChange(ObserverEvent<String, Book> event)
+  {
+Platform.runLater(()->{
+  System.out.println("This is happening");
+  addToTheList(event.getValue2());
+});
   }
 }

@@ -4,7 +4,7 @@ import utility.observer.subject.LocalSubject;
 
 import java.sql.SQLException;
 
-public interface Model extends LocalSubject<String,String>
+public interface Model extends LocalSubject<String,Book>
 {
   boolean checkUser(User registrant) throws SQLException;
   public boolean check_Email(User registrant) throws SQLException;

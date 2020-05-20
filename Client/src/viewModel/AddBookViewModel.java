@@ -21,7 +21,6 @@ public class AddBookViewModel
   private ObjectProperty<ObservableList> language;
   private ObjectProperty<ObservableList> type;
   private StringProperty error;
-
   public AddBookViewModel(Model model)
   {
     ObservableList<String> languageList = FXCollections.observableArrayList();
@@ -76,9 +75,32 @@ public class AddBookViewModel
   {
     model.addBook(title.get(),author.get(),description.get(),language,type);
     error.set("The book have successfully added in the system");
-    Thread.sleep(3000);
-    error.set("");
-    reset();
+  }
+  public boolean checkBook(String type,String language)
+  {
+    if(title.get().length() == 0)
+    {
+      error.set("Title field can't be Empty. Please insert the Title");
+      return false;
+    }
+    else if(author.get().length() == 0)
+    {
+      error.set("Author field can't be Empty. Please insert the Author");
+      return false;
+    }
+
+    else if(language.equals("Click to choose Language"))
+    {
+      error.set("Select Language from a list");
+      return  false;
+    }
+    else if(type.equals("Click to choose Category"))
+    {
+      error.set("Select Category from a list");
+      return  false;
+    }
+      return true;
+
   }
   public void reset()
   {
