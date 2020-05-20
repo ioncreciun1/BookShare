@@ -36,6 +36,6 @@ public class AddBookViewController extends ViewController
     String bookType = type.getSelectionModel().getSelectedItem().toString();
     String bookLanguage = language.getSelectionModel().getSelectedItem().toString();
 getViewModels().getAddBookViewModel().addBook(bookType,bookLanguage);
-    boolean check = super.getViewModels().getAddBookViewModel().validate(bookLanguage,bookType);
+    boolean check = super.getViewModels().getAddBookViewModel().validate();
   }
 }
