@@ -41,6 +41,7 @@ public class MainViewController extends ViewController
     categoryColumn.setCellValueFactory(
         cellData -> cellData.getValue().bookCategory()
     );
+    bookListTable.setItems(super.getViewModels().getMainViewModel().getTable());
   }
 
   public void openAddBookView()

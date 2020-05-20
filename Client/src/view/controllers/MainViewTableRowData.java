@@ -10,6 +10,7 @@ public class MainViewTableRowData
   private StringProperty authorName;
   private StringProperty bookLanguage;
   private StringProperty bookCategory;
+  private StringProperty username;
 
   public MainViewTableRowData(Book book)
   {
