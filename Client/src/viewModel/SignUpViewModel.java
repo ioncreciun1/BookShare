@@ -28,7 +28,8 @@ public class SignUpViewModel
   public SignUpViewModel(Model model)
   {
     ObservableList<String> list = FXCollections.observableArrayList();
-    list.addAll("Horsens","Aarhus","Alborg","Copenhagen","Odense","Veijle");
+    list.addAll("Horsens","Aarhus","Alborg","Copenhagen","Odense","Vejle", "Esbjerg", "Randers", "Kolding", "Roskilde",
+        "Herning", "Silkeborg", "Fredericia", "Viborg", "Holstebro", "Køge", "Helsingør");
     this.model = model;
     this.username = new SimpleStringProperty("");
     this.firstName = new SimpleStringProperty("");
