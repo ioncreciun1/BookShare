@@ -70,11 +70,6 @@ public class SearchViewModel
     return table;
   }
 
-  private void addToTheList(Book book)
-  {
-    table.add(new TableRowData(book));
-  }
-
   public ObjectProperty<ObservableList> languageProperty()
   {
     return language;
@@ -93,11 +88,6 @@ public class SearchViewModel
   public StringProperty titleProperty()
   {
     return title;
-  }
-
-  public StringProperty descriptionProperty()
-  {
-    return description;
   }
 
   public StringProperty errorProperty()

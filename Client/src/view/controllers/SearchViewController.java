@@ -24,25 +24,18 @@ public class SearchViewController extends ViewController
   public SearchViewController()
   {
     super();
-   // super.getViewModels().getSearchViewModel().reset();
-    title.textProperty().bindBidirectional(super.getViewModels().getSearchViewModel().titleProperty());
-    author.textProperty().bindBidirectional(super.getViewModels().getSearchViewModel().authorProperty());
-    language.itemsProperty().bind(super.getViewModels().getSearchViewModel().languageProperty());
-    type.itemsProperty().bind(super.getViewModels().getSearchViewModel().typeProperty());
-    error.textProperty().bind(super.getViewModels().getSearchViewModel().errorProperty());
-  }
-
-  public void reset()
-  {
-    super.getViewModels().getAddBookViewModel().reset();
-    type.getSelectionModel().clearSelection();
-    language.getSelectionModel().clearSelection();
   }
 
   public void init(
       ViewHandler viewHandler, ViewModelFactory viewModels, Region root)
   {
     super.init(viewHandler, viewModels, root);
+    super.getViewModels().getSearchViewModel().reset();
+    title.textProperty().bindBidirectional(super.getViewModels().getSearchViewModel().titleProperty());
+    author.textProperty().bindBidirectional(super.getViewModels().getSearchViewModel().authorProperty());
+    language.itemsProperty().bind(super.getViewModels().getSearchViewModel().languageProperty());
+    type.itemsProperty().bind(super.getViewModels().getSearchViewModel().typeProperty());
+    error.textProperty().bind(super.getViewModels().getSearchViewModel().errorProperty());
     //    orderColumn.setCellValueFactory(
     //        cellData -> cellData.getValue().getOrderNumber()
     //    );
@@ -59,6 +52,13 @@ public class SearchViewController extends ViewController
         cellData -> cellData.getValue().bookCategory()
     );
     this.bookListTable.setItems(super.getViewModels().getSearchViewModel().getTable());
+  }
+
+  public void reset()
+  {
+    super.getViewModels().getSearchViewModel().reset();
+    type.getSelectionModel().clearSelection();
+    language.getSelectionModel().clearSelection();
   }
 
   public void openAddBookView()
