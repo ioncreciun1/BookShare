@@ -43,11 +43,11 @@ public class ViewHandler
       break;
       case "AddBookView":
         primaryStage.setHeight(580);
-        primaryStage.setWidth(610);
+        primaryStage.setWidth(595);
       break;
       case "MainView":
-        primaryStage.setHeight(600);
-        primaryStage.setWidth(500);
+        primaryStage.setHeight(620);
+        primaryStage.setWidth(470);
       break;
     }
 
