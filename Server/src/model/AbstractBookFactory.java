@@ -9,14 +9,14 @@ public class AbstractBookFactory
   public static AbstractBook getBookFly(String title,String author)
   {
     AbstractBook book = bookMap.get(title);
-    if(book == null)
+    if(book == null) /*lazy instantiation*/
     {
-      synchronized (bookMap)
+      synchronized (bookMap)/*thread safe*/
       {
         book = bookMap.get(title);
         if (book == null)
         {
-          book = new BookFly(title, author);
+          book = new BookFly(title, author);/*creates an instance of a book and puts it into the hashmap*/
           bookMap.put(title, book);
         }
       }
