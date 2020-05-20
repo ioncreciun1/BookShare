@@ -26,8 +26,8 @@ public class AddBookViewModel
 
     ObservableList<String> languageList = FXCollections.observableArrayList();
     ObservableList<String> typeList = FXCollections.observableArrayList();
-    languageList.addAll("Add Language","Danish","English","German","Romanian");
-    typeList.addAll("Add Category","Drama","Action","Fiction","Adventure");
+    languageList.addAll("Click to choose Language","Danish","English","German","Romanian");
+    typeList.addAll("Click to choose Category","Drama","Action","Fiction","Adventure");
     this.model = model;
     this.language = new SimpleObjectProperty<>();
     this.type = new SimpleObjectProperty<>();
@@ -90,12 +90,12 @@ public class AddBookViewModel
       return false;
     }
 
-    else if(language.equals("Add Language"))
+    else if(language.equals("Click to choose Language"))
     {
       error.set("Select Language from a list");
       return  false;
     }
-    else if(type.equals("Add Category"))
+    else if(type.equals("Click to choose Category"))
     {
       error.set("Select Category from a list");
       return  false;
