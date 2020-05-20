@@ -6,15 +6,16 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import model.Book;
 import model.Model;
+import view.controllers.TableRowData;
 
-import javax.print.DocFlavor;
-import java.rmi.RemoteException;
-import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class AddBookViewModel
+public class SearchViewModel
 {
   private Model model;
+  private ObservableList<TableRowData> table;
   private StringProperty title;
   private StringProperty author;
   private StringProperty description;
@@ -22,15 +23,16 @@ public class AddBookViewModel
   private ObjectProperty<ObservableList> type;
   private StringProperty error;
 
-  public AddBookViewModel(Model model)
+  public SearchViewModel(Model model)
   {
+    this.model = model;
+    table = createList();
     ObservableList<String> languageList = FXCollections.observableArrayList();
     ObservableList<String> typeList = FXCollections.observableArrayList();
     languageList.addAll("Danish","English","German","Romanian","Chinese","Spanish", "Arabic", "Russian",
         "Portuguese", "Japanese", "French", "Turkish", "Italian", "Polish","Ukrainian", "Other");
     typeList.addAll("Drama","Action","Literary Fiction","Adventure","Classics", "Comic Book","Detective","Fantasy",
         "Historical", "Horror", "Romance", "Science Fiction", "Cookbooks", "Essays","Memoir", "Poetry", "Other");
-    this.model = model;
     this.language = new SimpleObjectProperty<>();
     this.type = new SimpleObjectProperty<>();
     this.title = new SimpleStringProperty("");
@@ -39,6 +41,38 @@ public class AddBookViewModel
     language.setValue(languageList);
     this.error = new SimpleStringProperty("");
     type.setValue(typeList);
+  }
+
+  public void reset()
+  {
+    title.set("");
+    author.set("");
+  }
+
+  private synchronized ObservableList<TableRowData> createList()
+  {
+    ObservableList<TableRowData> obsList = FXCollections.observableArrayList();
+
+    ArrayList<Book> books = new ArrayList<>();
+    for (int i = 0; i < 99; i++) // Something should be instead of 99
+    {
+      //temp.add(); // should be a book i guess
+    }
+    for (int i = 0; i < books.size(); i++)
+    {
+      obsList.add(new TableRowData(books.get(i)));
+    }
+    return obsList;
+  }
+
+  public ObservableList<TableRowData> getTable()
+  {
+    return table;
+  }
+
+  private void addToTheList(Book book)
+  {
+    table.add(new TableRowData(book));
   }
 
   public ObjectProperty<ObservableList> languageProperty()
@@ -71,18 +105,4 @@ public class AddBookViewModel
     return error;
   }
 
-  public void addBook(String type,String language)
-      throws RemoteException, SQLException, InterruptedException
-  {
-    model.addBook(title.get(),author.get(),description.get(),language,type);
-    error.set("The book have successfully added in the system");
-    Thread.sleep(3000);
-    error.set("");
-    reset();
-  }
-  public void reset()
-  {
-    title.set("");
-    author.set("");
-  }
 }

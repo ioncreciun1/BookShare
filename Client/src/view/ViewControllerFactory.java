@@ -2,10 +2,7 @@ package view;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Region;
-import view.controllers.AddBookViewController;
-import view.controllers.LogInViewController;
-import view.controllers.MainViewController;
-import view.controllers.SignUpViewController;
+import view.controllers.*;
 import viewModel.ViewModelFactory;
 
 import java.util.HashMap;
@@ -56,6 +53,7 @@ public class ViewControllerFactory
       case "SignUpView": return new SignUpViewController();
       case "AddBookView": return  new AddBookViewController();
       case "MainView": return new MainViewController();
+      case "SearchView": return new SearchViewController();
       default: throw new IllegalArgumentException("No such id for viw controller");
     }
   }

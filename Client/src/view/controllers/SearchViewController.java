@@ -1,14 +1,13 @@
 package view.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import view.ViewController;
 import view.ViewHandler;
 import viewModel.ViewModelFactory;
 
-public class MainViewController extends ViewController
+public class SearchViewController extends ViewController
 {
   @FXML private TableView<TableRowData> bookListTable;
   @FXML private TableColumn<TableRowData,Integer> orderColumn;
@@ -16,19 +15,37 @@ public class MainViewController extends ViewController
   @FXML private TableColumn<TableRowData,String> authorColumn;
   @FXML private TableColumn<TableRowData,String> languageColumn;
   @FXML private TableColumn<TableRowData,String> categoryColumn;
+  public TextField title;
+  public TextField author;
+  public ComboBox language;
+  public ComboBox type;
+  public Label error;
 
-  public MainViewController()
+  public SearchViewController()
   {
     super();
+   // super.getViewModels().getSearchViewModel().reset();
+    title.textProperty().bindBidirectional(super.getViewModels().getSearchViewModel().titleProperty());
+    author.textProperty().bindBidirectional(super.getViewModels().getSearchViewModel().authorProperty());
+    language.itemsProperty().bind(super.getViewModels().getSearchViewModel().languageProperty());
+    type.itemsProperty().bind(super.getViewModels().getSearchViewModel().typeProperty());
+    error.textProperty().bind(super.getViewModels().getSearchViewModel().errorProperty());
+  }
+
+  public void reset()
+  {
+    super.getViewModels().getAddBookViewModel().reset();
+    type.getSelectionModel().clearSelection();
+    language.getSelectionModel().clearSelection();
   }
 
   public void init(
       ViewHandler viewHandler, ViewModelFactory viewModels, Region root)
   {
     super.init(viewHandler, viewModels, root);
-//    orderColumn.setCellValueFactory(
-//        cellData -> cellData.getValue().getOrderNumber()
-//    );
+    //    orderColumn.setCellValueFactory(
+    //        cellData -> cellData.getValue().getOrderNumber()
+    //    );
     titleColumn.setCellValueFactory(
         cellData -> cellData.getValue().getBookTitle()
     );
@@ -41,17 +58,12 @@ public class MainViewController extends ViewController
     categoryColumn.setCellValueFactory(
         cellData -> cellData.getValue().bookCategory()
     );
-    this.bookListTable.setItems(super.getViewModels().getMainViewModel().getTable());
+    this.bookListTable.setItems(super.getViewModels().getSearchViewModel().getTable());
   }
 
   public void openAddBookView()
   {
     super.getHandler().openView("AddBookView");
-  }
-
-  public void openSearchView()
-  {
-    super.getHandler().openView("SearchView");
   }
 
   public void openMainView()

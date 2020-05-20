@@ -3,7 +3,7 @@ package view.controllers;
 import javafx.beans.property.*;
 import model.Book;
 
-public class MainViewTableRowData
+public class TableRowData
 {
  // private IntegerProperty orderNumber;
   private StringProperty bookTitle;
@@ -11,7 +11,7 @@ public class MainViewTableRowData
   private StringProperty bookLanguage;
   private StringProperty bookCategory;
 
-  public MainViewTableRowData(Book book)
+  public TableRowData(Book book)
   {
     //this.orderNumber = new SimpleIntegerProperty(); // Should be getId ???
     this.bookTitle = new SimpleStringProperty(book.getTitle());
