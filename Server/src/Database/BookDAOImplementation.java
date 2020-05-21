@@ -13,7 +13,6 @@ public class BookDAOImplementation implements BookDAO
 
   /*Class constructor registers the given driver with the DriverManager
    * @throws an error JDBC encounters an error during an interaction with a data source,  @throws an instance of SQLException
-   *
    * */
   public BookDAOImplementation() throws SQLException
   {
@@ -39,7 +38,7 @@ public class BookDAOImplementation implements BookDAO
   {
     return DriverManager
         .getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres",
-            "admin");
+            "1234");
   }
 /* @throws if a database access error occurs or the parameter is  null
     * @param User if a database error occurs or the user is null */
@@ -84,21 +83,21 @@ public class BookDAOImplementation implements BookDAO
 
   @Override
   public List<Book> readByFilter(String filter,String value) throws SQLException {
-    List<Book> books = new ArrayList<>();
-    try(Connection connection = getConnection()) {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM Book WHERE "+filter+" = ? AND Available = true");
-      statement.setString(1, value);
-      ResultSet resultSet = statement.executeQuery();
-      while (resultSet.next()) {
-        String Username = resultSet.getString("Username");
-        String BookID = resultSet.getString("BookID");
-        String Title = resultSet.getString("Title");
-        String Author = resultSet.getString("Author");
-        String BookLanguage = resultSet.getString("BookLanguage");
-        String Description = resultSet.getString("Description");
-        String Category = resultSet.getString("Category");
-        books.add(new Book(Username,BookID,Title,Author,BookLanguage,Description,Category));
-      }
+        List<Book> books = new ArrayList<>();
+        try(Connection connection = getConnection()) {
+          PreparedStatement statement = connection.prepareStatement("SELECT * FROM Book WHERE "+filter+" = ? AND Available = true");
+          statement.setString(1, value);
+          ResultSet resultSet = statement.executeQuery();
+          while (resultSet.next()) {
+            String Username = resultSet.getString("Username");
+            String BookID = resultSet.getString("BookID");
+            String Title = resultSet.getString("Title");
+            String Author = resultSet.getString("Author");
+            String BookLanguage = resultSet.getString("BookLanguage");
+            String Description = resultSet.getString("Description");
+            String Category = resultSet.getString("Category");
+            books.add(new Book(Username,BookID,Title,Author,BookLanguage,Description,Category));
+          }
       return books;
     }
   }
@@ -141,7 +140,6 @@ public class BookDAOImplementation implements BookDAO
         String Description = resultSet.getString("Description");
         String Category = resultSet.getString("Category");
         books.add(new Book(Username,BookID,Title,Author,BookLanguage,Description,Category));
-
       }
       return books;
     }
@@ -151,14 +149,52 @@ public class BookDAOImplementation implements BookDAO
 
   }
 
-  // @Override
-
-
-//  }
-
- // @Override
   public void delete(Book book) throws SQLException {
 
+  }
+
+  public ArrayList<Book> readByTwoFilters(String filter, String value, String filter1, String value1) throws SQLException {
+    ArrayList<Book> books = new ArrayList<>();
+    try(Connection connection = getConnection()) {
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM Book WHERE "+filter+" = ? AND "+filter1+" = ? AND Available = true");
+      statement.setString(1, value);
+      statement.setString(2, value1);
+      ResultSet resultSet = statement.executeQuery();
+      while (resultSet.next()) {
+        String Username = resultSet.getString("Username");
+        String BookID = resultSet.getString("BookID");
+        String Title = resultSet.getString("Title");
+        String Author = resultSet.getString("Author");
+        String BookLanguage = resultSet.getString("BookLanguage");
+        String Description = resultSet.getString("Description");
+        String Category = resultSet.getString("Category");
+        books.add(new Book(Username,BookID,Title,Author,BookLanguage,Description,Category));
+      }
+      return books;
+    }
+  }
+
+  public ArrayList<Book> readByThreeFilters(String filter, String value, String filter1, String value1,
+      String filter2, String value2) throws SQLException {
+    ArrayList<Book> books = new ArrayList<>();
+    try(Connection connection = getConnection()) {
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM Book WHERE "+filter+" = ? AND "+filter1+" = ? AND "+filter2+" = ? AND Available = true");
+      statement.setString(1, value);
+      statement.setString(2, value1);
+      statement.setString(3, value2);
+      ResultSet resultSet = statement.executeQuery();
+      while (resultSet.next()) {
+        String Username = resultSet.getString("Username");
+        String BookID = resultSet.getString("BookID");
+        String Title = resultSet.getString("Title");
+        String Author = resultSet.getString("Author");
+        String BookLanguage = resultSet.getString("BookLanguage");
+        String Description = resultSet.getString("Description");
+        String Category = resultSet.getString("Category");
+        books.add(new Book(Username,BookID,Title,Author,BookLanguage,Description,Category));
+      }
+      return books;
+    }
   }
 }
 

@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="605.0" minHeight="-Infinity" minWidth="605.0" prefHeight="437.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.LogInViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="605.0" minHeight="-Infinity" minWidth="605.0" prefHeight="437.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.LogInViewController">
    <children>
       <VBox prefHeight="437.0" prefWidth="600.0">
          <children>
@@ -65,7 +65,7 @@
                         <Image url="@images/iconfinder_icons_password_1564520.png" />
                      </image>
                   </ImageView>
-                  <PasswordField fx:id="password" prefHeight="20.0" prefWidth="200.0" promptText="Password" style="-fx-background-color: transparent; -fx-prompt-text-fill: rgb(231,231,231); -fx-border-color: rgb(231,231,231); -fx-border-width: 0px 0px 2px 0px;" />
+                  <PasswordField fx:id="password" onAction="#openMainView" prefHeight="20.0" prefWidth="200.0" promptText="Password" style="-fx-background-color: transparent; -fx-prompt-text-fill: rgb(231,231,231); -fx-border-color: rgb(231,231,231); -fx-border-width: 0px 0px 2px 0px;" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="26.0" prefWidth="600.0">

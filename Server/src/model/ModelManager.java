@@ -14,6 +14,7 @@ public class ModelManager implements Model
   private UserDAO user;
   private BookDAO bookDAO;
   private PropertyChangeProxy<String,Book> property;
+
   public ModelManager() throws SQLException
   {
     this.user = new UserDAOImplementation();
@@ -47,8 +48,8 @@ public class ModelManager implements Model
 
   @Override public void addBook(Book book) throws SQLException
   {
-  bookDAO.add(book.getUsername(),book.getTitle(),book.getAuthor(),book.getLanguage(),book.getDescription(),book.getCategory());
-  property.firePropertyChange("book",null,book);
+    bookDAO.add(book.getUsername(),book.getTitle(),book.getAuthor(),book.getLanguage(),book.getDescription(),book.getCategory());
+    property.firePropertyChange("book",null,book);
   }
 
   @Override public boolean addListener(GeneralListener<String, Book> listener,
