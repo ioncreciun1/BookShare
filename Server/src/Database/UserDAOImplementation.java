@@ -6,26 +6,36 @@ import java.util.ArrayList;
 import java.util.List;
 public class UserDAOImplementation implements UserDAO
 {
-
+  /*Class constructor registers the given driver with the DriverManager
+  * @throws an error JDBC encounters an error during an interaction with a data source, it throws an instance of SQLException
+  * If the driver is currently registered, no action is taken. */
   public UserDAOImplementation( ) throws SQLException{
     DriverManager.registerDriver((new org.postgresql.Driver()));
 
   }
 
-
+  /*Driver Manager class attempts to establish a connection to the given database URL.
+  * @throws if a database access error occurs or the url is null*/
   private Connection getConnection() throws SQLException
   {
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "admin");
 
   }
-
+/*checks if the email entered in the sign up form is already in the database, return false and adds the user if it is not already in use
+*  * @throws if a database access error occurs or the user is null
+* @param User if a database error occurs or the user is null */
   public boolean check_Email(User user) throws SQLException
   {
     try (Connection connection = getConnection()/*auto closes the connection*/)
-    {
+    {/*A Statement is an interface that represents a SQL statement. You execute Statement objects, and they generate
+     ResultSet objects, which is a table of data representing a database result set.
+      You need a Connection object to create a Statement object.*/
       Statement stm = connection.createStatement();
+      /*To execute a query, call an execute method from Statement, executeQuery: Returns one ResultSet object.*/
       ResultSet rs = stm.executeQuery("SELECT * FROM \"SEP2\".\"User\";");
+     /*access the data in a ResultSet object through a cursor. Note that this cursor is not a database cursor. This cursor is a pointer that points to one row of data in the ResultSet object. Initially, the cursor is positioned before the first row. You call various methods defined in the ResultSet object to move the cursor.*/
       while (rs.next())
+        /*access the data in a ResultSet object through a cursor. Note that this cursor is not a database cursor. This cursor is a pointer that points to one row of data in the ResultSet object. Initially, the cursor is positioned before the first row. You call various methods defined in the ResultSet object to move the cursor.*/
       {
         String emailGet = rs.getString("Email");
         if (emailGet.equals(user.getEMail()))
@@ -44,11 +54,13 @@ public class UserDAOImplementation implements UserDAO
       return false;
     }
   }
-
+/*@param checks if the username entered on the sign up form is in use, returns false if it isn't and registers the user in the database*/
   public boolean check_User(User user) throws SQLException
-  {
+  {/*@param  you can use a try-with-resources statement to automatically close Connection, Statement, and ResultSet objects,
+  regardless of whether an SQLException has been thrown. An automatic resource statement consists of a try statement and one or more declared resources. */
     try(Connection connection = getConnection()/*auto closes the connection*/){
-      System.out.println("I am here");
+      /*The following statement is an try-with-resources statement, which declares one resource, stm,
+       that will be automatically closed when the try block terminates:*/
       Statement stm = connection.createStatement();
       ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"User\";");
       while(rs.next())
@@ -69,14 +81,15 @@ public class UserDAOImplementation implements UserDAO
     }
   }
 
-  public void add(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo,
-      int upVotes) throws Exception,SQLException
+  /*adds a new user to the database
+  * @param using the parameters from the registration form*/
+  public void add(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo) throws Exception,SQLException
   {try
       (Connection connection = getConnection()/*auto closes the connection*/)
   {
     User registrant = new User(Username,passWord,eMail,firstName,lastName,city,contactInfo);
     PreparedStatement statement = connection.prepareStatement("INSERT INTO \"SEP2\".\"User\" (Username, Pass, EMAIL, fName, lName, City, ContactInfo) VALUES (?,?,?,?,?,?,?);");
-    /*lines 22-30 adds the registrant to the database*/
+    /*lines 22-30 adds the registrant to the database using getters from User*/
     statement.setString(1, registrant.getUserName());
     statement.setString(2, registrant.getPassWord());
     statement.setString(3, registrant.getEMail());
@@ -95,8 +108,8 @@ public class UserDAOImplementation implements UserDAO
 
   }
 
-
-
+/*this method deletes a user with a matching
+* @param String user.getUserName() in the database*/
   @Override public void delete(User user) throws SQLException
   {
     try(Connection connection = getConnection()/*auto closes the connection*/){
@@ -111,7 +124,8 @@ public class UserDAOImplementation implements UserDAO
       System.exit(0);
     }
   }
-
+/* get method to get a User by @param String username
+@return User with matching username*/
   @Override public User getUser(String username) throws SQLException
   {
     User user = null;
@@ -136,11 +150,13 @@ public class UserDAOImplementation implements UserDAO
     catch (Exception e)
     {
       System.err.println(e.getClass().getName() + ": " + e.getMessage());
-      System.exit(0);
+      System.exit(0);/*why do we need this??*/
     }
     return user;
   }
-
+/*creates a list of users registered in the database
+* @throws an exception if there is a database error
+* @returns list of users*/
   @Override public List<User> getUsers() throws SQLException
   {
     List<User> registrants = new ArrayList<>();
@@ -156,11 +172,11 @@ public class UserDAOImplementation implements UserDAO
     }
     catch ( Exception e ) {
       System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-      System.exit(0);
+      System.exit(0);/*why do we need this??*/
     }
     return registrants;
   }
-
+/**/
   @Override public void update(User user) throws SQLException
   {
     try(Connection connection = getConnection()/*auto closes the connection*/){
@@ -173,7 +189,7 @@ public class UserDAOImplementation implements UserDAO
     }
     catch ( Exception e ) {
       System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-      System.exit(0);
+      System.exit(0);/*why do we need this??*/
     }
   }
 }
