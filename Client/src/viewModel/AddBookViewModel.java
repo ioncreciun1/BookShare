@@ -100,11 +100,12 @@ public class AddBookViewModel
       return  false;
     }
       return true;
-
   }
+
   public void reset()
   {
     title.set("");
     author.set("");
+    description.set("");
   }
 }

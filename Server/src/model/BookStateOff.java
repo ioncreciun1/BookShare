@@ -11,7 +11,8 @@ class BookStateOff implements State, Serializable
     }
 
     @Override
-    public boolean available() {
+    public boolean available()
+    {
         return false;
     }
 }

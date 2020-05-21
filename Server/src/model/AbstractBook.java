@@ -11,8 +11,6 @@ public abstract class AbstractBook implements Serializable
   {
     this.title = title;
     this.author = author;
-
-
   }
 
   public String getTitle()
@@ -24,6 +22,4 @@ public abstract class AbstractBook implements Serializable
   {
     return author;
   }
-
-
 }
