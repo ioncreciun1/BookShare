@@ -3,7 +3,7 @@ import javafx.stage.Stage;
 import mediator.RemoteModel;
 import mediator.ServerModel;
 import model.Model;
-import model.ModelManager;
+import model.ModelManage;
 import view.ViewHandler;
 import viewmodel.ViewModelFactory;
 
@@ -17,7 +17,7 @@ public class MyApplication extends Application
   private RemoteModel server;
   public void start(Stage primaryStage) throws IOException, SQLException
   {
-    Model model = new ModelManager();
+    Model model = new ModelManage();
     ViewModelFactory viewModelFactory = new ViewModelFactory(model);
     ViewHandler view = new ViewHandler(viewModelFactory);
     view.start(primaryStage);
