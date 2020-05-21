@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
-public interface Model extends LocalSubject<String,String>
+public interface Model extends LocalSubject<String,Book>
 {
   boolean verifyLog(String password, String name) throws IOException;
   void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo)

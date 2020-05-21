@@ -10,12 +10,12 @@ import viewModel.ViewModelFactory;
 
 public class MainViewController extends ViewController
 {
-  @FXML private TableView<MainViewTableRowData> bookListTable;
-  @FXML private TableColumn<MainViewTableRowData,Integer> orderColumn;
-  @FXML private TableColumn<MainViewTableRowData,String> titleColumn;
-  @FXML private TableColumn<MainViewTableRowData,String> authorColumn;
-  @FXML private TableColumn<MainViewTableRowData,String> languageColumn;
-  @FXML private TableColumn<MainViewTableRowData,String> categoryColumn;
+  @FXML private TableView<TableRowData> bookListTable;
+  @FXML private TableColumn<TableRowData,Integer> orderColumn;
+  @FXML private TableColumn<TableRowData,String> titleColumn;
+  @FXML private TableColumn<TableRowData,String> authorColumn;
+  @FXML private TableColumn<TableRowData,String> languageColumn;
+  @FXML private TableColumn<TableRowData,String> categoryColumn;
 
   public MainViewController()
   {
@@ -41,6 +41,7 @@ public class MainViewController extends ViewController
     categoryColumn.setCellValueFactory(
         cellData -> cellData.getValue().bookCategory()
     );
+    this.bookListTable.setItems(super.getViewModels().getMainViewModel().getTable());
   }
 
   public void openAddBookView()
@@ -48,4 +49,13 @@ public class MainViewController extends ViewController
     super.getHandler().openView("AddBookView");
   }
 
+  public void openSearchView()
+  {
+    super.getHandler().openView("SearchView");
+  }
+
+  public void openMainView()
+  {
+    super.getHandler().openView("MainView");
+  }
 }

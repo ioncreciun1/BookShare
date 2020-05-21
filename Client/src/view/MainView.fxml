@@ -26,7 +26,9 @@
                   </Text>
                   <HBox alignment="CENTER_RIGHT" prefHeight="95.0" prefWidth="510.0">
                      <children>
-                        <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-width: 2px 0px 2px 0px; -fx-border-color: rgb(231,231,231); -fx-text-fill: rgb(231,231,231);" text="Click to Search">
+                        <Button onAction="#openSearchView" mnemonicParsing="false"
+                                style="-fx-background-color: transparent; -fx-border-width: 2px 0px 2px 0px; -fx-border-color: rgb(231,231,231); -fx-text-fill: rgb(231,231,231);"
+                                text="Click to Search">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -52,7 +54,7 @@
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="80.0">
                      <children>
-                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView  onMouseClicked = "#openMainView" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets top="12.0" />
                            </VBox.margin>

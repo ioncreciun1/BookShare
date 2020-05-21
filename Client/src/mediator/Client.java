@@ -15,14 +15,14 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 
-public class Client implements ClientModel, RemoteListener<String,String>
+public class Client implements ClientModel, RemoteListener<String,Book>
 {
 
   public static final String HOST = "localhost";
   private String host;
   private Model model;
   private RemoteModel remoteModel;
-  private PropertyChangeProxy<String,String> property;
+  private PropertyChangeProxy<String,Book> property;
 
   public Client(Model model,String host)
       throws RemoteException, NotBoundException, MalformedURLException
@@ -32,7 +32,7 @@ public class Client implements ClientModel, RemoteListener<String,String>
     this.remoteModel = (RemoteModel) Naming.lookup("rmi://" + host + ":1099/Book");
     UnicastRemoteObject.exportObject(this, 0);
     this.property = new PropertyChangeProxy<>(this);
-    remoteModel.addListener(this,"idk what have to be here");
+    remoteModel.addListener(this,"book");
   }
 
   @Override public boolean verifyPass(String password, String username)
@@ -70,20 +70,21 @@ public class Client implements ClientModel, RemoteListener<String,String>
     remoteModel.addBook(book);
   }
 
-  @Override public void propertyChange(ObserverEvent<String, String> event)
+  @Override public void propertyChange(ObserverEvent<String, Book> event)
       throws RemoteException
   {
-    property.firePropertyChange(event);
+    System.out.println("FIRe in Client");
+    property.firePropertyChange(event.getPropertyName(),event.getValue1(),event.getValue2());
   }
 
-  @Override public boolean addListener(GeneralListener<String, String> listener,
+  @Override public boolean addListener(GeneralListener<String, Book> listener,
       String... propertyNames)
   {
     return property.addListener(listener,propertyNames);
   }
 
   @Override public boolean removeListener(
-      GeneralListener<String, String> listener, String... propertyNames)
+      GeneralListener<String, Book> listener, String... propertyNames)
   {
     return property.removeListener(listener,propertyNames);
   }

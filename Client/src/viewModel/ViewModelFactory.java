@@ -1,5 +1,6 @@
 package viewModel;
 
+import com.sun.tools.javac.Main;
 import model.Model;
 
 public class ViewModelFactory
@@ -7,12 +8,16 @@ public class ViewModelFactory
   private LogInViewModel loginViewModel;
   private SignUpViewModel signUpViewModel;
   private AddBookViewModel addBookViewModel;
+  private MainViewModel mainViewModel;
+  private SearchViewModel searchViewModel;
 
   public ViewModelFactory(Model model)
   {
     this.loginViewModel = new LogInViewModel(model);
     this.signUpViewModel = new SignUpViewModel(model);
     this.addBookViewModel = new AddBookViewModel(model);
+    this.mainViewModel = new MainViewModel(model);
+    this.searchViewModel = new SearchViewModel(model);
   }
 
   public LogInViewModel getLogInViewModel()
@@ -28,5 +33,15 @@ public class ViewModelFactory
   public AddBookViewModel getAddBookViewModel()
   {
     return addBookViewModel;
+  }
+
+  public MainViewModel getMainViewModel()
+  {
+    return mainViewModel;
+  }
+
+  public SearchViewModel getSearchViewModel()
+  {
+    return searchViewModel;
   }
 }

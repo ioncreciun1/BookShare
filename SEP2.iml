@@ -36,5 +36,26 @@
     <orderEntry type="library" name="MyObserver-1.2" level="project" />
     <orderEntry type="library" exported="" name="MyObserver-1.2" level="application" />
     <orderEntry type="library" exported="" name="MyXmlConverter-1.2" level="application" />
+    <orderEntry type="library" name="JavaFX12" level="application" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../postgresql-42.2.12 (1).jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../Assignment3/MyObserver-1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../Assignment3/MyObserver-1.2.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

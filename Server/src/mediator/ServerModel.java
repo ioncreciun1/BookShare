@@ -16,18 +16,18 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 
-public class ServerModel implements RemoteModel, LocalListener<String,String>
+public class ServerModel implements RemoteModel, LocalListener<String,Book>
 {
 
   private Model model;
-  private PropertyChangeProxy<String,String> property;
+  private PropertyChangeProxy<String,Book> property;
   private String user;
 
   public ServerModel(Model model) throws MalformedURLException, RemoteException
   {
     this.property = new PropertyChangeProxy<>(this, true);
     this.model = model;
-    model.addListener(this,"idk what sould be here","add");
+    model.addListener(this,"book");
     startRegistry();
     startServer();
   }
@@ -103,19 +103,19 @@ public class ServerModel implements RemoteModel, LocalListener<String,String>
     model.addBook(book);
   }
 
-  @Override public void propertyChange(ObserverEvent<String, String> event)
+  @Override public void propertyChange(ObserverEvent<String, Book> event)
   {
     property.firePropertyChange(event.getPropertyName(),event.getValue1(),event.getValue2());
   }
 
-  @Override public boolean addListener(GeneralListener<String, String> listener,
+  @Override public boolean addListener(GeneralListener<String, Book> listener,
       String... propertyNames) throws RemoteException
   {
     return property.addListener(listener,propertyNames);
   }
 
   @Override public boolean removeListener(
-      GeneralListener<String, String> listener, String... propertyNames)
+      GeneralListener<String, Book> listener, String... propertyNames)
       throws RemoteException
   {
     return property.removeListener(listener,propertyNames);

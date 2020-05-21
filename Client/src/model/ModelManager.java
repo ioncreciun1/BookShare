@@ -5,6 +5,7 @@ import mediator.ClientModel;
 import utility.observer.event.ObserverEvent;
 import utility.observer.listener.GeneralListener;
 import utility.observer.listener.LocalListener;
+import utility.observer.subject.PropertyChangeProxy;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -12,15 +13,24 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
-public class ModelManager implements Model, LocalListener<String,String>
+public class ModelManager implements Model, LocalListener<String,Book>
 {
 
-  ClientModel client;
+  private ClientModel client;
   private String user;
+  private PropertyChangeProxy<String,Book> property;
   public ModelManager()
       throws RemoteException, NotBoundException, MalformedURLException
   {
-    this.client = new Client(this,"localhost");
+    try
+    {
+      this.client = new Client(this, "localhost");
+    }catch (Exception e)
+    {
+      e.getMessage();
+    }
+    property = new PropertyChangeProxy<>(this);
+    client.addListener(this,"book");
   }
   public boolean checkUsername(String username)
   {
@@ -50,21 +60,22 @@ public class ModelManager implements Model, LocalListener<String,String>
     client.addBook(book);
   }
 
-  @Override public void propertyChange(ObserverEvent<String, String> event)
+  @Override public void propertyChange(ObserverEvent<String, Book> event)
   {
-
+    System.out.println("FIRe in Client Model");
+  property.firePropertyChange(event.getPropertyName(),event.getValue1(),event.getValue2());
   }
 
-  @Override public boolean addListener(GeneralListener<String, String> listener,
+  @Override public boolean addListener(GeneralListener<String, Book> listener,
       String... propertyNames)
   {
-    return false;
+    return property.addListener(listener,propertyNames);
   }
 
   @Override public boolean removeListener(
-      GeneralListener<String, String> listener, String... propertyNames)
+      GeneralListener<String, Book> listener, String... propertyNames)
   {
-    return false;
+    return property.removeListener(listener,propertyNames);
   }
 
   @Override public boolean verifyLog(String password, String name)

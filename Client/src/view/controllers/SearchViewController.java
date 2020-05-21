@@ -1,0 +1,73 @@
+package view.controllers;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.layout.Region;
+import view.ViewController;
+import view.ViewHandler;
+import viewModel.ViewModelFactory;
+
+public class SearchViewController extends ViewController
+{
+  @FXML private TableView<TableRowData> bookListTable;
+  @FXML private TableColumn<TableRowData,Integer> orderColumn;
+  @FXML private TableColumn<TableRowData,String> titleColumn;
+  @FXML private TableColumn<TableRowData,String> authorColumn;
+  @FXML private TableColumn<TableRowData,String> languageColumn;
+  @FXML private TableColumn<TableRowData,String> categoryColumn;
+  public TextField title;
+  public TextField author;
+  public ComboBox language;
+  public ComboBox type;
+  public Label error;
+
+  public SearchViewController()
+  {
+    super();
+  }
+
+  public void init(
+      ViewHandler viewHandler, ViewModelFactory viewModels, Region root)
+  {
+    super.init(viewHandler, viewModels, root);
+    super.getViewModels().getSearchViewModel().reset();
+    title.textProperty().bindBidirectional(super.getViewModels().getSearchViewModel().titleProperty());
+    author.textProperty().bindBidirectional(super.getViewModels().getSearchViewModel().authorProperty());
+    language.itemsProperty().bind(super.getViewModels().getSearchViewModel().languageProperty());
+    type.itemsProperty().bind(super.getViewModels().getSearchViewModel().typeProperty());
+    error.textProperty().bind(super.getViewModels().getSearchViewModel().errorProperty());
+    //    orderColumn.setCellValueFactory(
+    //        cellData -> cellData.getValue().getOrderNumber()
+    //    );
+    titleColumn.setCellValueFactory(
+        cellData -> cellData.getValue().getBookTitle()
+    );
+    authorColumn.setCellValueFactory(
+        cellData -> cellData.getValue().authorName()
+    );
+    languageColumn.setCellValueFactory(
+        cellData -> cellData.getValue().bookLanguage()
+    );
+    categoryColumn.setCellValueFactory(
+        cellData -> cellData.getValue().bookCategory()
+    );
+    this.bookListTable.setItems(super.getViewModels().getSearchViewModel().getTable());
+  }
+
+  public void reset()
+  {
+    super.getViewModels().getSearchViewModel().reset();
+    type.getSelectionModel().clearSelection();
+    language.getSelectionModel().clearSelection();
+  }
+
+  public void openAddBookView()
+  {
+    super.getHandler().openView("AddBookView");
+  }
+
+  public void openMainView()
+  {
+    super.getHandler().openView("MainView");
+  }
+}

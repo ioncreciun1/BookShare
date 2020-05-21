@@ -47,7 +47,11 @@ public class ViewHandler
       break;
       case "MainView":
         primaryStage.setHeight(620);
-        primaryStage.setWidth(470);
+        primaryStage.setWidth(480);
+      break;
+      case "SearchView":
+        primaryStage.setHeight(620);
+        primaryStage.setWidth(720);
       break;
     }
 

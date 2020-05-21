@@ -3,15 +3,16 @@ package view.controllers;
 import javafx.beans.property.*;
 import model.Book;
 
-public class MainViewTableRowData
+public class TableRowData
 {
  // private IntegerProperty orderNumber;
   private StringProperty bookTitle;
   private StringProperty authorName;
   private StringProperty bookLanguage;
   private StringProperty bookCategory;
+  private StringProperty username;
 
-  public MainViewTableRowData(Book book)
+  public TableRowData(Book book)
   {
     //this.orderNumber = new SimpleIntegerProperty(); // Should be getId ???
     this.bookTitle = new SimpleStringProperty(book.getTitle());

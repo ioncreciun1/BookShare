@@ -6,7 +6,7 @@ import utility.observer.subject.LocalSubject;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
-public interface ClientModel extends LocalSubject<String,String>
+public interface ClientModel extends LocalSubject<String,Book>
 {
   boolean verifyPass(String password,String username) throws RemoteException;
   void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo)

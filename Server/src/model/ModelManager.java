@@ -5,17 +5,20 @@ import Database.BookDAOImplementation;
 import Database.UserDAO;
 import Database.UserDAOImplementation;
 import utility.observer.listener.GeneralListener;
+import utility.observer.subject.PropertyChangeProxy;
 
 import java.sql.SQLException;
 
 public class ModelManager implements Model
 {
-  UserDAO user;
-  BookDAO bookDAO;
+  private UserDAO user;
+  private BookDAO bookDAO;
+  private PropertyChangeProxy<String,Book> property;
   public ModelManager() throws SQLException
   {
     this.user = new UserDAOImplementation();
     this.bookDAO = new BookDAOImplementation();
+    this.property = new PropertyChangeProxy<>(this);
   }
 
   @Override public boolean checkUser(User user) throws SQLException
@@ -44,19 +47,19 @@ public class ModelManager implements Model
 
   @Override public void addBook(Book book) throws SQLException
   {
-    System.out.println("Server Model");
   bookDAO.add(book.getUsername(),book.getTitle(),book.getAuthor(),book.getLanguage(),book.getDescription(),book.getCategory());
+  property.firePropertyChange("book",null,book);
   }
 
-  @Override public boolean addListener(GeneralListener<String, String> listener,
+  @Override public boolean addListener(GeneralListener<String, Book> listener,
       String... propertyNames)
   {
-    return false;
+    return property.addListener(listener,propertyNames);
   }
 
   @Override public boolean removeListener(
-      GeneralListener<String, String> listener, String... propertyNames)
+      GeneralListener<String, Book> listener, String... propertyNames)
   {
-    return false;
+    return property.removeListener(listener,propertyNames);
   }
 }
