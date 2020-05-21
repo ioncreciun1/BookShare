@@ -33,7 +33,7 @@ public class ModelManager implements Model
       throws Exception
   {
     System.out.println("SERVER MODEL MODEL");
-    user.add(Username,passWord,eMail,firstName,lastName,city,contactInfo,0);
+    user.add(Username,passWord,eMail,firstName,lastName,city,contactInfo);
   }
 
   @Override public User getUser(String username) throws SQLException
