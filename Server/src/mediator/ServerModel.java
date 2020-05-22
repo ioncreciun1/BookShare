@@ -87,12 +87,29 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
     model.registerUser(Username,passWord,eMail,firstName,lastName,city,contactInfo);
   }
 
+
+  /**
+   *
+   * @param username
+   * @return
+   * @throws RemoteException
+   * @throws SQLException
+   */
   @Override public User getUser(String username)
       throws RemoteException, SQLException
   {
     return model.getUser(username);
   }
 
+  /**
+   *
+   * @param registrant
+   *        is a registrant
+   * @return
+   *      checkuser method from model
+   * @throws RemoteException
+   * @throws SQLException
+   */
   @Override public boolean checkUser(User registrant)
       throws RemoteException, SQLException
   {
