@@ -5,6 +5,7 @@ import model.User;
 import utility.observer.subject.RemoteSubject;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public interface RemoteModel extends RemoteSubject<String,Book>
 {
@@ -15,4 +16,5 @@ public interface RemoteModel extends RemoteSubject<String,Book>
   boolean checkUser(User registrant) throws RemoteException, SQLException;
   boolean checkEmail(User registrant) throws RemoteException,SQLException;
   void addBook(Book book) throws RemoteException,SQLException;
+  ArrayList<Book> allBooks() throws SQLException,RemoteException;
 }

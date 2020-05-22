@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ModelManager implements Model, LocalListener<String,Book>
 {
@@ -52,6 +53,12 @@ public class ModelManager implements Model, LocalListener<String,Book>
       throws RemoteException
   {
     return client.checkEmail(user);
+  }
+
+  @Override public ArrayList<Book> allBooks()
+      throws SQLException, RemoteException
+  {
+    return client.allBooks();
   }
 
   @Override public void addBook(String title,String author,String description,String language,String category) throws RemoteException, SQLException

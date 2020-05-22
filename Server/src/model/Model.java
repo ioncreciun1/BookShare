@@ -3,6 +3,8 @@ package model;
 import utility.observer.subject.LocalSubject;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public interface Model extends LocalSubject<String,Book>
 {
@@ -12,4 +14,6 @@ public interface Model extends LocalSubject<String,Book>
       throws Exception;
   User getUser(String username) throws SQLException;
   void addBook(Book book) throws SQLException;
+  ArrayList<Book> allBooks() throws SQLException;
+
 }

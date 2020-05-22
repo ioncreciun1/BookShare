@@ -25,9 +25,9 @@ public class AddBookViewModel
   {
     ObservableList<String> languageList = FXCollections.observableArrayList();
     ObservableList<String> typeList = FXCollections.observableArrayList();
-    languageList.addAll("Danish","English","German","Romanian","Chinese","Spanish", "Arabic", "Russian",
+    languageList.addAll("Click to choose Language","Danish","English","German","Romanian","Chinese","Spanish", "Arabic", "Russian",
         "Portuguese", "Japanese", "French", "Turkish", "Italian", "Polish","Ukrainian", "Other");
-    typeList.addAll("Drama","Action","Literary Fiction","Adventure","Classics", "Comic Book","Detective","Fantasy",
+    typeList.addAll("Click to choose Category","Drama","Action","Literary Fiction","Adventure","Classics", "Comic Book","Detective","Fantasy",
         "Historical", "Horror", "Romance", "Science Fiction", "Cookbooks", "Essays","Memoir", "Poetry", "Other");
     this.model = model;
     this.language = new SimpleObjectProperty<>();
@@ -88,6 +88,23 @@ public class AddBookViewModel
       error.set("Author field can't be Empty. Please insert the Author");
       return false;
     }
+    else if(title.get().length() >= 50)
+    {
+      error.set("Field Title can't be longer than 50 characters");
+      return false;
+    }
+    else if(author.get().length() >= 120)
+    {
+      error.set("Field Author can't be longer than 50 characters");
+      return false;
+    }
+
+    else if(description.get().length() >= 120)
+    {
+      error.set("Field Description can't be longer than 50 characters");
+      return false;
+    }
+
 
     else if(language.equals("Click to choose Language"))
     {
@@ -106,5 +123,6 @@ public class AddBookViewModel
   {
     title.set("");
     author.set("");
+    description.set("");
   }
 }

@@ -3,6 +3,9 @@ package viewModel;
 import com.sun.tools.javac.Main;
 import model.Model;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+
 public class ViewModelFactory
 {
   private LogInViewModel loginViewModel;
@@ -11,7 +14,7 @@ public class ViewModelFactory
   private MainViewModel mainViewModel;
   private SearchViewModel searchViewModel;
 
-  public ViewModelFactory(Model model)
+  public ViewModelFactory(Model model) throws SQLException, RemoteException
   {
     this.loginViewModel = new LogInViewModel(model);
     this.signUpViewModel = new SignUpViewModel(model);

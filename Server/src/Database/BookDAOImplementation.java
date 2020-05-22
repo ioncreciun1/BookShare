@@ -17,6 +17,7 @@ public class BookDAOImplementation implements BookDAO
    * */
   public BookDAOImplementation() throws SQLException
   {
+
     DriverManager.registerDriver(new org.postgresql.Driver());
   }
 
@@ -128,11 +129,12 @@ public class BookDAOImplementation implements BookDAO
   //@Override
   public List<Book> allBooks() throws SQLException {
     try(Connection connection = getConnection()) {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM Book "
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book order by bookid desc"
           );
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Book> books = new ArrayList<>();
       while (resultSet.next()) {
+       // System.out.println("Here");
         String Username = resultSet.getString("Username");
         String BookID = resultSet.getString("BookID");
         String Title = resultSet.getString("Title");
