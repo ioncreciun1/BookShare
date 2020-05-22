@@ -30,7 +30,6 @@ public class ModelManager implements Model
     this.user = new UserDAOImplementation();
     this.bookDAO = BookDAOImplementation.getInstance();
     this.property = new PropertyChangeProxy<>(this);
-
   }
 
   /**

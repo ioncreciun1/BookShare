@@ -3,7 +3,8 @@ package model;
 import java.io.Serializable;
 
 /*
- * implements serializable *Serialization in Java is a mechanism of writing the state of an object into a byte-stream for RMI.
+ * implements serializable
+ * *Serialization in Java is a mechanism of writing the state of an object into a byte-stream for RMI.
  * .*/
 public class Book  implements Serializable
 {

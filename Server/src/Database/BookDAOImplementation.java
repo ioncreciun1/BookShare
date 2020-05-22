@@ -39,7 +39,7 @@ public class BookDAOImplementation implements BookDAO
   {
     return DriverManager
         .getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres",
-            "admin");
+            "1234");
   }
 /* @throws if a database access error occurs or the parameter is  null
     * @param User if a database error occurs or the user is null */
