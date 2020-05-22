@@ -7,7 +7,7 @@ class BookStateOff implements State, Serializable
     @Override
     public void click(Book book, Boolean available) {
         System.out.println(available);
-        book.setState(this);
+        book.setState(new BookStateOn());
     }
 
     @Override
