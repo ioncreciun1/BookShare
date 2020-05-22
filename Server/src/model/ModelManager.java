@@ -7,15 +7,24 @@ import Database.UserDAOImplementation;
 import utility.observer.listener.GeneralListener;
 import utility.observer.subject.PropertyChangeProxy;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class representing ModelManger for server
+ */
 public class ModelManager implements Model
 {
   private UserDAO user;
   private BookDAO bookDAO;
   private PropertyChangeProxy<String,Book> property;
+
+  /**
+   * Zero parameter constructor where all the parameters for this class are initiate
+   * @throws SQLException
+   */
   public ModelManager() throws SQLException
   {
     this.user = new UserDAOImplementation();
@@ -24,17 +33,39 @@ public class ModelManager implements Model
 
   }
 
+  /**
+   * Check if this user with his username is in the system
+   * @param user User
+   * @return true if user with this username is in the system, otherwise return false
+   * @throws SQLException
+   */
   @Override public boolean checkUser(User user) throws SQLException
   {
     return this.user.check_User(user);
   }
-
+  /**
+   * Check if this user email is in the system
+   * @param user User
+   * @return true if user with this email is already in the system, otherwise return false
+   * @throws RemoteException
+   * @throws SQLException
+   */
   @Override public boolean check_Email(User user)
       throws SQLException
   {
     return this.user.check_Email(user);
   }
-
+  /**
+   * Register a user in the system
+   * @param Username
+   * @param passWord
+   * @param eMail
+   * @param firstName
+   * @param lastName
+   * @param city
+   * @param contactInfo
+   * @throws Exception
+   */
   public void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo)
       throws Exception
   {
@@ -42,11 +73,23 @@ public class ModelManager implements Model
     user.add(Username,passWord,eMail,firstName,lastName,city,contactInfo);
   }
 
+  /**
+   * Getting a user from the system by this specific username
+   * @param username username of user
+   * @return a user with this username
+   * @throws SQLException
+   */
   @Override public User getUser(String username) throws SQLException
   {
 
     return user.getUser(username);
   }
+
+  /**
+   * Add a book to the system and fire an event
+   * @param book
+   * @throws SQLException
+   */
 
   @Override public void addBook(Book book) throws SQLException
   {
@@ -54,14 +97,15 @@ public class ModelManager implements Model
     property.firePropertyChange("book",null,book);
   }
 
+  /**
+   * Getting all books
+   * @return all books from the system
+   * @throws SQLException
+   */
   @Override public ArrayList<Book> allBooks() throws SQLException
   {
     ArrayList<Book> books = (ArrayList<Book>)bookDAO.allBooks();
-    //    for(int i = 0;i<bookDAO.allBooks().size();i++)
-    //    {
-    //      System.out.println(i);
-    //      books.add(bookDAO.allBooks().get(i));
-    //    }
+
     return books;
   }
 
