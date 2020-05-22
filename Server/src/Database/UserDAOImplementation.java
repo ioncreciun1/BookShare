@@ -6,16 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 public class UserDAOImplementation implements UserDAO
 {
-  /*Class constructor registers the given driver with the DriverManager
-  * @throws an error JDBC encounters an error during an interaction with a data source, it throws an instance of SQLException
+  /**
+   * Class constructor registers the given driver with the DriverManager
+  * @throws SQLException error JDBC encounters an error during an interaction with a data source, it throws an instance of SQLException
   * If the driver is currently registered, no action is taken. */
   public UserDAOImplementation( ) throws SQLException{
     DriverManager.registerDriver((new org.postgresql.Driver()));
 
   }
 
-  /*Driver Manager class attempts to establish a connection to the given database URL.
-  * @throws if a database access error occurs or the url is null*/
+  /**
+   * Driver Manager class attempts to establish a connection to the given database URL.
+  * @throws SQLException if a database access error occurs or the url is null*/
   private Connection getConnection() throws SQLException
   {
     return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
@@ -37,7 +39,7 @@ public class UserDAOImplementation implements UserDAO
       while (rs.next())
         /*access the data in a ResultSet object through a cursor. Note that this cursor is not a database cursor. This cursor is a pointer that points to one row of data in the ResultSet object. Initially, the cursor is positioned before the first row. You call various methods defined in the ResultSet object to move the cursor.*/
       {
-        String emailGet = rs.getString("Email");
+          String emailGet = rs.getString("Email");
         if (emailGet.equals(user.getEMail()))
         {
           System.out.println("Email already in use!");
@@ -54,7 +56,8 @@ public class UserDAOImplementation implements UserDAO
       return false;
     }
   }
-/*@param checks if the username entered on the sign up form is in use, returns false if it isn't and registers the user in the database*/
+/**
+ * @param user if the username entered on the sign up form is in use, returns false if it isn't and registers the user in the database*/
   public boolean check_User(User user) throws SQLException
   {/*@param  you can use a try-with-resources statement to automatically close Connection, Statement, and ResultSet objects,
   regardless of whether an SQLException has been thrown. An automatic resource statement consists of a try statement and one or more declared resources. */
@@ -81,8 +84,24 @@ public class UserDAOImplementation implements UserDAO
     }
   }
 
-  /*adds a new user to the database
-  * @param using the parameters from the registration form*/
+  /**
+   * adds a new user to the database
+  * @param Username
+   *        is a String username entered by user
+   * @param passWord
+   *      is a String password  entered by user
+   * @param eMail
+   *    is a String password  entered by user
+   *
+   *
+   * @param firstName
+   *    is a String first name entered by user
+   * @param lastName
+   *    is a String last name  entered by user
+   * @param city
+   *    is a String city entered by user
+   * @param contactInfo
+   *    is a String for contact info entered by user*/
   public void add(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo) throws Exception,SQLException
   {try
       (Connection connection = getConnection()/*auto closes the connection*/)
@@ -108,8 +127,10 @@ public class UserDAOImplementation implements UserDAO
 
   }
 
-/*this method deletes a user with a matching
-* @param String user.getUserName() in the database*/
+/**
+ * this method deletes a user with a matching
+* @param user
+ * user.getUserName() in the database*/
   @Override public void delete(User user) throws SQLException
   {
     try(Connection connection = getConnection()/*auto closes the connection*/){
@@ -154,9 +175,9 @@ public class UserDAOImplementation implements UserDAO
     }
     return user;
   }
-/*creates a list of users registered in the database
-* @throws an exception if there is a database error
-* @returns list of users*/
+/**creates a list of users registered in the database
+* @throws SQLException exception if there is a database error
+* @returns  list of users*/
   @Override public List<User> getUsers() throws SQLException
   {
     List<User> registrants = new ArrayList<>();
