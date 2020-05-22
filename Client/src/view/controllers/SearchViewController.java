@@ -1,11 +1,15 @@
 package view.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import view.ViewController;
 import view.ViewHandler;
 import viewModel.ViewModelFactory;
+
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class SearchViewController extends ViewController
 {
@@ -36,9 +40,7 @@ public class SearchViewController extends ViewController
     language.itemsProperty().bind(super.getViewModels().getSearchViewModel().languageProperty());
     type.itemsProperty().bind(super.getViewModels().getSearchViewModel().typeProperty());
     error.textProperty().bind(super.getViewModels().getSearchViewModel().errorProperty());
-    //    orderColumn.setCellValueFactory(
-    //        cellData -> cellData.getValue().getOrderNumber()
-    //    );
+
     titleColumn.setCellValueFactory(
         cellData -> cellData.getValue().getBookTitle()
     );
@@ -52,13 +54,14 @@ public class SearchViewController extends ViewController
         cellData -> cellData.getValue().bookCategory()
     );
     this.bookListTable.setItems(super.getViewModels().getSearchViewModel().getTable());
-  }
+  reset();
+    }
 
   public void reset()
   {
     super.getViewModels().getSearchViewModel().reset();
-    type.getSelectionModel().clearSelection();
-    language.getSelectionModel().clearSelection();
+    language.getSelectionModel().select(0);
+    type.getSelectionModel().select(0);
   }
 
   public void openAddBookView()
@@ -69,5 +72,15 @@ public class SearchViewController extends ViewController
   public void openMainView()
   {
     super.getHandler().openView("MainView");
+  }
+
+  public void searchBooks(ActionEvent event)
+      throws SQLException, RemoteException
+  {
+    bookListTable.getItems().clear();
+    String bookType = type.getSelectionModel().getSelectedItem().toString();
+    String bookLanguage = language.getSelectionModel().getSelectedItem().toString();
+    super.getViewModels().getSearchViewModel().searchBook(bookType,bookLanguage);
+    reset();
   }
 }

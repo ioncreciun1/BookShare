@@ -120,6 +120,12 @@ public class ModelManager implements Model, LocalListener<String,Book>
     client.addBook(book);
   }
 
+  @Override public ArrayList<Book> readByFilter(String filter, String value)
+      throws SQLException, RemoteException
+  {
+    return client.readByFilter(filter,value);
+  }
+
   @Override public void propertyChange(ObserverEvent<String, Book> event)
   {
     System.out.println("FIRe in Client Model");

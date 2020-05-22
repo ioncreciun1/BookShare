@@ -15,5 +15,6 @@ public interface Model extends LocalSubject<String,Book>
   User getUser(String username) throws SQLException;
   void addBook(Book book) throws SQLException;
   ArrayList<Book> allBooks() throws SQLException;
+  ArrayList<Book> readByFilter(String filter,String value) throws SQLException;
 
 }

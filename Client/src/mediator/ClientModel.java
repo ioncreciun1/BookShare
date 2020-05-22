@@ -17,4 +17,5 @@ public interface ClientModel extends LocalSubject<String,Book>
   boolean checkEmail(User user) throws RemoteException;
   void addBook(Book book) throws RemoteException, SQLException;
   ArrayList<Book> allBooks() throws SQLException,RemoteException;
+  ArrayList<Book> readByFilter(String filter,String value) throws SQLException,RemoteException;
 }

@@ -10,6 +10,8 @@ import model.Book;
 import model.Model;
 import view.controllers.TableRowData;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SearchViewModel
@@ -29,9 +31,9 @@ public class SearchViewModel
     table = createList();
     ObservableList<String> languageList = FXCollections.observableArrayList();
     ObservableList<String> typeList = FXCollections.observableArrayList();
-    languageList.addAll("Danish","English","German","Romanian","Chinese","Spanish", "Arabic", "Russian",
+    languageList.addAll("Click to choose Language","Danish","English","German","Romanian","Chinese","Spanish", "Arabic", "Russian",
         "Portuguese", "Japanese", "French", "Turkish", "Italian", "Polish","Ukrainian", "Other");
-    typeList.addAll("Drama","Action","Literary Fiction","Adventure","Classics", "Comic Book","Detective","Fantasy",
+    typeList.addAll("Click to choose Category","Drama","Action","Literary Fiction","Adventure","Classics", "Comic Book","Detective","Fantasy",
         "Historical", "Horror", "Romance", "Science Fiction", "Cookbooks", "Essays","Memoir", "Poetry", "Other");
     this.language = new SimpleObjectProperty<>();
     this.type = new SimpleObjectProperty<>();
@@ -56,7 +58,7 @@ public class SearchViewModel
     ArrayList<Book> books = new ArrayList<>();
     for (int i = 0; i < 99; i++) // Something should be instead of 99
     {
-      //temp.add(); // should be a book i guess
+
     }
     for (int i = 0; i < books.size(); i++)
     {
@@ -93,6 +95,85 @@ public class SearchViewModel
   public StringProperty errorProperty()
   {
     return error;
+  }
+  private void addToTheList(Book book)
+  {
+    table.add(new TableRowData(book));
+  }
+
+  public void searchBook(String type,String language) throws SQLException, RemoteException
+  {
+
+  String filter = "";
+  String value = "";
+  boolean empty = true;
+  if(type.equals("Click to choose Category")
+      && language.equals("Click to choose Language")
+      && author.get().length() ==0
+      && title.get().length() == 0
+
+  )
+  {
+    error.set("Search by a specific field");
+    empty = false;
+  }
+  else if(
+      type.equals("Click to choose Category")
+          && language.equals("Click to choose Language")
+          && author.get().length() ==0
+  )
+  {
+    filter = "title";
+    value = title.get();
+  }
+  else if(
+      type.equals("Click to choose Category")
+          && language.equals("Click to choose Language")
+          && title.get().length() ==0
+  )
+  {
+    filter = "author";
+    value = author.get();
+  }
+  else if(
+      type.equals("Click to choose Category")
+          && author.get().length() ==0
+          && title.get().length() ==0
+  )
+  {
+    filter = "booklanguage";
+    value = language;
+  }
+  else if(
+      language.equals("Click to choose Language")
+          && author.get().length() ==0
+          && title.get().length() ==0
+  )
+  {
+    filter = "category";
+    value = type;
+  }
+
+
+    System.out.println(empty);
+  if(empty)
+  {
+    ArrayList<Book> books = model.readByFilter(filter, value);
+
+    if (books.size() > 0)
+    {
+      int size = books.size();
+      for (int i = 0; i < size; i++)
+      {
+        addToTheList(books.get(i));
+      }
+    }
+    else
+    {
+      error.set("There are no books that match your search.");
+    }
+  }
+
   }
 
 }

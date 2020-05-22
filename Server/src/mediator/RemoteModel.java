@@ -16,4 +16,5 @@ public interface RemoteModel extends RemoteSubject<String,Book>
   boolean checkEmail(User registrant) throws RemoteException,SQLException;
   void addBook(Book book) throws RemoteException,SQLException;
   ArrayList<Book> allBooks() throws SQLException,RemoteException;
+  ArrayList<Book> readByFilter(String filter,String value) throws SQLException,RemoteException;
 }

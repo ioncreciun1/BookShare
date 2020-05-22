@@ -17,5 +17,7 @@ public interface Model extends LocalSubject<String,Book>
   boolean checkUser(User user) throws RemoteException;
   boolean checkEmail(User user) throws RemoteException;
   ArrayList<Book> allBooks() throws SQLException,RemoteException;
-  void addBook(String title,String author,String description,String language,String category) throws RemoteException, SQLException;;
+  void addBook(String title,String author,String description,String language,String category) throws RemoteException, SQLException;
+  ArrayList<Book> readByFilter(String filter,String value)
+      throws SQLException, RemoteException;
 }

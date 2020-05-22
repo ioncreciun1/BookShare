@@ -108,6 +108,13 @@ public class ModelManager implements Model
     return books;
   }
 
+  @Override public ArrayList<Book> readByFilter(String filter, String value)
+      throws SQLException
+  {
+    ArrayList<Book> books = (ArrayList<Book>)bookDAO.readByFilter(filter,value);
+    return books;
+  }
+
   @Override public boolean addListener(GeneralListener<String, Book> listener,
       String... propertyNames)
   {

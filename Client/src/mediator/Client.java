@@ -78,6 +78,12 @@ public class Client implements ClientModel, RemoteListener<String,Book>
     return remoteModel.allBooks();
   }
 
+  @Override public ArrayList<Book> readByFilter(String filter, String value)
+      throws SQLException, RemoteException
+  {
+    return remoteModel.readByFilter(filter,value);
+  }
+
   @Override public void propertyChange(ObserverEvent<String, Book> event)
       throws RemoteException
   {

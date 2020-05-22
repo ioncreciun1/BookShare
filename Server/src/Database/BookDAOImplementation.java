@@ -42,7 +42,7 @@ public class BookDAOImplementation implements BookDAO
   {
     return DriverManager
         .getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres",
-            "1234");
+            "admin");
   }
 /** @throws if a database access error occurs or the parameter is  null
     * @param Username
@@ -120,8 +120,11 @@ public class BookDAOImplementation implements BookDAO
   public List<Book> readByFilter(String filter,String value) throws SQLException {
         List<Book> books = new ArrayList<>();
         try(Connection connection = getConnection()) {
-          PreparedStatement statement = connection.prepareStatement("SELECT * FROM Book WHERE "+filter+" = ? AND Available = true");
-          statement.setString(1, value);
+          String val = "%"+value+"%";
+          System.out.println(val);
+          PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book WHERE "+filter+" ILIKE ? AND Available = true");
+          statement.setString(1, val);
+          System.out.println(statement.toString());
           ResultSet resultSet = statement.executeQuery();
           while (resultSet.next()) {
               /*access the data in a ResultSet object through a cursor. Note that this cursor is not a database cursor.
