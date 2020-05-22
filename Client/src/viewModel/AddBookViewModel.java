@@ -95,13 +95,13 @@ public class AddBookViewModel
     }
     else if(author.get().length() >= 120)
     {
-      error.set("Field Author can't be longer than 50 characters");
+      error.set("Field Author can't be longer than 120 characters");
       return false;
     }
 
-    else if(description.get().length() >= 120)
+    else if(description.get().length() >= 200)
     {
-      error.set("Field Description can't be longer than 50 characters");
+      error.set("Field Description can't be longer than 200 characters");
       return false;
     }
 

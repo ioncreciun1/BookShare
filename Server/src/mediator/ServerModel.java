@@ -16,7 +16,13 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+/*
+*A class representing the server
+*
+* @author
+*
+*
+ */
 public class ServerModel implements RemoteModel, LocalListener<String,Book>
 {
 

@@ -125,7 +125,7 @@ public class BookDAOImplementation implements BookDAO
       return books;
     }
   }
-  //@Override
+
   public List<Book> allBooks() throws SQLException {
     try(Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book order by bookid desc"
