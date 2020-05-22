@@ -11,12 +11,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModelManage implements Model
+public class ModelManager implements Model
 {
   private UserDAO user;
   private BookDAO bookDAO;
   private PropertyChangeProxy<String,Book> property;
-  public ModelManage() throws SQLException
+  public ModelManager() throws SQLException
   {
     this.user = new UserDAOImplementation();
     this.bookDAO = BookDAOImplementation.getInstance();
@@ -57,11 +57,11 @@ public class ModelManage implements Model
   @Override public ArrayList<Book> allBooks() throws SQLException
   {
     ArrayList<Book> books = (ArrayList<Book>)bookDAO.allBooks();
-//    for(int i = 0;i<bookDAO.allBooks().size();i++)
-//    {
-//      System.out.println(i);
-//      books.add(bookDAO.allBooks().get(i));
-//    }
+    //    for(int i = 0;i<bookDAO.allBooks().size();i++)
+    //    {
+    //      System.out.println(i);
+    //      books.add(bookDAO.allBooks().get(i));
+    //    }
     return books;
   }
 
