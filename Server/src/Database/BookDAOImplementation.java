@@ -226,9 +226,12 @@ public class BookDAOImplementation implements BookDAO
   public ArrayList<Book> readByTwoFilters(String filter, String value, String filter1, String value1) throws SQLException {
     ArrayList<Book> books = new ArrayList<>();
     try(Connection connection = getConnection()) {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM Book WHERE "+filter+" = ? AND "+filter1+" = ? AND Available = true");
+      System.out.println(filter);
+      System.out.println(filter1);
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book WHERE "+filter+" ILIKE ? AND "+filter1+" ILIKE ? AND Available = true");
       statement.setString(1, value);
       statement.setString(2, value1);
+      System.out.println("Here");
       ResultSet resultSet = statement.executeQuery();
       while (resultSet.next()) {
            /*access the data in a ResultSet object through a cursor. Note that this cursor is not a database cursor.
@@ -270,10 +273,38 @@ public class BookDAOImplementation implements BookDAO
       String filter2, String value2) throws SQLException {
     ArrayList<Book> books = new ArrayList<>();
     try(Connection connection = getConnection()) {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM Book WHERE "+filter+" = ? AND "+filter1+" = ? AND "+filter2+" = ? AND Available = true");
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book WHERE "+filter+" ILIKE ? AND "+filter1+" ILIKE ? AND "+filter2+" ILIKE ? AND Available = true");
       statement.setString(1, value);
       statement.setString(2, value1);
       statement.setString(3, value2);
+      ResultSet resultSet = statement.executeQuery();
+      while (resultSet.next()) {
+           /*access the data in a ResultSet object through a cursor. Note that this cursor is not a database cursor.
+     This cursor is a pointer that points to one row of data in the ResultSet object.
+     Initially, the cursor is positioned before the first row. You call various methods defined in the ResultSet object to move the cursor.*/
+        String Username = resultSet.getString("Username");
+        String BookID = resultSet.getString("BookID");
+        String Title = resultSet.getString("Title");
+        String Author = resultSet.getString("Author");
+        String BookLanguage = resultSet.getString("BookLanguage");
+        String Description = resultSet.getString("Description");
+        String Category = resultSet.getString("Category");
+        books.add(new Book(Username,BookID,Title,Author,BookLanguage,Description,Category));
+      }
+      return books;
+    }
+  }
+
+  @Override public ArrayList<Book> readByAllFilters(String title, String author,
+      String language, String category) throws SQLException
+  {
+    ArrayList<Book> books = new ArrayList<>();
+    try(Connection connection = getConnection()) {
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book WHERE title ILIKE ? AND author ILIKE ? AND booklanguage ILIKE ? and category ILIKE ?  AND Available = true");
+      statement.setString(1, title);
+      statement.setString(2, author);
+      statement.setString(3, language);
+      statement.setString(4, category);
       ResultSet resultSet = statement.executeQuery();
       while (resultSet.next()) {
            /*access the data in a ResultSet object through a cursor. Note that this cursor is not a database cursor.

@@ -103,9 +103,12 @@ public class SearchViewModel
 
   public void searchBook(String type,String language) throws SQLException, RemoteException
   {
-
+    ArrayList<Book> books = new ArrayList<>();
   String filter = "";
   String value = "";
+  String filter1 = "";
+  String value1 = "";
+  int numOfFilters = 0;
   boolean empty = true;
   if(type.equals("Click to choose Category")
       && language.equals("Click to choose Language")
@@ -121,8 +124,10 @@ public class SearchViewModel
       type.equals("Click to choose Category")
           && language.equals("Click to choose Language")
           && author.get().length() ==0
+          && title.get().length() >0
   )
   {
+    numOfFilters = 1;
     filter = "title";
     value = title.get();
   }
@@ -130,43 +135,128 @@ public class SearchViewModel
       type.equals("Click to choose Category")
           && language.equals("Click to choose Language")
           && title.get().length() ==0
+          && author.get().length() >0
   )
   {
+    numOfFilters = 1;
     filter = "author";
     value = author.get();
   }
   else if(
       type.equals("Click to choose Category")
+          && !language.equals("Click to choose Language")
           && author.get().length() ==0
           && title.get().length() ==0
   )
   {
+    numOfFilters = 1;
     filter = "booklanguage";
     value = language;
   }
   else if(
       language.equals("Click to choose Language")
+          && !type.equals("Click to choose Language")
           && author.get().length() ==0
           && title.get().length() ==0
   )
   {
+    numOfFilters = 1;
     filter = "category";
     value = type;
+  }
+  else  if(!type.equals("Click to choose Category")
+        && !language.equals("Click to choose Language")
+        && author.get().length() ==0
+        && title.get().length() == 0
+
+    )
+  {
+    numOfFilters = 2;
+    filter="category";
+    value = type;
+    filter1 = "booklanguage";
+    value1 = language;
+
+  }
+  else  if(type.equals("Click to choose Category")
+      && !language.equals("Click to choose Language")
+      && author.get().length() >0
+      && title.get().length() == 0
+
+  )
+  {
+    numOfFilters = 2;
+    filter="author";
+    value = author.get();
+    filter1 = "booklanguage";
+    value1 = language;
+  }
+  else  if(type.equals("Click to choose Category")
+      && !language.equals("Click to choose Language")
+      && author.get().length() ==0
+      && title.get().length() > 0
+
+  )
+  {
+    numOfFilters = 2;
+    filter="title";
+    value = title.get();
+    filter1 = "booklanguage";
+    value1 = language;
+  }
+  else  if(type.equals("Click to choose Category")
+      && language.equals("Click to choose Language")
+      && author.get().length() >0
+      && title.get().length() > 0
+
+  )
+  {
+    numOfFilters = 2;
+    filter="author";
+    value = author.get();
+    filter1 = "title";
+    value1 = title.get();
+  }
+  else  if(type.equals("Click to choose Category")
+      && !language.equals("Click to choose Language")
+      && author.get().length() >0
+      && title.get().length() > 0
+
+  )
+  {
+    numOfFilters = 3;
+ books =  model.readByThreeFilters("booklanguage",language,"author", author.get(),"title",title.get());
+  }
+  else  if(!type.equals("Click to choose Category")
+      && !language.equals("Click to choose Language")
+      && author.get().length() >0
+      && title.get().length() > 0
+
+  )
+  {
+    numOfFilters = 4;
+  books = model.readByAllFilters(title.get(),author.get(),language,type);
   }
 
 
     System.out.println(empty);
-  if(empty)
+  if(numOfFilters>0)
   {
-    ArrayList<Book> books = model.readByFilter(filter, value);
-
-    if (books.size() > 0)
+    switch (numOfFilters)
     {
-      int size = books.size();
+      case 1:books = model.readByFilter(filter, value);break;
+      case 2:books = model.readByTwoFilters(filter, value,filter1,value1)  ;break;
+    }
+
+    int size = books.size();
+    System.out.println(size);
+    if (size > 0)
+    {
       for (int i = 0; i < size; i++)
       {
         addToTheList(books.get(i));
       }
+      error.set("");
     }
     else
     {

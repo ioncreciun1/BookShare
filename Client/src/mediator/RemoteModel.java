@@ -18,4 +18,9 @@ public interface RemoteModel extends RemoteSubject<String,Book>
   void addBook(Book book) throws RemoteException, SQLException;;
   ArrayList<Book> allBooks() throws SQLException,RemoteException;
   ArrayList<Book> readByFilter(String filter,String value) throws SQLException,RemoteException;
+  ArrayList<Book> readByTwoFilters(String filter, String value, String filter1, String value1) throws SQLException,RemoteException;
+  ArrayList<Book> readByThreeFilters(String filter, String value, String filter1, String value1,
+      String filter2, String value2) throws SQLException,RemoteException;
+  ArrayList<Book> readByAllFilters(String title, String author,
+      String language, String category) throws SQLException,RemoteException;
 }

@@ -173,6 +173,25 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
     return model.readByFilter(filter,value);
   }
 
+  @Override public ArrayList<Book> readByTwoFilters(String filter, String value,
+      String filter1, String value1) throws SQLException, RemoteException
+  {
+    return model.readByTwoFilters(filter,value,filter1,value1);
+  }
+
+  @Override public ArrayList<Book> readByThreeFilters(String filter,
+      String value, String filter1, String value1, String filter2,
+      String value2) throws SQLException, RemoteException
+  {
+    return model.readByThreeFilters(filter,value,filter1,value1,filter2,value2);
+  }
+
+  @Override public ArrayList<Book> readByAllFilters(String title, String author,
+      String language, String category) throws SQLException
+  {
+    return model.readByAllFilters(title,author,language,category);
+  }
+
   @Override public void propertyChange(ObserverEvent<String, Book> event)
   {
     property.firePropertyChange(event.getPropertyName(),event.getValue1(),event.getValue2());

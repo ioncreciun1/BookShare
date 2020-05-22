@@ -20,4 +20,9 @@ public interface Model extends LocalSubject<String,Book>
   void addBook(String title,String author,String description,String language,String category) throws RemoteException, SQLException;
   ArrayList<Book> readByFilter(String filter,String value)
       throws SQLException, RemoteException;
+  ArrayList<Book> readByTwoFilters(String filter, String value, String filter1, String value1) throws SQLException,RemoteException;
+  ArrayList<Book> readByThreeFilters(String filter, String value, String filter1, String value1,
+      String filter2, String value2) throws SQLException,RemoteException;
+  ArrayList<Book> readByAllFilters(String title, String author,
+      String language, String category) throws SQLException,RemoteException;
 }

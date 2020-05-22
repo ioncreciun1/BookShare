@@ -84,6 +84,25 @@ public class Client implements ClientModel, RemoteListener<String,Book>
     return remoteModel.readByFilter(filter,value);
   }
 
+  @Override public ArrayList<Book> readByTwoFilters(String filter, String value,
+      String filter1, String value1) throws SQLException, RemoteException
+  {
+    return remoteModel.readByTwoFilters(filter,value,filter1,value1);
+  }
+
+  @Override public ArrayList<Book> readByThreeFilters(String filter,
+      String value, String filter1, String value1, String filter2,
+      String value2) throws SQLException, RemoteException
+  {
+    return remoteModel.readByThreeFilters(filter,value,filter1,value1,filter2,value2);
+  }
+
+  @Override public ArrayList<Book> readByAllFilters(String title, String author,
+      String language, String category) throws SQLException, RemoteException
+  {
+    return remoteModel.readByAllFilters(title,author,language,category);
+  }
+
   @Override public void propertyChange(ObserverEvent<String, Book> event)
       throws RemoteException
   {
