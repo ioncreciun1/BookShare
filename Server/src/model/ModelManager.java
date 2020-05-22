@@ -8,17 +8,18 @@ import utility.observer.listener.GeneralListener;
 import utility.observer.subject.PropertyChangeProxy;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModelManager implements Model
 {
   private UserDAO user;
   private BookDAO bookDAO;
   private PropertyChangeProxy<String,Book> property;
-
   public ModelManager() throws SQLException
   {
     this.user = new UserDAOImplementation();
-    this.bookDAO = new BookDAOImplementation();
+    this.bookDAO = BookDAOImplementation.getInstance();
     this.property = new PropertyChangeProxy<>(this);
   }
 
@@ -50,6 +51,17 @@ public class ModelManager implements Model
   {
     bookDAO.add(book.getUsername(),book.getTitle(),book.getAuthor(),book.getLanguage(),book.getDescription(),book.getCategory());
     property.firePropertyChange("book",null,book);
+  }
+
+  @Override public ArrayList<Book> allBooks() throws SQLException
+  {
+    ArrayList<Book> books = (ArrayList<Book>)bookDAO.allBooks();
+    //    for(int i = 0;i<bookDAO.allBooks().size();i++)
+    //    {
+    //      System.out.println(i);
+    //      books.add(bookDAO.allBooks().get(i));
+    //    }
+    return books;
   }
 
   @Override public boolean addListener(GeneralListener<String, Book> listener,

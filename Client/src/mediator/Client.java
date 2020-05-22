@@ -14,6 +14,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Client implements ClientModel, RemoteListener<String,Book>
 {
@@ -68,6 +69,13 @@ public class Client implements ClientModel, RemoteListener<String,Book>
   @Override public void addBook(Book book) throws RemoteException, SQLException
   {
     remoteModel.addBook(book);
+  }
+
+  @Override public ArrayList<Book> allBooks()
+      throws SQLException, RemoteException
+  {
+
+    return remoteModel.allBooks();
   }
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)

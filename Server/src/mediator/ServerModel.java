@@ -15,6 +15,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ServerModel implements RemoteModel, LocalListener<String,Book>
 {
@@ -23,7 +24,8 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
   private PropertyChangeProxy<String,Book> property;
   private String user;
 
-  public ServerModel(Model model) throws MalformedURLException, RemoteException
+  public ServerModel(Model model)
+      throws MalformedURLException, RemoteException, SQLException
   {
     this.property = new PropertyChangeProxy<>(this, true);
     this.model = model;
@@ -47,7 +49,8 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
     }
   }
 
-  private void startServer() throws RemoteException, MalformedURLException
+  private void startServer()
+      throws RemoteException, MalformedURLException, SQLException
   {
     UnicastRemoteObject.exportObject(this, 0);
     Naming.rebind("Book", this);
@@ -101,6 +104,11 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
   {
     System.out.println("Server");
     model.addBook(book);
+  }
+
+  @Override public ArrayList<Book> allBooks() throws SQLException
+  {
+    return model.allBooks();
   }
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)
