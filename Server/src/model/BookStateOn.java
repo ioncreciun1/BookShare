@@ -10,10 +10,10 @@ import java.io.Serializable;
 
 class BookStateOn implements State, Serializable
 {
-    /*
+    /**
      * Setting the book state to not available
-     * @param Book book taking the book to set it state to not available
-     * @param Boolean available
+     * @param  book taking the book to set it state to not available
+     * @param  available
      */
 
     @Override
@@ -22,7 +22,7 @@ class BookStateOn implements State, Serializable
         book.setState(this);
     }
 
-    /*
+    /**
      * Returning true for book state
      * @return true
      */
