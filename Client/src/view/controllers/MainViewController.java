@@ -58,4 +58,9 @@ public class MainViewController extends ViewController
   {
     super.getHandler().openView("MainView");
   }
+
+  public void openBookInfoView()
+  {
+    super.getHandler().openView("BookInfoView");
+  }
 }

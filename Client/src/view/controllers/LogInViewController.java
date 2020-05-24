@@ -43,14 +43,4 @@ public class LogInViewController extends ViewController
       super.getHandler().openView("MainView");
     }
   }
-
-  public void onEnterPressed(KeyEvent event)
-  {
-      int key = event.getKeyCode();
-
-      if (key == 13)
-      {
-        password.requestFocus();
-      }
-  }
 }
