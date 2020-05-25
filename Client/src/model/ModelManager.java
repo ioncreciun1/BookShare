@@ -148,9 +148,9 @@ public class ModelManager implements Model, LocalListener<String,Book>
   public ArrayList<Book> booksByUser()
       throws SQLException, RemoteException
   {
-    System.out.println(user);
-    System.out.println("Todo:CHANGE MODELMANAGER CLIENT TO USERNAME");
-    return client.booksByUser("FatAlbert");
+  //  System.out.println(user);
+  //  System.out.println("Todo:CHANGE MODELMANAGER CLIENT TO USERNAME");
+    return client.booksByUser(user);
   }
 
   @Override

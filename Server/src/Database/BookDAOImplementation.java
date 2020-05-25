@@ -365,6 +365,7 @@ public class BookDAOImplementation implements BookDAO
             new Book(Username, BookID, Title, Author, BookLanguage, Description,
                 Category));
       }
+
       return booksByUser;
     }
   }

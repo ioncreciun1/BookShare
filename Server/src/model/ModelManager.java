@@ -135,6 +135,7 @@ public class ModelManager implements Model
   @Override
  public ArrayList<Book> booksByUser(String username) throws SQLException,RemoteException{
     System.out.println("BooksByUserModelManager");
+    System.out.println(bookDAO.booksByUser(username).toString());
     return bookDAO.booksByUser(username);
   }
 

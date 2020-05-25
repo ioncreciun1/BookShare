@@ -38,7 +38,7 @@
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="378.0" prefWidth="193.0">
                      <children>
-                        <Button maxHeight="40.0" maxWidth="120.0" mnemonicParsing="false" onAction="#searchBooks" onMouseClicked="#setAvailable" prefHeight="40.0" prefWidth="0.0" style="-fx-background-color: rgba(148,148,148,0.75); -fx-font-weight: bold; -fx-text-fill: white; -fx-background-radius: 0;" text="Available">
+                        <Button maxHeight="40.0" maxWidth="120.0" mnemonicParsing="false" onAction="#searchBooks" onMouseClicked="#getAvailable" prefHeight="40.0" prefWidth="0.0" style="-fx-background-color: rgba(148,148,148,0.75); -fx-font-weight: bold; -fx-text-fill: white; -fx-background-radius: 0;" text="Available">
                            <font>
                               <Font size="18.0" />
                            </font>
