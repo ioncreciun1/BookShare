@@ -8,7 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Model;
 
-import javax.print.DocFlavor;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 

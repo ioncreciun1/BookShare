@@ -78,6 +78,47 @@ public class Client implements ClientModel, RemoteListener<String,Book>
     return remoteModel.allBooks();
   }
 
+  @Override public ArrayList<Book> readByFilter(String filter, String value)
+      throws SQLException, RemoteException
+  {
+    return remoteModel.readByFilter(filter,value);
+  }
+
+  @Override public ArrayList<Book> readByTwoFilters(String filter, String value,
+      String filter1, String value1) throws SQLException, RemoteException
+  {
+    return remoteModel.readByTwoFilters(filter,value,filter1,value1);
+  }
+
+  @Override public ArrayList<Book> readByThreeFilters(String filter,
+      String value, String filter1, String value1, String filter2,
+      String value2) throws SQLException, RemoteException
+  {
+    return remoteModel.readByThreeFilters(filter,value,filter1,value1,filter2,value2);
+  }
+
+  @Override public ArrayList<Book> readByAllFilters(String title, String author,
+      String language, String category) throws SQLException, RemoteException
+  {
+    return remoteModel.readByAllFilters(title,author,language,category);
+  }
+
+@Override
+ public ArrayList<Book> booksByUser(String username) throws SQLException,RemoteException{
+  System.out.println("ClientBooksByUser");
+    return remoteModel.booksByUser(username);
+ }
+
+ @Override public void removeBook(Book book) throws SQLException,RemoteException{
+    remoteModel.removeBook(book);
+ }
+
+  @Override public void changeAvailable(Book book, boolean bool)
+      throws SQLException, RemoteException
+  {
+    remoteModel.changeAvailable(book,bool );
+  }
+
   @Override public void propertyChange(ObserverEvent<String, Book> event)
       throws RemoteException
   {

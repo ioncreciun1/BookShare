@@ -9,7 +9,6 @@ import view.ViewController;
 import view.ViewHandler;
 import viewModel.ViewModelFactory;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class LogInViewController extends ViewController
@@ -42,15 +41,5 @@ public class LogInViewController extends ViewController
     {
       super.getHandler().openView("MainView");
     }
-  }
-
-  public void onEnterPressed(KeyEvent event)
-  {
-      int key = event.getKeyCode();
-
-      if (key == 13)
-      {
-        password.requestFocus();
-      }
   }
 }

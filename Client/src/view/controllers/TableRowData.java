@@ -11,6 +11,7 @@ public class TableRowData
   private StringProperty bookLanguage;
   private StringProperty bookCategory;
   private StringProperty username;
+  private Book book;
 
   public TableRowData(Book book)
   {
@@ -19,13 +20,16 @@ public class TableRowData
     this.authorName = new SimpleStringProperty(book.getAuthor());
     this.bookLanguage = new SimpleStringProperty(book.getLanguage());
     this.bookCategory = new SimpleStringProperty(book.getCategory());
+    this.book = book;
   }
 
 //  public IntegerProperty getOrderNumber()
 //  {
 //    return orderNumber;
 //  }
-
+  public Book getBook(){
+    return book;
+  }
   public StringProperty getBookTitle()
   {
     return bookTitle;

@@ -10,7 +10,6 @@ import utility.observer.subject.PropertyChangeProxy;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class representing ModelManger for server
@@ -106,6 +105,49 @@ public class ModelManager implements Model
     ArrayList<Book> books = (ArrayList<Book>)bookDAO.allBooks();
 
     return books;
+  }
+
+  @Override public ArrayList<Book> readByFilter(String filter, String value)
+      throws SQLException
+  {
+    ArrayList<Book> books = (ArrayList<Book>)bookDAO.readByFilter(filter,value);
+    return books;
+  }
+
+  @Override public ArrayList<Book> readByTwoFilters(String filter, String value,
+      String filter1, String value1) throws SQLException
+  {
+    return bookDAO.readByTwoFilters(filter,value,filter1,value1);
+  }
+
+  @Override public ArrayList<Book> readByThreeFilters(String filter,
+      String value, String filter1, String value1, String filter2,
+      String value2) throws SQLException
+  {
+    return bookDAO.readByThreeFilters(filter,value,filter1,value1,filter2,value2);
+  }
+
+  @Override public ArrayList<Book> readByAllFilters(String title, String author,
+      String language, String category) throws SQLException
+  {
+    return bookDAO.readByAllFilters(title,author,language,category);
+  }
+  @Override
+ public ArrayList<Book> booksByUser(String username) throws SQLException,RemoteException{
+    System.out.println("BooksByUserModelManager");
+    return bookDAO.booksByUser(username);
+  }
+
+  @Override
+  public void removeBook(Book book) throws SQLException
+  {
+    bookDAO.delete(book);
+  }
+
+  @Override public void changeAvailable(Book book, boolean bool)
+      throws SQLException, RemoteException
+  {
+    bookDAO.changeAvailable(book, bool);
   }
 
   @Override public boolean addListener(GeneralListener<String, Book> listener,

@@ -53,6 +53,14 @@ public class ViewHandler
         primaryStage.setHeight(620);
         primaryStage.setWidth(720);
       break;
+      case "BookInfoView":
+        primaryStage.setHeight(720);
+        primaryStage.setWidth(610);
+      break;
+      case "MyBooksView":
+        primaryStage.setHeight(519);
+        primaryStage.setWidth(600);
+        break;
     }
 
     primaryStage.show();

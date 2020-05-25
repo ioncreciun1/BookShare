@@ -80,6 +80,7 @@ public class Book  implements Serializable
     void setState(State newState) {
         state = newState;
     }
+
     /*@return boolean available
     *   returns a state of available*/
     public boolean available(){

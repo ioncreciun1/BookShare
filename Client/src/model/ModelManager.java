@@ -7,7 +7,6 @@ import utility.observer.listener.GeneralListener;
 import utility.observer.listener.LocalListener;
 import utility.observer.subject.PropertyChangeProxy;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -118,6 +117,51 @@ public class ModelManager implements Model, LocalListener<String,Book>
   {
     Book book = new Book(user,title,author,language,description,category);
     client.addBook(book);
+  }
+
+  @Override public ArrayList<Book> readByFilter(String filter, String value)
+      throws SQLException, RemoteException
+  {
+    return client.readByFilter(filter,value);
+  }
+
+  @Override public ArrayList<Book> readByTwoFilters(String filter, String value,
+      String filter1, String value1) throws SQLException, RemoteException
+  {
+    return client.readByTwoFilters(filter,value,filter1,value1);
+  }
+
+  @Override public ArrayList<Book> readByThreeFilters(String filter,
+      String value, String filter1, String value1, String filter2,
+      String value2) throws SQLException, RemoteException
+  {
+    return client.readByThreeFilters(filter,value,filter1,value1,filter2,value2);
+  }
+
+  @Override public ArrayList<Book> readByAllFilters(String title, String author,
+      String language, String category) throws SQLException, RemoteException
+  {
+    return client.readByAllFilters(title,author,language,category);
+  }
+
+@Override
+  public ArrayList<Book> booksByUser()
+      throws SQLException, RemoteException
+  {
+    System.out.println(user);
+    System.out.println("Todo:CHANGE MODELMANAGER CLIENT TO USERNAME");
+    return client.booksByUser("FatAlbert");
+  }
+
+  @Override
+  public void removeBook(Book book) throws SQLException,RemoteException{
+    client.removeBook(book);
+  }
+
+  @Override public void changeAvailable(Book book, boolean bool)
+      throws SQLException, RemoteException
+  {
+    client.changeAvailable(book, bool);
   }
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)

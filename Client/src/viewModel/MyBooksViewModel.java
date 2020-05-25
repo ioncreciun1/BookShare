@@ -1,0 +1,134 @@
+package viewModel;
+
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import model.Book;
+import model.Model;
+import utility.observer.event.ObserverEvent;
+import utility.observer.listener.LocalListener;
+import view.controllers.TableRowData;
+
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public class MyBooksViewModel implements LocalListener<String,Book>
+{
+  private Model model;
+  private ObservableList<TableRowData> table;
+
+
+  public MyBooksViewModel(Model model) throws SQLException, RemoteException
+  {
+    System.out.println("MyBooksViewModelConstructor");
+    this.model = model;
+    table = createList();
+    this.model.addListener(this,"book");
+  }
+  private synchronized ObservableList<TableRowData> createList()
+      throws SQLException, RemoteException
+  {
+    System.out.println("CreateListMyBooks");
+    int size = 0;
+    if(model.booksByUser().size()>20)
+    {
+      size = 20;
+    }
+    else  size = model.booksByUser().size();
+    ObservableList<TableRowData> obsList = FXCollections.observableArrayList();
+    ArrayList<Book> books = new ArrayList<>();
+    for (int i = 0; i < size; i++) // Something should be instead of 99
+    {
+
+      books.add(model.booksByUser().get(i)); // should be a book i guess
+    }
+    for (int i = 0; i < books.size(); i++)
+    {
+      obsList.add(new TableRowData(books.get(i)));
+    }
+    return obsList;
+  }
+
+  public synchronized void availableList()
+      throws SQLException, RemoteException
+  {
+    ArrayList<Book> available = new ArrayList<>();
+    for(int i=0; i < model.booksByUser().size(); i++){
+      if(model.booksByUser().get(i).available() == true){
+        available.add(model.booksByUser().get(i));
+      }
+    }
+    int size = 0;
+    if(available.size()>20)
+    {
+      size = 20;
+    }
+    else  size = available.size();
+    ObservableList<TableRowData> obsList = FXCollections.observableArrayList();
+    ArrayList<Book> books = new ArrayList<>();
+    for (int i = 0; i < size; i++) // Something should be instead of 99
+    {
+      books.add(available.get(i)); // should be a book i guess
+    }
+    for (int i = 0; i < books.size(); i++)
+    {
+      obsList.add(new TableRowData(books.get(i)));
+    }
+    table = obsList;;
+  }
+
+  public synchronized void borrowedList()
+      throws SQLException, RemoteException
+  {
+    ArrayList<Book> borrowed = new ArrayList<>();
+    for(int i=0; i < model.booksByUser().size(); i++){
+      if(model.booksByUser().get(i).available() == false){
+        borrowed.add(model.booksByUser().get(i));
+      }
+    }
+    int size = 0;
+    if(borrowed.size()>20)
+    {
+      size = 20;
+    }
+    else  size = borrowed.size();
+    ObservableList<TableRowData> obsList = FXCollections.observableArrayList();
+    ArrayList<Book> books = new ArrayList<>();
+    for (int i = 0; i < size; i++) // Something should be instead of 99
+    {
+        books.add(borrowed.get(i)); // should be a book i guess
+    }
+    for (int i = 0; i < books.size(); i++)
+    {
+      obsList.add(new TableRowData(books.get(i)));
+    }
+    table = obsList;;
+  }
+
+  public ObservableList<TableRowData> getTable()
+  {
+    return table;
+  }
+
+  private void addToTheList(Book book)
+  {
+    table.add(new TableRowData(book));
+  }
+
+  public void removeBook(Book book)  throws SQLException,RemoteException{
+    model.removeBook(book);
+  }
+
+  public void changeAvailable(Book book, boolean bool) throws SQLException,RemoteException{
+    model.changeAvailable(book, bool);
+  }
+
+  @Override public void propertyChange(ObserverEvent<String, Book> event)
+  {
+    Platform.runLater(()->{
+      System.out.println("This is happening");
+      addToTheList(event.getValue2());
+    });
+  }
+}

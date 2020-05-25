@@ -54,7 +54,9 @@ public class ViewControllerFactory
       case "AddBookView": return  new AddBookViewController();
       case "MainView": return new MainViewController();
       case "SearchView": return new SearchViewController();
-      default: throw new IllegalArgumentException("No such id for viw controller");
+      case "BookInfoView": return new BookInfoViewController();
+      case "MyBooksView": return new MyBooksViewController();
+      default: throw new IllegalArgumentException("No such id for view controller");
     }
   }
 }
