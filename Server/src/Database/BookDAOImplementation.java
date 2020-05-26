@@ -40,8 +40,7 @@ public class BookDAOImplementation implements BookDAO
    * @returns connection*/
   private Connection getConnection() throws SQLException
   {
-    return DriverManager
-        .getConnection("jdbc:postgresql://btv9bsc3ws7gpfnylr1c-postgresql.services.clever-cloud.com:5432/btv9bsc3ws7gpfnylr1c", "uhxksonl4uvuqdftznsg",
+    return DriverManager.getConnection("jdbc:postgresql://btv9bsc3ws7gpfnylr1c-postgresql.services.clever-cloud.com:5432/btv9bsc3ws7gpfnylr1c", "uhxksonl4uvuqdftznsg",
             "pnwEWl0YlSc6A2z619ff");
   }
 /** @throws if a database access error occurs or the parameter is  null
@@ -51,7 +50,7 @@ public class BookDAOImplementation implements BookDAO
   the title of the book
    @param Author
      the author of the book
-   @param BookLanguage
+   @param  BookLanguage
          the language that is book is written selected by dropdown by user
     @param Description
        the description of the book entered by the user,
@@ -186,7 +185,7 @@ public class BookDAOImplementation implements BookDAO
        returns a list of all books*/
   public List<Book> allBooks() throws SQLException {
     try(Connection connection = getConnection()) {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book where available = true order by bookid desc "
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book order by bookid desc"
           );
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Book> books = new ArrayList<>();
@@ -361,19 +360,9 @@ public class BookDAOImplementation implements BookDAO
         String Description = resultSet.getString("Description");
         String Category = resultSet.getString("Category");
         System.out.println(BookID + "BOOK BY USER");
-        Boolean available = resultSet.getBoolean("available");
-        System.out.println(available);
-        Book book =  new Book(Username, BookID, Title, Author, BookLanguage, Description,
-            Category);
-        if(available)
-        {
-          book.setAvailable();
-        }
-        else {
-          book.setBorrowed();
-        }
         booksByUser.add(
-            book);
+            new Book(Username, BookID, Title, Author, BookLanguage, Description,
+                Category));
       }
 
       return booksByUser;
@@ -399,7 +388,6 @@ public class BookDAOImplementation implements BookDAO
       statement.setString(5, Description);
       statement.setString(6, Category);
       statement.executeUpdate();
-      System.out.println(statement.toString());
     }
   }
 }

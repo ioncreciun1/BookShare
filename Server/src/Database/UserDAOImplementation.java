@@ -67,7 +67,7 @@ public class UserDAOImplementation implements UserDAO
       /*The following statement is an try-with-resources statement, which declares one resource, stm,
        that will be automatically closed when the try block terminates:*/
       Statement stm = connection.createStatement();
-      ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"User\";");
+      ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"user\";");
       while(rs.next())
       {
         String usernameGet = rs.getString("Username");
@@ -109,7 +109,7 @@ public class UserDAOImplementation implements UserDAO
       (Connection connection = getConnection()/*auto closes the connection*/)
   {
     User registrant = new User(Username,passWord,eMail,firstName,lastName,city,contactInfo);
-    PreparedStatement statement = connection.prepareStatement("INSERT INTO \"SEP2\".\"User\" (Username, Pass, EMAIL, fName, lName, City, ContactInfo) VALUES (?,?,?,?,?,?,?);");
+    PreparedStatement statement = connection.prepareStatement("INSERT INTO \"SEP2\".\"user\" (Username, Pass, EMAIL, fName, lName, City, ContactInfo) VALUES (?,?,?,?,?,?,?);");
     /*lines 22-30 adds the registrant to the database using getters from User*/
     statement.setString(1, registrant.getUserName());
     statement.setString(2, registrant.getPassWord());
@@ -137,7 +137,7 @@ public class UserDAOImplementation implements UserDAO
   {
     try(Connection connection = getConnection()/*auto closes the connection*/){
       Statement stm = connection.createStatement();
-      String sql = "DELETE FROM \"SEP2\".\"User\" WHERE Username = "+user.getUserName()+";";
+      String sql = "DELETE FROM \"SEP2\".\"user\" WHERE Username = "+user.getUserName()+";";
       stm.executeUpdate(sql);
       stm.close();
       System.out.println("Username not found in database!");
@@ -185,7 +185,7 @@ public class UserDAOImplementation implements UserDAO
     List<User> registrants = new ArrayList<>();
     try(Connection connection = getConnection()/*auto closes the connection*/){
       Statement stm = connection.createStatement();
-      ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"User\";");
+      ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"user\";");
       while(rs.next())
       {
         User registrant1 = new User(rs.getString("Username"),rs.getString("Pass"),rs.getString("EMAIL"),rs.getString("fName"),rs.getString("lName"),rs.getString("City"),rs.getString("ContactInfo"));
@@ -204,7 +204,7 @@ public class UserDAOImplementation implements UserDAO
   {
     try(Connection connection = getConnection()/*auto closes the connection*/){
       Statement stm = connection.createStatement();
-      ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"User\" WHERE Username = "+ user.getUserName()+";");
+      ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"user\" WHERE Username = "+ user.getUserName()+";");
       while(rs.next())
       {
       }

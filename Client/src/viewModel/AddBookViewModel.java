@@ -37,6 +37,7 @@ public class AddBookViewModel
     language.setValue(languageList);
     this.error = new SimpleStringProperty("");
     type.setValue(typeList);
+    this.error = new SimpleStringProperty("");
   }
 
   public ObjectProperty<ObservableList> languageProperty()
@@ -123,5 +124,23 @@ public class AddBookViewModel
     title.set("");
     author.set("");
     description.set("");
+  }
+
+  public boolean validate(){
+    if(title.get().length() == 0){
+      error.set("Field Title can’t be empty");
+    }else if(author.get().length() == 0){
+      error.set("Field Author can’t be empty");
+    }else if(title.get().length() >= 120){
+      error.set("Field Title can't be longer than 120 characters");
+    }else if(author.get().length() >= 50){
+      error.set("Field Title can't be longer than 50 characters");
+    }else if(description.get().length() >= 200){
+      error.set("Field Title can't be longer than 200 characters");
+    }
+
+    return title.getValue().length() != 0 && author.get().length() != 0
+            && !(title.get().length() >= 120) && !(author.get().length() >= 50) &&
+             !(description.get().length() >= 200);
   }
 }
