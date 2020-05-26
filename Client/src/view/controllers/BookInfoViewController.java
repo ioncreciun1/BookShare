@@ -51,8 +51,14 @@ public class BookInfoViewController extends ViewController
   {
     super.getHandler().openView("MainView");
   }
+
   public void openMyBooksView()
   {
     super.getHandler().openView("MyBooksView");
+  }
+
+  public void openCommentView()
+  {
+    super.getHandler().openView("CommentView");
   }
 }

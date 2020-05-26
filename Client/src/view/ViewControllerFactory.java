@@ -56,6 +56,7 @@ public class ViewControllerFactory
       case "SearchView": return new SearchViewController();
       case "BookInfoView": return new BookInfoViewController();
       case "MyBooksView": return new MyBooksViewController();
+      case "CommentView": return new CommentViewController();
       default: throw new IllegalArgumentException("No such id for view controller");
     }
   }

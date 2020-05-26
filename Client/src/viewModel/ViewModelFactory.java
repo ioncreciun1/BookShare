@@ -14,6 +14,8 @@ public class ViewModelFactory
   private SearchViewModel searchViewModel;
   private BookInfoViewModel bookInfoViewModel;
   private MyBooksViewModel myBooksViewModel;
+  private CommentViewModel commentViewModel;
+
   public ViewModelFactory(Model model) throws SQLException, RemoteException
   {
     this.loginViewModel = new LogInViewModel(model);
@@ -23,6 +25,7 @@ public class ViewModelFactory
     this.searchViewModel = new SearchViewModel(model);
     this.bookInfoViewModel = new BookInfoViewModel(model);
     this.myBooksViewModel = new MyBooksViewModel(model);
+    this.commentViewModel = new CommentViewModel(model);
   }
 
   public LogInViewModel getLogInViewModel()
@@ -51,8 +54,14 @@ public class ViewModelFactory
   }
 
   public MyBooksViewModel getMyBooksViewModel() {return myBooksViewModel;}
+
   public BookInfoViewModel getBookInfoViewModel()
   {
     return bookInfoViewModel;
+  }
+
+  public CommentViewModel getCommentViewModel()
+  {
+    return commentViewModel;
   }
 }

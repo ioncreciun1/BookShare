@@ -42,7 +42,7 @@ public class BookDAOImplementation implements BookDAO
   {
     return DriverManager
         .getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres",
-            "admin");
+            "1234");
   }
 /** @throws if a database access error occurs or the parameter is  null
     * @param Username
@@ -77,6 +77,21 @@ public class BookDAOImplementation implements BookDAO
     }
   }
 
+//  @Override public void addComment(String Username, Book book,  String comment)
+//      throws SQLException
+//  {
+//    try (Connection connection = getConnection())
+//    {
+//      PreparedStatement statement = connection.prepareStatement(
+//          "INSERT INTO \"SEP2\".comment(username, book, comment) VALUES (?,?);");
+//      String username = book.getUsername();
+//      String
+//      statement.setString(1, username);
+//      statement.setString(2, book);
+//      statement.setString(3, comment);
+//      statement.executeUpdate();
+//    }
+//  }
 
   @Override
   /**

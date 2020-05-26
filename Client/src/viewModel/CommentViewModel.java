@@ -1,0 +1,46 @@
+package viewModel;
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+import model.Model;
+
+public class CommentViewModel
+{
+  private Model model;
+  private StringProperty comment;
+  private StringProperty error;
+
+  public CommentViewModel(Model model)
+  {
+    this.model = model;
+    this.comment = new SimpleStringProperty("");
+    this.error = new SimpleStringProperty("");
+  }
+
+  public StringProperty getCommentProperty()
+  {
+    return comment;
+  }
+
+  public StringProperty getError()
+  {
+    return error;
+  }
+
+  public void reset()
+  {
+    comment.set("");
+  }
+
+
+  public boolean checkComment()
+  {
+    if(comment.get().length() >= 200)
+    {
+      error.set("Field Description can't be longer than 200 characters");
+      return false;
+    }
+    return true;
+  }
+}
