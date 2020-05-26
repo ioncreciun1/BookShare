@@ -20,7 +20,9 @@ public class UserDAOImplementation implements UserDAO
   * @throws SQLException if a database access error occurs or the url is null*/
   private Connection getConnection() throws SQLException
   {
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "admin");
+    return DriverManager
+        .getConnection("jdbc:postgresql://btv9bsc3ws7gpfnylr1c-postgresql.services.clever-cloud.com:5432/btv9bsc3ws7gpfnylr1c", "uhxksonl4uvuqdftznsg",
+            "pnwEWl0YlSc6A2z619ff");
 
   }
 /**checks if the email entered in the sign up form is already in the database, return false and adds the user if it is not already in use
