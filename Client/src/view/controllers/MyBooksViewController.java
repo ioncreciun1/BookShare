@@ -2,6 +2,7 @@ package view.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
@@ -22,6 +23,7 @@ public class MyBooksViewController extends ViewController
   @FXML private TableColumn<TableRowData, String> authorColumn1;
   @FXML private TableColumn<TableRowData, String> languageColumn1;
   @FXML private TableColumn<TableRowData, String> categoryColumn1;
+  @FXML private  TableColumn<TableRowData,String> availableColumn;
 
   public MyBooksViewController()
   {
@@ -38,6 +40,7 @@ public class MyBooksViewController extends ViewController
     authorColumn1.setCellValueFactory(cellData -> cellData.getValue().authorName());
     languageColumn1.setCellValueFactory(cellData -> cellData.getValue().bookLanguage());
     categoryColumn1.setCellValueFactory(cellData -> cellData.getValue().bookCategory());
+    availableColumn.setCellValueFactory(cellData -> cellData.getValue().availabilityProperty());
     this.bookListTable1.setItems(super.getViewModels().getMyBooksViewModel().getTable());
   }
 
@@ -72,12 +75,17 @@ public class MyBooksViewController extends ViewController
 
   public void setBorrowed() throws SQLException, RemoteException{
     Book toUpdate = this.bookListTable1.getSelectionModel().getSelectedItem().getBook();
-    super.getViewModels().getMyBooksViewModel().changeAvailable(toUpdate, false);
+    toUpdate.setBorrowed();
+    super.getViewModels().getMyBooksViewModel().changeAvailable(toUpdate, toUpdate.available());
+    this.bookListTable1.setItems(super.getViewModels().getMyBooksViewModel().getTable());
   }
 
   public void setAvailable() throws SQLException, RemoteException{
     Book toUpdate = this.bookListTable1.getSelectionModel().getSelectedItem().getBook();
-    super.getViewModels().getMyBooksViewModel().changeAvailable(toUpdate, true);
+    toUpdate.setAvailable();
+    super.getViewModels().getMyBooksViewModel().changeAvailable(toUpdate, toUpdate.available());
+    this.bookListTable1.setItems(super.getViewModels().getMyBooksViewModel().getTable());
+
   }
 
   public void remove()  throws SQLException,RemoteException{

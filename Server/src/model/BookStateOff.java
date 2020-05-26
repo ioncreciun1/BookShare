@@ -3,24 +3,21 @@ package model;
 import java.io.Serializable;
 
 /**
- * * A class to set state of the book to available  *
- * * @author Johnny Creciun *
- * *@version 1.0 – May 2020
+ * * A class to set state of the book to available
  * *implementing State, Serializable
  * */
 
-class BookStateOff implements State, Serializable
+class BookStateOff implements State
 {
-    /**
-     * Setting the book state to available
-     * @param book taking the book to set it state to available
-     * @param available
-     */
 
-    @Override
-    public void click(Book book, Boolean available) {
-        System.out.println(available);
+    @Override public void setAvailable(Book book)
+    {
         book.setState(new BookStateOn());
+    }
+
+    @Override public void setBorrowed(Book book)
+    {
+
     }
 
     /**

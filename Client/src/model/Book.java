@@ -78,7 +78,15 @@ public class Book  implements Serializable
     }
     /*sets the state of the book to default of available
      */
-    void setState(State newState) {
+    public void setAvailable()
+    {
+        state.setAvailable(this);
+    }
+    public void setBorrowed()
+    {
+        state.setBorrowed(this);
+    }
+    public void setState(State newState) {
         state = newState;
     }
     /*@return boolean available

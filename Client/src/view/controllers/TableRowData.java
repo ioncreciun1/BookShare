@@ -10,6 +10,7 @@ public class TableRowData
   private StringProperty authorName;
   private StringProperty bookLanguage;
   private StringProperty bookCategory;
+  private StringProperty availability;
   private StringProperty username;
   private Book book;
 
@@ -21,6 +22,12 @@ public class TableRowData
     this.bookLanguage = new SimpleStringProperty(book.getLanguage());
     this.bookCategory = new SimpleStringProperty(book.getCategory());
     this.book = book;
+    String availability = "";
+    if(book.available()) availability = "Available";
+    else {
+      availability = "Borrowed";
+    }
+    this.availability = new SimpleStringProperty(availability);
   }
 
 //  public IntegerProperty getOrderNumber()
@@ -48,5 +55,10 @@ public class TableRowData
   public StringProperty bookLanguage()
   {
     return bookLanguage;
+  }
+
+  public StringProperty availabilityProperty()
+  {
+    return availability;
   }
 }

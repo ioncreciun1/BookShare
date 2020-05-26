@@ -158,6 +158,16 @@ public class ModelManager implements Model, LocalListener<String,Book>
     client.removeBook(book);
   }
 
+  @Override public void setAvailable(Book book)
+  {
+    book.setAvailable();
+  }
+
+  @Override public void setBorrowed(Book book)
+  {
+book.setBorrowed();
+  }
+
   @Override public void changeAvailable(Book book, boolean bool)
       throws SQLException, RemoteException
   {

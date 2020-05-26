@@ -56,10 +56,7 @@ public class SearchViewModel
     ObservableList<TableRowData> obsList = FXCollections.observableArrayList();
 
     ArrayList<Book> books = new ArrayList<>();
-    for (int i = 0; i < 99; i++) // Something should be instead of 99
-    {
 
-    }
     for (int i = 0; i < books.size(); i++)
     {
       obsList.add(new TableRowData(books.get(i)));

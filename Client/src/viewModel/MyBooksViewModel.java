@@ -23,7 +23,7 @@ public class MyBooksViewModel implements LocalListener<String,Book>
   {
    // System.out.println("MyBooksViewModelConstructor");
     this.model = model;
-    //table = createList();
+    table = createList();
     this.model.addListener(this,"book");
   }
   public synchronized ObservableList<TableRowData> createList()
@@ -33,11 +33,14 @@ public class MyBooksViewModel implements LocalListener<String,Book>
     ArrayList<Book> books = model.booksByUser();
 
     ObservableList<TableRowData> obsList = FXCollections.observableArrayList();
+    System.out.println("SIZE");
+    System.out.println(books.size());
     for (int i = 0; i < books.size(); i++)
     {
       obsList.add(new TableRowData(books.get(i)));
     }
     table = obsList;
+    System.out.println(table.toString());
     return obsList;
   }
 
@@ -94,7 +97,8 @@ public class MyBooksViewModel implements LocalListener<String,Book>
     {
       obsList.add(new TableRowData(books.get(i)));
     }
-    table = obsList;;
+    table = obsList;
+
   }
 
   public ObservableList<TableRowData> getTable()
@@ -113,6 +117,9 @@ public class MyBooksViewModel implements LocalListener<String,Book>
 
   public void changeAvailable(Book book, boolean bool) throws SQLException,RemoteException{
     model.changeAvailable(book, bool);
+    table.clear();
+    createList();
+    System.out.println("Here");
   }
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)

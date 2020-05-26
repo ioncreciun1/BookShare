@@ -26,5 +26,7 @@ public interface Model extends LocalSubject<String,Book>
       String language, String category) throws SQLException,RemoteException;
   ArrayList<Book> booksByUser() throws SQLException,RemoteException;
   void removeBook(Book book) throws SQLException,RemoteException;
+  void setAvailable(Book book);
+  void setBorrowed(Book book);
   void changeAvailable(Book book, boolean bool) throws SQLException,RemoteException;
 }
