@@ -11,10 +11,13 @@ public class User implements Serializable
   private String lastName = "";
   private String city = "";
   private String contactInfo = "";
-  private int upVotes = 0;
 
+
+  /*Class constructor for creates a user using the following parameters
+   * @param String userName, @param String passWord, @param String eMail, @param String firstName,
+   * @param String lastName, @param String city and optional @param String contactInfo*/
   public User(String userName, String passWord, String eMail, String firstName,
-      String lastName, String city, String contactInfo, int upVotes){
+      String lastName, String city, String contactInfo) {
     this.userName = userName;
     this.passWord = passWord;
     this.eMail = eMail;
@@ -22,49 +25,51 @@ public class User implements Serializable
     this.lastName = lastName;
     this.city = city;
     this.contactInfo = contactInfo;
-    this.upVotes = upVotes;
   }
 
+  /*getter that @return String username*/
   public String getUserName()
   {
     return userName;
   }
 
-
+  /*getter that @return String passWord*/
   public String getPassWord() {
     return passWord;
   }
 
+  /*getter that @return String eMail*/
   public String getEMail() {
     return eMail;
   }
 
+  /*getter that @return String passWord*/
   public String getName() {
     return firstName;
   }
 
+  /*getter that @return String lastname*/
   public String getLastName() {
     return lastName;
   }
 
+  /*getter that @return String lastname*/
   public String getCity() {
     return city;
   }
 
+  /*getter that @return String contactInfo*/
   public String getContactInfo() {
     return contactInfo;
   }
 
-  public int getUpVotes() {
-    return upVotes;
-  }
 
   public void setPassWord(String passWord)
   {
     this.passWord = passWord;
   }
 
-  public void seteMail(String eMail)
+  public void setEMail(String eMail)
   {
     this.eMail = eMail;
   }
@@ -89,8 +94,4 @@ public class User implements Serializable
     this.contactInfo = contactInfo;
   }
 
-  public void setUpVotes(int upVotes)
-  {
-    this.upVotes = upVotes;
-  }
 }

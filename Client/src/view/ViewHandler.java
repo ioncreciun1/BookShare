@@ -33,16 +33,34 @@ public class ViewHandler
     primaryStage.setScene(currentScene);
     switch (id)
     {
-      case "LogInView":  primaryStage.setWidth(610);
+      case "LogInView":
+        primaryStage.setWidth(610);
         primaryStage.setHeight(500);
       break;
-      case "SignUpView":  primaryStage.setWidth(710);
+      case "SignUpView":
+        primaryStage.setWidth(710);
         primaryStage.setHeight(500);
       break;
       case "AddBookView":
         primaryStage.setHeight(580);
+        primaryStage.setWidth(595);
+      break;
+      case "MainView":
+        primaryStage.setHeight(620);
+        primaryStage.setWidth(480);
+      break;
+      case "SearchView":
+        primaryStage.setHeight(620);
+        primaryStage.setWidth(720);
+      break;
+      case "BookInfoView":
+        primaryStage.setHeight(720);
+        primaryStage.setWidth(610);
+      break;
+      case "MyBooksView":
+        primaryStage.setHeight(519);
+        primaryStage.setWidth(600);
         break;
-
     }
 
     primaryStage.show();

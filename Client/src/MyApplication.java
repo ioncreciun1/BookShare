@@ -7,10 +7,12 @@ import viewModel.ViewModelFactory;
 
 import java.io.IOException;
 import java.rmi.NotBoundException;
+import java.sql.SQLException;
 
 public class MyApplication extends Application
 {
-  public void start(Stage primaryStage) throws IOException, NotBoundException
+  public void start(Stage primaryStage)
+      throws IOException, NotBoundException, SQLException
   {
 
     Model model = new ModelManager();

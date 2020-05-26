@@ -1,19 +1,28 @@
 package viewModel;
 
 import model.Model;
-import view.AddBookViewController;
+
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class ViewModelFactory
 {
   private LogInViewModel loginViewModel;
   private SignUpViewModel signUpViewModel;
   private AddBookViewModel addBookViewModel;
-
-  public ViewModelFactory(Model model)
+  private MainViewModel mainViewModel;
+  private SearchViewModel searchViewModel;
+  private BookInfoViewModel bookInfoViewModel;
+  private MyBooksViewModel myBooksViewModel;
+  public ViewModelFactory(Model model) throws SQLException, RemoteException
   {
     this.loginViewModel = new LogInViewModel(model);
     this.signUpViewModel = new SignUpViewModel(model);
     this.addBookViewModel = new AddBookViewModel(model);
+    this.mainViewModel = new MainViewModel(model);
+    this.searchViewModel = new SearchViewModel(model);
+    this.bookInfoViewModel = new BookInfoViewModel(model);
+    this.myBooksViewModel = new MyBooksViewModel(model);
   }
 
   public LogInViewModel getLogInViewModel()
@@ -29,5 +38,21 @@ public class ViewModelFactory
   public AddBookViewModel getAddBookViewModel()
   {
     return addBookViewModel;
+  }
+
+  public MainViewModel getMainViewModel()
+  {
+    return mainViewModel;
+  }
+
+  public SearchViewModel getSearchViewModel()
+  {
+    return searchViewModel;
+  }
+
+  public MyBooksViewModel getMyBooksViewModel() {return myBooksViewModel;}
+  public BookInfoViewModel getBookInfoViewModel()
+  {
+    return bookInfoViewModel;
   }
 }

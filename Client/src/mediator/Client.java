@@ -14,15 +14,16 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class Client implements ClientModel, RemoteListener<String,String>
+public class Client implements ClientModel, RemoteListener<String,Book>
 {
 
   public static final String HOST = "localhost";
   private String host;
   private Model model;
   private RemoteModel remoteModel;
-  private PropertyChangeProxy<String,String> property;
+  private PropertyChangeProxy<String,Book> property;
 
   public Client(Model model,String host)
       throws RemoteException, NotBoundException, MalformedURLException
@@ -32,7 +33,7 @@ public class Client implements ClientModel, RemoteListener<String,String>
     this.remoteModel = (RemoteModel) Naming.lookup("rmi://" + host + ":1099/Book");
     UnicastRemoteObject.exportObject(this, 0);
     this.property = new PropertyChangeProxy<>(this);
-    remoteModel.addListener(this,"idk what have to be here");
+    remoteModel.addListener(this,"book");
   }
 
   @Override public boolean verifyPass(String password, String username)
@@ -70,20 +71,69 @@ public class Client implements ClientModel, RemoteListener<String,String>
     remoteModel.addBook(book);
   }
 
-  @Override public void propertyChange(ObserverEvent<String, String> event)
-      throws RemoteException
+  @Override public ArrayList<Book> allBooks()
+      throws SQLException, RemoteException
   {
-    property.firePropertyChange(event);
+
+    return remoteModel.allBooks();
   }
 
-  @Override public boolean addListener(GeneralListener<String, String> listener,
+  @Override public ArrayList<Book> readByFilter(String filter, String value)
+      throws SQLException, RemoteException
+  {
+    return remoteModel.readByFilter(filter,value);
+  }
+
+  @Override public ArrayList<Book> readByTwoFilters(String filter, String value,
+      String filter1, String value1) throws SQLException, RemoteException
+  {
+    return remoteModel.readByTwoFilters(filter,value,filter1,value1);
+  }
+
+  @Override public ArrayList<Book> readByThreeFilters(String filter,
+      String value, String filter1, String value1, String filter2,
+      String value2) throws SQLException, RemoteException
+  {
+    return remoteModel.readByThreeFilters(filter,value,filter1,value1,filter2,value2);
+  }
+
+  @Override public ArrayList<Book> readByAllFilters(String title, String author,
+      String language, String category) throws SQLException, RemoteException
+  {
+    return remoteModel.readByAllFilters(title,author,language,category);
+  }
+
+@Override
+ public ArrayList<Book> booksByUser(String username) throws SQLException,RemoteException{
+  System.out.println("ClientBooksByUser");
+    return remoteModel.booksByUser(username);
+ }
+
+ @Override public void removeBook(Book book) throws SQLException,RemoteException{
+    remoteModel.removeBook(book);
+ }
+
+  @Override public void changeAvailable(Book book, boolean bool)
+      throws SQLException, RemoteException
+  {
+    remoteModel.changeAvailable(book,bool );
+  }
+
+  @Override public void propertyChange(ObserverEvent<String, Book> event)
+      throws RemoteException
+  {
+    System.out.println("FIRe in Client");
+    property.firePropertyChange(event.getPropertyName(),event.getValue1(),event.getValue2());
+  }
+
+  @Override public boolean addListener(GeneralListener<String, Book> listener,
       String... propertyNames)
   {
     return property.addListener(listener,propertyNames);
   }
 
   @Override public boolean removeListener(
-      GeneralListener<String, String> listener, String... propertyNames)
+      GeneralListener<String, Book> listener, String... propertyNames)
   {
     return property.removeListener(listener,propertyNames);
   }
