@@ -18,7 +18,7 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="456.0" style="-fx-border-color: white; -fx-border-width: 0 0 1 0;">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bolder; -fx-fill: rgb(231,231,231); -fx-font-size: 2.4em;" text="Book Title" wrappingWidth="170.13671875">
+                  <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bolder; -fx-fill: rgb(231,231,231); -fx-font-size: 2.4em;" text="Book Title" wrappingWidth="170.13671875">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>

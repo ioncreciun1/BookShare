@@ -1,15 +1,18 @@
 package view.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
+import javafx.scene.text.Text;
 import view.ViewController;
 import view.ViewHandler;
 import viewModel.ViewModelFactory;
 
 public class BookInfoViewController extends ViewController
 {
-  public Label title; // it`s not used yet because have some problems with id in fxml
+  public Text title; // it`s not used yet because have some problems with id in fxml
 
   public Label authorName;
   public Label language;
@@ -17,7 +20,7 @@ public class BookInfoViewController extends ViewController
   public Label ownerName;
   public Label phoneNumber;
   public Label email;
-  public ListView description;
+  public ListView<String> description;
 
   public BookInfoViewController()
   {
@@ -34,7 +37,10 @@ public class BookInfoViewController extends ViewController
     ownerName.textProperty().bind(super.getViewModels().getBookInfoViewModel().ownerNameProperty());
     phoneNumber.textProperty().bind(super.getViewModels().getBookInfoViewModel().phoneNumberProperty());
     email.textProperty().bind(super.getViewModels().getBookInfoViewModel().emailProperty());
-   // description.textProperty().bind(super.getViewModels().getBookInfoViewModel().descriptionProperty());
+    String descriptionstring = super.getViewModels().getBookInfoViewModel().descriptionProperty().getValue();
+    ObservableList<String> items = FXCollections.observableArrayList ();
+    items.add(descriptionstring);
+    description.setItems(items);
   }
 
   public void openAddBookView()
