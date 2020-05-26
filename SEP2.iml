@@ -57,5 +57,6 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="library" name="MyXmlConverter-1.2" level="project" />
   </component>
 </module>

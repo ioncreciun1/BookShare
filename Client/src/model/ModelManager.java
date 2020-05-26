@@ -7,7 +7,6 @@ import utility.observer.listener.GeneralListener;
 import utility.observer.listener.LocalListener;
 import utility.observer.subject.PropertyChangeProxy;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -143,6 +142,36 @@ public class ModelManager implements Model, LocalListener<String,Book>
       String language, String category) throws SQLException, RemoteException
   {
     return client.readByAllFilters(title,author,language,category);
+  }
+
+@Override
+  public ArrayList<Book> booksByUser()
+      throws SQLException, RemoteException
+  {
+  //  System.out.println(user);
+  //  System.out.println("Todo:CHANGE MODELMANAGER CLIENT TO USERNAME");
+    return client.booksByUser(user);
+  }
+
+  @Override
+  public void removeBook(Book book) throws SQLException,RemoteException{
+    client.removeBook(book);
+  }
+
+  @Override public void setAvailable(Book book)
+  {
+    book.setAvailable();
+  }
+
+  @Override public void setBorrowed(Book book)
+  {
+book.setBorrowed();
+  }
+
+  @Override public void changeAvailable(Book book, boolean bool)
+      throws SQLException, RemoteException
+  {
+    client.changeAvailable(book, bool);
   }
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)

@@ -2,24 +2,24 @@ package model;
 
 import java.io.Serializable;
 
-
 /**
- * * A class to set state of the book to not available
+ * * A class to set state of the book to not available  *
+ * * @author Johnny Creciun *
+ * *@version 1.0 – May 2020
  * *implementing State, Serializable
  * */
 
-class BookStateOn implements State, Serializable
+class BookStateOn implements State
 {
-    /**
-     * Setting the book state to not available
-     * @param  book taking the book to set it state to not available
-     * @param  available
-     */
 
-    @Override
-    public void click(Book book, Boolean available) {
-        System.out.println(available);
-        book.setState(this);
+    @Override public void setAvailable(Book book)
+    {
+        //nothing
+    }
+
+    @Override public void setBorrowed(Book book)
+    {
+        book.setState(new BookStateOff());
     }
 
     /**
@@ -28,8 +28,7 @@ class BookStateOn implements State, Serializable
      */
 
     @Override
-    public boolean available()
-    {
+    public boolean available() {
         return true;
     }
 }

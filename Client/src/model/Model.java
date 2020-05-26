@@ -2,7 +2,6 @@ package model;
 
 import utility.observer.subject.LocalSubject;
 
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,4 +24,9 @@ public interface Model extends LocalSubject<String,Book>
       String filter2, String value2) throws SQLException,RemoteException;
   ArrayList<Book> readByAllFilters(String title, String author,
       String language, String category) throws SQLException,RemoteException;
+  ArrayList<Book> booksByUser() throws SQLException,RemoteException;
+  void removeBook(Book book) throws SQLException,RemoteException;
+  void setAvailable(Book book);
+  void setBorrowed(Book book);
+  void changeAvailable(Book book, boolean bool) throws SQLException,RemoteException;
 }

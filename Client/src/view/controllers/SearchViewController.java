@@ -69,6 +69,12 @@ public class SearchViewController extends ViewController
     super.getHandler().openView("AddBookView");
   }
 
+  public void openMyBooksView() throws SQLException, RemoteException
+  {
+    super.getViewModels().getMyBooksViewModel().createList();
+    super.getHandler().openView("MyBooksView");
+  }
+
   public void openMainView()
   {
     super.getHandler().openView("MainView");

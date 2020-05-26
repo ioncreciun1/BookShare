@@ -103,6 +103,22 @@ public class Client implements ClientModel, RemoteListener<String,Book>
     return remoteModel.readByAllFilters(title,author,language,category);
   }
 
+@Override
+ public ArrayList<Book> booksByUser(String username) throws SQLException,RemoteException{
+  System.out.println("ClientBooksByUser");
+    return remoteModel.booksByUser(username);
+ }
+
+ @Override public void removeBook(Book book) throws SQLException,RemoteException{
+    remoteModel.removeBook(book);
+ }
+
+  @Override public void changeAvailable(Book book, boolean bool)
+      throws SQLException, RemoteException
+  {
+    remoteModel.changeAvailable(book,bool );
+  }
+
   @Override public void propertyChange(ObserverEvent<String, Book> event)
       throws RemoteException
   {

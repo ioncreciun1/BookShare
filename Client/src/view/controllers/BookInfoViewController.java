@@ -1,14 +1,11 @@
 package view.controllers;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import view.ViewController;
 import view.ViewHandler;
 import viewModel.ViewModelFactory;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-
-import javax.swing.*;
-import java.awt.*;
 
 public class BookInfoViewController extends ViewController
 {
@@ -53,5 +50,9 @@ public class BookInfoViewController extends ViewController
   public void openMainView()
   {
     super.getHandler().openView("MainView");
+  }
+  public void openMyBooksView()
+  {
+    super.getHandler().openView("MyBooksView");
   }
 }

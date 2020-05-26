@@ -1,6 +1,5 @@
 package viewModel;
 
-import com.sun.tools.javac.Main;
 import model.Model;
 
 import java.rmi.RemoteException;
@@ -14,7 +13,7 @@ public class ViewModelFactory
   private MainViewModel mainViewModel;
   private SearchViewModel searchViewModel;
   private BookInfoViewModel bookInfoViewModel;
-
+  private MyBooksViewModel myBooksViewModel;
   public ViewModelFactory(Model model) throws SQLException, RemoteException
   {
     this.loginViewModel = new LogInViewModel(model);
@@ -23,6 +22,7 @@ public class ViewModelFactory
     this.mainViewModel = new MainViewModel(model);
     this.searchViewModel = new SearchViewModel(model);
     this.bookInfoViewModel = new BookInfoViewModel(model);
+    this.myBooksViewModel = new MyBooksViewModel(model);
   }
 
   public LogInViewModel getLogInViewModel()
@@ -50,6 +50,7 @@ public class ViewModelFactory
     return searchViewModel;
   }
 
+  public MyBooksViewModel getMyBooksViewModel() {return myBooksViewModel;}
   public BookInfoViewModel getBookInfoViewModel()
   {
     return bookInfoViewModel;

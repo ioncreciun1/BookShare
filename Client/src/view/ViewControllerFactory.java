@@ -15,10 +15,10 @@ public class ViewControllerFactory
   public static ViewController getViewController(String id,
       ViewHandler viewHandler, ViewModelFactory viewModelFactory)
   {
-    System.out.println("Factory");
-    System.out.println(id);
+  //  System.out.println("Factory");
+   // System.out.println(id);
     ViewController viewController = viewControllerMap.get(id);
-    System.out.println(viewController);
+    //System.out.println(viewController);
     if (viewController == null)
     {
       viewController = createViewController(id);
@@ -29,7 +29,7 @@ public class ViewControllerFactory
     try
     {
       FXMLLoader loader = new FXMLLoader();
-      System.out.println(id+".fxml");
+      //System.out.println(id+".fxml");
       loader.setLocation(ViewControllerFactory.class.getResource(id+".fxml"));
       root = loader.load();
       viewController = loader.getController();
@@ -55,7 +55,8 @@ public class ViewControllerFactory
       case "MainView": return new MainViewController();
       case "SearchView": return new SearchViewController();
       case "BookInfoView": return new BookInfoViewController();
-      default: throw new IllegalArgumentException("No such id for viw controller");
+      case "MyBooksView": return new MyBooksViewController();
+      default: throw new IllegalArgumentException("No such id for view controller");
     }
   }
 }

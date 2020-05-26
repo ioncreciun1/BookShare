@@ -25,7 +25,7 @@ public class MainViewModel implements LocalListener<String,Book>
     this.model.addListener(this,"book");
   }
 
-  private synchronized ObservableList<TableRowData> createList()
+  public synchronized ObservableList<TableRowData> createList()
       throws SQLException, RemoteException
   {
     int size = 0;

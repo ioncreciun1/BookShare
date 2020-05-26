@@ -71,7 +71,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="80.0">
                      <children>
-                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="45.0" fitWidth="45.0" onMouseClicked="#openMyBooksView" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/iconfinder_office-04_809571.png" />
                            </image>

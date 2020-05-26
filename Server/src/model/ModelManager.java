@@ -10,7 +10,6 @@ import utility.observer.subject.PropertyChangeProxy;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class representing ModelManger for server
@@ -132,6 +131,24 @@ public class ModelManager implements Model
       String language, String category) throws SQLException
   {
     return bookDAO.readByAllFilters(title,author,language,category);
+  }
+  @Override
+ public ArrayList<Book> booksByUser(String username) throws SQLException,RemoteException{
+    System.out.println("BooksByUserModelManager");
+    System.out.println(bookDAO.booksByUser(username).toString());
+    return bookDAO.booksByUser(username);
+  }
+
+  @Override
+  public void removeBook(Book book) throws SQLException
+  {
+    bookDAO.delete(book);
+  }
+
+  @Override public void changeAvailable(Book book, boolean bool)
+      throws SQLException, RemoteException
+  {
+    bookDAO.changeAvailable(book, bool);
   }
 
   @Override public boolean addListener(GeneralListener<String, Book> listener,

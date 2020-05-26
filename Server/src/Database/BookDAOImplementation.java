@@ -186,7 +186,7 @@ public class BookDAOImplementation implements BookDAO
        returns a list of all books*/
   public List<Book> allBooks() throws SQLException {
     try(Connection connection = getConnection()) {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book order by bookid desc"
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book where available = true order by bookid desc "
           );
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Book> books = new ArrayList<>();
@@ -213,7 +213,23 @@ public class BookDAOImplementation implements BookDAO
   }
 
   public void delete(Book book) throws SQLException {
-
+    try(Connection connection = getConnection()) {
+      PreparedStatement statement = connection.prepareStatement("DELETE FROM \"SEP2\".book WHERE Username = ? AND Title = ? AND Author = ? AND BookLanguage = ? AND Description = ? AND Category = ?"
+      );
+      String Username = book.getUsername();
+      String Title = book.getTitle();
+      String Author = book.getAuthor();
+      String BookLanguage = book.getLanguage();
+      String Description = book.getDescription();
+      String Category = book.getCategory();
+      statement.setString(1, Username);
+      statement.setString(2, Title);
+      statement.setString(3, Author);
+      statement.setString(4, BookLanguage);
+      statement.setString(5, Description);
+      statement.setString(6, Category);
+      statement.executeUpdate();
+    }
   }
 /**
  * @throws if a database access error occurs or the parameter is null
@@ -320,6 +336,70 @@ public class BookDAOImplementation implements BookDAO
         books.add(new Book(Username,BookID,Title,Author,BookLanguage,Description,Category));
       }
       return books;
+    }
+  }
+  public ArrayList<Book> booksByUser(String username) throws SQLException
+  {
+    try (Connection connection = getConnection())
+    {
+      System.out.println(username + " BOOKS BY USER INPUT USERNAME");
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book WHERE Username = ?");
+      statement.setString(1, username);
+      ResultSet resultSet = statement.executeQuery();
+      ArrayList<Book> booksByUser = new ArrayList<>();
+      while (resultSet.next())
+      {
+           /*access the data in a ResultSet object through a cursor. Note that this cursor is not a database cursor.
+     This cursor is a pointer that points to one row of data in the ResultSet object.
+     Initially, the cursor is positioned before the first row. You call various methods defined in the ResultSet object to move the cursor.*/
+        // System.out.println("Here");
+        String Username = resultSet.getString("Username");
+        String BookID = resultSet.getString("BookID");
+        String Title = resultSet.getString("Title");
+        String Author = resultSet.getString("Author");
+        String BookLanguage = resultSet.getString("BookLanguage");
+        String Description = resultSet.getString("Description");
+        String Category = resultSet.getString("Category");
+        System.out.println(BookID + "BOOK BY USER");
+        Boolean available = resultSet.getBoolean("available");
+        System.out.println(available);
+        Book book =  new Book(Username, BookID, Title, Author, BookLanguage, Description,
+            Category);
+        if(available)
+        {
+          book.setAvailable();
+        }
+        else {
+          book.setBorrowed();
+        }
+        booksByUser.add(
+            book);
+      }
+
+      return booksByUser;
+    }
+  }
+
+  @Override public void changeAvailable(Book book, boolean bool)
+      throws SQLException
+  {
+    try(Connection connection = getConnection()) {
+      PreparedStatement statement = connection.prepareStatement("UPDATE \"SEP2\".book SET Available = "+bool+" WHERE Username = ? AND Title = ? AND Author = ? AND BookLanguage = ? AND Description = ? AND Category = ?"
+      );
+      String Username = book.getUsername();
+      String Title = book.getTitle();
+      String Author = book.getAuthor();
+      String BookLanguage = book.getLanguage();
+      String Description = book.getDescription();
+      String Category = book.getCategory();
+      statement.setString(1, Username);
+      statement.setString(2, Title);
+      statement.setString(3, Author);
+      statement.setString(4, BookLanguage);
+      statement.setString(5, Description);
+      statement.setString(6, Category);
+      statement.executeUpdate();
+      System.out.println(statement.toString());
     }
   }
 }

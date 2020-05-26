@@ -9,7 +9,6 @@ import view.ViewController;
 import view.ViewHandler;
 import viewModel.ViewModelFactory;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class LogInViewController extends ViewController

@@ -22,4 +22,7 @@ public interface RemoteModel extends RemoteSubject<String,Book>
       String filter2, String value2) throws SQLException,RemoteException;
   ArrayList<Book> readByAllFilters(String title, String author,
       String language, String category) throws SQLException,RemoteException;
+  ArrayList<Book> booksByUser(String username) throws SQLException,RemoteException;
+  void removeBook(Book book) throws SQLException,RemoteException;
+  void changeAvailable(Book book, boolean bool) throws SQLException,RemoteException;
 }

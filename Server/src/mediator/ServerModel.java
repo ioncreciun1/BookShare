@@ -192,6 +192,24 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
     return model.readByAllFilters(title,author,language,category);
   }
 
+@Override
+ public ArrayList<Book> booksByUser(String username) throws SQLException,RemoteException
+  {
+    System.out.println("BooksByUserServerModel");
+    return model.booksByUser(username);
+  }
+
+  @Override public void removeBook(Book book) throws SQLException,RemoteException
+  {
+    model.removeBook(book);
+  }
+
+  @Override public void changeAvailable(Book book, boolean bool)
+      throws SQLException, RemoteException
+  {
+    model.changeAvailable(book, bool);
+  }
+
   @Override public void propertyChange(ObserverEvent<String, Book> event)
   {
     property.firePropertyChange(event.getPropertyName(),event.getValue1(),event.getValue2());

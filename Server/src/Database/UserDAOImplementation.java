@@ -23,9 +23,9 @@ public class UserDAOImplementation implements UserDAO
     return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "admin");
 
   }
-/*checks if the email entered in the sign up form is already in the database, return false and adds the user if it is not already in use
-*  * @throws if a database access error occurs or the user is null
-* @param User if a database error occurs or the user is null */
+/**checks if the email entered in the sign up form is already in the database, return false and adds the user if it is not already in use
+*  @throws SQLException if a database access error occurs or the user is null
+* @param user if a database error occurs or the user is null */
   public boolean check_Email(User user) throws SQLException
   {
     try (Connection connection = getConnection()/*auto closes the connection*/)
@@ -59,7 +59,7 @@ public class UserDAOImplementation implements UserDAO
 /**
  * @param user if the username entered on the sign up form is in use, returns false if it isn't and registers the user in the database*/
   public boolean check_User(User user) throws SQLException
-  {/*@param  you can use a try-with-resources statement to automatically close Connection, Statement, and ResultSet objects,
+  {/**@param  connection can use a try-with-resources statement to automatically close Connection, Statement, and ResultSet objects,
   regardless of whether an SQLException has been thrown. An automatic resource statement consists of a try statement and one or more declared resources. */
     try(Connection connection = getConnection()/*auto closes the connection*/){
       /*The following statement is an try-with-resources statement, which declares one resource, stm,
@@ -145,8 +145,8 @@ public class UserDAOImplementation implements UserDAO
       System.exit(0);
     }
   }
-/* get method to get a User by @param String username
-@return User with matching username*/
+/** get method to get a User by @param String username
+* @return username  with matching username*/
   @Override public User getUser(String username) throws SQLException
   {
     User user = null;

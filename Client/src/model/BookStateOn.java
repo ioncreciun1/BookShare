@@ -9,17 +9,16 @@ import java.io.Serializable;
  * *implementing State, Serializable
  * */
 
-class BookStateOn implements State, Serializable
+class BookStateOn implements State
 {
-    /**
-     * Setting the book state to not available
-     * @param  book taking the book to set it state to not available
-     * @param available
-     */
 
-    @Override
-    public void click(Book book, Boolean available) {
-        System.out.println(available);
+    @Override public void setAvailable(Book book)
+    {
+        //nothing
+    }
+
+    @Override public void setBorrowed(Book book)
+    {
         book.setState(new BookStateOff());
     }
 
