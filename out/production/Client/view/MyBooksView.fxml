@@ -38,7 +38,7 @@
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="378.0" prefWidth="193.0">
                      <children>
-                        <Button maxHeight="40.0" maxWidth="120.0" mnemonicParsing="false" onAction="#searchBooks" onMouseClicked="#getAvailable" prefHeight="40.0" prefWidth="0.0" style="-fx-background-color: rgba(148,148,148,0.75); -fx-font-weight: bold; -fx-text-fill: white; -fx-background-radius: 0;" text="Available">
+                        <Button maxHeight="40.0" maxWidth="120.0" mnemonicParsing="false" onAction="#searchBooks" onMouseClicked="#setAvailable" prefHeight="40.0" prefWidth="0.0" style="-fx-background-color: rgba(148,148,148,0.75); -fx-font-weight: bold; -fx-text-fill: white; -fx-background-radius: 0;" text="Available">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -46,7 +46,7 @@
                               <Insets top="90.0" />
                            </VBox.margin>
                         </Button>
-                        <Button maxHeight="40.0" maxWidth="120.0" mnemonicParsing="false" onAction="#searchBooks" onMouseClicked="#getBorrowed" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: rgba(148,148,148,0.75); -fx-font-weight: bold; -fx-text-fill: white; -fx-background-radius: 0;" text="Borrowed">
+                        <Button maxHeight="40.0" maxWidth="120.0" mnemonicParsing="false" onAction="#searchBooks" onMouseClicked="#setBorrowed" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: rgba(148,148,148,0.75); -fx-font-weight: bold; -fx-text-fill: white; -fx-background-radius: 0;" text="Borrowed">
                            <font>
                               <Font size="18.0" />
                            </font>
