@@ -142,12 +142,14 @@ public class ModelManager implements Model
   @Override
   public void removeBook(Book book) throws SQLException
   {
+    property.firePropertyChange("change","",book);
     bookDAO.delete(book);
   }
 
   @Override public void changeAvailable(Book book, boolean bool)
       throws SQLException, RemoteException
   {
+    property.firePropertyChange("change","",book);
     bookDAO.changeAvailable(book, bool);
   }
 
