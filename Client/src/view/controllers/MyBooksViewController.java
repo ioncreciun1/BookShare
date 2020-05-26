@@ -2,7 +2,10 @@ package view.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import model.Book;
@@ -50,7 +53,7 @@ public class MyBooksViewController extends ViewController
 
   public void openSearchView()
   {
-
+    super.getHandler().openView("SearchView");
   }
 
   public void openMainView()

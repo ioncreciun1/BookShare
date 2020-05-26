@@ -1,7 +1,12 @@
 package viewModel;
 
 import javafx.application.Platform;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.beans.value.ObservableValueBase;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import model.Book;
 import model.Model;
@@ -17,12 +22,20 @@ public class MainViewModel implements LocalListener<String,Book>
 {
   private Model model;
   private ObservableList<TableRowData> table;
+private ObjectProperty<ObservableList<TableRowData>> tableProperty;
 
   public MainViewModel(Model model) throws SQLException, RemoteException
   {
     this.model = model;
     table = createList();
-    this.model.addListener(this,"book");
+    tableProperty = new SimpleObjectProperty<>();
+    tableProperty.setValue(table);
+    this.model.addListener(this,"book","change");
+  }
+
+  public ObjectProperty<ObservableList<TableRowData>> tablePropertyProperty()
+  {
+    return tableProperty;
   }
 
   public synchronized ObservableList<TableRowData> createList()
@@ -39,10 +52,12 @@ public class MainViewModel implements LocalListener<String,Book>
     for (int i = 0; i < size; i++) // Something should be instead of 99
     {
 
+
       books.add(model.allBooks().get(i)); // should be a book i guess
     }
     for (int i = 0; i < books.size(); i++)
     {
+
       obsList.add(new TableRowData(books.get(i)));
     }
     return obsList;
@@ -58,11 +73,35 @@ public class MainViewModel implements LocalListener<String,Book>
     table.add(new TableRowData(book));
   }
 
+
+
   @Override public void propertyChange(ObserverEvent<String, Book> event)
   {
 Platform.runLater(()->{
-  System.out.println("This is happening");
-  addToTheList(event.getValue2());
+  System.out.println("View Model");
+  System.out.println(event.getPropertyName());
+  switch (event.getPropertyName())
+  {
+    case "book":
+      addToTheList(event.getValue2());
+      break;
+    case "change" :
+
+      try
+      {
+        table.clear();
+        table = createList();
+        tableProperty.setValue(table);
+
+
+      }
+      catch (SQLException | RemoteException e)
+      {
+        e.printStackTrace();
+      }
+      break;
+
+  }
 });
   }
 }

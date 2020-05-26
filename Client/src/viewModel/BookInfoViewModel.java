@@ -2,11 +2,16 @@ package viewModel;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import model.Book;
 import model.Model;
+import model.User;
+
+import java.rmi.RemoteException;
 
 public class BookInfoViewModel
 {
   private Model model;
+  private Book book;
   public StringProperty title;
   public StringProperty authorName;
   public StringProperty language;
@@ -27,6 +32,19 @@ public class BookInfoViewModel
     this.phoneNumber = new SimpleStringProperty("");
     this.email = new SimpleStringProperty("");
     this.description = new SimpleStringProperty("");
+  }
+
+  public void setBook(Book book) throws RemoteException {
+    this.book = book;
+    this.titleProperty().setValue(book.getTitle());
+    this.authorNameProperty().setValue(book.getAuthor());
+    this.languageProperty().setValue(book.getLanguage());
+    this.categoryProperty().setValue(book.getCategory());
+    User owner = model.getUser(book.getUsername());
+    this.ownerNameProperty().setValue(owner.getName()+" "+owner.getLastName());
+    this.phoneNumberProperty().setValue(owner.getContactInfo());
+    this.emailProperty().setValue(owner.getEMail());
+    this.descriptionProperty().setValue(book.getDescription());
   }
 
   public StringProperty titleProperty()

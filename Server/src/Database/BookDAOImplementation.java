@@ -40,9 +40,8 @@ public class BookDAOImplementation implements BookDAO
    * @returns connection*/
   private Connection getConnection() throws SQLException
   {
-    return DriverManager
-        .getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres",
-            "1234");
+    return DriverManager.getConnection("jdbc:postgresql://btv9bsc3ws7gpfnylr1c-postgresql.services.clever-cloud.com:5432/btv9bsc3ws7gpfnylr1c", "uhxksonl4uvuqdftznsg",
+            "pnwEWl0YlSc6A2z619ff");
   }
 /** @throws if a database access error occurs or the parameter is  null
     * @param Username
@@ -201,7 +200,7 @@ public class BookDAOImplementation implements BookDAO
        returns a list of all books*/
   public List<Book> allBooks() throws SQLException {
     try(Connection connection = getConnection()) {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book where available = true order by bookid desc "
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book order by bookid desc"
           );
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Book> books = new ArrayList<>();

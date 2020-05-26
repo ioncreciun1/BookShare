@@ -21,7 +21,7 @@ public class MyBooksViewModel implements LocalListener<String,Book>
 
   public MyBooksViewModel(Model model) throws SQLException, RemoteException
   {
-   // System.out.println("MyBooksViewModelConstructor");
+
     this.model = model;
     table = createList();
     this.model.addListener(this,"book");
@@ -29,12 +29,11 @@ public class MyBooksViewModel implements LocalListener<String,Book>
   public synchronized ObservableList<TableRowData> createList()
       throws SQLException, RemoteException
   {
-    System.out.println("CreateListMyBooks");
+
     ArrayList<Book> books = model.booksByUser();
 
     ObservableList<TableRowData> obsList = FXCollections.observableArrayList();
-    System.out.println("SIZE");
-    System.out.println(books.size());
+
     for (int i = 0; i < books.size(); i++)
     {
       obsList.add(new TableRowData(books.get(i)));
@@ -119,14 +118,10 @@ public class MyBooksViewModel implements LocalListener<String,Book>
     model.changeAvailable(book, bool);
     table.clear();
     createList();
-    System.out.println("Here");
   }
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)
   {
-    Platform.runLater(()->{
-    //  System.out.println("This is happening");
-      addToTheList(event.getValue2());
-    });
+
   }
 }
