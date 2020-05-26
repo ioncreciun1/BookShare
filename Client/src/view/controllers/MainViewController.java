@@ -8,6 +8,9 @@ import view.ViewController;
 import view.ViewHandler;
 import viewModel.ViewModelFactory;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+
 public class MainViewController extends ViewController
 {
   @FXML private TableView<TableRowData> bookListTable;
@@ -64,8 +67,10 @@ public class MainViewController extends ViewController
     super.getHandler().openView("BookInfoView");
   }
 
-  public void openMyBooksView()
+  public void openMyBooksView() throws SQLException, RemoteException
   {
+
+    super.getViewModels().getMyBooksViewModel().createList();
     super.getHandler().openView("MyBooksView");
   }
 }

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import model.Book;
 import view.ViewController;
@@ -59,8 +60,9 @@ public class MyBooksViewController extends ViewController
   {
     super.getHandler().openView("BookInfoView");
   }
-  public void openMyBooksView()
+  public void openMyBooksView() throws SQLException, RemoteException
   {
+    super.getViewModels().getMyBooksViewModel().createList();
     super.getHandler().openView("MyBooksView");
   }
 
@@ -83,5 +85,9 @@ public class MyBooksViewController extends ViewController
     super.getViewModels().getMyBooksViewModel().removeBook(toRemove);
     this.bookListTable1.getItems().remove(this.bookListTable1.getSelectionModel().getSelectedItem());
     this.bookListTable1.refresh();
+  }
+
+  public void getAvailable(MouseEvent mouseEvent)
+  {
   }
 }
