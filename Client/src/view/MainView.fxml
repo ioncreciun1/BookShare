@@ -119,7 +119,7 @@
                               <Insets top="12.0" />
                            </VBox.margin>
                         </ImageView>
-                        <Label text="User Info" textFill="WHITE">
+                        <Label text="My User Info" textFill="WHITE">
                            <font>
                               <Font size="13.0" />
                            </font>

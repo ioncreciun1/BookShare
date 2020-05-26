@@ -2,7 +2,6 @@ package view.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
@@ -51,7 +50,7 @@ public class MyBooksViewController extends ViewController
 
   public void openSearchView()
   {
-
+    super.getHandler().openView("SearchView");
   }
 
   public void openMainView()

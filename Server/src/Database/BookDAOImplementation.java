@@ -42,7 +42,7 @@ public class BookDAOImplementation implements BookDAO
   {
     return DriverManager
         .getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres",
-            "admin");
+            "2011");
   }
 /** @throws if a database access error occurs or the parameter is  null
     * @param Username
@@ -51,7 +51,7 @@ public class BookDAOImplementation implements BookDAO
   the title of the book
    @param Author
      the author of the book
-   @param  BookLanguage
+   @param BookLanguage
          the language that is book is written selected by dropdown by user
     @param Description
        the description of the book entered by the user,
@@ -66,7 +66,7 @@ public class BookDAOImplementation implements BookDAO
      ResultSet objects, which is a table of data representing a database result set.
       You need a Connection object to create a Statement object.*/
       PreparedStatement statement = connection.prepareStatement(
-          "INSERT INTO \"SEP2\".book(username, title, author, bookLanguage, description, category) VALUES (?, ?, ?, ?, ?, ?);");
+          "INSERT INTO \"SEP2\".book(username, title, author, language, description, category) VALUES (?, ?, ?, ?, ?, ?);");
       statement.setString(1, Username);
       statement.setString(2, Title);
       statement.setString(3, Author);

@@ -23,7 +23,7 @@
                   </Text>
                </children>
             </HBox>
-            <TextArea prefHeight="155.0" prefWidth="400.0" promptText="Write your coment here" style="-fx-background-color: transparent;">
+            <TextArea prefHeight="155.0" prefWidth="400.0" promptText="Write your comment here" style="-fx-background-color: transparent;">
                <VBox.margin>
                   <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                </VBox.margin>
