@@ -36,7 +36,7 @@ public class UserDAOImplementation implements UserDAO
       You need a Connection object to create a Statement object.*/
       Statement stm = connection.createStatement();
       /*To execute a query, call an execute method from Statement, executeQuery: Returns one ResultSet object.*/
-      ResultSet rs = stm.executeQuery("SELECT * FROM \"SEP2\".\"User\";");
+      ResultSet rs = stm.executeQuery("SELECT * FROM \"SEP2\".\"user\";");
      /*access the data in a ResultSet object through a cursor. Note that this cursor is not a database cursor. This cursor is a pointer that points to one row of data in the ResultSet object. Initially, the cursor is positioned before the first row. You call various methods defined in the ResultSet object to move the cursor.*/
       while (rs.next())
         /*access the data in a ResultSet object through a cursor. Note that this cursor is not a database cursor. This cursor is a pointer that points to one row of data in the ResultSet object. Initially, the cursor is positioned before the first row. You call various methods defined in the ResultSet object to move the cursor.*/
@@ -156,7 +156,7 @@ public class UserDAOImplementation implements UserDAO
     {
       Statement stm = connection.createStatement();
 
-      String sql = "SELECT * FROM \"SEP2\".\"User\" WHERE Username = '"+username+"';";
+      String sql = "SELECT * FROM \"SEP2\".\"user\" WHERE Username = '"+username+"';";
       System.out.println(sql);
       ResultSet rs = stm.executeQuery(sql);
       if(rs.next())

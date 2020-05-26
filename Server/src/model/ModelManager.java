@@ -88,7 +88,13 @@ public class ModelManager implements Model
    * @param book
    * @throws SQLException
    */
-
+  /**
+   *
+   * @param book
+   *        is a Book entered by user
+   * @throws SQLException
+   * notifies all clients of book update
+   */
   @Override public void addBook(Book book) throws SQLException
   {
     bookDAO.add(book.getUsername(),book.getTitle(),book.getAuthor(),book.getLanguage(),book.getDescription(),book.getCategory());
@@ -107,6 +113,16 @@ public class ModelManager implements Model
     return books;
   }
 
+  /**
+   *
+   * @param filter
+   *        is a filter of Title,Author,Category or BookLanguage
+   * @param value
+   *        the search criteria  value
+   * @return books
+   *        is a list of books matching filter criteria
+   * @throws SQLException if null or error
+   */
   @Override public ArrayList<Book> readByFilter(String filter, String value)
       throws SQLException
   {
@@ -114,12 +130,44 @@ public class ModelManager implements Model
     return books;
   }
 
+  /**
+   *
+   * @param filter
+   *         is the first filter of Title,Author,Category or BookLanguage
+   * @param value
+   *        is the FIRST search criteria  value
+   * @param filter1
+   *         is the first filter of Title,Author,Category or BookLanguage
+   * @param value1
+   *        the second search criteria  value
+   * @return a list of books matching the search criteria
+   * @throws SQLException
+   */
+
   @Override public ArrayList<Book> readByTwoFilters(String filter, String value,
       String filter1, String value1) throws SQLException
   {
     return bookDAO.readByTwoFilters(filter,value,filter1,value1);
   }
 
+  /**
+   *
+   * @param filter
+   *        is the first search filter of Title,Author,Category or BookLanguage
+   * @param value
+   *          is the FIRST search criteria  value
+   * @param filter1
+   *        is the second search filter of Title,Author,Category or BookLanguage
+   * @param value1
+   *         is the second search criteria  value
+   * @param filter2
+   *        is the third search filter of Title,Author,Category or BookLanguage
+   * @param value2
+   *        is the third search criteria  value
+   * @return
+   *      list of books from database meeting search criteria
+   * @throws SQLException if null or error
+   */
   @Override public ArrayList<Book> readByThreeFilters(String filter,
       String value, String filter1, String value1, String filter2,
       String value2) throws SQLException
@@ -127,11 +175,35 @@ public class ModelManager implements Model
     return bookDAO.readByThreeFilters(filter,value,filter1,value1,filter2,value2);
   }
 
+  /**
+   *
+   * @param title
+   *         is a title of a book from user entry
+   * @param author
+   *          is an author of a book from user entry
+   * @param language
+   *         is a language of a book from user entry
+   * @param category
+   *           is a category of a book from user entry
+   * @return
+   *        list of books from database meeting search criteria
+   * @throws SQLException if null or error
+   */
   @Override public ArrayList<Book> readByAllFilters(String title, String author,
       String language, String category) throws SQLException
   {
     return bookDAO.readByAllFilters(title,author,language,category);
   }
+
+  /**
+   *
+   * @param username
+   *         the username of the client
+   * @return
+   *          list of books from database meeting search criteria
+   * @throws SQLException if null or error
+   * @throws RemoteException if error
+   */
   @Override
  public ArrayList<Book> booksByUser(String username) throws SQLException,RemoteException{
     System.out.println("BooksByUserModelManager");
@@ -139,6 +211,12 @@ public class ModelManager implements Model
     return bookDAO.booksByUser(username);
   }
 
+  /**
+   *
+   * @param book
+   *        is a book selected from a list
+   * @throws SQLException if null or error
+   */
   @Override
   public void removeBook(Book book) throws SQLException
   {
@@ -146,6 +224,16 @@ public class ModelManager implements Model
     bookDAO.delete(book);
   }
 
+  /**
+   *
+   * @param book
+   *        is a book selected from a list
+   *
+   * @param bool
+   *        is a boolean true for available false for unavialable
+   * @throws SQLException
+   * @throws RemoteException
+   */
   @Override public void changeAvailable(Book book, boolean bool)
       throws SQLException, RemoteException
   {
@@ -153,12 +241,29 @@ public class ModelManager implements Model
     bookDAO.changeAvailable(book, bool);
   }
 
+  /**
+   *
+   * @param listener
+   *        an observer
+   * @param propertyNames
+   *        a list of properties
+   * @return
+   *
+   */
   @Override public boolean addListener(GeneralListener<String, Book> listener,
       String... propertyNames)
   {
     return property.addListener(listener,propertyNames);
   }
 
+  /**
+   *
+   * @param listener
+   *        is an obersver for removal
+   * @param propertyNames
+   *        list of properties
+   * @return
+   */
   @Override public boolean removeListener(
       GeneralListener<String, Book> listener, String... propertyNames)
   {

@@ -7,6 +7,9 @@ import view.ViewController;
 import view.ViewHandler;
 import viewModel.ViewModelFactory;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+
 public class BookInfoViewController extends ViewController
 {
   public Label title; // it`s not used yet because have some problems with id in fxml
@@ -51,8 +54,10 @@ public class BookInfoViewController extends ViewController
   {
     super.getHandler().openView("MainView");
   }
-  public void openMyBooksView()
+
+  public void openMyBooksView() throws SQLException, RemoteException
   {
+    super.getViewModels().getMyBooksViewModel().createList();
     super.getHandler().openView("MyBooksView");
   }
 }
