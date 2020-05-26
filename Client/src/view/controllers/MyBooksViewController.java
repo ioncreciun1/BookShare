@@ -2,9 +2,7 @@ package view.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import model.Book;
@@ -14,6 +12,7 @@ import viewModel.ViewModelFactory;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.Optional;
 
 public class MyBooksViewController extends ViewController
 {
@@ -89,13 +88,33 @@ public class MyBooksViewController extends ViewController
   }
 
   public void remove()  throws SQLException,RemoteException{
-    Book toRemove = this.bookListTable1.getSelectionModel().getSelectedItem().getBook();
-    super.getViewModels().getMyBooksViewModel().removeBook(toRemove);
-    this.bookListTable1.getItems().remove(this.bookListTable1.getSelectionModel().getSelectedItem());
-    this.bookListTable1.refresh();
+    boolean remove = confirmation();
+    if (remove)
+    {
+      Book toRemove = this.bookListTable1.getSelectionModel().getSelectedItem().getBook();
+      super.getViewModels().getMyBooksViewModel().removeBook(toRemove);
+      this.bookListTable1.getItems().remove(this.bookListTable1.getSelectionModel().getSelectedItem());
+      this.bookListTable1.refresh();
+    }
   }
 
   public void getAvailable(MouseEvent mouseEvent)
   {
+  }
+
+  private boolean confirmation()
+  {
+    Book book = this.bookListTable1.getSelectionModel().getSelectedItem().getBook();
+    int index = bookListTable1.getSelectionModel().getSelectedIndex();
+    if (index < 0 || index >= bookListTable1.getItems().size())
+    {
+      return false;
+    }
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Confirmation");
+    alert.setHeaderText(
+        "Remove book: " + book.getTitle() + " by " + book.getAuthor() + "?");
+    Optional<ButtonType> result = alert.showAndWait();
+    return (result.isPresent()) && (result.get() == ButtonType.OK);
   }
 }
