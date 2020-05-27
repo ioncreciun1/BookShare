@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import model.Book;
 import view.ViewController;
@@ -76,6 +77,11 @@ this.bookListTable.itemsProperty().bindBidirectional(super.getViewModels().getMa
   {
 
     super.getViewModels().getMyBooksViewModel().createList();
+    super.getHandler().openView("MyBooksView");
+  }
+
+  public void openUserView(MouseEvent mouseEvent)
+  {
     super.getHandler().openView("MyBooksView");
   }
 }
