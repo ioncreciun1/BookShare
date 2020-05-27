@@ -77,7 +77,11 @@
                                     <Insets left="15.0" />
                                  </HBox.margin>
                               </Label>
-                              <Text fx:id="authorName" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Label fx:id="authorName" prefHeight="27.0" prefWidth="200.0" style="-fx-border-color: rgb(231,231,231); -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: rgb(231,231,231);" text="Author">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="345.0">
