@@ -22,7 +22,7 @@ public class BookInfoViewController extends ViewController
 {
   public Text title; // it`s not used yet because have some problems with id in fxml
 
-  public Label authorName;
+  public Text authorName;
   public Label language;
   public Label category;
   public Label ownerName;
