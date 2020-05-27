@@ -12,11 +12,19 @@ import java.io.Serializable;
 class BookStateOn implements State
 {
 
+    /**
+     * this method is doing nothing
+     * @param book
+     */
     @Override public void setAvailable(Book book)
     {
         //nothing
     }
 
+    /**
+     * set book status to borrowed
+     * @param book
+     */
     @Override public void setBorrowed(Book book)
     {
         book.setState(new BookStateOff());

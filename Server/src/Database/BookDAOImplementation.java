@@ -225,6 +225,11 @@ public class BookDAOImplementation implements BookDAO
 
   }
 
+  /**
+   * Delete a book from database
+   * @param book specific book
+   * @throws SQLException
+   */
   public void delete(Book book) throws SQLException {
     try(Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement("DELETE FROM \"SEP2\".book WHERE Username = ? AND Title = ? AND Author = ? AND BookLanguage = ? AND Description = ? AND Category = ?"
@@ -324,6 +329,15 @@ public class BookDAOImplementation implements BookDAO
     }
   }
 
+  /**
+   * Getting a list of books that have this parameters
+   * @param title title of a book
+   * @param author author of a book
+   * @param language language of a book
+   * @param category category of a book
+   * @return a list of books
+   * @throws SQLException
+   */
   @Override public ArrayList<Book> readByAllFilters(String title, String author,
       String language, String category) throws SQLException
   {
@@ -351,6 +365,13 @@ public class BookDAOImplementation implements BookDAO
       return books;
     }
   }
+
+  /**
+   * Get a list of books for this username
+   * * @param username username of a specific user
+   * @return a list of books
+   * @throws SQLException
+   */
   public ArrayList<Book> booksByUser(String username) throws SQLException
   {
     try (Connection connection = getConnection())
@@ -393,6 +414,12 @@ public class BookDAOImplementation implements BookDAO
     }
   }
 
+  /**
+   * change status of a specific book
+   * @param book specific book
+   * @param bool status of book
+   * @throws SQLException
+   */
   @Override public void changeAvailable(Book book, boolean bool)
       throws SQLException
   {

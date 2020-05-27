@@ -56,12 +56,19 @@ public class ModelManager implements Model
   /**
    * Register a user in the system
    * @param Username
+   * username of the user
    * @param passWord
+   * password for this user
    * @param eMail
+   * email address
    * @param firstName
+   * First name of the user
    * @param lastName
+   * Last name of the user
    * @param city
+   * city where user live
    * @param contactInfo
+   * phone Number of this user
    * @throws Exception
    */
   public void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo)
@@ -101,6 +108,15 @@ public class ModelManager implements Model
     property.firePropertyChange("book",null,book);
   }
 
+  /**
+   * add Comment to a specific book
+   *
+   * @param book
+   * a specific book
+   * @param comment
+   * comment text
+   * @throws SQLException
+   */
   public void addComment(Book book, String comment) throws SQLException
   {
     bookDAO.addComment(book.getUsername(), book, comment);

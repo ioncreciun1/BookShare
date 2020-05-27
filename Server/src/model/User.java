@@ -13,17 +13,18 @@ public class User implements Serializable
   private String contactInfo = "";
 
 
-/*Class constructor for creates a user using the following parameters
-* @param String userName
+/**
+Class constructor for creates a user using the following parameters
+* @param  userName
 *       the users username used to identify the user
-* @param String passWord
+* @param  passWord
 *       users password for login
-* @param String eMail
+* @param  eMail
 *   users email for registration
-* @param String firstName
+* @param  firstName
 *         users first name
-* @param String lastName
-* @param String city
+* @param  lastName
+* @param  city
 * optional @param String contactInfo*/
   public User(String userName, String passWord, String eMail, String firstName,
       String lastName, String city, String contactInfo) {
@@ -36,68 +37,93 @@ public class User implements Serializable
     this.contactInfo = contactInfo;
   }
 
-  /*getter that @return String username*/
+  /**
+   * getter that @return String username*/
   public String getUserName()
   {
     return userName;
   }
 
-  /*getter that @return String passWord*/
+  /**getter that @return String passWord*/
   public String getPassWord() {
     return passWord;
   }
 
-  /*getter that @return String eMail*/
+  /**getter that @return String eMail*/
   public String getEMail() {
     return eMail;
   }
 
-  /*getter that @return String passWord*/
+  /**getter that @return String passWord*/
   public String getName() {
     return firstName;
   }
 
-  /*getter that @return String lastname*/
+  /**getter that @return String lastname*/
   public String getLastName() {
     return lastName;
   }
 
-  /*getter that @return String lastname*/
+  /**getter that @return String lastname*/
   public String getCity() {
     return city;
   }
 
-  /*getter that @return String contactInfo*/
+  /**getter that @return String contactInfo*/
   public String getContactInfo() {
     return contactInfo;
   }
 
-
+  /**
+   * set password
+   * @param passWord password of the user
+   */
   public void setPassWord(String passWord)
   {
     this.passWord = passWord;
   }
 
+  /**
+   * set email of this user
+   * @param eMail
+   */
   public void setEMail(String eMail)
   {
     this.eMail = eMail;
   }
 
+  /**
+   * set First name
+   * @param firstName
+   * first name of this user
+   */
   public void setFirstName(String firstName)
   {
     this.firstName = firstName;
   }
 
+  /**
+   * set last name
+   * @param lastName last name of this user
+   */
   public void setLastName(String lastName)
   {
     this.lastName = lastName;
   }
 
+  /**
+   * set city
+   * @param city city where user lives
+   */
   public void setCity(String city)
   {
     this.city = city;
   }
 
+  /**
+   * set phone number
+   * @param contactInfo phone number of this user
+   */
   public void setContactInfo(String contactInfo)
   {
     this.contactInfo = contactInfo;

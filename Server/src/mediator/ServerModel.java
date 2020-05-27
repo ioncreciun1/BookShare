@@ -169,49 +169,112 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
     return model.allBooks();
   }
 
+  /**
+   * Getting all books by a filter and specific value
+   * @param filter filter for searching for a book
+   * @param value value of the filter
+   * @return An list of books after searching by this filter
+   * @throws SQLException
+   */
   @Override public ArrayList<Book> readByFilter(String filter, String value)
-      throws SQLException, RemoteException
+      throws SQLException
   {
     return model.readByFilter(filter,value);
   }
 
+  /**
+   * Getting all books by two filters and their specific value
+   * @param filter filter for searching for a book
+   * @param value value of the filter
+   * @param filter1 filter for searching for a book
+   * @param value1 value of the filter1
+   * @return An list of books after searching by this two filters
+   * @throws SQLException
+   */
+
   @Override public ArrayList<Book> readByTwoFilters(String filter, String value,
-      String filter1, String value1) throws SQLException, RemoteException
+      String filter1, String value1) throws SQLException
   {
     return model.readByTwoFilters(filter,value,filter1,value1);
   }
 
+  /**
+   *
+   * @param filter filter for searching for a book
+   * @param value  value of the filter
+   * @param filter1 filter for searching for a book
+   * @param value1 value of the filter1
+   * @param filter2 filter for searching for a book
+   * @param value2 value of the filter2
+   * @return An list of books after searching by this filters
+   * @throws SQLException
+   */
   @Override public ArrayList<Book> readByThreeFilters(String filter,
       String value, String filter1, String value1, String filter2,
-      String value2) throws SQLException, RemoteException
+      String value2) throws SQLException
   {
     return model.readByThreeFilters(filter,value,filter1,value1,filter2,value2);
   }
 
+  /**
+   * Search a book by all search filters
+   * @param title title of the book
+   * @param author author of the book
+   * @param language language of the book
+   * @param category category of the book
+   * @return An list of book based on these filters
+   * @throws SQLException
+   */
   @Override public ArrayList<Book> readByAllFilters(String title, String author,
       String language, String category) throws SQLException
   {
     return model.readByAllFilters(title,author,language,category);
   }
 
-@Override
+  /**
+   * Getting a list of books by username
+   * @param username username of a specific user
+   * @return An list of books that have this specific username
+   * @throws SQLException
+   * @throws RemoteException
+   */
+  @Override
  public ArrayList<Book> booksByUser(String username) throws SQLException,RemoteException
   {
     System.out.println("BooksByUserServerModel");
     return model.booksByUser(username);
   }
 
+  /**
+   * remove a book from system
+   * @param book specific book
+   * @throws SQLException
+   * @throws RemoteException
+   */
   @Override public void removeBook(Book book) throws SQLException,RemoteException
   {
     model.removeBook(book);
   }
 
+  /**
+   * change book status of a specific book
+   * @param book specific book
+   * @param bool book status
+   * @throws SQLException
+   * @throws RemoteException
+   */
   @Override public void changeAvailable(Book book, boolean bool)
       throws SQLException, RemoteException
   {
     model.changeAvailable(book, bool);
   }
 
+  /**
+   * Add comment to a specific book
+   * @param book specific book
+   * @param comment comment text
+   * @throws SQLException
+   */
   @Override public void addComment(Book book, String comment)
       throws SQLException
   {

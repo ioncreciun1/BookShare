@@ -119,18 +119,60 @@ public class ModelManager implements Model, LocalListener<String,Book>
     client.addBook(book);
   }
 
+  /**
+   *
+   * @param filter
+   *        is a filter of Title,Author,Category or BookLanguage
+   * @param value
+   *        the search criteria  value
+   * @return books
+   *        is a list of books matching filter criteria
+   * @throws SQLException if null or error
+   * @throws RemoteException
+   */
   @Override public ArrayList<Book> readByFilter(String filter, String value)
       throws SQLException, RemoteException
   {
     return client.readByFilter(filter,value);
   }
 
+  /**
+   *get a list of books that match the search criteria
+   *  @param filter
+   *         is the first filter of Title,Author,Category or BookLanguage
+   * @param value
+   *        is the FIRST search criteria  value
+   * @param filter1
+   *         is the first filter of Title,Author,Category or BookLanguage
+   * @param value1
+   *        the second search criteria  value
+   * @return a list of books matching the search criteria
+   * @throws SQLException
+   */
   @Override public ArrayList<Book> readByTwoFilters(String filter, String value,
       String filter1, String value1) throws SQLException, RemoteException
   {
     return client.readByTwoFilters(filter,value,filter1,value1);
   }
 
+  /**
+   *
+   * @param filter
+   *        is the first search filter of Title,Author,Category or BookLanguage
+   * @param value
+   *          is the FIRST search criteria  value
+   * @param filter1
+   *        is the second search filter of Title,Author,Category or BookLanguage
+   * @param value1
+   *         is the second search criteria  value
+   * @param filter2
+   *        is the third search filter of Title,Author,Category or BookLanguage
+   * @param value2
+   *        is the third search criteria  value
+   * @return
+   *      list of books from database meeting search criteria
+   * @throws SQLException if null or error
+   */
   @Override public ArrayList<Book> readByThreeFilters(String filter,
       String value, String filter1, String value1, String filter2,
       String value2) throws SQLException, RemoteException
@@ -138,42 +180,91 @@ public class ModelManager implements Model, LocalListener<String,Book>
     return client.readByThreeFilters(filter,value,filter1,value1,filter2,value2);
   }
 
+  /**
+   *
+   * @param title
+   *         is a title of a book from user entry
+   * @param author
+   *          is an author of a book from user entry
+   * @param language
+   *         is a language of a book from user entry
+   * @param category
+   *           is a category of a book from user entry
+   * @return
+   *        list of books from database meeting search criteria
+   * @throws SQLException if null or error
+   */
   @Override public ArrayList<Book> readByAllFilters(String title, String author,
       String language, String category) throws SQLException, RemoteException
   {
     return client.readByAllFilters(title,author,language,category);
   }
 
+  /**
+   *
+
+   * @return
+   *          list of books from database for this specific user
+   * @throws SQLException if null or error
+   * @throws RemoteException if error
+   */
 @Override
   public ArrayList<Book> booksByUser()
       throws SQLException, RemoteException
   {
-  //  System.out.println(user);
-  //  System.out.println("Todo:CHANGE MODELMANAGER CLIENT TO USERNAME");
+
     return client.booksByUser(user);
   }
 
+  /**
+   * remove a book from system
+   * @param book
+   *        is a book selected from a list
+   * @throws SQLException if null or error
+   */
   @Override
   public void removeBook(Book book) throws SQLException,RemoteException{
     client.removeBook(book);
   }
 
+  /**
+   * change book status to available
+   * @param book specific book
+   */
   @Override public void setAvailable(Book book)
   {
     book.setAvailable();
   }
 
+  /**
+   * change book status to borrowed
+   * @param book specific book
+   */
   @Override public void setBorrowed(Book book)
   {
     book.setBorrowed();
   }
 
+  /**
+   * Change book status and prompt that change to server
+   * @param book specific book
+   * @param bool book status
+   * @throws SQLException
+   * @throws RemoteException
+   */
   @Override public void changeAvailable(Book book, boolean bool)
       throws SQLException, RemoteException
   {
     client.changeAvailable(book, bool);
   }
 
+  /**
+   * Add comment to a specific book
+   * @param book specific book
+   * @param comment comment text
+   * @throws SQLException
+   * @throws RemoteException
+   */
   @Override public void addComment(Book book, String comment)
       throws SQLException, RemoteException
   {
