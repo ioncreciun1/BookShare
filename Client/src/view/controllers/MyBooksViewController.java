@@ -76,21 +76,39 @@ public class MyBooksViewController extends ViewController
   }
 
   public void setBorrowed() throws SQLException, RemoteException{
+    if (this.bookListTable1.getSelectionModel().getSelectedItem() != null){
     Book toUpdate = this.bookListTable1.getSelectionModel().getSelectedItem().getBook();
     toUpdate.setBorrowed();
     super.getViewModels().getMyBooksViewModel().changeAvailable(toUpdate, toUpdate.available());
     this.bookListTable1.setItems(super.getViewModels().getMyBooksViewModel().getTable());
+    } else {
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("Error Dialog");
+      alert.setHeaderText("ERROR: NO BOOK SELECTED");
+      alert.setContentText("Please select a book in order to set it to be available");
+      alert.showAndWait();
+      System.out.println("NO BOOK SELECTED AVAILABLE");
+    }
   }
 
   public void setAvailable() throws SQLException, RemoteException{
+    if (this.bookListTable1.getSelectionModel().getSelectedItem() != null){
     Book toUpdate = this.bookListTable1.getSelectionModel().getSelectedItem().getBook();
     toUpdate.setAvailable();
     super.getViewModels().getMyBooksViewModel().changeAvailable(toUpdate, toUpdate.available());
     this.bookListTable1.setItems(super.getViewModels().getMyBooksViewModel().getTable());
-
+    } else {
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("Error Dialog");
+      alert.setHeaderText("ERROR: NO BOOK SELECTED");
+      alert.setContentText("Please select a book in order to set it to be borrowed");
+      alert.showAndWait();
+      System.out.println("NO BOOK SELECTED BORROW");
+    }
   }
 
   public void remove()  throws SQLException,RemoteException{
+    if (this.bookListTable1.getSelectionModel().getSelectedItem() != null){
     boolean remove = confirmation();
     if (remove)
     {
@@ -99,6 +117,14 @@ public class MyBooksViewController extends ViewController
       this.bookListTable1.getItems().remove(this.bookListTable1.getSelectionModel().getSelectedItem());
       this.bookListTable1.refresh();
     }
+    } else {
+  Alert alert = new Alert(Alert.AlertType.INFORMATION);
+  alert.setTitle("Error Dialog");
+  alert.setHeaderText("ERROR: NO BOOK SELECTED");
+  alert.setContentText("Please select a book in order to remove it from the system");
+  alert.showAndWait();
+  System.out.println("NO BOOK SELECTED REMOVE");
+}
   }
 
   public void getAvailable(MouseEvent mouseEvent)
