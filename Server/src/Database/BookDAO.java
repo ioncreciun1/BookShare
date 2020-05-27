@@ -23,5 +23,5 @@ List<Book> readByFilter(String filter,String value) throws SQLException;
    ArrayList<Book> booksByUser(String username) throws SQLException;
 
   void changeAvailable(Book book, boolean bool) throws SQLException;
-  // void addComment(String username, Book book, String comment) throws SQLException;
+   void addComment(String username, Book book, String comment) throws SQLException;
 }

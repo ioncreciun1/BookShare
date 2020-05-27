@@ -62,8 +62,8 @@ public class ViewHandler
         primaryStage.setWidth(700);
       break;
       case "CommentView":
-       primaryStage.setHeight(300);
-       primaryStage.setWidth(415);
+       primaryStage.setHeight(315);
+       primaryStage.setWidth(420);
       break;
     }
 

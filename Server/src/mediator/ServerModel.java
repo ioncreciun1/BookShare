@@ -157,6 +157,8 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
     model.addBook(book);
   }
 
+
+
   /**
    * Getting all books from the system
    * @return all books from database
@@ -208,6 +210,12 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
       throws SQLException, RemoteException
   {
     model.changeAvailable(book, bool);
+  }
+
+  @Override public void addComment(Book book, String comment)
+      throws SQLException
+  {
+    model.addComment(book, comment);
   }
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)

@@ -3,7 +3,11 @@ package viewModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import model.Book;
 import model.Model;
+
+import java.rmi.RemoteException;
+import java.sql.SQLException;
 
 public class CommentViewModel
 {
@@ -42,5 +46,11 @@ public class CommentViewModel
       return false;
     }
     return true;
+  }
+
+  public void addComment(Book book, String comment)
+      throws SQLException, RemoteException
+  {
+    model.addComment(book, comment);
   }
 }

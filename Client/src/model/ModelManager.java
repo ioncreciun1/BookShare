@@ -174,6 +174,12 @@ public class ModelManager implements Model, LocalListener<String,Book>
     client.changeAvailable(book, bool);
   }
 
+  @Override public void addComment(Book book, String comment)
+      throws SQLException, RemoteException
+  {
+    client.addComment(book, comment);
+  }
+
   @Override public void propertyChange(ObserverEvent<String, Book> event)
   {
     System.out.println("CLIENT MODEL");

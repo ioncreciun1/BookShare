@@ -2,14 +2,19 @@ package view.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import view.ViewController;
+import view.ViewControllerFactory;
 import view.ViewHandler;
 import viewModel.ViewModelFactory;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
@@ -40,9 +45,9 @@ public class BookInfoViewController extends ViewController
     ownerName.textProperty().bind(super.getViewModels().getBookInfoViewModel().ownerNameProperty());
     phoneNumber.textProperty().bind(super.getViewModels().getBookInfoViewModel().phoneNumberProperty());
     email.textProperty().bind(super.getViewModels().getBookInfoViewModel().emailProperty());
-    String descriptionstring = super.getViewModels().getBookInfoViewModel().descriptionProperty().getValue();
+    String descriptionString = super.getViewModels().getBookInfoViewModel().descriptionProperty().getValue();
     ObservableList<String> items = FXCollections.observableArrayList ();
-    items.add(descriptionstring);
+    items.add(descriptionString);
     description.setItems(items);
   }
 
@@ -67,7 +72,7 @@ public class BookInfoViewController extends ViewController
     super.getHandler().openView("MyBooksView");
   }
 
-  public void openCommentView()
+  public void openCommentView() throws IOException
   {
     super.getHandler().openView("CommentView");
   }

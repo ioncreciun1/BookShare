@@ -76,21 +76,20 @@ public class BookDAOImplementation implements BookDAO
     }
   }
 
-//  @Override public void addComment(String Username, Book book,  String comment)
-//      throws SQLException
-//  {
-//    try (Connection connection = getConnection())
-//    {
+  @Override public void addComment(String username, Book book,  String comment)
+      throws SQLException
+  {
+    try (Connection connection = getConnection())
+    {
 //      PreparedStatement statement = connection.prepareStatement(
-//          "INSERT INTO \"SEP2\".comment(username, book, comment) VALUES (?,?);");
-//      String username = book.getUsername();
-//      String
+//          "INSERT INTO \"SEP2\".comment(username, bookid, comment) VALUES (?,?,?);");
+////      String bookid = book.getId();
 //      statement.setString(1, username);
-//      statement.setString(2, book);
+////      statement.setString(2, bookid);
 //      statement.setString(3, comment);
 //      statement.executeUpdate();
-//    }
-//  }
+    }
+  }
 
   @Override
   /**

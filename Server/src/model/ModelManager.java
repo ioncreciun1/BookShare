@@ -101,6 +101,11 @@ public class ModelManager implements Model
     property.firePropertyChange("book",null,book);
   }
 
+  public void addComment(Book book, String comment) throws SQLException
+  {
+    bookDAO.addComment(book.getUsername(), book, comment);
+    property.firePropertyChange("comment",comment,book);
+  }
   /**
    * Getting all books
    * @return all books from the system

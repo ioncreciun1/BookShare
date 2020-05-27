@@ -7,6 +7,9 @@ import view.ViewController;
 import view.ViewHandler;
 import viewModel.ViewModelFactory;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+
 public class CommentViewController extends ViewController
 {
   public TextArea comment;
@@ -39,10 +42,11 @@ public class CommentViewController extends ViewController
     super.getHandler().openView("BookInfoView");
   }
 
-  public void postComment()
+  public void postComment() throws SQLException, RemoteException
   {
     if (super.getViewModels().getCommentViewModel().checkComment())
     {
+      super.getViewModels().getCommentViewModel().addComment(getViewModels().getBookInfoViewModel().getBook(), comment.getText());
       super.getHandler().openView("BookInfoView");
     }
   }

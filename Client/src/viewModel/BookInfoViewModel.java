@@ -47,6 +47,11 @@ public class BookInfoViewModel
     this.descriptionProperty().setValue(book.getDescription());
   }
 
+  public Book getBook()
+  {
+    return book;
+  }
+
   public StringProperty titleProperty()
   {
     return title;

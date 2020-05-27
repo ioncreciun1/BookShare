@@ -29,4 +29,5 @@ public interface Model extends LocalSubject<String,Book>
   void setAvailable(Book book);
   void setBorrowed(Book book);
   void changeAvailable(Book book, boolean bool) throws SQLException,RemoteException;
+  void addComment(Book book, String comment) throws SQLException,RemoteException;
 }

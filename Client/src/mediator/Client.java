@@ -119,6 +119,12 @@ public class Client implements ClientModel, RemoteListener<String,Book>
     remoteModel.changeAvailable(book,bool );
   }
 
+  @Override public void addComment(Book book, String comment)
+      throws SQLException, RemoteException
+  {
+    remoteModel.addComment(book, comment);
+  }
+
   @Override public void propertyChange(ObserverEvent<String, Book> event)
       throws RemoteException
   {
