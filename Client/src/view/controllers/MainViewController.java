@@ -1,9 +1,12 @@
 package view.controllers;
 
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Region;
+import model.Book;
 import view.ViewController;
 import view.ViewHandler;
 import viewModel.ViewModelFactory;
@@ -44,7 +47,8 @@ public class MainViewController extends ViewController
     categoryColumn.setCellValueFactory(
         cellData -> cellData.getValue().bookCategory()
     );
-    this.bookListTable.setItems(super.getViewModels().getMainViewModel().getTable());
+this.bookListTable.itemsProperty().bindBidirectional(super.getViewModels().getMainViewModel().tablePropertyProperty());
+   // this.bookListTable.setItems(super.getViewModels().getMainViewModel().getTable());
   }
 
   public void openAddBookView()
@@ -62,8 +66,9 @@ public class MainViewController extends ViewController
     super.getHandler().openView("MainView");
   }
 
-  public void openBookInfoView()
-  {
+  public void openBookInfoView() throws RemoteException {
+    Book selectedBook = this.bookListTable.getSelectionModel().getSelectedItem().getBook();
+    super.getViewModels().getBookInfoViewModel().setBook(selectedBook);
     super.getHandler().openView("BookInfoView");
   }
 

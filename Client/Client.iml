@@ -56,5 +56,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="MyXmlConverter-1.2" level="project" />
+    <orderEntry type="library" name="jdbc-postgresql2" level="project" />
   </component>
 </module>

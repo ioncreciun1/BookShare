@@ -18,14 +18,14 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="456.0" style="-fx-border-color: white; -fx-border-width: 0 0 1 0;">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bolder; -fx-fill: rgb(231,231,231); -fx-font-size: 2.4em;" text="Book Title" wrappingWidth="170.13671875">
+                  <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bolder; -fx-fill: rgb(231,231,231); -fx-font-size: 2.4em;" text="Book Title" wrappingWidth="170.13671875">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Text>
                   <HBox alignment="CENTER_RIGHT" prefHeight="95.0" prefWidth="510.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#openSearchView" style="-fx-background-color: transparent; -fx-border-width: 2px 0px 2px 0px; -fx-border-color: rgb(231,231,231); -fx-text-fill: rgb(231,231,231);" text="Click to Search">
+                        <Button mnemonicParsing="false" onAction="#openSearchView" onMouseClicked="#openSearchView" style="-fx-background-color: transparent; -fx-border-width: 2px 0px 2px 0px; -fx-border-color: rgb(231,231,231); -fx-text-fill: rgb(231,231,231);" text="Click to Search">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -175,7 +175,7 @@
             </HBox>
             <VBox prefHeight="160.0" prefWidth="600.0">
                <children>
-                  <Label prefHeight="27.0" prefWidth="99.0" style="-fx-text-fill: rgb(231,231,231);" text="Reviews:">
+                  <Label prefHeight="27.0" prefWidth="99.0" style="-fx-text-fill: rgb(231,231,231);" text="Comments:">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -188,7 +188,7 @@
                         <Insets bottom="5.0" left="10.0" right="15.0" />
                      </VBox.margin>
                   </ListView>
-                  <Button maxHeight="40.0" maxWidth="120.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="107.0" style="-fx-background-color: rgba(148,148,148,0.75); -fx-font-weight: bold; -fx-text-fill: white; -fx-background-radius: 0;" text="Write Review">
+                  <Button maxHeight="40.0" maxWidth="120.0" mnemonicParsing="false" onAction="#openCommentView" onMouseClicked="#openCommentView" prefHeight="20.0" prefWidth="107.0" style="-fx-background-color: rgba(148,148,148,0.75); -fx-font-weight: bold; -fx-text-fill: white; -fx-background-radius: 0;" text="Write Comment">
                      <VBox.margin>
                         <Insets bottom="5.0" left="10.0" />
                      </VBox.margin>

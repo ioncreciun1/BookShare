@@ -39,7 +39,7 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
   {
     this.property = new PropertyChangeProxy<>(this, true);
     this.model = model;
-    model.addListener(this,"book");
+    model.addListener(this,"book","change");
     startRegistry();
     startServer();
   }

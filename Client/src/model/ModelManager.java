@@ -39,7 +39,7 @@ public class ModelManager implements Model, LocalListener<String,Book>
       e.getMessage();
     }
     property = new PropertyChangeProxy<>(this);
-    client.addListener(this,"book");
+    client.addListener(this,"book","change");
   }
 
   /**
@@ -165,7 +165,7 @@ public class ModelManager implements Model, LocalListener<String,Book>
 
   @Override public void setBorrowed(Book book)
   {
-book.setBorrowed();
+    book.setBorrowed();
   }
 
   @Override public void changeAvailable(Book book, boolean bool)
@@ -176,7 +176,7 @@ book.setBorrowed();
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)
   {
-    System.out.println("FIRe in Client Model");
+    System.out.println("CLIENT MODEL");
   property.firePropertyChange(event.getPropertyName(),event.getValue1(),event.getValue2());
   }
 
@@ -230,7 +230,7 @@ book.setBorrowed();
   @Override public User getUser(String username) throws RemoteException
   {
     this.user = username;
-    System.out.println(user);
+  //  System.out.println(user);
     return client.getUser(username);
   }
 }

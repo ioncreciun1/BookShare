@@ -33,7 +33,7 @@ public class Client implements ClientModel, RemoteListener<String,Book>
     this.remoteModel = (RemoteModel) Naming.lookup("rmi://" + host + ":1099/Book");
     UnicastRemoteObject.exportObject(this, 0);
     this.property = new PropertyChangeProxy<>(this);
-    remoteModel.addListener(this,"book");
+    remoteModel.addListener(this,"book","change");
   }
 
   @Override public boolean verifyPass(String password, String username)
@@ -105,7 +105,7 @@ public class Client implements ClientModel, RemoteListener<String,Book>
 
 @Override
  public ArrayList<Book> booksByUser(String username) throws SQLException,RemoteException{
-  System.out.println("ClientBooksByUser");
+ // System.out.println("ClientBooksByUser");
     return remoteModel.booksByUser(username);
  }
 
@@ -122,7 +122,8 @@ public class Client implements ClientModel, RemoteListener<String,Book>
   @Override public void propertyChange(ObserverEvent<String, Book> event)
       throws RemoteException
   {
-    System.out.println("FIRe in Client");
+    System.out.println("CLIENT");
+    System.out.println(event.getPropertyName());
     property.firePropertyChange(event.getPropertyName(),event.getValue1(),event.getValue2());
   }
 

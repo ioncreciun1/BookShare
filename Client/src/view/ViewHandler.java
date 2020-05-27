@@ -21,8 +21,8 @@ public class ViewHandler
   {
     Region root = null;
     root = ViewControllerFactory.getViewController(id, this, factory).getRoot();
-    System.out.println(id);
-    System.out.println(root);
+    //System.out.println(id);
+   // System.out.println(root);
     currentScene.setRoot(root);
     String title = "";
     if (root.getUserData() != null)
@@ -58,9 +58,13 @@ public class ViewHandler
         primaryStage.setWidth(610);
       break;
       case "MyBooksView":
-        primaryStage.setHeight(519);
-        primaryStage.setWidth(600);
-        break;
+        primaryStage.setHeight(565);
+        primaryStage.setWidth(700);
+      break;
+      case "CommentView":
+       primaryStage.setHeight(300);
+       primaryStage.setWidth(415);
+      break;
     }
 
     primaryStage.show();
@@ -70,5 +74,10 @@ public class ViewHandler
   {
     this.primaryStage = primaryStage;
     openView("LogInView");
+  }
+
+  public void closeView()
+  {
+    primaryStage.close();
   }
 }

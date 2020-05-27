@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="jdbc-postgresql1" type="kotlin.js">
+    <CLASSES>
+      <root url="jar://D:/Downloads/jdbc-postgresql.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://D:/Downloads/jdbc-postgresql.jar!/" />
+    </SOURCES>
+  </library>
+</component>
