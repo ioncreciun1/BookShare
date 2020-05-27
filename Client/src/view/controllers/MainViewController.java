@@ -1,10 +1,9 @@
 package view.controllers;
 
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import model.Book;
 import view.ViewController;
@@ -66,10 +65,14 @@ this.bookListTable.itemsProperty().bindBidirectional(super.getViewModels().getMa
     super.getHandler().openView("MainView");
   }
 
-  public void openBookInfoView() throws RemoteException {
-    Book selectedBook = this.bookListTable.getSelectionModel().getSelectedItem().getBook();
-    super.getViewModels().getBookInfoViewModel().setBook(selectedBook);
-    super.getHandler().openView("BookInfoView");
+  public void openBookInfoView(MouseEvent event) throws RemoteException {
+
+    if (this.bookListTable.getSelectionModel().getSelectedItem() != null && event.getClickCount() == 2)
+    {
+      Book selectedBook = this.bookListTable.getSelectionModel().getSelectedItem().getBook();
+      super.getViewModels().getBookInfoViewModel().setBook(selectedBook);
+      super.getHandler().openView("BookInfoView");
+    }
   }
 
   public void openMyBooksView() throws SQLException, RemoteException
@@ -78,4 +81,6 @@ this.bookListTable.itemsProperty().bindBidirectional(super.getViewModels().getMa
     super.getViewModels().getMyBooksViewModel().createList();
     super.getHandler().openView("MyBooksView");
   }
+
+
 }
