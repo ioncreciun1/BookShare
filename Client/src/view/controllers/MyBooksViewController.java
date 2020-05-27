@@ -85,7 +85,7 @@ public class MyBooksViewController extends ViewController
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Error Dialog");
       alert.setHeaderText("ERROR: NO BOOK SELECTED");
-      alert.setContentText("Please select a book in order to set it to be available");
+      alert.setContentText("Please select a book in order to set it to be borrowed");
       alert.showAndWait();
       System.out.println("NO BOOK SELECTED AVAILABLE");
     }
@@ -101,7 +101,7 @@ public class MyBooksViewController extends ViewController
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("Error Dialog");
       alert.setHeaderText("ERROR: NO BOOK SELECTED");
-      alert.setContentText("Please select a book in order to set it to be borrowed");
+      alert.setContentText("Please select a book in order to set it to be available");
       alert.showAndWait();
       System.out.println("NO BOOK SELECTED BORROW");
     }
