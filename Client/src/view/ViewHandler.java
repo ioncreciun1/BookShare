@@ -66,8 +66,12 @@ public class ViewHandler
        primaryStage.setWidth(420);
       break;
       case "UserInfoView":
-        primaryStage.setHeight(600);
-        primaryStage.setWidth(500);
+        primaryStage.setHeight(530);
+        primaryStage.setWidth(665);
+      break;
+      case "EditProfileView":
+        primaryStage.setHeight(475);
+        primaryStage.setWidth(710);
       break;
     }
 
