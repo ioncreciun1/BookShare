@@ -71,10 +71,6 @@ public class MyBooksViewController extends ViewController
     super.getHandler().openView("MyBooksView");
   }
 
-  public void searchBooks(ActionEvent actionEvent)
-  {
-  }
-
   public void setBorrowed() throws SQLException, RemoteException{
     if (this.bookListTable1.getSelectionModel().getSelectedItem() != null){
     Book toUpdate = this.bookListTable1.getSelectionModel().getSelectedItem().getBook();
@@ -127,10 +123,6 @@ public class MyBooksViewController extends ViewController
 }
   }
 
-  public void getAvailable(MouseEvent mouseEvent)
-  {
-  }
-
   private boolean confirmation()
   {
     Book book = this.bookListTable1.getSelectionModel().getSelectedItem().getBook();
@@ -143,7 +135,13 @@ public class MyBooksViewController extends ViewController
     alert.setTitle("Confirmation");
     alert.setHeaderText(
         "Remove book: " + book.getTitle() + " by " + book.getAuthor() + "?");
+    alert.setContentText("Please confirm your choice");
     Optional<ButtonType> result = alert.showAndWait();
     return (result.isPresent()) && (result.get() == ButtonType.OK);
+  }
+
+  public void searchBooks(ActionEvent event)
+  {
+    super.getHandler().openView("SearchView");
   }
 }

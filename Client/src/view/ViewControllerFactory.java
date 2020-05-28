@@ -16,7 +16,7 @@ public class ViewControllerFactory
       ViewHandler viewHandler, ViewModelFactory viewModelFactory)
   {
   //  System.out.println("Factory");
-   // System.out.println(id);
+    System.out.println(id);
     ViewController viewController = viewControllerMap.get(id);
     //System.out.println(viewController);
     if (viewController == null)
@@ -57,6 +57,7 @@ public class ViewControllerFactory
       case "BookInfoView": return new BookInfoViewController();
       case "MyBooksView": return new MyBooksViewController();
       case "CommentView": return new CommentViewController();
+      case "UserInfoView": return new UserInfoViewController();
       default: throw new IllegalArgumentException("No such id for view controller");
     }
   }

@@ -65,6 +65,10 @@ public class ViewHandler
        primaryStage.setHeight(315);
        primaryStage.setWidth(420);
       break;
+      case "UserInfoView":
+        primaryStage.setHeight(600);
+        primaryStage.setWidth(500);
+      break;
     }
 
     primaryStage.show();

@@ -81,7 +81,9 @@ this.bookListTable.itemsProperty().bindBidirectional(super.getViewModels().getMa
     super.getHandler().openView("MyBooksView");
   }
 
-  public void openUserView(MouseEvent mouseEvent)
+  public void openUserInfoView() throws RemoteException
   {
+    getViewModels().getUserInfoViewModel().setUser();
+    getHandler().openView("UserInfoView");
   }
 }
