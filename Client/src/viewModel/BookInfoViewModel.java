@@ -10,6 +10,7 @@ import model.User;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BookInfoViewModel
@@ -56,9 +57,10 @@ public class BookInfoViewModel
   }
 
   public void setComments() throws RemoteException, SQLException {
-    for(int i=0;i<model.getComments(book.getBookID()).size();i++)
+    ArrayList<String> com = model.getComments(book.getBookID());
+    for(int i=0;i<com.size();i++)
     {
-    comments.add(model.getComments(book.getBookID()).get(i));
+    comments.add(com.get(i));
     }
   }
 

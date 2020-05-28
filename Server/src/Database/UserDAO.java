@@ -14,5 +14,6 @@ public interface UserDAO
   public void update(User user) throws SQLException;
   public boolean check_User(User user) throws  SQLException;
   public boolean check_Email(User user) throws SQLException;
+  public boolean checkUsername(String username)throws SQLException;
 
 }

@@ -58,6 +58,30 @@ public class UserDAOImplementation implements UserDAO
       return false;
     }
   }
+  public boolean checkUsername(String username)
+  {
+    try(Connection connection = getConnection()/*auto closes the connection*/){
+      /*The following statement is an try-with-resources statement, which declares one resource, stm,
+       that will be automatically closed when the try block terminates:*/
+      Statement stm = connection.createStatement();
+      ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"user\" where Username  = "+ username + ";");
+      while(rs.next())
+      {
+        String usernameGet = rs.getString("Username");
+        if (usernameGet.equals(username)){
+          System.out.println("Username already exists!");
+          return true;
+        }
+      }
+      System.out.println("Username added to database!");
+      return false;
+    }
+    catch ( Exception e ) {
+      System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+      System.exit(0);
+      return false;
+    }
+  }
 /**
  * @param user if the username entered on the sign up form is in use, returns false if it isn't and registers the user in the database*/
   public boolean check_User(User user) throws SQLException

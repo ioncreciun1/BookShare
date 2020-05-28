@@ -41,6 +41,12 @@ public class ModelManager implements Model
   {
     return this.user.check_User(user);
   }
+
+  @Override public boolean checkUsername(String username) throws SQLException
+  {
+    return user.checkUsername(username);
+  }
+
   /**
    * Check if this user email is in the system
    * @param user User
@@ -115,6 +121,7 @@ public class ModelManager implements Model
 
   public ArrayList<String> getComments(String BookID)
           throws SQLException, RemoteException{
+    ArrayList<String> comments = commentDAO.get(BookID);
       return commentDAO.get(BookID);
   }
   /**

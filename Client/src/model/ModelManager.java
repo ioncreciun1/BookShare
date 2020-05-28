@@ -213,7 +213,6 @@ public class ModelManager implements Model, LocalListener<String,Book>
   public ArrayList<Book> booksByUser()
       throws SQLException, RemoteException
   {
-
     return client.booksByUser(user);
   }
 
@@ -269,6 +268,7 @@ public class ModelManager implements Model, LocalListener<String,Book>
   @Override public void addComment(Book book, String comment)
       throws SQLException, RemoteException
   {
+    System.out.println("User :" + user);
     client.addComment(book.getBookID(),user, comment);
   }
 
@@ -333,8 +333,8 @@ public class ModelManager implements Model, LocalListener<String,Book>
    */
   @Override public User getUser(String username) throws RemoteException
   {
+    System.out.println(username);
     this.user = username;
-  //  System.out.println(user);
     return client.getUser(username);
   }
 }
