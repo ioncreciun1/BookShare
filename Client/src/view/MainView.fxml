@@ -111,7 +111,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="80.0">
                      <children>
-                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#openUserView">
+                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#openUserInfoView">
                            <image>
                               <Image url="@images/iconfinder_user_1608727.png" />
                            </image>
