@@ -3,6 +3,7 @@ package viewModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import javafx.collections.ObservableList;
 import model.Book;
 import model.Model;
 

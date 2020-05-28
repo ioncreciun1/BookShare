@@ -12,6 +12,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Is a class representing ModelManager for Client
@@ -268,7 +269,13 @@ public class ModelManager implements Model, LocalListener<String,Book>
   @Override public void addComment(Book book, String comment)
       throws SQLException, RemoteException
   {
-    client.addComment(book, comment);
+    client.addComment(book.getBookID(),user, comment);
+  }
+
+  @Override public ArrayList<String> getComments(String BookID)
+          throws SQLException, RemoteException
+  {
+    return client.getComments(BookID);
   }
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)

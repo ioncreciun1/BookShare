@@ -16,6 +16,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A class representing the server
@@ -271,14 +272,19 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
 
   /**
    * Add comment to a specific book
-   * @param book specific book
    * @param comment comment text
    * @throws SQLException
    */
-  @Override public void addComment(Book book, String comment)
-      throws SQLException
+  @Override public void addComment(String BookID, String Username, String comment) throws RemoteException,SQLException
   {
-    model.addComment(book, comment);
+    property.firePropertyChange("comment",Username + " : "+ comment,null);
+    model.add(BookID, Username, comment);
+  }
+
+  @Override public ArrayList<String> getComments(String BookID)
+          throws SQLException, RemoteException{
+    System.out.println("Return comments" + model.getComments(BookID));
+    return model.getComments(BookID);
   }
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)

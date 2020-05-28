@@ -2,11 +2,15 @@ package viewModel;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.Book;
 import model.Model;
 import model.User;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
+import java.util.HashMap;
 
 public class BookInfoViewModel
 {
@@ -20,6 +24,7 @@ public class BookInfoViewModel
   public StringProperty phoneNumber;
   public StringProperty email;
   public StringProperty description;
+  public ObservableList<String> comments;
 
   public BookInfoViewModel(Model model)
   {
@@ -45,6 +50,14 @@ public class BookInfoViewModel
     this.phoneNumberProperty().setValue(owner.getphone());
     this.emailProperty().setValue(owner.getEMail());
     this.descriptionProperty().setValue(book.getDescription());
+    this.comments = FXCollections.observableArrayList();
+  }
+
+  public void setComments() throws RemoteException, SQLException {
+    for(int i=0;i<model.getComments(book.getBookID()).size();i++)
+    {
+    comments.add(model.getComments(book.getBookID()).get(i));
+    }
   }
 
   public Book getBook()
@@ -90,5 +103,9 @@ public class BookInfoViewModel
   public StringProperty phoneNumberProperty()
   {
     return phoneNumber;
+  }
+
+  public ObservableList<String> getCommentsHash(){
+    return comments;
   }
 }
