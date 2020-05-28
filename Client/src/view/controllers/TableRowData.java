@@ -5,7 +5,7 @@ import model.Book;
 
 public class TableRowData
 {
- // private IntegerProperty orderNumber;
+  // private IntegerProperty orderNumber;
   private StringProperty bookTitle;
   private StringProperty authorName;
   private StringProperty bookLanguage;
@@ -30,10 +30,10 @@ public class TableRowData
     this.availability = new SimpleStringProperty(availability);
   }
 
-//  public IntegerProperty getOrderNumber()
-//  {
-//    return orderNumber;
-//  }
+  //  public IntegerProperty getOrderNumber()
+  //  {
+  //    return orderNumber;
+  //  }
   public Book getBook(){
     return book;
   }
@@ -52,7 +52,7 @@ public class TableRowData
     return bookCategory;
   }
 
-  public StringProperty bookLanguage()
+  public StringProperty getBookLanguage()
   {
     return bookLanguage;
   }
