@@ -109,8 +109,9 @@ public class UserDAOImplementation implements UserDAO
       (Connection connection = getConnection()/*auto closes the connection*/)
   {
     User registrant = new User(Username,passWord,eMail,firstName,lastName,city,contactInfo);
-    PreparedStatement statement = connection.prepareStatement("INSERT INTO \"SEP2\".\"user\" (Username, Pass, EMAIL, fName, lName, City, ContactInfo) VALUES (?,?,?,?,?,?,?);");
+    PreparedStatement statement = connection.prepareStatement("INSERT INTO \"SEP2\".\"user\" (Username, Pass, EMAIL, fName, lName, City, phone) VALUES (?,?,?,?,?,?,?);");
     /*lines 22-30 adds the registrant to the database using getters from User*/
+    System.out.println("User: " + registrant.getUserName());
     statement.setString(1, registrant.getUserName());
     statement.setString(2, registrant.getPassWord());
     statement.setString(3, registrant.getEMail());

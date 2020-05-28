@@ -3,6 +3,7 @@ package view.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import view.ViewController;
 import view.ViewHandler;
@@ -88,5 +89,9 @@ public class SearchViewController extends ViewController
     String bookLanguage = language.getSelectionModel().getSelectedItem().toString();
     super.getViewModels().getSearchViewModel().searchBook(bookType,bookLanguage);
     reset();
+  }
+
+  public void openUserInfoView(MouseEvent mouseEvent)
+  {
   }
 }

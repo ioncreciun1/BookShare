@@ -198,8 +198,9 @@ public class BookDAOImplementation implements BookDAO
  @return books
        returns a list of all books*/
   public List<Book> allBooks() throws SQLException {
+    System.out.println("HERE");
     try(Connection connection = getConnection()) {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book order by bookid desc"
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book"
           );
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Book> books = new ArrayList<>();
@@ -394,9 +395,7 @@ public class BookDAOImplementation implements BookDAO
         String BookLanguage = resultSet.getString("BookLanguage");
         String Description = resultSet.getString("Description");
         String Category = resultSet.getString("Category");
-        System.out.println(BookID + "BOOK BY USER");
-        Boolean available = resultSet.getBoolean("available");
-        System.out.println(available);
+        boolean available = resultSet.getBoolean("available");
         Book book =  new Book(Username, BookID, Title, Author, BookLanguage, Description,
             Category);
         if(available)

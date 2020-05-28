@@ -53,6 +53,8 @@ public class AddBookViewController extends ViewController
 
   public void openMainViewCancel()
   {
+
+    reset();
     super.getHandler().openView("MainView");
   }
 
