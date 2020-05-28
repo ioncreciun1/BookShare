@@ -39,7 +39,8 @@ public class BookInfoViewModel
     this.description = new SimpleStringProperty("");
   }
 
-  public void setBook(Book book) throws RemoteException {
+  public void setBook(Book book) throws RemoteException, SQLException
+  {
     this.book = book;
     this.titleProperty().setValue(book.getTitle());
     this.authorNameProperty().setValue(book.getAuthor());
@@ -51,6 +52,7 @@ public class BookInfoViewModel
     this.emailProperty().setValue(owner.getEMail());
     this.descriptionProperty().setValue(book.getDescription());
     this.comments = FXCollections.observableArrayList();
+    setComments();
   }
 
   public void setComments() throws RemoteException, SQLException {

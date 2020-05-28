@@ -70,7 +70,6 @@ this.bookListTable.itemsProperty().bindBidirectional(super.getViewModels().getMa
     {
       Book selectedBook = this.bookListTable.getSelectionModel().getSelectedItem().getBook();
       super.getViewModels().getBookInfoViewModel().setBook(selectedBook);
-     // super.getViewModels().getBookInfoViewModel().setComments(selectedBook.getBookID());
       super.getHandler().openView("BookInfoView");
     }
   }

@@ -96,7 +96,8 @@ public class SearchViewController extends ViewController
   {
   }
 
-  public void openBookInfoView(MouseEvent mouseEvent) throws RemoteException
+  public void openBookInfoView(MouseEvent mouseEvent)
+      throws RemoteException, SQLException
   {
     if (this.bookListTable.getSelectionModel().getSelectedItem() != null && mouseEvent.getClickCount() == 2)
     {
