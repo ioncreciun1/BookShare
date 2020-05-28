@@ -26,5 +26,5 @@ public interface ClientModel extends LocalSubject<String,Book>
   ArrayList<Book> booksByUser(String username) throws SQLException,RemoteException;
   void removeBook(Book book) throws SQLException,RemoteException;
   void changeAvailable(Book book, boolean bool) throws SQLException,RemoteException;
-  void addComment(Book book, String comment) throws SQLException,RemoteException;
+  void addComment(String BookID, String Username, String comment) throws SQLException,RemoteException;
 }

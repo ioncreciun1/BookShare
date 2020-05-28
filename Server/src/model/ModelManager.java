@@ -1,9 +1,6 @@
 package model;
 
-import Database.BookDAO;
-import Database.BookDAOImplementation;
-import Database.UserDAO;
-import Database.UserDAOImplementation;
+import Database.*;
 import utility.observer.listener.GeneralListener;
 import utility.observer.subject.PropertyChangeProxy;
 
@@ -18,6 +15,7 @@ public class ModelManager implements Model
 {
   private UserDAO user;
   private BookDAO bookDAO;
+  private CommentDAO commentDAO;
   private PropertyChangeProxy<String,Book> property;
 
   /**
@@ -28,6 +26,7 @@ public class ModelManager implements Model
   {
     this.user = new UserDAOImplementation();
     this.bookDAO = BookDAOImplementation.getInstance();
+    this.commentDAO = new CommentDAOImplementation();
     this.property = new PropertyChangeProxy<>(this);
   }
 
@@ -108,19 +107,9 @@ public class ModelManager implements Model
     property.firePropertyChange("book",null,book);
   }
 
-  /**
-   * add Comment to a specific book
-   *
-   * @param book
-   * a specific book
-   * @param comment
-   * comment text
-   * @throws SQLException
-   */
-  public void addComment(Book book, String comment) throws SQLException
+  public void add(String BookID, String Username, String comment) throws RemoteException,SQLException
   {
-    bookDAO.addComment(book.getUsername(), book, comment);
-    property.firePropertyChange("comment",comment,book);
+    commentDAO.add(BookID,Username, comment);
   }
   /**
    * Getting all books

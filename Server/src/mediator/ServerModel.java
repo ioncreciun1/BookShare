@@ -271,14 +271,12 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
 
   /**
    * Add comment to a specific book
-   * @param book specific book
    * @param comment comment text
    * @throws SQLException
    */
-  @Override public void addComment(Book book, String comment)
-      throws SQLException
+  @Override public void addComment(String BookID, String Username, String comment) throws RemoteException,SQLException
   {
-    model.addComment(book, comment);
+    model.add(BookID, Username, comment);
   }
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)
