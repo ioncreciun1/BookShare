@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
+import model.Book;
 import view.ViewController;
 import view.ViewHandler;
 import viewModel.ViewModelFactory;
@@ -93,5 +94,15 @@ public class SearchViewController extends ViewController
 
   public void openUserInfoView(MouseEvent mouseEvent)
   {
+  }
+
+  public void openBookInfoView(MouseEvent mouseEvent) throws RemoteException
+  {
+    if (this.bookListTable.getSelectionModel().getSelectedItem() != null && mouseEvent.getClickCount() == 2)
+    {
+      Book selectedBook = this.bookListTable.getSelectionModel().getSelectedItem().getBook();
+      super.getViewModels().getBookInfoViewModel().setBook(selectedBook);
+      super.getHandler().openView("BookInfoView");
+    }
   }
 }
