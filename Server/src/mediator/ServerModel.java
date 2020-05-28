@@ -94,15 +94,15 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
    * @param firstName
    * @param lastName
    * @param city
-   * @param contactInfo
+   * @param phone
    * @throws Exception
    */
   @Override public void registerUser(String Username, String passWord,
       String eMail, String firstName, String lastName, String city,
-      String contactInfo) throws Exception
+      String phone) throws Exception
   {
     System.out.println("SERVER MODEL");
-    model.registerUser(Username,passWord,eMail,firstName,lastName,city,contactInfo);
+    model.registerUser(Username,passWord,eMail,firstName,lastName,city,phone);
   }
 
   /**

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="460.0" stylesheets="@huine.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controllers.MainViewController">
+   <children>
+      <VBox prefHeight="570.0" prefWidth="460.0" stylesheets="@huine.css">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="456.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bolder; -fx-fill: rgb(231,231,231); -fx-font-size: 2.4em;" text="BookShare" wrappingWidth="170.13671875">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Text>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="95.0" prefWidth="510.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#openSearchView" style="-fx-background-color: transparent; -fx-border-width: 2px 0px 2px 0px; -fx-border-color: rgb(231,231,231); -fx-text-fill: rgb(231,231,231);" text="Click to Search">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <TableView fx:id="bookListTable" onMouseClicked="#openBookInfoView" prefHeight="429.0" prefWidth="446.0" style="-fx-background-color: rgba(125,125,125,0.3); -fx-border-color: rgb(231,231,231); -fx-border-width: 0px 2px 5px 2px;">
+              <columns>
+                <TableColumn fx:id="orderColumn" prefWidth="35.0" text="No" />
+                <TableColumn fx:id="titleColumn" maxWidth="123.0" prefWidth="120.0" text="Title" />
+                  <TableColumn fx:id="authorColumn" prefWidth="110.0" text="Author" />
+                  <TableColumn fx:id="languageColumn" prefWidth="90.0" text="Language" />
+                  <TableColumn fx:id="categoryColumn" prefWidth="90.0" text="Category" />
+              </columns>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </TableView>
+            <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="460.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="80.0">
+                     <children>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" onMouseClicked="#openMainView" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
+                           <image>
+                              <Image url="@images/iconfinder_home_216242.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Home" textFill="WHITE">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="80.0">
+                     <children>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" onMouseClicked="#openMyBooksView" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/iconfinder_office-04_809571.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="My Books" textFill="WHITE">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="33.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="80.0">
+                     <children>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" onMouseClicked="#openAddBookView" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/iconfinder_book_sans_add_103401.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="Add Book" textFill="WHITE">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="33.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="80.0">
+                     <children>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#openUserView">
+                           <image>
+                              <Image url="@images/iconfinder_user_1608727.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="My User Info" textFill="WHITE">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="33.0" right="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

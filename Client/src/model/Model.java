@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public interface Model extends LocalSubject<String,Book>
 {
-  void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo)
+  void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String phone)
       throws Exception;;
   User getUser(String username) throws RemoteException;
   boolean checkUsername(String username);

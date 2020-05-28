@@ -122,7 +122,7 @@ public class ModelManager implements Model, LocalListener<String,Book>
   /**
    *
    * @param filter
-   *        is a filter of Title,Author,Category or BookLanguage
+   *        is a filter of Title,Author,Category or language
    * @param value
    *        the search criteria  value
    * @return books
@@ -139,11 +139,11 @@ public class ModelManager implements Model, LocalListener<String,Book>
   /**
    *get a list of books that match the search criteria
    *  @param filter
-   *         is the first filter of Title,Author,Category or BookLanguage
+   *         is the first filter of Title,Author,Category or language
    * @param value
    *        is the FIRST search criteria  value
    * @param filter1
-   *         is the first filter of Title,Author,Category or BookLanguage
+   *         is the first filter of Title,Author,Category or language
    * @param value1
    *        the second search criteria  value
    * @return a list of books matching the search criteria
@@ -158,15 +158,15 @@ public class ModelManager implements Model, LocalListener<String,Book>
   /**
    *
    * @param filter
-   *        is the first search filter of Title,Author,Category or BookLanguage
+   *        is the first search filter of Title,Author,Category or language
    * @param value
    *          is the FIRST search criteria  value
    * @param filter1
-   *        is the second search filter of Title,Author,Category or BookLanguage
+   *        is the second search filter of Title,Author,Category or language
    * @param value1
    *         is the second search criteria  value
    * @param filter2
-   *        is the third search filter of Title,Author,Category or BookLanguage
+   *        is the third search filter of Title,Author,Category or language
    * @param value2
    *        is the third search criteria  value
    * @return
@@ -297,15 +297,15 @@ public class ModelManager implements Model, LocalListener<String,Book>
    * @param firstName
    * @param lastName
    * @param city
-   * @param contactInfo
+   * @param phone
    * @throws Exception
    */
 
   @Override public void registerUser(String Username, String passWord,
       String eMail, String firstName, String lastName, String city,
-      String contactInfo) throws Exception
+      String phone) throws Exception
   {
-    client.registerUser(Username,passWord,eMail,firstName,lastName,city,contactInfo);
+    client.registerUser(Username,passWord,eMail,firstName,lastName,city,phone);
   }
 
   /**

@@ -41,7 +41,7 @@ public class MainViewController extends ViewController
         cellData -> cellData.getValue().authorName()
     );
     languageColumn.setCellValueFactory(
-        cellData -> cellData.getValue().bookLanguage()
+        cellData -> cellData.getValue().language()
     );
     categoryColumn.setCellValueFactory(
         cellData -> cellData.getValue().bookCategory()

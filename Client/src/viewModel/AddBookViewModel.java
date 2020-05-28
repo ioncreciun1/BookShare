@@ -24,7 +24,7 @@ public class AddBookViewModel
   {
     ObservableList<String> languageList = FXCollections.observableArrayList();
     ObservableList<String> typeList = FXCollections.observableArrayList();
-    languageList.addAll("Click to choose Language","Danish","English","German","Romanian","Chinese","Spanish", "Arabic", "Russian",
+    languageList.sorted().addAll("Click to choose Language","Danish","English","German","Romanian","Chinese","Spanish", "Arabic", "Russian",
         "Portuguese", "Japanese", "French", "Turkish", "Italian", "Polish","Ukrainian", "Other");
     typeList.addAll("Click to choose Category","Drama","Action","Literary Fiction","Adventure","Classics", "Comic Book","Detective","Fantasy",
         "Historical", "Horror", "Romance", "Science Fiction", "Cookbooks", "Essays","Memoir", "Poetry", "Other");
@@ -134,9 +134,9 @@ public class AddBookViewModel
     }else if(title.get().length() >= 120){
       error.set("Field Title can't be longer than 120 characters");
     }else if(author.get().length() >= 50){
-      error.set("Field Title can't be longer than 50 characters");
+      error.set("Field Author can't be longer than 50 characters");
     }else if(description.get().length() >= 200){
-      error.set("Field Title can't be longer than 200 characters");
+      error.set("Field Description can't be longer than 200 characters");
     }
 
     return title.getValue().length() != 0 && author.get().length() != 0

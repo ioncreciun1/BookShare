@@ -44,9 +44,9 @@ public class Client implements ClientModel, RemoteListener<String,Book>
 
   @Override public void registerUser(String Username, String passWord,
       String eMail, String firstName, String lastName, String city,
-      String contactInfo) throws Exception
+      String phone) throws Exception
   {
-    remoteModel.registerUser(Username,passWord,eMail,firstName,lastName,city,contactInfo);
+    remoteModel.registerUser(Username,passWord,eMail,firstName,lastName,city,phone);
   }
 
   @Override public User getUser(String username) throws RemoteException

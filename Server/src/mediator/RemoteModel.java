@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public interface RemoteModel extends RemoteSubject<String,Book>
 {
-  void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo)
+  void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String phone)
       throws Exception;
   User getUser(String username) throws RemoteException, SQLException;
   boolean checkUser(User user) throws RemoteException, SQLException;
