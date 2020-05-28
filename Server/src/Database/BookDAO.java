@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface BookDAO {
- void add(String Username, String Title, String Author, String BookLanguage, String Description, String Category) throws SQLException;
+ void add(String Username, String Title, String Author, String language, String Description, String Category) throws SQLException;
 
  public List<Book> allBooks() throws SQLException;
 List<Book> readByFilter(String filter,String value) throws SQLException;

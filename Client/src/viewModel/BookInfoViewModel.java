@@ -42,7 +42,7 @@ public class BookInfoViewModel
     this.categoryProperty().setValue(book.getCategory());
     User owner = model.getUser(book.getUsername());
     this.ownerNameProperty().setValue(owner.getName()+" "+owner.getLastName());
-    this.phoneNumberProperty().setValue(owner.getContactInfo());
+    this.phoneNumberProperty().setValue(owner.getphone());
     this.emailProperty().setValue(owner.getEMail());
     this.descriptionProperty().setValue(book.getDescription());
   }
