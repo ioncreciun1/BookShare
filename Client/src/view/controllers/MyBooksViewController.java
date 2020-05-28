@@ -40,7 +40,7 @@ public class MyBooksViewController extends ViewController
     //    );
     titleColumn1.setCellValueFactory(cellData -> cellData.getValue().getBookTitle());
     authorColumn1.setCellValueFactory(cellData -> cellData.getValue().authorName());
-    languageColumn1.setCellValueFactory(cellData -> cellData.getValue().bookLanguage());
+    languageColumn1.setCellValueFactory(cellData -> cellData.getValue().language());
     categoryColumn1.setCellValueFactory(cellData -> cellData.getValue().bookCategory());
     availableColumn.setCellValueFactory(cellData -> cellData.getValue().availabilityProperty());
     this.bookListTable1.setItems(super.getViewModels().getMyBooksViewModel().getTable());

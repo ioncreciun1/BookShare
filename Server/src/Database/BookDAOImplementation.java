@@ -50,14 +50,14 @@ public class BookDAOImplementation implements BookDAO
   the title of the book
    @param Author
      the author of the book
-   @param  BookLanguage
+   @param  language
          the language that is book is written selected by dropdown by user
     @param Description
        the description of the book entered by the user,
     @param Category
          the category of the book selected by the user */
   @Override public void add(String Username, String Title, String Author,
-      String BookLanguage, String Description, String Category) throws SQLException
+      String language, String Description, String Category) throws SQLException
   {
 
     try (Connection connection = getConnection())
@@ -65,11 +65,11 @@ public class BookDAOImplementation implements BookDAO
      ResultSet objects, which is a table of data representing a database result set.
       You need a Connection object to create a Statement object.*/
       PreparedStatement statement = connection.prepareStatement(
-          "INSERT INTO \"SEP2\".book(username, title, author, bookLanguage, description, category) VALUES (?, ?, ?, ?, ?, ?);");
+          "INSERT INTO \"SEP2\".book(username, title, author, language, description, category) VALUES (?, ?, ?, ?, ?, ?);");
       statement.setString(1, Username);
       statement.setString(2, Title);
       statement.setString(3, Author);
-      statement.setString(4, BookLanguage);
+      statement.setString(4, language);
       statement.setString(5, Description);
       statement.setString(6, Category);
       statement.executeUpdate();
@@ -114,10 +114,10 @@ public class BookDAOImplementation implements BookDAO
        String BookID = resultSet.getString("BookID");
         String Title = resultSet.getString("Title");
         Author = resultSet.getString("Author");
-        String BookLanguage = resultSet.getString("BookLanguage");
+        String language = resultSet.getString("language");
         String Description = resultSet.getString("Description");
         String Category = resultSet.getString("Category");
-        books.add(new Book(Username, BookID, Title, Author, BookLanguage, Description, Category));
+        books.add(new Book(Username, BookID, Title, Author, language, Description, Category));
       }
         return books;
       }
@@ -148,10 +148,10 @@ public class BookDAOImplementation implements BookDAO
             String BookID = resultSet.getString("BookID");
             String Title = resultSet.getString("Title");
             String Author = resultSet.getString("Author");
-            String BookLanguage = resultSet.getString("BookLanguage");
+            String language = resultSet.getString("language");
             String Description = resultSet.getString("Description");
             String Category = resultSet.getString("Category");
-            books.add(new Book(Username,BookID,Title,Author,BookLanguage,Description,Category));
+            books.add(new Book(Username,BookID,Title,Author,language,Description,Category));
           }
       return books;
     }
@@ -178,10 +178,10 @@ public class BookDAOImplementation implements BookDAO
         String Title = resultSet.getString("Title");
         String BookID = resultSet.getString("BookID");
         String Author = resultSet.getString("Author");
-        String BookLanguage = resultSet.getString("BookLanguage");
+        String language = resultSet.getString("language");
         String Description = resultSet.getString("Description");
         String Category = resultSet.getString("Category");
-        books.add(new Book(Username,BookID,Title,Author,BookLanguage,Description,Category));
+        books.add(new Book(Username,BookID,Title,Author,language,Description,Category));
        // books.add(book);
       }
       return books;
@@ -198,9 +198,8 @@ public class BookDAOImplementation implements BookDAO
  @return books
        returns a list of all books*/
   public List<Book> allBooks() throws SQLException {
-    System.out.println("HERE");
     try(Connection connection = getConnection()) {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book"
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book where Available = true order by bookid desc"
           );
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Book> books = new ArrayList<>();
@@ -213,10 +212,10 @@ public class BookDAOImplementation implements BookDAO
         String BookID = resultSet.getString("BookID");
         String Title = resultSet.getString("Title");
         String Author = resultSet.getString("Author");
-        String BookLanguage = resultSet.getString("BookLanguage");
+        String language = resultSet.getString("language");
         String Description = resultSet.getString("Description");
         String Category = resultSet.getString("Category");
-        books.add(new Book(Username,BookID,Title,Author,BookLanguage,Description,Category));
+        books.add(new Book(Username,BookID,Title,Author,language,Description,Category));
       }
       return books;
     }
@@ -233,18 +232,18 @@ public class BookDAOImplementation implements BookDAO
    */
   public void delete(Book book) throws SQLException {
     try(Connection connection = getConnection()) {
-      PreparedStatement statement = connection.prepareStatement("DELETE FROM \"SEP2\".book WHERE Username = ? AND Title = ? AND Author = ? AND BookLanguage = ? AND Description = ? AND Category = ?"
+      PreparedStatement statement = connection.prepareStatement("DELETE FROM \"SEP2\".book WHERE Username = ? AND Title = ? AND Author = ? AND language = ? AND Description = ? AND Category = ?"
       );
       String Username = book.getUsername();
       String Title = book.getTitle();
       String Author = book.getAuthor();
-      String BookLanguage = book.getLanguage();
+      String language = book.getLanguage();
       String Description = book.getDescription();
       String Category = book.getCategory();
       statement.setString(1, Username);
       statement.setString(2, Title);
       statement.setString(3, Author);
-      statement.setString(4, BookLanguage);
+      statement.setString(4, language);
       statement.setString(5, Description);
       statement.setString(6, Category);
       statement.executeUpdate();
@@ -276,10 +275,10 @@ public class BookDAOImplementation implements BookDAO
         String BookID = resultSet.getString("BookID");
         String Title = resultSet.getString("Title");
         String Author = resultSet.getString("Author");
-        String BookLanguage = resultSet.getString("BookLanguage");
+        String language = resultSet.getString("language");
         String Description = resultSet.getString("Description");
         String Category = resultSet.getString("Category");
-        books.add(new Book(Username,BookID,Title,Author,BookLanguage,Description,Category));
+        books.add(new Book(Username,BookID,Title,Author,language,Description,Category));
       }
       return books;
     }
@@ -321,10 +320,10 @@ public class BookDAOImplementation implements BookDAO
         String BookID = resultSet.getString("BookID");
         String Title = resultSet.getString("Title");
         String Author = resultSet.getString("Author");
-        String BookLanguage = resultSet.getString("BookLanguage");
+        String language = resultSet.getString("language");
         String Description = resultSet.getString("Description");
         String Category = resultSet.getString("Category");
-        books.add(new Book(Username,BookID,Title,Author,BookLanguage,Description,Category));
+        books.add(new Book(Username,BookID,Title,Author,language,Description,Category));
       }
       return books;
     }
@@ -344,7 +343,7 @@ public class BookDAOImplementation implements BookDAO
   {
     ArrayList<Book> books = new ArrayList<>();
     try(Connection connection = getConnection()) {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book WHERE title ILIKE ? AND author ILIKE ? AND booklanguage ILIKE ? and category ILIKE ?  AND Available = true");
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book WHERE title ILIKE ? AND author ILIKE ? AND language ILIKE ? and category ILIKE ?  AND Available = true");
       statement.setString(1, title);
       statement.setString(2, author);
       statement.setString(3, language);
@@ -358,10 +357,10 @@ public class BookDAOImplementation implements BookDAO
         String BookID = resultSet.getString("BookID");
         String Title = resultSet.getString("Title");
         String Author = resultSet.getString("Author");
-        String BookLanguage = resultSet.getString("BookLanguage");
+        String bookLanguage = resultSet.getString("language");
         String Description = resultSet.getString("Description");
         String Category = resultSet.getString("Category");
-        books.add(new Book(Username,BookID,Title,Author,BookLanguage,Description,Category));
+        books.add(new Book(Username,BookID,Title,Author,bookLanguage,Description,Category));
       }
       return books;
     }
@@ -392,11 +391,13 @@ public class BookDAOImplementation implements BookDAO
         String BookID = resultSet.getString("BookID");
         String Title = resultSet.getString("Title");
         String Author = resultSet.getString("Author");
-        String BookLanguage = resultSet.getString("BookLanguage");
+        String language = resultSet.getString("language");
         String Description = resultSet.getString("Description");
         String Category = resultSet.getString("Category");
-        boolean available = resultSet.getBoolean("available");
-        Book book =  new Book(Username, BookID, Title, Author, BookLanguage, Description,
+        System.out.println(BookID + "BOOK BY USER");
+        Boolean available = resultSet.getBoolean("available");
+        System.out.println(available);
+        Book book =  new Book(Username, BookID, Title, Author, language, Description,
             Category);
         if(available)
         {
@@ -423,18 +424,18 @@ public class BookDAOImplementation implements BookDAO
       throws SQLException
   {
     try(Connection connection = getConnection()) {
-      PreparedStatement statement = connection.prepareStatement("UPDATE \"SEP2\".book SET Available = "+bool+" WHERE Username = ? AND Title = ? AND Author = ? AND BookLanguage = ? AND Description = ? AND Category = ?"
+      PreparedStatement statement = connection.prepareStatement("UPDATE \"SEP2\".book SET Available = "+bool+" WHERE Username = ? AND Title = ? AND Author = ? AND language = ? AND Description = ? AND Category = ?"
       );
       String Username = book.getUsername();
       String Title = book.getTitle();
       String Author = book.getAuthor();
-      String BookLanguage = book.getLanguage();
+      String language = book.getLanguage();
       String Description = book.getDescription();
       String Category = book.getCategory();
       statement.setString(1, Username);
       statement.setString(2, Title);
       statement.setString(3, Author);
-      statement.setString(4, BookLanguage);
+      statement.setString(4, language);
       statement.setString(5, Description);
       statement.setString(6, Category);
       statement.executeUpdate();

@@ -102,23 +102,22 @@ public class UserDAOImplementation implements UserDAO
    *    is a String last name  entered by user
    * @param city
    *    is a String city entered by user
-   * @param contactInfo
+   * @param phone
    *    is a String for contact info entered by user*/
-  public void add(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo) throws Exception,SQLException
+  public void add(String Username, String passWord, String eMail, String firstName, String lastName, String city, String phone) throws Exception,SQLException
   {try
       (Connection connection = getConnection()/*auto closes the connection*/)
   {
-    User registrant = new User(Username,passWord,eMail,firstName,lastName,city,contactInfo);
+    User registrant = new User(Username,passWord,eMail,firstName,lastName,city,phone);
     PreparedStatement statement = connection.prepareStatement("INSERT INTO \"SEP2\".\"user\" (Username, Pass, EMAIL, fName, lName, City, phone) VALUES (?,?,?,?,?,?,?);");
     /*lines 22-30 adds the registrant to the database using getters from User*/
-    System.out.println("User: " + registrant.getUserName());
     statement.setString(1, registrant.getUserName());
     statement.setString(2, registrant.getPassWord());
     statement.setString(3, registrant.getEMail());
     statement.setString(4, registrant.getName());
     statement.setString(5, registrant.getLastName());
     statement.setString(6, registrant.getCity());
-    statement.setString(7, registrant.getContactInfo());
+    statement.setString(7, registrant.getphone());
     statement.executeUpdate();
   }
   catch ( Exception e ) {
@@ -189,7 +188,7 @@ public class UserDAOImplementation implements UserDAO
       ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"user\";");
       while(rs.next())
       {
-        User registrant1 = new User(rs.getString("Username"),rs.getString("Pass"),rs.getString("EMAIL"),rs.getString("fName"),rs.getString("lName"),rs.getString("City"),rs.getString("ContactInfo"));
+        User registrant1 = new User(rs.getString("Username"),rs.getString("Pass"),rs.getString("EMAIL"),rs.getString("fName"),rs.getString("lName"),rs.getString("City"),rs.getString("phone"));
         registrants.add(registrant1);
       }
       System.out.println("Username added to database!");

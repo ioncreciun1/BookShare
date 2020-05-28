@@ -10,7 +10,7 @@ public interface Model extends LocalSubject<String,Book>
 {
   boolean checkUser(User registrant) throws SQLException;
   public boolean check_Email(User registrant) throws SQLException;
-  void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo)
+  void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String phone)
       throws Exception;
   User getUser(String username) throws SQLException;
   void addBook(Book book) throws SQLException;

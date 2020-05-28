@@ -10,7 +10,7 @@ public class User implements Serializable
   private String firstName = "";
   private String lastName = "";
   private String city = "";
-  private String contactInfo = "";
+  private String phone = "";
 
 
 /**
@@ -25,16 +25,16 @@ Class constructor for creates a user using the following parameters
 *         users first name
 * @param  lastName
 * @param  city
-* optional @param String contactInfo*/
+* optional @param String phone*/
   public User(String userName, String passWord, String eMail, String firstName,
-      String lastName, String city, String contactInfo) {
+      String lastName, String city, String phone) {
     this.userName = userName;
     this.passWord = passWord;
     this.eMail = eMail;
     this.firstName = firstName;
     this.lastName = lastName;
     this.city = city;
-    this.contactInfo = contactInfo;
+    this.phone = phone;
   }
 
   /**
@@ -69,9 +69,9 @@ Class constructor for creates a user using the following parameters
     return city;
   }
 
-  /**getter that @return String contactInfo*/
-  public String getContactInfo() {
-    return contactInfo;
+  /**getter that @return String phone*/
+  public String getphone() {
+    return phone;
   }
 
   /**
@@ -122,11 +122,11 @@ Class constructor for creates a user using the following parameters
 
   /**
    * set phone number
-   * @param contactInfo phone number of this user
+   * @param phone phone number of this user
    */
-  public void setContactInfo(String contactInfo)
+  public void setphone(String phone)
   {
-    this.contactInfo = contactInfo;
+    this.phone = phone;
   }
 
 }

@@ -154,7 +154,7 @@ public class SignUpViewModel
     {
       error.set("Field Last Name can’t be empty");
     }
-    else if (lastName.get().length() >= 25){
+    else if (lastName.get().length() > 25){
       error.set("Last Name must be less than 25 characters");
     }
     else     if(email.get().length()==0)
