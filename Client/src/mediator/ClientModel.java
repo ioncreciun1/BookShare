@@ -30,4 +30,5 @@ public interface ClientModel extends LocalSubject<String,Book>
   void addComment(String BookID, String Username, String comment) throws SQLException,RemoteException;
   ArrayList<String> getComments(String BookID)
           throws SQLException, RemoteException;
+  boolean checkUsername(String username) throws RemoteException, SQLException;
 }

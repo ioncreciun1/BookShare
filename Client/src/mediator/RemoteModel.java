@@ -28,7 +28,7 @@ public interface RemoteModel extends RemoteSubject<String,Book>
   void removeBook(Book book) throws SQLException,RemoteException;
   void changeAvailable(Book book, boolean bool) throws SQLException,RemoteException;
   void addComment(String BookID, String Username, String comment) throws SQLException,RemoteException;
-
+  boolean checkUsername(String username) throws RemoteException, SQLException;
  ArrayList<String> getComments(String BookID)
           throws SQLException, RemoteException;
 }

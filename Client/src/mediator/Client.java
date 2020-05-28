@@ -131,6 +131,13 @@ public class Client implements ClientModel, RemoteListener<String,Book>
   {
       return remoteModel.getComments(BookID);
   }
+
+  @Override public boolean checkUsername(String username)
+      throws RemoteException, SQLException
+  {
+    return remoteModel.checkUsername(username);
+  }
+
   @Override public void propertyChange(ObserverEvent<String, Book> event)
       throws RemoteException
   {

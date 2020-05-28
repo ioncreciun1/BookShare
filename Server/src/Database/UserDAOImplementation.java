@@ -64,9 +64,10 @@ public class UserDAOImplementation implements UserDAO
       /*The following statement is an try-with-resources statement, which declares one resource, stm,
        that will be automatically closed when the try block terminates:*/
       Statement stm = connection.createStatement();
-      ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"user\" where Username  = "+ username + ";");
+      ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"user\" ;");
       while(rs.next())
       {
+
         String usernameGet = rs.getString("Username");
         if (usernameGet.equals(username)){
           System.out.println("Username already exists!");

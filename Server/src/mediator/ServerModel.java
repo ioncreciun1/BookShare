@@ -133,6 +133,12 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
     return model.checkUser(registrant);
   }
 
+  @Override public boolean checkUsername(String username)
+      throws RemoteException, SQLException
+  {
+    return model.checkUsername(username);
+  }
+
   /**
    * Check if this user email is in the system
    * @param registrant User

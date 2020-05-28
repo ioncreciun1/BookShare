@@ -12,7 +12,8 @@ public interface Model extends LocalSubject<String,Book>
       throws Exception;;
   User getUser(String username) throws RemoteException;
    String getUser();
-  boolean checkUsername(String username);
+  boolean checkUsernameSize(String username);
+  boolean checkUsername(String username) throws RemoteException, SQLException;
   boolean checkPassword(String password);
   boolean checkUser(User user) throws RemoteException;
   boolean checkEmail(User user) throws RemoteException;

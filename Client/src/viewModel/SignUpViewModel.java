@@ -104,12 +104,12 @@ public class SignUpViewModel
   }
   public boolean checkUsername()
   {
-    if(model.checkUsername(username.get()))
+    if(model.checkUsernameSize(username.get()))
     {
       error.set("The username must be at least 8 characters and less than 30 characters");
     }
     else {error.set("");}
-    return model.checkUsername(username.get());
+    return model.checkUsernameSize(username.get());
   }
   public boolean checkPassword()
   {

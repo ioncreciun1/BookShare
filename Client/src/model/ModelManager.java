@@ -49,9 +49,16 @@ public class ModelManager implements Model, LocalListener<String,Book>
    * @return true if username fits the requirements  is in the system otherwise returns false
    */
 
-  public boolean checkUsername(String username)
+  public boolean checkUsernameSize(String username)
   {
     return ( username.length() < 8 ) || ( username.length() > 30 );
+  }
+
+  @Override public boolean checkUsername(String username)
+      throws RemoteException, SQLException
+  {
+    this.user = username;
+    return client.checkUsername(username);
   }
 
   /**
@@ -333,8 +340,8 @@ public class ModelManager implements Model, LocalListener<String,Book>
    */
   @Override public User getUser(String username) throws RemoteException
   {
-    System.out.println(username);
-    this.user = username;
+   // System.out.println(username);
+   // this.user = username;
     return client.getUser(username);
   }
 }

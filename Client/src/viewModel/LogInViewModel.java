@@ -6,6 +6,7 @@ import model.Model;
 import model.User;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LogInViewModel
 {
@@ -38,11 +39,13 @@ public class LogInViewModel
   }
 
 
-  public boolean verifyUser() throws IOException
+  public boolean verifyUser() throws IOException, SQLException
   {
-    User user =  model.getUser(username.get());
-    if(user!= null)
+
+
+    if(model.checkUsername(username.get()))
     {
+      User user =  model.getUser(username.get());
       if(user.getPassWord().equals(password.get()))
       {
         error.set("");
