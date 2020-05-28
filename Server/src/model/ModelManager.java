@@ -7,6 +7,7 @@ import utility.observer.subject.PropertyChangeProxy;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Class representing ModelManger for server
@@ -110,6 +111,11 @@ public class ModelManager implements Model
   public void add(String BookID, String Username, String comment) throws RemoteException,SQLException
   {
     commentDAO.add(BookID,Username, comment);
+  }
+
+  public HashMap<String,String> getComments(String BookID)
+          throws SQLException, RemoteException{
+      return commentDAO.get(BookID);
   }
   /**
    * Getting all books

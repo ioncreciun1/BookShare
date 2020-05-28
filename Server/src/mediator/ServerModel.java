@@ -16,6 +16,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A class representing the server
@@ -277,6 +278,11 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
   @Override public void addComment(String BookID, String Username, String comment) throws RemoteException,SQLException
   {
     model.add(BookID, Username, comment);
+  }
+
+  @Override public HashMap<String,String> getComments(String BookID)
+          throws SQLException, RemoteException{
+    return model.getComments(BookID);
   }
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)

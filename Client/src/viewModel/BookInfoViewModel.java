@@ -7,6 +7,8 @@ import model.Model;
 import model.User;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
+import java.util.HashMap;
 
 public class BookInfoViewModel
 {
@@ -20,6 +22,7 @@ public class BookInfoViewModel
   public StringProperty phoneNumber;
   public StringProperty email;
   public StringProperty description;
+  public HashMap<String, String> commentsHash;
 
   public BookInfoViewModel(Model model)
   {
@@ -45,6 +48,10 @@ public class BookInfoViewModel
     this.phoneNumberProperty().setValue(owner.getphone());
     this.emailProperty().setValue(owner.getEMail());
     this.descriptionProperty().setValue(book.getDescription());
+  }
+
+  public void setComments(String BookID) throws RemoteException, SQLException {
+    this.commentsHash = model.getComments(BookID);
   }
 
   public Book getBook()
@@ -90,5 +97,9 @@ public class BookInfoViewModel
   public StringProperty phoneNumberProperty()
   {
     return phoneNumber;
+  }
+
+  public HashMap<String,String> getCommentsHash(){
+    return commentsHash;
   }
 }

@@ -65,12 +65,13 @@ this.bookListTable.itemsProperty().bindBidirectional(super.getViewModels().getMa
     super.getHandler().openView("MainView");
   }
 
-  public void openBookInfoView(MouseEvent event) throws RemoteException {
+  public void openBookInfoView(MouseEvent event) throws RemoteException, SQLException {
 
     if (this.bookListTable.getSelectionModel().getSelectedItem() != null && event.getClickCount() == 2)
     {
       Book selectedBook = this.bookListTable.getSelectionModel().getSelectedItem().getBook();
       super.getViewModels().getBookInfoViewModel().setBook(selectedBook);
+      super.getViewModels().getBookInfoViewModel().setComments(selectedBook.getBookID());
       super.getHandler().openView("BookInfoView");
     }
   }

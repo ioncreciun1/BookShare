@@ -5,6 +5,7 @@ import utility.observer.subject.LocalSubject;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface Model extends LocalSubject<String,Book>
 {
@@ -30,4 +31,5 @@ public interface Model extends LocalSubject<String,Book>
   void setBorrowed(Book book);
   void changeAvailable(Book book, boolean bool) throws SQLException,RemoteException;
   void addComment(Book book, String comment) throws SQLException,RemoteException;
+  HashMap<String, String> getComments(String bookID) throws SQLException,RemoteException;
 }

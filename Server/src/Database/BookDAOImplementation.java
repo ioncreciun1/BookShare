@@ -103,7 +103,7 @@ public class BookDAOImplementation implements BookDAO
       /*{/*A Statement is an interface that represents a SQL statement. You execute Statement objects, and they generate
      ResultSet objects, which is a table of data representing a database result set.
       You need a Connection object to create a Statement object.*/
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM Book WHERE author = ? AND Available = true");
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book WHERE author = ? AND Available = true");
       statement.setString(1, Author);
       ResultSet resultSet = statement.executeQuery();
      while (resultSet.next()) {

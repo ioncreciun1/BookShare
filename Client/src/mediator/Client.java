@@ -15,6 +15,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Client implements ClientModel, RemoteListener<String,Book>
 {
@@ -125,6 +126,11 @@ public class Client implements ClientModel, RemoteListener<String,Book>
     remoteModel.addComment(BookID,Username, comment);
   }
 
+  @Override public HashMap<String,String> getComments(String BookID)
+          throws SQLException, RemoteException
+  {
+      return remoteModel.getComments(BookID);
+  }
   @Override public void propertyChange(ObserverEvent<String, Book> event)
       throws RemoteException
   {

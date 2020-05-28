@@ -17,6 +17,7 @@ import viewModel.ViewModelFactory;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 public class BookInfoViewController extends ViewController
 {
@@ -28,6 +29,7 @@ public class BookInfoViewController extends ViewController
   public Label ownerName;
   public Label phoneNumber;
   public Label email;
+  public ListView<String> comments;
   public ListView<String> description;
 
   public BookInfoViewController()
@@ -49,6 +51,15 @@ public class BookInfoViewController extends ViewController
     ObservableList<String> items = FXCollections.observableArrayList ();
     items.add(descriptionString);
     description.setItems(items);
+    HashMap<String,String> commentHash = super.getViewModels().getBookInfoViewModel().getCommentsHash();
+    System.out.println(commentHash.toString());
+    ObservableList<String> itemsComment = FXCollections.observableArrayList();
+    if(!commentHash.isEmpty()) {
+      for (String key : commentHash.keySet()) {
+        itemsComment.add(key+"\n "+commentHash.get(key));
+      }
+    }
+    comments.setItems(itemsComment);
   }
 
   public void openAddBookView()

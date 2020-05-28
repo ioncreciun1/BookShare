@@ -6,6 +6,7 @@ import utility.observer.subject.RemoteSubject;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface RemoteModel extends RemoteSubject<String,Book>
 {
@@ -26,4 +27,6 @@ public interface RemoteModel extends RemoteSubject<String,Book>
   void removeBook(Book book) throws SQLException,RemoteException;
   void changeAvailable(Book book, boolean bool) throws SQLException,RemoteException;
   void addComment(String BookID, String Username, String comment) throws RemoteException,SQLException;
+  HashMap<String,String> getComments(String BookID)
+          throws SQLException, RemoteException;
 }

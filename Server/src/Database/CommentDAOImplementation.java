@@ -3,10 +3,9 @@ package Database;
 import model.Book;
 
 import java.rmi.RemoteException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CommentDAOImplementation implements CommentDAO
 {
@@ -34,12 +33,24 @@ public class CommentDAOImplementation implements CommentDAO
         try
             (Connection connection = getConnection()/*auto closes the connection*/) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO \"SEP2\".\"comment\" (BookID, Username, comment) VALUES (?,?,?);");
-            /*lines 22-30 adds the registrant to the database using getters from User*/
             statement.setString(1, BookID);
             statement.setString(2, Username);
             statement.setString(3, comment);
             statement.executeUpdate();
             System.out.println("Comment Posted");
+        }
+    }
+
+    public HashMap<String, String> get(String BookID) throws RemoteException,SQLException{
+        HashMap<String, String> hash = new HashMap<>();
+        try
+                (Connection connection = getConnection()/*auto closes the connection*/) {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".\"comment\" WHERE BookID = '"+BookID+"'");
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                hash.put(rs.getString("comment"),rs.getString("Username"));
+            }
+            return hash;
         }
     }
 }
