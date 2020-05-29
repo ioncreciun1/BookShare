@@ -12,7 +12,7 @@ public interface UserDAO
   public void delete(User user) throws SQLException;
   public User getUser(String username) throws SQLException;
   public List<User> getUsers() throws SQLException;
-  public void update(User user) throws SQLException;
+  public void update(String Username, String passWord, String eMail, String firstName, String lastName, String city, String phone) throws SQLException;
   public boolean check_User(User user) throws  SQLException;
   public boolean check_Email(User user) throws SQLException;
 

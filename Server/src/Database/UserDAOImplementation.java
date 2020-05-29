@@ -162,7 +162,6 @@ public class UserDAOImplementation implements UserDAO
       {
         user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
             rs.getString(5), rs.getString(6), rs.getString(7));
-        System.out.println("Username added to database!");
         rs.close();
       }
       else{
@@ -199,19 +198,30 @@ public class UserDAOImplementation implements UserDAO
     return registrants;
   }
 /**/
-  @Override public void update(User user) throws SQLException
+  @Override public void update(User user, String Username, String passWord, String eMail, String firstName, String lastName, String city, String phone) throws SQLException
+  {{try
+      (Connection connection = getConnection()/*auto closes the connection*/)
   {
-    try(Connection connection = getConnection()/*auto closes the connection*/){
-      Statement stm = connection.createStatement();
-      ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"user\" WHERE Username = "+ user.getUserName()+";");
-      while(rs.next())
-      {
-      }
-      System.out.println("Username added to database!");
-    }
-    catch ( Exception e ) {
-      System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-      System.exit(0);/*why do we need this??*/
+
+    PreparedStatement statement = connection.prepareStatement("update \"SEP2\".\"user\" (Username, Pass, EMAIL, fName, lName, City, phone) VALUES (?,?,?,?,?,?,?);");
+    statement.setString(1, user.getUserName());
+    statement.setString(2, user.getPassWord());
+    statement.setString(3, user.getEMail());
+    statement.setString(4, user.getName());
+    statement.setString(5, user.getLastName());
+    statement.setString(6, user.getCity());
+    statement.setString(7, user.getphone());
+    statement.executeUpdate();
+  }
+  catch ( Exception e ) {
+    System.err.println( e.getClass().getName()+": "+ e.getMessage());
+    throw e;
+
+  }
+
+    System.exit(0);/*why do we need this??*/
+
+
     }
   }
 }
