@@ -177,7 +177,7 @@
             </HBox>
             <VBox alignment="TOP_CENTER" prefHeight="45.0" prefWidth="600.0">
                <children>
-                  <Button maxHeight="40.0" maxWidth="128.0" mnemonicParsing="false"  prefHeight="32.0" prefWidth="128.0" style="-fx-background-color: rgba(148,148,148,0.75); -fx-font-weight: bold; -fx-text-fill: white; -fx-background-radius: 0;" text="Edit Profile">
+                  <Button  onAction="#openEditProfileView" maxHeight="40.0" maxWidth="128.0" mnemonicParsing="false"  prefHeight="32.0" prefWidth="128.0" style="-fx-background-color: rgba(148,148,148,0.75); -fx-font-weight: bold; -fx-text-fill: white; -fx-background-radius: 0;" text="Edit Profile">
                      <VBox.margin>
                         <Insets bottom="5.0" left="10.0" />
                      </VBox.margin>

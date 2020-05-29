@@ -43,8 +43,6 @@ public class SignUpViewController extends ViewController
     error.textProperty().bind(super.getViewModels().getSignUpViewModel().errorProperty());
   }
 
-
-
   public void openMainView() throws Exception
   {
     boolean check = !super.getViewModels().getSignUpViewModel().checkUser(city.getSelectionModel().toString())

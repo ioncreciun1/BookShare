@@ -10,38 +10,60 @@ import model.Model;
 import model.User;
 
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 
-public class SignUpViewModel
+public class EditProfileViewModel
 {
   private Model model;
+  private User user;
   private StringProperty username;
   private StringProperty firstName;
   private StringProperty lastName;
   private StringProperty email;
   private StringProperty phone;
   private StringProperty password;
+  private StringProperty newPassword;
   private StringProperty confirmPassword;
-
   private StringProperty error;
   private ObjectProperty<ObservableList> city;
 
-  public SignUpViewModel(Model model)
+  public EditProfileViewModel(Model model)
   {
+    this.model = model;
     ObservableList<String> list = FXCollections.observableArrayList();
     list.addAll("Horsens","Aarhus","Alborg","Copenhagen","Odense","Vejle", "Esbjerg", "Randers", "Kolding", "Roskilde",
         "Herning", "Silkeborg", "Fredericia", "Viborg", "Holstebro", "Køge", "Helsingør");
-    this.model = model;
     this.username = new SimpleStringProperty("");
     this.firstName = new SimpleStringProperty("");
     this.lastName = new SimpleStringProperty("");
     this.email = new SimpleStringProperty("");
     this.phone = new SimpleStringProperty("");
     this.password = new SimpleStringProperty("");
+    this.newPassword = new SimpleStringProperty("");
     this.confirmPassword = new SimpleStringProperty("");
     this.city = new SimpleObjectProperty<>();
     city.setValue(list);
-
     this.error = new SimpleStringProperty("");
+  }
+
+  public void setEditInformation() throws RemoteException
+  {
+    this.user = model.getUser(model.getUser());
+    this.usernameProperty().setValue(user.getUserName());
+    this.passwordProperty().setValue(user.getPassWord());
+    this.firstNameProperty().setValue(user.getName());
+    this.lastNameProperty().setValue(user.getLastName());
+    ObservableList<String> newList = FXCollections.observableArrayList();
+    newList.add(user.getCity());
+    this.cityProperty().setValue(newList); // So here it should be a list object but than how to take all cities?
+    // you see how i solved it but not sure that it wors
+    if (!(user.getphone().equals("")))
+    {
+      this.phoneProperty().setValue(user.getphone());
+    } else {
+      this.phoneProperty().setValue("No phone number");
+    }
+    this.emailProperty().setValue(user.getEMail());
   }
 
   public StringProperty usernameProperty()
@@ -69,6 +91,11 @@ public class SignUpViewModel
     return password;
   }
 
+  public StringProperty newPasswordProperty()
+  {
+    return newPassword;
+  }
+
   public StringProperty confirmPasswordProperty()
   {
     return confirmPassword;
@@ -89,30 +116,32 @@ public class SignUpViewModel
     return error;
   }
 
-  public void registerUser(String city) throws Exception
+  public void reset()
   {
-    model.registerUser(username.get(), password.get(), email.get(), firstName.get(),
-        lastName.get(), city, phone.get());
-  }
-
-  public void reset(){
     firstName.set("");
     lastName.set("");
     username.set("");
     password.set("");
+    newPassword.set("");
     confirmPassword.set("");
     email.set("");
     phone.set("");
   }
 
-  public boolean checkUsername()
+  public void editUser(String city) throws Exception
   {
-    if(model.checkUsernameSize(username.get()))
+    model.registerUser(username.get(), password.get(), email.get(), firstName.get(),
+        lastName.get(), city, phone.get());
+  }
+
+  public boolean checkUsername() throws RemoteException, SQLException
+  {
+    if(model.checkUsername(username.get()))
     {
       error.set("The username must be at least 8 characters and less than 30 characters");
     }
     else {error.set("");}
-    return model.checkUsernameSize(username.get());
+    return model.checkUsername(username.get());
   }
 
   public boolean checkPassword()
@@ -127,7 +156,7 @@ public class SignUpViewModel
 
   public boolean verifyPasswords()
   {
-    if(this.password.get().equals(confirmPassword.get()))
+    if(this.newPassword.get().equals(confirmPassword.get()))
     {
       error.set("");
       return true;
@@ -159,7 +188,7 @@ public class SignUpViewModel
     {
       error.set("Field Last Name can’t be empty");
     }
-    else if (lastName.get().length() > 25){
+    else if (lastName.get().length() >= 25){
       error.set("Last Name must be less than 25 characters");
     }
     else     if(email.get().length()==0)

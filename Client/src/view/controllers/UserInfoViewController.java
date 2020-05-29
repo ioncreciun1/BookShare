@@ -7,6 +7,8 @@ import view.ViewController;
 import view.ViewHandler;
 import viewModel.ViewModelFactory;
 
+import java.rmi.RemoteException;
+
 public class UserInfoViewController extends ViewController
 {
   public Label username;
@@ -51,5 +53,11 @@ public class UserInfoViewController extends ViewController
   public void openMyBooksView()
   {
     super.getHandler().openView("MyBooksView");
+  }
+
+  public void openEditProfileView() throws RemoteException
+  {
+    getViewModels().getEditProfileViewModel().setEditInformation();
+    getHandler().openView("EditProfileView");
   }
 }
