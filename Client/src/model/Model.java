@@ -33,4 +33,6 @@ public interface Model extends LocalSubject<String,Book>
   void changeAvailable(Book book, boolean bool) throws SQLException,RemoteException;
   void addComment(Book book, String comment) throws SQLException,RemoteException;
   ArrayList<String> getComments(String bookID) throws SQLException,RemoteException;
+
+  void update( String newUsername, String passWord, String eMail, String firstName, String lastName, String city, String phone) throws SQLException,RemoteException;
 }

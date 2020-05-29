@@ -31,6 +31,13 @@ public class ModelManager implements Model
     this.property = new PropertyChangeProxy<>(this);
   }
 
+  @Override public void update(String actualUsername, String newUsername,
+      String passWord, String eMail, String firstName, String lastName,
+      String city, String phone) throws SQLException
+  {
+    user.update(actualUsername,newUsername,passWord,eMail,firstName,lastName,city,phone);
+  }
+
   /**
    * Check if this user with his username is in the system
    * @param user User

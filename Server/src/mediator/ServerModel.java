@@ -133,6 +133,13 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
     return model.checkUser(registrant);
   }
 
+  @Override public void update(String actualUsername, String newUsername,
+      String passWord, String eMail, String firstName, String lastName,
+      String city, String phone) throws SQLException, RemoteException
+  {
+    model.update(actualUsername,newUsername,passWord,eMail,firstName,lastName,city,phone);
+  }
+
   @Override public boolean checkUsername(String username)
       throws RemoteException, SQLException
   {

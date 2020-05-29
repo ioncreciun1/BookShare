@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 public interface Model extends LocalSubject<String,Book>
 {
+  void update(String actualUsername, String newUsername, String passWord, String eMail, String firstName, String lastName, String city, String phone) throws SQLException;
   boolean checkUser(User registrant) throws SQLException;
   boolean checkUsername(String username) throws SQLException;
   public boolean check_Email(User registrant) throws SQLException;

@@ -239,6 +239,10 @@ public class UserDAOImplementation implements UserDAO
       statement.setString(7, phone);
       statement.setString(8, actualUsername);
       statement.executeUpdate();
+      String sql1 = "update \"SEP2\".\"book\" set username = ? where username = ?";
+      PreparedStatement statement1 = connection.prepareStatement(sql1);
+      statement.setString(1,newUsername);
+      statement.setString(2,actualUsername);
     }
     catch ( Exception e ) {
       System.err.println( e.getClass().getName()+": "+ e.getMessage());

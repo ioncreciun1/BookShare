@@ -31,4 +31,5 @@ public interface RemoteModel extends RemoteSubject<String,Book>
   boolean checkUsername(String username) throws RemoteException, SQLException;
  ArrayList<String> getComments(String BookID)
           throws SQLException, RemoteException;
+  void update(String actualUsername, String newUsername, String passWord, String eMail, String firstName, String lastName, String city, String phone) throws SQLException,RemoteException;
 }

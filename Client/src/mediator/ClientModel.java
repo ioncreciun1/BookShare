@@ -31,4 +31,5 @@ public interface ClientModel extends LocalSubject<String,Book>
   ArrayList<String> getComments(String BookID)
           throws SQLException, RemoteException;
   boolean checkUsername(String username) throws RemoteException, SQLException;
+  void update(String actualUsername, String newUsername, String passWord, String eMail, String firstName, String lastName, String city, String phone) throws SQLException,RemoteException;
 }

@@ -14,6 +14,7 @@ public interface RemoteModel extends RemoteSubject<String,Book>
       throws Exception;
   User getUser(String username) throws RemoteException, SQLException;
   boolean checkUser(User user) throws RemoteException, SQLException;
+  void update(String actualUsername, String newUsername, String passWord, String eMail, String firstName, String lastName, String city, String phone) throws SQLException,RemoteException;
   boolean checkUsername(String username) throws RemoteException, SQLException;
   boolean checkEmail(User user) throws RemoteException, SQLException;
   void addBook(Book book) throws RemoteException, SQLException;;

@@ -32,9 +32,8 @@ public class EditProfileViewController extends ViewController
 
   public void init(ViewHandler viewHandler, ViewModelFactory viewModel, Region root)
   {
-    // hz why but bind don`t work or method setInfo dont work idk
     super.init(viewHandler, viewModel, root);
-//    super.getViewModels().getEditProfileViewModel().reset();
+
     username.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().usernameProperty());
     firstName.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().firstNameProperty());
     lastName.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().lastNameProperty());
@@ -58,11 +57,11 @@ public class EditProfileViewController extends ViewController
     {
       if (super.getViewModels().getEditProfileViewModel().verifyPasswords()
           && !super.getViewModels().getEditProfileViewModel().checkUsername()
-          && !super.getViewModels().getEditProfileViewModel().checkPassword())
+          && super.getViewModels().getEditProfileViewModel().checkPassword())
       {
-        super.getViewModels().getEditProfileViewModel().checkPassword();
-        super.getViewModels().getEditProfileViewModel().checkUsername();
         super.getViewModels().getEditProfileViewModel().editUser(city.getSelectionModel().getSelectedItem().toString());
+        super.getViewModels().getUserInfoViewModel().setUser();
+        super.getViewModels().getEditProfileViewModel().reset();
         super.getHandler().openView("UserInfoView");
 
       }

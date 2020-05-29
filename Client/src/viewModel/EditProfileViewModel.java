@@ -139,32 +139,49 @@ public class EditProfileViewModel
 
   public void editUser(String city) throws Exception
   {
-    model.registerUser(username.get(), password.get(), email.get(), firstName.get(),
-        lastName.get(), city, phone.get());
+if(newPassword.get().length()>0)
+{
+  model.update(username.get(),newPassword.get(),email.get(),firstName.get(),lastName.get(),city,phone.get());
+}
+else
+{
+  model.update(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get());
+}
   }
 
   public boolean checkUsername() throws RemoteException, SQLException
   {
-    if(model.checkUsername(username.get()))
+    if(model.checkUsernameSize(username.get()))
     {
       error.set("The username must be at least 8 characters and less than 30 characters");
     }
     else {error.set("");}
-    return model.checkUsername(username.get());
+    return model.checkUsernameSize(username.get());
   }
 
   public boolean checkPassword()
   {
-    if(model.checkPassword(newPassword.get()))
+    if(newPassword.get().length()>0)
     {
-      error.set("The password must be at least 6 characters and less than 20 characters");
+      if (model.checkPassword(newPassword.get()))
+      {
+        error.set(
+            "The password must be at least 6 characters and less than 20 characters");
+        return false;
+      }
+      else if (password.get().equals(newPassword.get()))
+      {
+        error.set("You can`t use old password");
+        return false;
+      }
+      else
+      {
+        error.set("");
+
+        return true;
+      }
     }
-    else if(password.get().equals(newPassword.get()))
-    {
-      error.set("You can`t use old password");
-    }
-    else {error.set("");}
-    return model.checkPassword(newPassword.get());
+    else return true;
   }
 
   public boolean verifyPasswords()
@@ -219,20 +236,20 @@ public class EditProfileViewModel
   public boolean checkUser(String city) throws RemoteException
   {
     boolean check =  model.checkUser(new User(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get()));
-    if(check)
+    if(check && !model.getUser().equals(username.get()))
     {
       error.set("This username is already in the system");
     }
-    return check;
+    return check && !model.getUser().equals(username.get());
   }
 
   public boolean checkEmail(String city) throws RemoteException
   {
     boolean check =  model.checkEmail(new User(username.get(),password.get(),email.get(),firstName.get(),lastName.get(),city,phone.get()));
-    if(check)
+    if(check && !model.getUser(model.getUser()).getEMail().equals(email.get()))
     {
       error.set("This Email is already in the system");
     }
-    return check;
+    return check && !model.getUser(model.getUser()).getEMail().equals(email.get());
   }
 }

@@ -292,6 +292,15 @@ public class ModelManager implements Model, LocalListener<String,Book>
     return client.getComments(BookID);
   }
 
+  @Override public void update( String newUsername,
+      String passWord, String eMail, String firstName, String lastName,
+      String city, String phone) throws SQLException, RemoteException
+  {
+    client.update(user,newUsername,passWord,eMail,firstName,lastName,city,phone);
+    this.user = newUsername;
+  }
+
+
   @Override public void propertyChange(ObserverEvent<String, Book> event)
   {
     System.out.println("CLIENT MODEL");

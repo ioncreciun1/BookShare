@@ -138,6 +138,13 @@ public class Client implements ClientModel, RemoteListener<String,Book>
     return remoteModel.checkUsername(username);
   }
 
+  @Override public void update(String actualUsername, String newUsername,
+      String passWord, String eMail, String firstName, String lastName,
+      String city, String phone) throws SQLException, RemoteException
+  {
+    remoteModel.update(actualUsername,newUsername,passWord,eMail,firstName,lastName,city,phone);
+  }
+
   @Override public void propertyChange(ObserverEvent<String, Book> event)
       throws RemoteException
   {
