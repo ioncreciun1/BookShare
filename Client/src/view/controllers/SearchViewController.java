@@ -108,4 +108,6 @@ public class SearchViewController extends ViewController
     getViewModels().getUserInfoViewModel().setUser();
     getHandler().openView("UserInfoView");
   }
+
+
 }
