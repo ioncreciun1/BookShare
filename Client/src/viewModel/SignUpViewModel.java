@@ -107,12 +107,12 @@ public class SignUpViewModel
 
   public boolean checkUsername()
   {
-    if(model.checkUsername(username.get()))
+    if(model.checkUsernameSize(username.get()))
     {
       error.set("The username must be at least 8 characters and less than 30 characters");
     }
     else {error.set("");}
-    return model.checkUsername(username.get());
+    return model.checkUsernameSize(username.get());
   }
 
   public boolean checkPassword()
@@ -159,7 +159,7 @@ public class SignUpViewModel
     {
       error.set("Field Last Name can’t be empty");
     }
-    else if (lastName.get().length() >= 25){
+    else if (lastName.get().length() > 25){
       error.set("Last Name must be less than 25 characters");
     }
     else     if(email.get().length()==0)

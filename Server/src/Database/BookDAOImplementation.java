@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  * BookDAOImplementation is a Singleton, only one instance is created
- * static instance, synchronized methods*/
+* static instance, synchronized methods*/
 public class BookDAOImplementation implements BookDAO
 {
   private static BookDAOImplementation instance;
@@ -22,10 +22,10 @@ public class BookDAOImplementation implements BookDAO
     DriverManager.registerDriver(new org.postgresql.Driver());
   }
 
-  /**
-   * @throws  if there is an error
-   * @returns an instance of database connection
-   * @throws if there is an error */
+/**
+ * @throws  if there is an error
+* @returns an instance of database connection
+* @throws if there is an error */
   public static synchronized BookDAOImplementation getInstance()
       throws SQLException
   {/*lazy instantiation*/
@@ -43,19 +43,19 @@ public class BookDAOImplementation implements BookDAO
     return DriverManager.getConnection("jdbc:postgresql://btv9bsc3ws7gpfnylr1c-postgresql.services.clever-cloud.com:5432/btv9bsc3ws7gpfnylr1c", "uhxksonl4uvuqdftznsg",
         "pnwEWl0YlSc6A2z619ff");
   }
-  /** @throws if a database access error occurs or the parameter is  null
-   * @param Username
-  the users identification
-   * @param Title title
+/** @throws if a database access error occurs or the parameter is  null
+    * @param Username
+    the users identification
+* @param Title title
   the title of the book
    @param Author
-   the author of the book
+     the author of the book
    @param  language
-   the language that is book is written selected by dropdown by user
-   @param Description
-   the description of the book entered by the user,
-   @param Category
-   the category of the book selected by the user */
+         the language that is book is written selected by dropdown by user
+    @param Description
+       the description of the book entered by the user,
+    @param Category
+         the category of the book selected by the user */
   @Override public void add(String Username, String Title, String Author,
       String language, String Description, String Category) throws SQLException
   {
@@ -81,22 +81,22 @@ public class BookDAOImplementation implements BookDAO
   {
     try (Connection connection = getConnection())
     {
-      //      PreparedStatement statement = connection.prepareStatement(
-      //          "INSERT INTO \"SEP2\".comment(username, bookid, comment) VALUES (?,?,?);");
-      ////      String bookid = book.getId();
-      //      statement.setString(1, username);
-      ////      statement.setString(2, bookid);
-      //      statement.setString(3, comment);
-      //      statement.executeUpdate();
+//      PreparedStatement statement = connection.prepareStatement(
+//          "INSERT INTO \"SEP2\".comment(username, bookid, comment) VALUES (?,?,?);");
+////      String bookid = book.getId();
+//      statement.setString(1, username);
+////      statement.setString(2, bookid);
+//      statement.setString(3, comment);
+//      statement.executeUpdate();
     }
   }
 
   @Override
   /**
-   @throws if a database access error occurs or the parameter is null
-   @param Author is an author entered by the user??? is this going to change
-   @return books
-   returns a list of books by author*/
+  @throws if a database access error occurs or the parameter is null
+  @param Author is an author entered by the user??? is this going to change
+  @return books
+        returns a list of books by author*/
   public List<Book> readByAuthor(String Author) throws SQLException {
     List<Book> books = new ArrayList<>();
     try(Connection connection = getConnection()) {
@@ -106,12 +106,12 @@ public class BookDAOImplementation implements BookDAO
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book WHERE author = ? AND Available = true");
       statement.setString(1, Author);
       ResultSet resultSet = statement.executeQuery();
-      while (resultSet.next()) {
+     while (resultSet.next()) {
        /*access the data in a ResultSet object through a cursor. Note that this cursor is not a database cursor.
      This cursor is a pointer that points to one row of data in the ResultSet object.
      Initially, the cursor is positioned before the first row. You call various methods defined in the ResultSet object to move the cursor.*/
         String Username = resultSet.getString("Username");
-        String BookID = resultSet.getString("BookID");
+       String BookID = resultSet.getString("BookID");
         String Title = resultSet.getString("Title");
         Author = resultSet.getString("Author");
         String language = resultSet.getString("language");
@@ -119,50 +119,50 @@ public class BookDAOImplementation implements BookDAO
         String Category = resultSet.getString("Category");
         books.add(new Book(Username, BookID, Title, Author, language, Description, Category));
       }
-      return books;
+        return books;
+      }
     }
-  }
-  /** @throws if a database access error occurs or the parameter is null
-   @param filter
-   is a filter type
-   @param value
-   the value is the entry by user by author name, title, language or  category
-   @return books
-   returns a list of books by filter type*/
+/** @throws if a database access error occurs or the parameter is null
+  @param filter
+      is a filter type
+  @param value
+      the value is the entry by user by author name, title, language or  category
+  @return books
+    returns a list of books by filter type*/
   @Override
   public List<Book> readByFilter(String filter,String value) throws SQLException {
-    List<Book> books = new ArrayList<>();
-    try(Connection connection = getConnection()) {
-      String val = "%"+value+"%";
-      System.out.println(val);
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book WHERE "+filter+" ILIKE ? AND Available = true");
-      statement.setString(1, val);
-      System.out.println(statement.toString());
-      ResultSet resultSet = statement.executeQuery();
-      while (resultSet.next()) {
+        List<Book> books = new ArrayList<>();
+        try(Connection connection = getConnection()) {
+          String val = "%"+value+"%";
+          System.out.println(val);
+          PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book WHERE "+filter+" ILIKE ? AND Available = true");
+          statement.setString(1, val);
+          System.out.println(statement.toString());
+          ResultSet resultSet = statement.executeQuery();
+          while (resultSet.next()) {
               /*access the data in a ResultSet object through a cursor. Note that this cursor is not a database cursor.
      This cursor is a pointer that points to one row of data in the ResultSet object.
      Initially, the cursor is positioned before the first row. You call various methods defined in the ResultSet object to move the cursor.*/
 
-        String Username = resultSet.getString("Username");
-        String BookID = resultSet.getString("BookID");
-        String Title = resultSet.getString("Title");
-        String Author = resultSet.getString("Author");
-        String language = resultSet.getString("language");
-        String Description = resultSet.getString("Description");
-        String Category = resultSet.getString("Category");
-        books.add(new Book(Username,BookID,Title,Author,language,Description,Category));
-      }
+            String Username = resultSet.getString("Username");
+            String BookID = resultSet.getString("BookID");
+            String Title = resultSet.getString("Title");
+            String Author = resultSet.getString("Author");
+            String language = resultSet.getString("language");
+            String Description = resultSet.getString("Description");
+            String Category = resultSet.getString("Category");
+            books.add(new Book(Username,BookID,Title,Author,language,Description,Category));
+          }
       return books;
     }
   }
   /**
    @throws if a database access error occurs or the parameter is null
    @param searchString
-   is a string entry by user
+        is a string entry by user
    @return books
-   returns a list of books by title*/
-  //@Override
+         returns a list of books by title*/
+   //@Override
   public List<Book> readByTitle(String searchString) throws SQLException {
     try(Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM Book "
@@ -182,7 +182,7 @@ public class BookDAOImplementation implements BookDAO
         String Description = resultSet.getString("Description");
         String Category = resultSet.getString("Category");
         books.add(new Book(Username,BookID,Title,Author,language,Description,Category));
-        // books.add(book);
+       // books.add(book);
       }
       return books;
     }
@@ -194,20 +194,20 @@ public class BookDAOImplementation implements BookDAO
    * @throws SQLException
    */
   /**
-   @throws if a database access error occurs or the parameter is null
-   @return books
-   returns a list of all books*/
+ @throws if a database access error occurs or the parameter is null
+ @return books
+       returns a list of all books*/
   public List<Book> allBooks() throws SQLException {
     try(Connection connection = getConnection()) {
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"SEP2\".book where Available = true order by bookid desc"
-      );
+          );
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Book> books = new ArrayList<>();
       while (resultSet.next()) {
            /*access the data in a ResultSet object through a cursor. Note that this cursor is not a database cursor.
      This cursor is a pointer that points to one row of data in the ResultSet object.
      Initially, the cursor is positioned before the first row. You call various methods defined in the ResultSet object to move the cursor.*/
-        // System.out.println("Here");
+       // System.out.println("Here");
         String Username = resultSet.getString("Username");
         String BookID = resultSet.getString("BookID");
         String Title = resultSet.getString("Title");
@@ -249,14 +249,14 @@ public class BookDAOImplementation implements BookDAO
       statement.executeUpdate();
     }
   }
-  /**
-   * @throws if a database access error occurs or the parameter is null
-   @param filter
-   is a String filter of either an author, title, category or language
+/**
+ * @throws if a database access error occurs or the parameter is null
+@param filter
+      is a String filter of either an author, title, category or language
    @param value
-   is a
-   @return books
-   returns a list of all books matching the parameters*/
+        is a
+    @return books
+        returns a list of all books matching the parameters*/
   public ArrayList<Book> readByTwoFilters(String filter, String value, String filter1, String value1) throws SQLException {
     ArrayList<Book> books = new ArrayList<>();
     try(Connection connection = getConnection()) {
@@ -443,3 +443,4 @@ public class BookDAOImplementation implements BookDAO
     }
   }
 }
+

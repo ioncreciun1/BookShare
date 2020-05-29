@@ -27,6 +27,7 @@ public class BookInfoViewController extends ViewController
   public Label ownerName;
   public Label phoneNumber;
   public Label email;
+  public ListView<String> comments;
   public Text description;
 
   public BookInfoViewController()
@@ -45,6 +46,9 @@ public class BookInfoViewController extends ViewController
     phoneNumber.textProperty().bind(super.getViewModels().getBookInfoViewModel().phoneNumberProperty());
     email.textProperty().bind(super.getViewModels().getBookInfoViewModel().emailProperty());
     description.textProperty().bind(super.getViewModels().getBookInfoViewModel().descriptionProperty());
+
+    comments.setItems(super.getViewModels().getBookInfoViewModel().getCommentsHash());
+
   }
 
   public void openAddBookView()

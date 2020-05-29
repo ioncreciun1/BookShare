@@ -147,7 +147,7 @@ public class SearchViewModel
   )
   {
     numOfFilters = 1;
-    filter = "booklanguage";
+    filter = "language";
     value = language;
   }
   else if(
@@ -171,7 +171,7 @@ public class SearchViewModel
     numOfFilters = 2;
     filter="category";
     value = type;
-    filter1 = "booklanguage";
+    filter1 = "language";
     value1 = language;
 
   }
@@ -185,7 +185,7 @@ public class SearchViewModel
     numOfFilters = 2;
     filter="author";
     value = author.get();
-    filter1 = "booklanguage";
+    filter1 = "language";
     value1 = language;
   }
   else  if(type.equals("Click to choose Category")
@@ -198,7 +198,7 @@ public class SearchViewModel
     numOfFilters = 2;
     filter="title";
     value = title.get();
-    filter1 = "booklanguage";
+    filter1 = "language";
     value1 = language;
   }
   else  if(type.equals("Click to choose Category")

@@ -16,6 +16,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A class representing the server
@@ -39,7 +40,7 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
   {
     this.property = new PropertyChangeProxy<>(this, true);
     this.model = model;
-    model.addListener(this,"book","change");
+    model.addListener(this,"book","change","comment");
     startRegistry();
     startServer();
   }
@@ -94,15 +95,15 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
    * @param firstName
    * @param lastName
    * @param city
-   * @param contactInfo
+   * @param phone
    * @throws Exception
    */
   @Override public void registerUser(String Username, String passWord,
       String eMail, String firstName, String lastName, String city,
-      String contactInfo) throws Exception
+      String phone) throws Exception
   {
     System.out.println("SERVER MODEL");
-    model.registerUser(Username,passWord,eMail,firstName,lastName,city,contactInfo);
+    model.registerUser(Username,passWord,eMail,firstName,lastName,city,phone);
   }
 
   /**
@@ -130,6 +131,12 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
   {
     System.out.println("Check server");
     return model.checkUser(registrant);
+  }
+
+  @Override public boolean checkUsername(String username)
+      throws RemoteException, SQLException
+  {
+    return model.checkUsername(username);
   }
 
   /**
@@ -271,18 +278,23 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
 
   /**
    * Add comment to a specific book
-   * @param book specific book
    * @param comment comment text
    * @throws SQLException
    */
-  @Override public void addComment(Book book, String comment)
-      throws SQLException
+  @Override public void addComment(String BookID, String Username, String comment) throws RemoteException,SQLException
   {
-    model.addComment(book, comment);
+
+    model.add(BookID, Username, comment);
+  }
+
+  @Override public ArrayList<String> getComments(String BookID)
+          throws SQLException, RemoteException{
+    return model.getComments(BookID);
   }
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)
   {
+    System.out.println(event.getPropertyName());
     property.firePropertyChange(event.getPropertyName(),event.getValue1(),event.getValue2());
   }
 

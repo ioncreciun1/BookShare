@@ -40,7 +40,7 @@ public class MyBooksViewController extends ViewController
     //    );
     titleColumn1.setCellValueFactory(cellData -> cellData.getValue().getBookTitle());
     authorColumn1.setCellValueFactory(cellData -> cellData.getValue().authorName());
-    languageColumn1.setCellValueFactory(cellData -> cellData.getValue().getBookLanguage());
+    languageColumn1.setCellValueFactory(cellData -> cellData.getValue().language());
     categoryColumn1.setCellValueFactory(cellData -> cellData.getValue().bookCategory());
     availableColumn.setCellValueFactory(cellData -> cellData.getValue().availabilityProperty());
     this.bookListTable1.setItems(super.getViewModels().getMyBooksViewModel().getTable());
@@ -138,6 +138,11 @@ public class MyBooksViewController extends ViewController
     alert.setContentText("Please confirm your choice");
     Optional<ButtonType> result = alert.showAndWait();
     return (result.isPresent()) && (result.get() == ButtonType.OK);
+  }
+
+  public void searchBooks(ActionEvent event)
+  {
+    super.getHandler().openView("SearchView");
   }
 
   public void openUserInfoView() throws RemoteException

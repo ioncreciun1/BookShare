@@ -41,13 +41,12 @@ public class MainViewController extends ViewController
         cellData -> cellData.getValue().authorName()
     );
     languageColumn.setCellValueFactory(
-        cellData -> cellData.getValue().getBookLanguage()
+        cellData -> cellData.getValue().language()
     );
     categoryColumn.setCellValueFactory(
         cellData -> cellData.getValue().bookCategory()
     );
 this.bookListTable.itemsProperty().bindBidirectional(super.getViewModels().getMainViewModel().tablePropertyProperty());
-   // this.bookListTable.setItems(super.getViewModels().getMainViewModel().getTable());
   }
 
   public void openAddBookView()
@@ -65,7 +64,7 @@ this.bookListTable.itemsProperty().bindBidirectional(super.getViewModels().getMa
     super.getHandler().openView("MainView");
   }
 
-  public void openBookInfoView(MouseEvent event) throws RemoteException {
+  public void openBookInfoView(MouseEvent event) throws RemoteException, SQLException {
 
     if (this.bookListTable.getSelectionModel().getSelectedItem() != null && event.getClickCount() == 2)
     {

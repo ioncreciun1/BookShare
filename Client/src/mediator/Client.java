@@ -15,6 +15,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Client implements ClientModel, RemoteListener<String,Book>
 {
@@ -33,7 +34,7 @@ public class Client implements ClientModel, RemoteListener<String,Book>
     this.remoteModel = (RemoteModel) Naming.lookup("rmi://" + host + ":1099/Book");
     UnicastRemoteObject.exportObject(this, 0);
     this.property = new PropertyChangeProxy<>(this);
-    remoteModel.addListener(this,"book","change");
+    remoteModel.addListener(this,"book","change","comment");
   }
 
   @Override public boolean verifyPass(String password, String username)
@@ -44,9 +45,9 @@ public class Client implements ClientModel, RemoteListener<String,Book>
 
   @Override public void registerUser(String Username, String passWord,
       String eMail, String firstName, String lastName, String city,
-      String contactInfo) throws Exception
+      String phone) throws Exception
   {
-    remoteModel.registerUser(Username,passWord,eMail,firstName,lastName,city,contactInfo);
+    remoteModel.registerUser(Username,passWord,eMail,firstName,lastName,city,phone);
   }
 
   @Override public User getUser(String username) throws RemoteException
@@ -119,10 +120,22 @@ public class Client implements ClientModel, RemoteListener<String,Book>
     remoteModel.changeAvailable(book,bool );
   }
 
-  @Override public void addComment(Book book, String comment)
+  @Override public void addComment(String BookID,String Username, String comment)
       throws SQLException, RemoteException
   {
-    remoteModel.addComment(book, comment);
+    remoteModel.addComment(BookID,Username, comment);
+  }
+
+  @Override public ArrayList<String> getComments(String BookID)
+          throws SQLException, RemoteException
+  {
+      return remoteModel.getComments(BookID);
+  }
+
+  @Override public boolean checkUsername(String username)
+      throws RemoteException, SQLException
+  {
+    return remoteModel.checkUsername(username);
   }
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)

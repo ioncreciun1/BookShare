@@ -6,11 +6,12 @@ import utility.observer.subject.LocalSubject;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface ClientModel extends LocalSubject<String,Book>
 {
   boolean verifyPass(String password,String username) throws RemoteException;
-  void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo)
+  void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String phone)
       throws Exception;
   User getUser(String username) throws RemoteException;
   boolean checkUser(User user) throws RemoteException;
@@ -26,5 +27,8 @@ public interface ClientModel extends LocalSubject<String,Book>
   ArrayList<Book> booksByUser(String username) throws SQLException,RemoteException;
   void removeBook(Book book) throws SQLException,RemoteException;
   void changeAvailable(Book book, boolean bool) throws SQLException,RemoteException;
-  void addComment(Book book, String comment) throws SQLException,RemoteException;
+  void addComment(String BookID, String Username, String comment) throws SQLException,RemoteException;
+  ArrayList<String> getComments(String BookID)
+          throws SQLException, RemoteException;
+  boolean checkUsername(String username) throws RemoteException, SQLException;
 }

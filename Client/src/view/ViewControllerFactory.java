@@ -16,7 +16,7 @@ public class ViewControllerFactory
       ViewHandler viewHandler, ViewModelFactory viewModelFactory)
   {
   //  System.out.println("Factory");
-   // System.out.println(id);
+    System.out.println(id);
     ViewController viewController = viewControllerMap.get(id);
     //System.out.println(viewController);
     if (viewController == null)

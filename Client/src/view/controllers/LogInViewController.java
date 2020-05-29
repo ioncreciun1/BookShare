@@ -10,6 +10,7 @@ import view.ViewHandler;
 import viewModel.ViewModelFactory;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LogInViewController extends ViewController
 {
@@ -35,7 +36,7 @@ public class LogInViewController extends ViewController
     super.getHandler().openView("SignUpView");
   }
 
-  public void openMainView() throws IOException
+  public void openMainView() throws IOException, SQLException
   {
     if(super.getViewModels().getLogInViewModel().verifyUser())
     {

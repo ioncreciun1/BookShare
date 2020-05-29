@@ -1,15 +1,13 @@
 package model;
 
-import Database.BookDAO;
-import Database.BookDAOImplementation;
-import Database.UserDAO;
-import Database.UserDAOImplementation;
+import Database.*;
 import utility.observer.listener.GeneralListener;
 import utility.observer.subject.PropertyChangeProxy;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Class representing ModelManger for server
@@ -18,6 +16,7 @@ public class ModelManager implements Model
 {
   private UserDAO user;
   private BookDAO bookDAO;
+  private CommentDAO commentDAO;
   private PropertyChangeProxy<String,Book> property;
 
   /**
@@ -28,6 +27,7 @@ public class ModelManager implements Model
   {
     this.user = new UserDAOImplementation();
     this.bookDAO = BookDAOImplementation.getInstance();
+    this.commentDAO = new CommentDAOImplementation();
     this.property = new PropertyChangeProxy<>(this);
   }
 
@@ -41,6 +41,12 @@ public class ModelManager implements Model
   {
     return this.user.check_User(user);
   }
+
+  @Override public boolean checkUsername(String username) throws SQLException
+  {
+    return user.checkUsername(username);
+  }
+
   /**
    * Check if this user email is in the system
    * @param user User
@@ -67,15 +73,15 @@ public class ModelManager implements Model
    * Last name of the user
    * @param city
    * city where user live
-   * @param contactInfo
+   * @param phone
    * phone Number of this user
    * @throws Exception
    */
-  public void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo)
+  public void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String phone)
       throws Exception
   {
     System.out.println("SERVER MODEL MODEL");
-    user.add(Username,passWord,eMail,firstName,lastName,city,contactInfo);
+    user.add(Username,passWord,eMail,firstName,lastName,city,phone);
   }
 
   /**
@@ -108,19 +114,17 @@ public class ModelManager implements Model
     property.firePropertyChange("book",null,book);
   }
 
-  /**
-   * add Comment to a specific book
-   *
-   * @param book
-   * a specific book
-   * @param comment
-   * comment text
-   * @throws SQLException
-   */
-  public void addComment(Book book, String comment) throws SQLException
+  public void add(String BookID, String Username, String comment) throws RemoteException,SQLException
   {
-    bookDAO.addComment(book.getUsername(), book, comment);
-    property.firePropertyChange("comment",comment,book);
+
+    commentDAO.add(BookID,Username, comment);
+    property.firePropertyChange("comment",Username + " : "+ comment,null);
+  }
+
+  public ArrayList<String> getComments(String BookID)
+          throws SQLException, RemoteException{
+    ArrayList<String> comments = commentDAO.get(BookID);
+      return comments;
   }
   /**
    * Getting all books
@@ -137,7 +141,7 @@ public class ModelManager implements Model
   /**
    *
    * @param filter
-   *        is a filter of Title,Author,Category or BookLanguage
+   *        is a filter of Title,Author,Category or language
    * @param value
    *        the search criteria  value
    * @return books
@@ -154,11 +158,11 @@ public class ModelManager implements Model
   /**
    *
    * @param filter
-   *         is the first filter of Title,Author,Category or BookLanguage
+   *         is the first filter of Title,Author,Category or language
    * @param value
    *        is the FIRST search criteria  value
    * @param filter1
-   *         is the first filter of Title,Author,Category or BookLanguage
+   *         is the first filter of Title,Author,Category or language
    * @param value1
    *        the second search criteria  value
    * @return a list of books matching the search criteria
@@ -174,15 +178,15 @@ public class ModelManager implements Model
   /**
    *
    * @param filter
-   *        is the first search filter of Title,Author,Category or BookLanguage
+   *        is the first search filter of Title,Author,Category or language
    * @param value
    *          is the FIRST search criteria  value
    * @param filter1
-   *        is the second search filter of Title,Author,Category or BookLanguage
+   *        is the second search filter of Title,Author,Category or language
    * @param value1
    *         is the second search criteria  value
    * @param filter2
-   *        is the third search filter of Title,Author,Category or BookLanguage
+   *        is the third search filter of Title,Author,Category or language
    * @param value2
    *        is the third search criteria  value
    * @return

@@ -51,8 +51,6 @@ private ObjectProperty<ObservableList<TableRowData>> tableProperty;
     ArrayList<Book> books = new ArrayList<>();
     for (int i = 0; i < size; i++) // Something should be instead of 99
     {
-
-
       books.add(model.allBooks().get(i)); // should be a book i guess
     }
     for (int i = 0; i < books.size(); i++)
@@ -92,6 +90,7 @@ Platform.runLater(()->{
         table.clear();
         table = createList();
         tableProperty.setValue(table);
+        System.out.println("Here");
 
 
       }

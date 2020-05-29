@@ -58,6 +58,31 @@ public class UserDAOImplementation implements UserDAO
       return false;
     }
   }
+  public boolean checkUsername(String username)
+  {
+    try(Connection connection = getConnection()/*auto closes the connection*/){
+      /*The following statement is an try-with-resources statement, which declares one resource, stm,
+       that will be automatically closed when the try block terminates:*/
+      Statement stm = connection.createStatement();
+      ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"user\" ;");
+      while(rs.next())
+      {
+
+        String usernameGet = rs.getString("Username");
+        if (usernameGet.equals(username)){
+          System.out.println("Username already exists!");
+          return true;
+        }
+      }
+      System.out.println("Username added to database!");
+      return false;
+    }
+    catch ( Exception e ) {
+      System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+      System.exit(0);
+      return false;
+    }
+  }
 /**
  * @param user if the username entered on the sign up form is in use, returns false if it isn't and registers the user in the database*/
   public boolean check_User(User user) throws SQLException
@@ -102,14 +127,15 @@ public class UserDAOImplementation implements UserDAO
    *    is a String last name  entered by user
    * @param city
    *    is a String city entered by user
-   * @param contactInfo
+   * @param phone
    *    is a String for contact info entered by user*/
-  public void add(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo) throws Exception,SQLException
-  {try
+  public void add(String Username, String passWord, String eMail, String firstName, String lastName, String city, String phone) throws Exception,SQLException
+  {
+    try
       (Connection connection = getConnection()/*auto closes the connection*/)
   {
-    User registrant = new User(Username,passWord,eMail,firstName,lastName,city,contactInfo);
-    PreparedStatement statement = connection.prepareStatement("INSERT INTO \"SEP2\".\"user\" (Username, Pass, EMAIL, fName, lName, City, ContactInfo) VALUES (?,?,?,?,?,?,?);");
+    User registrant = new User(Username,passWord,eMail,firstName,lastName,city,phone);
+    PreparedStatement statement = connection.prepareStatement("INSERT INTO \"SEP2\".\"user\" (Username, Pass, EMAIL, fName, lName, City, phone) VALUES (?,?,?,?,?,?,?);");
     /*lines 22-30 adds the registrant to the database using getters from User*/
     statement.setString(1, registrant.getUserName());
     statement.setString(2, registrant.getPassWord());
@@ -117,7 +143,7 @@ public class UserDAOImplementation implements UserDAO
     statement.setString(4, registrant.getName());
     statement.setString(5, registrant.getLastName());
     statement.setString(6, registrant.getCity());
-    statement.setString(7, registrant.getContactInfo());
+    statement.setString(7, registrant.getphone());
     statement.executeUpdate();
   }
   catch ( Exception e ) {
@@ -125,8 +151,6 @@ public class UserDAOImplementation implements UserDAO
     throw e;
   }
     System.out.println("Registration completed");
-
-
   }
 
 /**
@@ -188,7 +212,7 @@ public class UserDAOImplementation implements UserDAO
       ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"user\";");
       while(rs.next())
       {
-        User registrant1 = new User(rs.getString("Username"),rs.getString("Pass"),rs.getString("EMAIL"),rs.getString("fName"),rs.getString("lName"),rs.getString("City"),rs.getString("ContactInfo"));
+        User registrant1 = new User(rs.getString("Username"),rs.getString("Pass"),rs.getString("EMAIL"),rs.getString("fName"),rs.getString("lName"),rs.getString("City"),rs.getString("phone"));
         registrants.add(registrant1);
       }
       System.out.println("Username added to database!");
@@ -200,19 +224,26 @@ public class UserDAOImplementation implements UserDAO
     return registrants;
   }
 /**/
-  @Override public void update(User user) throws SQLException
+  @Override public void update(String actualUsername, String newUsername, String password, String email, String firstName, String lastName, String city, String phone) throws SQLException
   {
-    try(Connection connection = getConnection()/*auto closes the connection*/){
-      Statement stm = connection.createStatement();
-      ResultSet rs = stm.executeQuery( "SELECT * FROM \"SEP2\".\"user\" WHERE Username = "+ user.getUserName()+";");
-      while(rs.next())
-      {
-      }
-      System.out.println("Username added to database!");
+    try(Connection connection = getConnection()/*auto closes the connection*/)
+    { String sql = "update \"SEP2\".\"user\" SET username=?, pass=?, email=?, fname=?, lname=?, city=?, phone=? WHERE Username = ?;";
+      PreparedStatement statement = connection.prepareStatement(sql);
+      /*lines 22-30 adds the registrant to the database using getters from User*/
+      statement.setString(1, newUsername);
+      statement.setString(2, password);
+      statement.setString(3, email);
+      statement.setString(4, firstName);
+      statement.setString(5, lastName);
+      statement.setString(6, city);
+      statement.setString(7, phone);
+      statement.setString(8, actualUsername);
+      statement.executeUpdate();
     }
     catch ( Exception e ) {
-      System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-      System.exit(0);/*why do we need this??*/
+      System.err.println( e.getClass().getName()+": "+ e.getMessage());
+      throw e;
     }
+    System.out.println("Updating is completed");
   }
 }

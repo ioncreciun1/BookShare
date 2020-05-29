@@ -5,10 +5,10 @@ import model.Book;
 
 public class TableRowData
 {
-  // private IntegerProperty orderNumber;
+ // private IntegerProperty orderNumber;
   private StringProperty bookTitle;
   private StringProperty authorName;
-  private StringProperty bookLanguage;
+  private StringProperty language;
   private StringProperty bookCategory;
   private StringProperty availability;
   private StringProperty username;
@@ -19,7 +19,7 @@ public class TableRowData
     //this.orderNumber = new SimpleIntegerProperty(); // Should be getId ???
     this.bookTitle = new SimpleStringProperty(book.getTitle());
     this.authorName = new SimpleStringProperty(book.getAuthor());
-    this.bookLanguage = new SimpleStringProperty(book.getLanguage());
+    this.language = new SimpleStringProperty(book.getLanguage());
     this.bookCategory = new SimpleStringProperty(book.getCategory());
     this.book = book;
     String availability = "";
@@ -30,10 +30,10 @@ public class TableRowData
     this.availability = new SimpleStringProperty(availability);
   }
 
-  //  public IntegerProperty getOrderNumber()
-  //  {
-  //    return orderNumber;
-  //  }
+//  public IntegerProperty getOrderNumber()
+//  {
+//    return orderNumber;
+//  }
   public Book getBook(){
     return book;
   }
@@ -52,9 +52,9 @@ public class TableRowData
     return bookCategory;
   }
 
-  public StringProperty getBookLanguage()
+  public StringProperty language()
   {
-    return bookLanguage;
+    return language;
   }
 
   public StringProperty availabilityProperty()

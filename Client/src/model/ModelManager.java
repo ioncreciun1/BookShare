@@ -12,6 +12,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Is a class representing ModelManager for Client
@@ -39,7 +40,7 @@ public class ModelManager implements Model, LocalListener<String,Book>
       e.getMessage();
     }
     property = new PropertyChangeProxy<>(this);
-    client.addListener(this,"book","change");
+    client.addListener(this,"book","change","comment");
   }
 
   /**
@@ -48,9 +49,16 @@ public class ModelManager implements Model, LocalListener<String,Book>
    * @return true if username fits the requirements  is in the system otherwise returns false
    */
 
-  public boolean checkUsername(String username)
+  public boolean checkUsernameSize(String username)
   {
     return ( username.length() < 8 ) || ( username.length() > 30 );
+  }
+
+  @Override public boolean checkUsername(String username)
+      throws RemoteException, SQLException
+  {
+    this.user = username;
+    return client.checkUsername(username);
   }
 
   /**
@@ -122,7 +130,7 @@ public class ModelManager implements Model, LocalListener<String,Book>
   /**
    *
    * @param filter
-   *        is a filter of Title,Author,Category or BookLanguage
+   *        is a filter of Title,Author,Category or language
    * @param value
    *        the search criteria  value
    * @return books
@@ -139,11 +147,11 @@ public class ModelManager implements Model, LocalListener<String,Book>
   /**
    *get a list of books that match the search criteria
    *  @param filter
-   *         is the first filter of Title,Author,Category or BookLanguage
+   *         is the first filter of Title,Author,Category or language
    * @param value
    *        is the FIRST search criteria  value
    * @param filter1
-   *         is the first filter of Title,Author,Category or BookLanguage
+   *         is the first filter of Title,Author,Category or language
    * @param value1
    *        the second search criteria  value
    * @return a list of books matching the search criteria
@@ -158,15 +166,15 @@ public class ModelManager implements Model, LocalListener<String,Book>
   /**
    *
    * @param filter
-   *        is the first search filter of Title,Author,Category or BookLanguage
+   *        is the first search filter of Title,Author,Category or language
    * @param value
    *          is the FIRST search criteria  value
    * @param filter1
-   *        is the second search filter of Title,Author,Category or BookLanguage
+   *        is the second search filter of Title,Author,Category or language
    * @param value1
    *         is the second search criteria  value
    * @param filter2
-   *        is the third search filter of Title,Author,Category or BookLanguage
+   *        is the third search filter of Title,Author,Category or language
    * @param value2
    *        is the third search criteria  value
    * @return
@@ -212,7 +220,6 @@ public class ModelManager implements Model, LocalListener<String,Book>
   public ArrayList<Book> booksByUser()
       throws SQLException, RemoteException
   {
-
     return client.booksByUser(user);
   }
 
@@ -268,7 +275,21 @@ public class ModelManager implements Model, LocalListener<String,Book>
   @Override public void addComment(Book book, String comment)
       throws SQLException, RemoteException
   {
-    client.addComment(book, comment);
+    System.out.println("User :" + user);
+    client.addComment(book.getBookID(),user, comment);
+  }
+
+  /**
+   * Get all comments for this specific bookID
+   * @param BookID specific bookID
+   * @return a list of comments
+   * @throws SQLException
+   * @throws RemoteException
+   */
+  @Override public ArrayList<String> getComments(String BookID)
+          throws SQLException, RemoteException
+  {
+    return client.getComments(BookID);
   }
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)
@@ -297,15 +318,15 @@ public class ModelManager implements Model, LocalListener<String,Book>
    * @param firstName
    * @param lastName
    * @param city
-   * @param contactInfo
+   * @param phone
    * @throws Exception
    */
 
   @Override public void registerUser(String Username, String passWord,
       String eMail, String firstName, String lastName, String city,
-      String contactInfo) throws Exception
+      String phone) throws Exception
   {
-    client.registerUser(Username,passWord,eMail,firstName,lastName,city,contactInfo);
+    client.registerUser(Username,passWord,eMail,firstName,lastName,city,phone);
   }
 
   /**
@@ -326,8 +347,7 @@ public class ModelManager implements Model, LocalListener<String,Book>
    */
   @Override public User getUser(String username) throws RemoteException
   {
-    this.user = username;
-  //  System.out.println(user);
+
     return client.getUser(username);
   }
 }

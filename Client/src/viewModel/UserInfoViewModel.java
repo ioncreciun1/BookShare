@@ -36,9 +36,9 @@ public class UserInfoViewModel
     this.passwordProperty().setValue(user.getPassWord());
     this.fullNameProperty().setValue(user.getName() + " " + user.getLastName());
     this.cityProperty().setValue(user.getCity());
-    if (!(user.getContactInfo().equals("")))
+    if (!(user.getphone().equals("")))
     {
-      this.phoneProperty().setValue(user.getContactInfo());
+      this.phoneProperty().setValue(user.getphone());
     } else {
       this.phoneProperty().setValue("No phone number");
     }

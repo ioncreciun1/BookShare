@@ -10,7 +10,7 @@ import view.ViewHandler;
 import viewModel.ViewModelFactory;
 
 import java.rmi.RemoteException;
-
+import java.sql.SQLException;
 
 public class EditProfileViewController extends ViewController
 {
@@ -41,7 +41,8 @@ public class EditProfileViewController extends ViewController
     email.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().emailProperty());
     phone.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().phoneProperty());
     city.itemsProperty().bind(super.getViewModels().getEditProfileViewModel().cityProperty());
-    city.getSelectionModel().select(0);
+   // city.getSelectionModel().select(0);
+    city.valueProperty().bind(super.getViewModels().getEditProfileViewModel().selectedCityProperty());
     password.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().passwordProperty());
     newPassword.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().newPasswordProperty());
     confirmNewPassword.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().confirmPasswordProperty());
@@ -68,7 +69,7 @@ public class EditProfileViewController extends ViewController
     }
   }
 
-  public void checkLogin() throws RemoteException
+  public void checkLogin() throws RemoteException, SQLException
   {
     super.getViewModels().getEditProfileViewModel().checkUsername();
   }

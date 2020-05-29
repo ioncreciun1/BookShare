@@ -3,7 +3,9 @@ package view.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
+import model.Book;
 import view.ViewController;
 import view.ViewHandler;
 import viewModel.ViewModelFactory;
@@ -48,7 +50,7 @@ public class SearchViewController extends ViewController
         cellData -> cellData.getValue().authorName()
     );
     languageColumn.setCellValueFactory(
-        cellData -> cellData.getValue().getBookLanguage()
+        cellData -> cellData.getValue().language()
     );
     categoryColumn.setCellValueFactory(
         cellData -> cellData.getValue().bookCategory()
@@ -88,6 +90,17 @@ public class SearchViewController extends ViewController
     String bookLanguage = language.getSelectionModel().getSelectedItem().toString();
     super.getViewModels().getSearchViewModel().searchBook(bookType,bookLanguage);
     reset();
+  }
+
+  public void openBookInfoView(MouseEvent mouseEvent)
+      throws RemoteException, SQLException
+  {
+    if (this.bookListTable.getSelectionModel().getSelectedItem() != null && mouseEvent.getClickCount() == 2)
+    {
+      Book selectedBook = this.bookListTable.getSelectionModel().getSelectedItem().getBook();
+      super.getViewModels().getBookInfoViewModel().setBook(selectedBook);
+      super.getHandler().openView("BookInfoView");
+    }
   }
 
   public void openUserInfoView() throws RemoteException

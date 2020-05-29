@@ -8,11 +8,12 @@ import java.util.ArrayList;
 
 public interface Model extends LocalSubject<String,Book>
 {
-  void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String contactInfo)
-      throws Exception;
+  void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String phone)
+      throws Exception;;
   User getUser(String username) throws RemoteException;
    String getUser();
-  boolean checkUsername(String username);
+  boolean checkUsernameSize(String username);
+  boolean checkUsername(String username) throws RemoteException, SQLException;
   boolean checkPassword(String password);
   boolean checkUser(User user) throws RemoteException;
   boolean checkEmail(User user) throws RemoteException;
@@ -31,4 +32,5 @@ public interface Model extends LocalSubject<String,Book>
   void setBorrowed(Book book);
   void changeAvailable(Book book, boolean bool) throws SQLException,RemoteException;
   void addComment(Book book, String comment) throws SQLException,RemoteException;
+  ArrayList<String> getComments(String bookID) throws SQLException,RemoteException;
 }
