@@ -116,13 +116,14 @@ public class ModelManager implements Model
 
   public void add(String BookID, String Username, String comment) throws RemoteException,SQLException
   {
+    property.firePropertyChange("comment",Username + " : "+ comment,null);
     commentDAO.add(BookID,Username, comment);
   }
 
   public ArrayList<String> getComments(String BookID)
           throws SQLException, RemoteException{
     ArrayList<String> comments = commentDAO.get(BookID);
-      return commentDAO.get(BookID);
+      return comments;
   }
   /**
    * Getting all books

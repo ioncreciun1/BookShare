@@ -40,7 +40,7 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
   {
     this.property = new PropertyChangeProxy<>(this, true);
     this.model = model;
-    model.addListener(this,"book","change");
+    model.addListener(this,"book","change","comment");
     startRegistry();
     startServer();
   }
@@ -283,18 +283,18 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
    */
   @Override public void addComment(String BookID, String Username, String comment) throws RemoteException,SQLException
   {
-    property.firePropertyChange("comment",Username + " : "+ comment,null);
+
     model.add(BookID, Username, comment);
   }
 
   @Override public ArrayList<String> getComments(String BookID)
           throws SQLException, RemoteException{
-    System.out.println("Return comments" + model.getComments(BookID));
     return model.getComments(BookID);
   }
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)
   {
+    System.out.println(event.getPropertyName());
     property.firePropertyChange(event.getPropertyName(),event.getValue1(),event.getValue2());
   }
 

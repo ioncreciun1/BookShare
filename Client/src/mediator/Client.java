@@ -34,7 +34,7 @@ public class Client implements ClientModel, RemoteListener<String,Book>
     this.remoteModel = (RemoteModel) Naming.lookup("rmi://" + host + ":1099/Book");
     UnicastRemoteObject.exportObject(this, 0);
     this.property = new PropertyChangeProxy<>(this);
-    remoteModel.addListener(this,"book","change");
+    remoteModel.addListener(this,"book","change","comment");
   }
 
   @Override public boolean verifyPass(String password, String username)

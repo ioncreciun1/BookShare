@@ -40,7 +40,7 @@ public class ModelManager implements Model, LocalListener<String,Book>
       e.getMessage();
     }
     property = new PropertyChangeProxy<>(this);
-    client.addListener(this,"book","change");
+    client.addListener(this,"book","change","comment");
   }
 
   /**

@@ -1,5 +1,6 @@
 package viewModel;
 
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -7,13 +8,15 @@ import javafx.collections.ObservableList;
 import model.Book;
 import model.Model;
 import model.User;
+import utility.observer.event.ObserverEvent;
+import utility.observer.listener.LocalListener;
 
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class BookInfoViewModel
+public class BookInfoViewModel implements LocalListener<String,Book>
 {
   private Model model;
   private Book book;
@@ -38,6 +41,7 @@ public class BookInfoViewModel
     this.phoneNumber = new SimpleStringProperty("");
     this.email = new SimpleStringProperty("");
     this.description = new SimpleStringProperty("");
+    model.addListener(this,"comment");
   }
 
   public void setBook(Book book) throws RemoteException, SQLException
@@ -60,6 +64,7 @@ public class BookInfoViewModel
     ArrayList<String> com = model.getComments(book.getBookID());
     for(int i=0;i<com.size();i++)
     {
+      System.out.println(com.get(i));
     comments.add(com.get(i));
     }
   }
@@ -111,5 +116,25 @@ public class BookInfoViewModel
 
   public ObservableList<String> getCommentsHash(){
     return comments;
+  }
+
+  @Override public void propertyChange(ObserverEvent<String, Book> event)
+  {
+    Platform.runLater(()->{
+      System.out.println("I am here");
+      try
+      {
+        comments.clear();
+        setComments();
+      }
+      catch (RemoteException e)
+      {
+        e.printStackTrace();
+      }
+      catch (SQLException e)
+      {
+        e.printStackTrace();
+      }
+    });
   }
 }
