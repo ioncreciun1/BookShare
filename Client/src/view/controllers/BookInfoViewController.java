@@ -17,12 +17,10 @@ import viewModel.ViewModelFactory;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.util.HashMap;
 
 public class BookInfoViewController extends ViewController
 {
-  public Text title; // it`s not used yet because have some problems with id in fxml
-
+  public Text title;
   public Label authorName;
   public Label language;
   public Label category;
@@ -47,9 +45,7 @@ public class BookInfoViewController extends ViewController
     ownerName.textProperty().bind(super.getViewModels().getBookInfoViewModel().ownerNameProperty());
     phoneNumber.textProperty().bind(super.getViewModels().getBookInfoViewModel().phoneNumberProperty());
     email.textProperty().bind(super.getViewModels().getBookInfoViewModel().emailProperty());
-
-
-    description.textProperty().bindBidirectional(super.getViewModels().getBookInfoViewModel().descriptionProperty());
+    description.textProperty().bind(super.getViewModels().getBookInfoViewModel().descriptionProperty());
 
     comments.setItems(super.getViewModels().getBookInfoViewModel().getCommentsHash());
 
