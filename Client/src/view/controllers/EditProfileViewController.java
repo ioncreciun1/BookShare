@@ -34,14 +34,15 @@ public class EditProfileViewController extends ViewController
   {
     // hz why but bind don`t work or method setInfo dont work idk
     super.init(viewHandler, viewModel, root);
-
-    username.textProperty().bind(super.getViewModels().getEditProfileViewModel().usernameProperty());
-    firstName.textProperty().bind(super.getViewModels().getEditProfileViewModel().firstNameProperty());
+//    super.getViewModels().getEditProfileViewModel().reset();
+    username.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().usernameProperty());
+    firstName.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().firstNameProperty());
     lastName.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().lastNameProperty());
     email.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().emailProperty());
     phone.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().phoneProperty());
     city.itemsProperty().bind(super.getViewModels().getEditProfileViewModel().cityProperty());
-    city.getSelectionModel().select(0);
+   // city.getSelectionModel().select(0);
+    city.valueProperty().bind(super.getViewModels().getEditProfileViewModel().selectedCityProperty());
     password.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().passwordProperty());
     newPassword.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().newPasswordProperty());
     confirmNewPassword.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().confirmPasswordProperty());

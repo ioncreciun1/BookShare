@@ -25,6 +25,7 @@ public class EditProfileViewModel
   private StringProperty newPassword;
   private StringProperty confirmPassword;
   private StringProperty error;
+  private StringProperty selectedCity;
   private ObjectProperty<ObservableList> city;
 
   public EditProfileViewModel(Model model)
@@ -41,6 +42,7 @@ public class EditProfileViewModel
     this.password = new SimpleStringProperty("");
     this.newPassword = new SimpleStringProperty("");
     this.confirmPassword = new SimpleStringProperty("");
+    this.selectedCity = new SimpleStringProperty();
     this.city = new SimpleObjectProperty<>();
     city.setValue(list);
     this.error = new SimpleStringProperty("");
@@ -48,21 +50,16 @@ public class EditProfileViewModel
 
   public void setEditInformation() throws RemoteException
   {
-
     this.user = model.getUser(model.getUser());
-    System.out.println("USER:");
-    System.out.println(user.getUserName());
     this.usernameProperty().setValue(user.getUserName());
-    System.out.println(username.get());
     this.passwordProperty().setValue(user.getPassWord());
-    System.out.println(password.get());
     this.firstNameProperty().setValue(user.getName());
-    System.out.println(firstName.get());
     this.lastNameProperty().setValue(user.getLastName());
-    System.out.println(lastName.get());
-    ObservableList<String> newList = FXCollections.observableArrayList();
-    newList.add(user.getCity());
-    this.cityProperty().setValue(newList); // So here it should be a list object but than how to take all cities?
+    this.selectedCity.setValue(user.getCity());
+    ObservableList<String> list = FXCollections.observableArrayList();
+    list.addAll("Horsens","Aarhus","Alborg","Copenhagen","Odense","Vejle", "Esbjerg", "Randers", "Kolding", "Roskilde",
+        "Herning", "Silkeborg", "Fredericia", "Viborg", "Holstebro", "Køge", "Helsingør");
+    this.cityProperty().setValue(list); // So here it should be a list object but than how to take all cities?
     // you see how i solved it but not sure that it wors
     if (!(user.getphone().equals("")))
     {
@@ -76,6 +73,11 @@ public class EditProfileViewModel
   public StringProperty usernameProperty()
   {
     return username;
+  }
+
+  public StringProperty selectedCityProperty()
+  {
+    return selectedCity;
   }
 
   public StringProperty firstNameProperty()
@@ -153,12 +155,16 @@ public class EditProfileViewModel
 
   public boolean checkPassword()
   {
-    if(model.checkPassword(password.get()))
+    if(model.checkPassword(newPassword.get()))
     {
       error.set("The password must be at least 6 characters and less than 20 characters");
     }
+    else if(password.get().equals(newPassword.get()))
+    {
+      error.set("You can`t use old password");
+    }
     else {error.set("");}
-    return model.checkPassword(password.get());
+    return model.checkPassword(newPassword.get());
   }
 
   public boolean verifyPasswords()
