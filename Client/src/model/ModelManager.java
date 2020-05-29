@@ -279,6 +279,13 @@ public class ModelManager implements Model, LocalListener<String,Book>
     client.addComment(book.getBookID(),user, comment);
   }
 
+  /**
+   * Get all comments for this specific bookID
+   * @param BookID specific bookID
+   * @return a list of comments
+   * @throws SQLException
+   * @throws RemoteException
+   */
   @Override public ArrayList<String> getComments(String BookID)
           throws SQLException, RemoteException
   {
@@ -340,8 +347,7 @@ public class ModelManager implements Model, LocalListener<String,Book>
    */
   @Override public User getUser(String username) throws RemoteException
   {
-   // System.out.println(username);
-   // this.user = username;
+
     return client.getUser(username);
   }
 }
