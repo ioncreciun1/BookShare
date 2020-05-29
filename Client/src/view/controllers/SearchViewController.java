@@ -89,4 +89,10 @@ public class SearchViewController extends ViewController
     super.getViewModels().getSearchViewModel().searchBook(bookType,bookLanguage);
     reset();
   }
+
+  public void openUserInfoView() throws RemoteException
+  {
+    getViewModels().getUserInfoViewModel().setUser();
+    getHandler().openView("UserInfoView");
+  }
 }

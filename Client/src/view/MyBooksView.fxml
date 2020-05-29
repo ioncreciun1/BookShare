@@ -67,12 +67,12 @@
                      </children></VBox>
                   <TableView fx:id="bookListTable1" prefHeight="365.0" prefWidth="509.0" style="-fx-background-color: rgba(125,125,125,0.3); -fx-border-color: rgb(231,231,231); -fx-border-width: 2px 2px 2px 2px;">
                      <columns>
-                        <TableColumn fx:id="orderColumn1" prefWidth="21.0" text="No" />
+                        <TableColumn fx:id="orderColumn1" prefWidth="25.0" text="No" />
                         <TableColumn fx:id="titleColumn1" maxWidth="134.0" prefWidth="100.0" text="Title" />
                         <TableColumn fx:id="authorColumn1" prefWidth="100.0" text="Author" />
                         <TableColumn fx:id="languageColumn1" prefWidth="90.0" text="Language" />
                         <TableColumn fx:id="categoryColumn1" prefWidth="90.0" text="Category" />
-                        <TableColumn fx:id="availableColumn" prefWidth="75.0" text="Availability" />
+                        <TableColumn fx:id="availableColumn" prefWidth="90.0" text="Availability" />
                      </columns>
                      <HBox.margin>
                         <Insets bottom="5.0" right="15.0" top="5.0" />
@@ -84,7 +84,7 @@
                <children>
                   <VBox alignment="TOP_CENTER" onMouseClicked="#openMainView" prefHeight="80.0" prefWidth="80.0">
                      <HBox.margin>
-                        <Insets left="90.0" />
+                        <Insets left="130.0" />
                      </HBox.margin>
                      <children>
                         <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
@@ -142,9 +142,9 @@
                         <Insets left="33.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="80.0">
+                  <VBox alignment="TOP_CENTER" onMouseClicked="#openUserInfoView" prefHeight="80.0" prefWidth="80.0">
                      <children>
-                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="45.0" fitWidth="45.0" onMouseClicked="#openUserInfoView" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
                               <Insets top="12.0" />
                            </VBox.margin>

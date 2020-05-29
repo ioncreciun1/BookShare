@@ -72,4 +72,10 @@ public class BookInfoViewController extends ViewController
   {
     super.getHandler().openView("CommentView");
   }
+
+  public void openUserInfoView() throws RemoteException
+  {
+    getViewModels().getUserInfoViewModel().setUser();
+    getHandler().openView("UserInfoView");
+  }
 }

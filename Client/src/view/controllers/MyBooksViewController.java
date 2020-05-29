@@ -139,4 +139,10 @@ public class MyBooksViewController extends ViewController
     Optional<ButtonType> result = alert.showAndWait();
     return (result.isPresent()) && (result.get() == ButtonType.OK);
   }
+
+  public void openUserInfoView() throws RemoteException
+  {
+    getViewModels().getUserInfoViewModel().setUser();
+    getHandler().openView("UserInfoView");
+  }
 }
