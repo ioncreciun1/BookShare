@@ -34,9 +34,9 @@ public class EditProfileViewController extends ViewController
   {
     // hz why but bind don`t work or method setInfo dont work idk
     super.init(viewHandler, viewModel, root);
-    super.getViewModels().getEditProfileViewModel().reset();
-    username.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().usernameProperty());
-    firstName.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().firstNameProperty());
+
+    username.textProperty().bind(super.getViewModels().getEditProfileViewModel().usernameProperty());
+    firstName.textProperty().bind(super.getViewModels().getEditProfileViewModel().firstNameProperty());
     lastName.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().lastNameProperty());
     email.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().emailProperty());
     phone.textProperty().bindBidirectional(super.getViewModels().getEditProfileViewModel().phoneProperty());

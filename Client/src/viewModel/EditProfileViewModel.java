@@ -48,11 +48,18 @@ public class EditProfileViewModel
 
   public void setEditInformation() throws RemoteException
   {
+
     this.user = model.getUser(model.getUser());
+    System.out.println("USER:");
+    System.out.println(user.getUserName());
     this.usernameProperty().setValue(user.getUserName());
+    System.out.println(username.get());
     this.passwordProperty().setValue(user.getPassWord());
+    System.out.println(password.get());
     this.firstNameProperty().setValue(user.getName());
+    System.out.println(firstName.get());
     this.lastNameProperty().setValue(user.getLastName());
+    System.out.println(lastName.get());
     ObservableList<String> newList = FXCollections.observableArrayList();
     newList.add(user.getCity());
     this.cityProperty().setValue(newList); // So here it should be a list object but than how to take all cities?
