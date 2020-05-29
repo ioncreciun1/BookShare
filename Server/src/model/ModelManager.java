@@ -116,8 +116,9 @@ public class ModelManager implements Model
 
   public void add(String BookID, String Username, String comment) throws RemoteException,SQLException
   {
-    property.firePropertyChange("comment",Username + " : "+ comment,null);
+
     commentDAO.add(BookID,Username, comment);
+    property.firePropertyChange("comment",Username + " : "+ comment,null);
   }
 
   public ArrayList<String> getComments(String BookID)

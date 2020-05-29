@@ -41,7 +41,7 @@ public class BookDAOImplementation implements BookDAO
   private Connection getConnection() throws SQLException
   {
     return DriverManager.getConnection("jdbc:postgresql://btv9bsc3ws7gpfnylr1c-postgresql.services.clever-cloud.com:5432/btv9bsc3ws7gpfnylr1c", "uhxksonl4uvuqdftznsg",
-            "pnwEWl0YlSc6A2z619ff");
+        "pnwEWl0YlSc6A2z619ff");
   }
 /** @throws if a database access error occurs or the parameter is  null
     * @param Username

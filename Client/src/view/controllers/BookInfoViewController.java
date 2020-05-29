@@ -30,7 +30,6 @@ public class BookInfoViewController extends ViewController
   public Label phoneNumber;
   public Label email;
   public ListView<String> comments;
-  //public ListView<String> description;
   public Text description;
 
   public BookInfoViewController()
@@ -48,19 +47,12 @@ public class BookInfoViewController extends ViewController
     ownerName.textProperty().bind(super.getViewModels().getBookInfoViewModel().ownerNameProperty());
     phoneNumber.textProperty().bind(super.getViewModels().getBookInfoViewModel().phoneNumberProperty());
     email.textProperty().bind(super.getViewModels().getBookInfoViewModel().emailProperty());
-    String descriptionString = super.getViewModels().getBookInfoViewModel().descriptionProperty().getValue();
-    ObservableList<String> items = FXCollections.observableArrayList ();
-    items.add(descriptionString);
-   // description.setItems(items);
+
+
+    description.textProperty().bindBidirectional(super.getViewModels().getBookInfoViewModel().descriptionProperty());
+
     comments.setItems(super.getViewModels().getBookInfoViewModel().getCommentsHash());
-//   // HashMap<String,String> commentHash = super.getViewModels().getBookInfoViewModel().getCommentsHash();
-//    ObservableList<String> itemsComment = FXCollections.observableArrayList();
-//    if(!commentHash.isEmpty()) {
-//      for (String key : commentHash.keySet()) {
-//        itemsComment.add(key+"\n "+commentHash.get(key));
-//      }
-//    }
-//    comments.setItems(itemsComment);
+
   }
 
   public void openAddBookView()
