@@ -20,15 +20,13 @@ import java.sql.SQLException;
 
 public class BookInfoViewController extends ViewController
 {
-  public Text title; // it`s not used yet because have some problems with id in fxml
-
+  public Text title;
   public Label authorName;
   public Label language;
   public Label category;
   public Label ownerName;
   public Label phoneNumber;
   public Label email;
-  public ListView<String> description1;
   public Text description;
 
   public BookInfoViewController()
@@ -46,10 +44,6 @@ public class BookInfoViewController extends ViewController
     ownerName.textProperty().bind(super.getViewModels().getBookInfoViewModel().ownerNameProperty());
     phoneNumber.textProperty().bind(super.getViewModels().getBookInfoViewModel().phoneNumberProperty());
     email.textProperty().bind(super.getViewModels().getBookInfoViewModel().emailProperty());
-    String descriptionString = super.getViewModels().getBookInfoViewModel().descriptionProperty().getValue();
-    ObservableList<String> items = FXCollections.observableArrayList ();
-    items.add(descriptionString);
-    description1.setItems(items);
     description.textProperty().bind(super.getViewModels().getBookInfoViewModel().descriptionProperty());
   }
 

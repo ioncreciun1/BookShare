@@ -52,9 +52,10 @@ public class EditProfileViewModel
     this.passwordProperty().setValue(user.getPassWord());
     this.firstNameProperty().setValue(user.getName());
     this.lastNameProperty().setValue(user.getLastName());
-    ObservableList<String> newList = FXCollections.observableArrayList();
-    newList.add(user.getCity());
-    this.cityProperty().setValue(newList); // So here it should be a list object but than how to take all cities?
+    ObservableList<String> list = FXCollections.observableArrayList();
+    list.addAll("Horsens","Aarhus","Alborg","Copenhagen","Odense","Vejle", "Esbjerg", "Randers", "Kolding", "Roskilde",
+        "Herning", "Silkeborg", "Fredericia", "Viborg", "Holstebro", "Køge", "Helsingør");
+    this.cityProperty().setValue(list); // So here it should be a list object but than how to take all cities?
     // you see how i solved it but not sure that it wors
     if (!(user.getContactInfo().equals("")))
     {
@@ -145,12 +146,16 @@ public class EditProfileViewModel
 
   public boolean checkPassword()
   {
-    if(model.checkPassword(password.get()))
+    if(model.checkPassword(newPassword.get()))
     {
       error.set("The password must be at least 6 characters and less than 20 characters");
     }
+    else if(password.get().equals(newPassword.get()))
+    {
+      error.set("You can`t use old password");
+    }
     else {error.set("");}
-    return model.checkPassword(password.get());
+    return model.checkPassword(newPassword.get());
   }
 
   public boolean verifyPasswords()

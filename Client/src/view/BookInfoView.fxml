@@ -58,7 +58,7 @@
                                     <Insets left="10.0" />
                                  </VBox.margin>
                                  <children>
-                                    <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="219.13671875" />
+                                    <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: newPassword.get();" wrappingWidth="219.13671875" />
                                  </children>
                               </HBox>
                            </children>
