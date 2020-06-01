@@ -132,7 +132,19 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
     System.out.println("Check server");
     return model.checkUser(registrant);
   }
-
+  /**
+   * Update user information
+   * @param actualUsername actual username
+   * @param newUsername new username
+   * @param passWord new password
+   * @param eMail new email
+   * @param firstName new first name
+   * @param lastName new last name
+   * @param city new city
+   * @param phone new phone number
+   * @throws SQLException
+   * @throws RemoteException
+   */
   @Override public void update(String actualUsername, String newUsername,
       String passWord, String eMail, String firstName, String lastName,
       String city, String phone) throws SQLException, RemoteException
@@ -140,6 +152,13 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
     model.update(actualUsername,newUsername,passWord,eMail,firstName,lastName,city,phone);
   }
 
+  /**
+   * check if a specific username is in the system
+   * @param username username of user
+   * @return true if username is in the system otherwise return false
+   * @throws RemoteException
+   * @throws SQLException
+   */
   @Override public boolean checkUsername(String username)
       throws RemoteException, SQLException
   {
@@ -284,8 +303,12 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
   }
 
   /**
-   * Add comment to a specific book
-   * @param comment comment text
+   *  Add comment to a specific book by a specific username
+   *  @param comment comment text
+   * @param BookID specific bookID
+   * @param Username username of a user
+
+   * @throws RemoteException
    * @throws SQLException
    */
   @Override public void addComment(String BookID, String Username, String comment) throws RemoteException,SQLException
@@ -294,6 +317,14 @@ public class ServerModel implements RemoteModel, LocalListener<String,Book>
     model.add(BookID, Username, comment);
   }
 
+/**
+ * Getting all comments related to a specific bookID
+ * @param BookID bookID of book
+ * @return List of comments for this specific book
+ * @throws RemoteException
+ * @throws SQLException
+ *
+ * */
   @Override public ArrayList<String> getComments(String BookID)
           throws SQLException, RemoteException{
     return model.getComments(BookID);

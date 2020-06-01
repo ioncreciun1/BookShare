@@ -223,7 +223,19 @@ public class UserDAOImplementation implements UserDAO
     }
     return registrants;
   }
-/**/
+
+  /**
+   * Update user information
+   * @param actualUsername actual username
+   * @param newUsername new username
+   * @param password new password
+   * @param email new email
+   * @param firstName new first name
+   * @param lastName new last name
+   * @param city new city
+   * @param phone new phone number
+   * @throws SQLException
+   */
   @Override public void update(String actualUsername, String newUsername, String password, String email, String firstName, String lastName, String city, String phone) throws SQLException
   {
     try(Connection connection = getConnection()/*auto closes the connection*/)

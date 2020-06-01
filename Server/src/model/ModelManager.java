@@ -31,6 +31,18 @@ public class ModelManager implements Model
     this.property = new PropertyChangeProxy<>(this);
   }
 
+  /**
+   * Update user information
+   * @param actualUsername actual username
+   * @param newUsername new username
+   * @param passWord new password
+   * @param eMail new email
+   * @param firstName new first name
+   * @param lastName new last name
+   * @param city new city
+   * @param phone new phone number
+   * @throws SQLException
+   */
   @Override public void update(String actualUsername, String newUsername,
       String passWord, String eMail, String firstName, String lastName,
       String city, String phone) throws SQLException
@@ -48,7 +60,12 @@ public class ModelManager implements Model
   {
     return this.user.check_User(user);
   }
-
+  /**
+   * check if a specific username is in the system
+   * @param username username of user
+   * @return true if username is in the system otherwise return false
+   * @throws SQLException
+   */
   @Override public boolean checkUsername(String username) throws SQLException
   {
     return user.checkUsername(username);
@@ -121,6 +138,14 @@ public class ModelManager implements Model
     property.firePropertyChange("book",null,book);
   }
 
+  /**
+   * adding a comment to a specific book by a specific user
+   * @param BookID bookID of book
+   * @param Username username of a specific User
+   * @param comment comment text
+   * @throws RemoteException
+   * @throws SQLException
+   */
   public void add(String BookID, String Username, String comment) throws RemoteException,SQLException
   {
 
@@ -128,6 +153,13 @@ public class ModelManager implements Model
     property.firePropertyChange("comment",Username + " : "+ comment,null);
   }
 
+  /**
+   * Getting all comments related to a specific bookID
+   * @param BookID bookID of book
+   * @return List of comments for this specific book
+   * @throws RemoteException
+   * @throws SQLException
+   */
   public ArrayList<String> getComments(String BookID)
           throws SQLException, RemoteException{
     ArrayList<String> comments = commentDAO.get(BookID);

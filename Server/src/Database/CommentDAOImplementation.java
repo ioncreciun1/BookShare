@@ -28,6 +28,14 @@ public class CommentDAOImplementation implements CommentDAO
 
     }
 
+    /**
+     * adding a comment to a specific book by a specific user
+     * @param BookID bookID of book
+     * @param Username username of a specific User
+     * @param comment comment text
+     * @throws RemoteException
+     * @throws SQLException
+     */
     public void add(String BookID, String Username, String comment) throws RemoteException,SQLException
     {
         try
@@ -41,6 +49,13 @@ public class CommentDAOImplementation implements CommentDAO
         }
     }
 
+    /**
+     * Getting all comments related to a specific bookID
+     * @param BookID bookID of book
+     * @return List of comments for this specific book
+     * @throws RemoteException
+     * @throws SQLException
+     */
     public ArrayList<String> get(String BookID) throws RemoteException,SQLException{
         ArrayList<String> hash = new ArrayList<>();
         try

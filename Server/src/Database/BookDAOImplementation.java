@@ -76,6 +76,13 @@ public class BookDAOImplementation implements BookDAO
     }
   }
 
+  /**
+   * An user add a comment to a specific book
+   * @param username user Username
+   * @param book specific book
+   * @param comment comment text for this specific book
+   * @throws SQLException
+   */
   @Override public void addComment(String username, Book book,  String comment)
       throws SQLException
   {

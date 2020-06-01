@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public interface ClientModel extends LocalSubject<String,Book>
 {
-  boolean verifyPass(String password,String username) throws RemoteException;
+
   void registerUser(String Username, String passWord, String eMail, String firstName, String lastName, String city, String phone)
       throws Exception;
   User getUser(String username) throws RemoteException;

@@ -54,6 +54,13 @@ public class ModelManager implements Model, LocalListener<String,Book>
     return ( username.length() < 8 ) || ( username.length() > 30 );
   }
 
+  /**
+   * check if a specific username is in the system
+   * @param username username of user
+   * @return true if username is in the system otherwise return false
+   * @throws RemoteException
+   * @throws SQLException
+   */
   @Override public boolean checkUsername(String username)
       throws RemoteException, SQLException
   {
@@ -291,7 +298,18 @@ public class ModelManager implements Model, LocalListener<String,Book>
   {
     return client.getComments(BookID);
   }
-
+  /**
+   * Update user information
+   * @param newUsername new username
+   * @param passWord new password
+   * @param eMail new email
+   * @param firstName new first name
+   * @param lastName new last name
+   * @param city new city
+   * @param phone new phone number
+   * @throws SQLException
+   * @throws RemoteException
+   */
   @Override public void update( String newUsername,
       String passWord, String eMail, String firstName, String lastName,
       String city, String phone) throws SQLException, RemoteException
