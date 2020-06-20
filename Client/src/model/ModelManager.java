@@ -282,7 +282,6 @@ public class ModelManager implements Model, LocalListener<String,Book>
   @Override public void addComment(Book book, String comment)
       throws SQLException, RemoteException
   {
-    System.out.println("User :" + user);
     client.addComment(book.getBookID(),user, comment);
   }
 
@@ -321,7 +320,6 @@ public class ModelManager implements Model, LocalListener<String,Book>
 
   @Override public void propertyChange(ObserverEvent<String, Book> event)
   {
-    System.out.println("CLIENT MODEL");
   property.firePropertyChange(event.getPropertyName(),event.getValue1(),event.getValue2());
   }
 

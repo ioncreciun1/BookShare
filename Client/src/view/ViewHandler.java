@@ -21,8 +21,6 @@ public class ViewHandler
   {
     Region root = null;
     root = ViewControllerFactory.getViewController(id, this, factory).getRoot();
-    //System.out.println(id);
-   // System.out.println(root);
     currentScene.setRoot(root);
     String title = "";
     if (root.getUserData() != null)

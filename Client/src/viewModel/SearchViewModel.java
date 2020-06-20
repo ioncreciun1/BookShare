@@ -31,10 +31,9 @@ public class SearchViewModel
     table = createList();
     ObservableList<String> languageList = FXCollections.observableArrayList();
     ObservableList<String> typeList = FXCollections.observableArrayList();
-    languageList.addAll("Click to choose Language","Danish","English","German","Romanian","Chinese","Spanish", "Arabic", "Russian",
-        "Portuguese", "Japanese", "French", "Turkish", "Italian", "Polish","Ukrainian", "Other");
-    typeList.addAll("Click to choose Category","Drama","Action","Literary Fiction","Adventure","Classics", "Comic Book","Detective","Fantasy",
-        "Historical", "Horror", "Romance", "Science Fiction", "Cookbooks", "Essays","Memoir", "Poetry", "Other");
+    languageList.addAll("Click to choose Language","Danish","English","French","German","Italian","Latvian","Romanian","Russian","Spanish","Suomi","Swedish","Other");
+    typeList.addAll("Click to choose Category","Action","Adventure","Children's", "Classics","Comic Book","Cookbooks","Detective","Drama","Fiction",
+        "Historical","Horror","Memoir","Poetry","Romance","Science Fiction","Other");
     this.language = new SimpleObjectProperty<>();
     this.type = new SimpleObjectProperty<>();
     this.title = new SimpleStringProperty("");
@@ -246,7 +245,6 @@ public class SearchViewModel
     }
 
     int size = books.size();
-    System.out.println(size);
     if (size > 0)
     {
       for (int i = 0; i < size; i++)

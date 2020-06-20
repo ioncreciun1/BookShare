@@ -76,8 +76,6 @@ private ObjectProperty<ObservableList<TableRowData>> tableProperty;
   @Override public void propertyChange(ObserverEvent<String, Book> event)
   {
 Platform.runLater(()->{
-  System.out.println("View Model");
-  System.out.println(event.getPropertyName());
   switch (event.getPropertyName())
   {
     case "book":
@@ -90,7 +88,6 @@ Platform.runLater(()->{
         table.clear();
         table = createList();
         tableProperty.setValue(table);
-        System.out.println("Here");
 
 
       }

@@ -291,8 +291,6 @@ public class Client implements ClientModel, RemoteListener<String,Book>
   @Override public void propertyChange(ObserverEvent<String, Book> event)
       throws RemoteException
   {
-    System.out.println("CLIENT");
-    System.out.println(event.getPropertyName());
     property.firePropertyChange(event.getPropertyName(),event.getValue1(),event.getValue2());
   }
 

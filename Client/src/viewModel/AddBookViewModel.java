@@ -27,7 +27,7 @@ public class AddBookViewModel
     ObservableList<String> typeList = FXCollections.observableArrayList();
     languageList.addAll("Click to choose Language","Danish","English","French","German","Italian","Latvian","Romanian","Russian","Spanish","Suomi","Swedish","Other");
     typeList.addAll("Click to choose Category","Action","Adventure","Children's", "Classics","Comic Book","Cookbooks","Detective","Drama","Fiction",
-        "Historical","Horror","Romance","Science Fiction","Memoir","Poetry","Other");
+        "Historical","Horror","Memoir","Poetry","Romance","Science Fiction","Other");
     this.model = model;
     this.language = new SimpleObjectProperty<>();
     this.type = new SimpleObjectProperty<>();

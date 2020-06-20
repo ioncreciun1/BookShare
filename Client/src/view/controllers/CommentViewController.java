@@ -27,16 +27,12 @@ public class CommentViewController extends ViewController
     super.getViewModels().getCommentViewModel().reset();
     comment.textProperty().bindBidirectional(super.getViewModels().getCommentViewModel().getCommentProperty());
     error.textProperty().bindBidirectional(super.getViewModels().getCommentViewModel().getError());
-    //reset();
+
   }
 
-//  public void reset()
-//  {
-//    super.getViewModels().getCommentViewModel().reset();
-//    comment.clear();
-//  }
 
-  public void cancelMain() // ble hz,  ar trebui sa deschida acela care era cand a apasat write nu unul random
+
+  public void cancelMain()
   {
     super.getHandler().closeView();
     super.getHandler().openView("BookInfoView");

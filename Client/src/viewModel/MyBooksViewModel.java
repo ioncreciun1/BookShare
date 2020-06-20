@@ -39,7 +39,6 @@ public class MyBooksViewModel implements LocalListener<String,Book>
       obsList.add(new TableRowData(books.get(i)));
     }
     table = obsList;
-    System.out.println(table.toString());
     return obsList;
   }
 
@@ -48,7 +47,7 @@ public class MyBooksViewModel implements LocalListener<String,Book>
   {
     ArrayList<Book> available = new ArrayList<>();
     for(int i=0; i < model.booksByUser().size(); i++){
-      if(model.booksByUser().get(i).available() == true){
+      if(model.booksByUser().get(i).available()){
         available.add(model.booksByUser().get(i));
       }
     }
@@ -60,9 +59,9 @@ public class MyBooksViewModel implements LocalListener<String,Book>
     else  size = available.size();
     ObservableList<TableRowData> obsList = FXCollections.observableArrayList();
     ArrayList<Book> books = new ArrayList<>();
-    for (int i = 0; i < size; i++) // Something should be instead of 99
+    for (int i = 0; i < size; i++)
     {
-      books.add(available.get(i)); // should be a book i guess
+      books.add(available.get(i));
     }
     for (int i = 0; i < books.size(); i++)
     {
@@ -88,9 +87,9 @@ public class MyBooksViewModel implements LocalListener<String,Book>
     else  size = borrowed.size();
     ObservableList<TableRowData> obsList = FXCollections.observableArrayList();
     ArrayList<Book> books = new ArrayList<>();
-    for (int i = 0; i < size; i++) // Something should be instead of 99
+    for (int i = 0; i < size; i++)
     {
-        books.add(borrowed.get(i)); // should be a book i guess
+        books.add(borrowed.get(i));
     }
     for (int i = 0; i < books.size(); i++)
     {

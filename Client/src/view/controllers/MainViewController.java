@@ -31,9 +31,6 @@ public class MainViewController extends ViewController
       ViewHandler viewHandler, ViewModelFactory viewModels, Region root)
   {
     super.init(viewHandler, viewModels, root);
-//    orderColumn.setCellValueFactory(
-//        cellData -> cellData.getValue().getOrderNumber()
-//    );
     titleColumn.setCellValueFactory(
         cellData -> cellData.getValue().getBookTitle()
     );

@@ -64,7 +64,6 @@ public class BookInfoViewModel implements LocalListener<String,Book>
     ArrayList<String> com = model.getComments(book.getBookID());
     for(int i=0;i<com.size();i++)
     {
-      System.out.println(com.get(i));
     comments.add(com.get(i));
     }
   }
@@ -121,7 +120,6 @@ public class BookInfoViewModel implements LocalListener<String,Book>
   @Override public void propertyChange(ObserverEvent<String, Book> event)
   {
     Platform.runLater(()->{
-      System.out.println("I am here");
       try
       {
         comments.clear();
